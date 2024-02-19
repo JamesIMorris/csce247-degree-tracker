@@ -2,6 +2,6 @@
   "majorId":"CIS",
   "majorName":"Computer Information Systems",
   "majorRequirements":["ENGL101","MATH122","MATH141","CSCE145","CSCE190","CC-SCI","ENGL102","CC-SCI","CSCE146","CSCE215","CC-AIU","CSCE205","CSCE242","CSCE210","CSCE247","ECON224","SPCH140","SPCH145","SPCH230","CSCE201","CSCE240","MATH174","MATH374","MGSC290","CC-GSS","CSCE350","CSCE390","STAT515","ACCT222","MGMT371","ENGL462","ENGL463","CSCE520","CSCE594","STAT516","BIMME","CC-GHS","CSCE490","CSCE416","CSCE522","BIMME","LAE","CSCE492","CISME","LAE","LAE"],
-  "school":"University of South Carolina",
+  "school":"College of Engineering and Computing",
   "department":"Computer Science and Engineering"
 }]
