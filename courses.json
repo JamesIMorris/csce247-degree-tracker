@@ -4,10 +4,9 @@
     "courseName":"Software Engineering",
     "courseDescription":"Fundamentals of software design and development; software implementation strategies; object-oriented design techniques; functional design techniques; design patterns; design process; source control; testing.",
     "creditHours":3,
-    "isOverlay":"NO",
     "preRequisites":"C or better in CSCE 146",
     "coRequisites":"NONE",
-    "semesterAvailable":"FALL,SPRING"
+    "semesterAvailability":["FALL","SPRING"]
   },{
     "courseId":"ENGL101",
     "courseName":"Critical Reading and Composition",

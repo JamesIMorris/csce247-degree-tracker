@@ -50,7 +50,7 @@
 	{"requirement":"BIMME", "studentCourse":"286464ec-e4c2-4abc-bdc8-f928a43a2d32"},
 	{"requirement":"LAE", "studentCourse":"2846face-a7e9-4cb5-8584-e14d86a8ba80"},
 	{"requirement":"CSCE492", "studentCourse":"1a68eebf-4ab1-4a1a-8b1f-dc207d5d3bcc"},
-	{"requirement":"CISME"}, "studentCourse":"b6ce4d11-8c25-4ff5-98ed-a22a74e64d13",
+	{"requirement":"CISME", "studentCourse":"b6ce4d11-8c25-4ff5-98ed-a22a74e64d13"},
 	{"requirement":"LAE", "studentCourse":"e2429a94-2763-48e7-8213-10e3a3a3ca10"},
 	{"requirement":"LAE", "studentCourse":"08dcedc1-b2c2-4ea0-a605-63b7c1ac30ad"}],
   "studentCourse":[

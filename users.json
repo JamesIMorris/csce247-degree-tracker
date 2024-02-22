@@ -1,0 +1,26 @@
+[
+  {
+    "userType":"STUDENT",
+    "username":"JD123",
+    "password":"DoeJohn@5",
+    "firstName":"John",
+    "lastName":"Doe",
+    "email":"JD308@email.sc.edu"
+  },
+  {
+    "userType":"ADVISOR",
+    "username":"AA1",
+    "password":"passWord@1",
+    "firstName":"Addy",
+    "lastName":"Anderson",
+    "email":"aa102@email.sc.edu"
+  },
+  {
+    "userType":"ADMIN",
+    "username":"JS24",
+    "password":"Abc123!",
+    "firstName":"Jane",
+    "lastName":"Smith",
+    "email":"JSMITH321@email.sc.edu"
+  }
+]
