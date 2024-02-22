@@ -1,9 +1,0 @@
-[{
-  "username":"AA1",
-  "password":"passWord@1",
-  "firstName":"Addy",
-  "lastName":"Anderson",
-  "email":"aa102@email.sc.edu",
-  "userType":"ADVISOR",
-  "currentAdvisees":["JD123"]
-}]
