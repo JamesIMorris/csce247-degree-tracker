@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Locale.Category;
 
 public class Major {
     private String name;
