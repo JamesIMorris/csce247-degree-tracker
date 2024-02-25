@@ -84,6 +84,14 @@ public class UserList{
         return true;
     }
 
+    public boolean emailAvailable(String email){
+        for( User user : users){
+            if(user.getEmail().equals(email))
+                return false;
+        }
+        return true;
+    }
+
     public User findUser(String username){
         for( User user : users){
             if(user.getUsername().equals(username))
