@@ -19,7 +19,7 @@ public class UserList{
         return users;
     }
 
-    public boolean createNewUser(String username, String password, String firstName, String lastName, String email, String userType){
+    public boolean createNewUser(String username, String password, String firstName, String lastName, String email, UserType userType){
         return false;
     }
     
