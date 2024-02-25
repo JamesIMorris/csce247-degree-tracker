@@ -1,4 +1,4 @@
-public class User{
+public abstract class User{
     private String username;
     private String password;
     private String firstName;
@@ -53,7 +53,5 @@ public class User{
         this.email = email;
     }
     
-    public UserType getUserType(){
-        return UserType.STUDENT;
-    }
+    public abstract UserType getUserType();
 }
