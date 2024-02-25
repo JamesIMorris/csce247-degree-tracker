@@ -45,14 +45,25 @@ public class DegreeTracker{
             error += "All fields must be filled";
             return false;
         }
-            
         if(!userList.usernameAvailable(username)){
             error += "Username unavailable";
             success = false;
         }
         if(!checkPassword(password))
             success = false;
-        
+        if(!userList.emailAvailable(email)){
+            error += "Email already in use";
+            success = false;
+        }
+        User newUser;
+        if(success)
+            newUser = userList.createNewUser(username, password, firstName, lastName, email, type);
+        else
+            return false; 
+        if(newUser == null)
+            return false;
+        currentUser = newUser;
+        return true;
     }
 
     private boolean checkPassword(String password){
