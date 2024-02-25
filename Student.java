@@ -43,13 +43,32 @@ public class Student extends User{
         this.changeInProgress = false; 
     }
 
+    public Major getMajor() {
+        return major;
+    }
+    public ArrayList<Credit> getCredits() {
+        return credits;
+    }
+    public HashMap<Requirement, ArrayList<Credit>> getRequirements() {
+        return requirements;
+    }
+    public ArrayList<String> getNotes() {
+        return notes;
+    }
+    public void setNotes(ArrayList<String> notes){
+        this.notes = notes;
+    }
+
+    public boolean changeIsInProgress() {
+        return changeInProgress;
+    }
     public boolean changeMajor(Major major){
         return false;
     }
     public boolean addCredit(Credit credit){
         return false;
     }
-    public boolean addCredits(Course course, Semester semester){
+    public boolean addCredit(Course course, Semester semester){
         return false;
     }
     public boolean removeCredit(Credit credit){
@@ -94,7 +113,8 @@ public class Student extends User{
     public boolean revertChange(){
         return false;
     }
-    
+    public void notifyCredits(){
+    }
     private boolean startChange(){
         return false;
     }
