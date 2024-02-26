@@ -40,7 +40,7 @@ public class UI {
         scanner.close();
     }
 
-    private static boolean login(Scanner scanner) {
+    private static void login(Scanner scanner) {
         boolean loggedIn = false;
 
         while (!loggedIn) {
@@ -49,35 +49,152 @@ public class UI {
             System.out.print("Enter password: ");
             String password = scanner.nextLine();
 
-            User user = userList.authenticateUser(username, password);
+            User user = findUsername(username);
 
-            if (user != null) {
+            if (user != null && user.passwordMatches(password)) {
                 System.out.println("Login successful!");
 
                 UserType userType = user.getUserType();
 
                 if (userType == UserType.STUDENT) {
-
-                    ((Student) user).generateEightSemesterPlan();
-
+                    loadStudentPage((Student) user, scanner);
                 } else if (userType == UserType.ADVISOR) {
-
+                    loadAdvisorPage((Advisor) user, scanner);
                 } else if (userType == UserType.ADMIN) {
-
+                    loadAdminPage((Admin) user, scanner);
                 }
 
                 loggedIn = true; // Exit the login loop
+                LogOut(scanner, user);
             } else {
                 System.out.println("Login failed. Invalid username or password.");
             }
         }
+    }
 
-        // continue the main loop after logout
-        return false;
+    private static User findUsername(String username) {
+        for (User user : userList.users) {
+            if (user.username.equals(username)) {
+                return user;
+            }
+        }
+
+        return null;
+    }
+
+    private static void LogOut(Scanner scanner, User user) {
+        System.out.print("Do you want to logout? (yes/no): ");
+        String logoutChoice = scanner.nextLine().toLowerCase();
+
+        if (logoutChoice.equals("yes")) {
+            System.out.println("Logout successful!");
+        } else {
+
+            UserType userType = user.getUserType();
+
+            if (userType == UserType.STUDENT) {
+                loadStudentPage((Student) user, scanner);
+            } else if (userType == UserType.ADVISOR) {
+                loadAdvisorPage((Advisor) user, scanner);
+            } else if (userType == UserType.ADMIN) {
+                loadAdminPage((Admin) user, scanner);
+            }
+        }
+    }
+
+    private static void loadStudentPage(Student student, Scanner scanner) {
+        System.out.println("Welcome, " + student.firstName + " " + student.lastName);
+
+        System.out.println("1. Generate Eight Semester Plan");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (choice) {
+            case 1:
+                displayEightSemesterPlan(student);
+                break;
+            default:
+                System.out.println("Invalid choice. Returning to main menu.");
+        }
+    }
+
+    private static void loadAdvisorPage(Advisor advisor, Scanner scanner) {
+        System.out.println("Welcome, " + advisor.FirstName + " " + advisor.lastName);
+
+        System.out.println("1. View Advisee Information");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (choice) {
+            case 1:
+                displayAdviseeInformation(advisor.getAdvisees());
+                break;
+
+            default:
+                System.out.println("Invalid choice. Returning to main menu.");
+        }
+    }
+
+    private static void displayAdviseeInformation(ArrayList<Student> advisees) {
+        Scanner scanner;
+        if (advisees.isEmpty()) {
+            System.out.println("No advisees to display.");
+        } else {
+            System.out.println("Advisee Information:");
+
+            for (Student student : advisees) {
+                System.out.println("Username: " + student.username);
+                System.out.println("Name: " + student.firstName + " " + student.lastName);
+                System.out.println("Email: " + student.email);
+                System.out.println("Major: " + student.major);
+
+                System.out.println("Notes:");
+                for (String note : student.notes) {
+                    System.out.println("\t" + note);
+                }
+
+                System.out.print("Do you want to add a note? (yes/no): ");
+                String addNoteResponse = scanner.nextLine().toLowerCase();
+
+                if (addNoteResponse.equals("yes")) {
+                    System.out.print("Enter the note: ");
+                    String newNote = scanner.nextLine();
+                    student.addNote(newNote);
+                    System.out.println("Note added successfully.");
+                }
+
+                System.out.println("---------------");
+            }
+        }
+    }
+
+    private static void loadAdminPage(Admin admin, Scanner scanner) {
+        System.out.println("Welcome, " + admin.firstName + " " + admin.lastName);
+
+        System.out.println("1. Manage Courses");
+        System.out.println("2. Manage Majors");
+        System.out.println("3. Manage Users");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (choice) {
+            case 1:
+                
+                break;
+                 2:
+                
+                break;
+            default:
+                System.out.println("Invalid choice. Returning to main menu.");
+        }
     }
 
     private static void createAccount(Scanner scanner) {
         System.out.println("Select the type of account to create:");
+
         System.out.println("1. Administrator");
         System.out.println("2. Student");
         System.out.println("3. Advisor");
@@ -88,6 +205,11 @@ public class UI {
 
         System.out.print("Enter username: ");
         String username = scanner.nextLine();
+
+        if (!userList.usernameAvailable(username)) {
+            System.out.println("Username is not available. Please choose another username.");
+            return;
+        }
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
         System.out.print("Enter first name: ");
@@ -112,10 +234,14 @@ public class UI {
                 System.out.println("Invalid choice. Account creation canceled.");
                 return;
         }
-    }
 
-    private static void logout() {
-        System.out.println("Logging out...");
-
+        User newUser;
+        if (type == UserType.ADMIN) {
+            newUser = new Admin(username, password, firstName, lastName, email);
+        } else if (type == UserType.STUDENT) {
+            newUser = new Student(username, password, firstName, lastName, email);
+        } else {
+            newUser = new Advisor(username, password, firstName, lastName, email);
+        }
     }
 }
