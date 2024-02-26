@@ -23,14 +23,7 @@ public class DegreeTracker{
     }
 
     public boolean login(String username, String password){
-        User loginUser = userList.findUser(username);
-        if(loginUser == null)
-            return false;
-        if(!loginUser.passwordMathes(password))
-            return false;
-        this.currentUser = loginUser;
-        return true;
-            
+        return userList.login(username, password);
     }
 
     public boolean signup(String username, String password, String firstName, String lastName, String email, UserType type){
