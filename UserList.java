@@ -19,7 +19,7 @@ public class UserList{
         return users;
     }
 
-    public boolean createNewUser(String username, String password, String firstName, String lastName, String email, String userType){
+    public boolean createNewUser(String username, String password, String firstName, String lastName, String email, UserType userType){
         return false;
     }
     
@@ -79,6 +79,14 @@ public class UserList{
     public boolean usernameAvailable(String username){
         for( User user : users){
             if(user.getUsername().equals(username))
+                return false;
+        }
+        return true;
+    }
+
+    public boolean emailAvailable(String email){
+        for( User user : users){
+            if(user.getEmail().equals(email))
                 return false;
         }
         return true;
