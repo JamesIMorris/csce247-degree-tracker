@@ -1,6 +1,5 @@
 public class DegreeTracker{
     private static DegreeTracker degreeTracker;
-    private User currentUser;
     private String error;
     private UserList userList;
     private MajorList majorList;
@@ -35,10 +34,6 @@ public class DegreeTracker{
     }
 
     public boolean signup(String username, String password, String firstName, String lastName, String email, UserType type){
-        User newUser = userList.signup(username, password, firstName, lastName, email, type);
-        if(newUser == null)
-            return false;
-        currentUser = newUser;
-        return true;
+        return userList.signup(username, password, firstName, lastName, email, type);
     }
 }

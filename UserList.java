@@ -4,6 +4,7 @@ import java.util.HashMap;
 public class UserList{
     private static UserList userList;
     private ArrayList<User> users;
+    private User currentUser;
     
     private UserList(){
         loadUsers();
@@ -17,6 +18,13 @@ public class UserList{
 
     public ArrayList<User> getUsers(){
         return users;
+    }
+    public User getCurrentUser(){
+        return currentUser;
+    }
+    public void setCurrentUser(User user){
+        if(user != null)
+            currentUser = user;
     }
 
     public boolean createNewUser(String username, String password, String firstName, String lastName, String email, UserType userType){
@@ -45,9 +53,10 @@ public class UserList{
             success = false;
         }
         User newUser;
-        if(success)
-            newUser = createNewUser(username, password, firstName, lastName, email, type);  
-        return newUser;
+        if(!success)
+            return false;
+        success = createNewUser(username, password, firstName, lastName, email, type);
+        return findUser(username);
     }
 
     public Student createNewStudent(String username, String password, String firstName, String lastName, String email, Major major){
