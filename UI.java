@@ -35,7 +35,7 @@ public class UI {
         }
 
         DataWriter dataWriter = new DataWriter();
-        dataWriter.saveUsers(userList.getUsers());
+        dataWriter.saveUsers();
 
         scanner.close();
     }
@@ -51,7 +51,7 @@ public class UI {
 
             User user = findUsername(username);
 
-            if (user != null && user.passwordMatches(password)) {
+            if (user != null && user.passwordMathes(password)) {
                 System.out.println("Login successful!");
 
                 UserType userType = user.getUserType();
@@ -103,7 +103,7 @@ public class UI {
     }
 
     private static void loadStudentPage(Student student, Scanner scanner) {
-        System.out.println("Welcome, " + student.getfirstName() + " " + student.getlastName());
+        System.out.println("Welcome, " + student.getFirstName() + " " + student.getLastName());
 
         System.out.println("1. Generate Eight Semester Plan");
 
@@ -120,7 +120,7 @@ public class UI {
     }
 
     private static void loadAdvisorPage(Advisor advisor, Scanner scanner) {
-        System.out.println("Welcome, " + advisor.getFirstName() + " " + advisor.getlastName());
+        System.out.println("Welcome, " + advisor.getFirstName() + " " + advisor.getLastName());
 
         System.out.println("1. View Advisee Information");
 
@@ -145,10 +145,10 @@ public class UI {
             System.out.println("Advisee Information:");
 
             for (Student student : advisees) {
-                System.out.println("Username: " + student.getusername());
-                System.out.println("Name: " + student.getfirstName() + " " + student.getlastName());
-                System.out.println("Email: " + student.getemail());
-                System.out.println("Major: " + student.getmajor());
+                System.out.println("Username: " + student.getUsername());
+                System.out.println("Name: " + student.getFirstName() + " " + student.getLastName());
+                System.out.println("Email: " + student.getEmail());
+                System.out.println("Major: " + student.getMajor());
 
                 System.out.println("Notes:");
                 for (String note : student.notes) {
@@ -171,7 +171,7 @@ public class UI {
     }
 
     private static void loadAdminPage(Admin admin, Scanner scanner) {
-        System.out.println("Welcome, " + admin.getfirstName() + " " + admin.getlastName());
+        System.out.println("Welcome, " + admin.getFirstName() + " " + admin.getLastName());
 
         System.out.println("1. Manage Courses");
         System.out.println("2. Manage Majors");
