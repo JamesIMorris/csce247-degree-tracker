@@ -23,6 +23,33 @@ public class UserList{
         return false;
     }
     
+    public User signup(String username, String password, String firstName, String lastName, String email, UserType type){
+        boolean success = true;
+        if( username.length() < 1
+                || password.length() <1
+                || firstName.length() < 1
+                || lastName.length() < 1
+                || email.length() < 1
+                || type == null){
+            error += "All fields must be filled";
+            return false;
+        }
+        if(!usernameAvailable(username)){
+            error += "Username unavailable";
+            success = false;
+        }
+        if(!checkPassword(password))
+            success = false;
+        if(!emailAvailable(email)){
+            error += "Email already in use";
+            success = false;
+        }
+        User newUser;
+        if(success)
+            newUser = createNewUser(username, password, firstName, lastName, email, type);  
+        return newUser;
+    }
+
     public Student createNewStudent(String username, String password, String firstName, String lastName, String email, Major major){
         if(username == null
                 || password == null

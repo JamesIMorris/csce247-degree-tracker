@@ -35,48 +35,10 @@ public class DegreeTracker{
     }
 
     public boolean signup(String username, String password, String firstName, String lastName, String email, UserType type){
-        boolean success = true;
-        if( username.length() < 1
-                || password.length() <1
-                || firstName.length() < 1
-                || lastName.length() < 1
-                || email.length() < 1
-                || type == null){
-            error += "All fields must be filled";
-            return false;
-        }
-        if(!userList.usernameAvailable(username)){
-            error += "Username unavailable";
-            success = false;
-        }
-        if(!checkPassword(password))
-            success = false;
-        if(!userList.emailAvailable(email)){
-            error += "Email already in use";
-            success = false;
-        }
-        User newUser;
-        if(success)
-            newUser = userList.createNewUser(username, password, firstName, lastName, email, type);
-        else
-            return false; 
+        User newUser = userList.signup(username, password, firstName, lastName, email, type);
         if(newUser == null)
             return false;
         currentUser = newUser;
-        return true;
-    }
-
-    private boolean checkPassword(String password){
-        return false;
-    }
-
-    public boolean writeUsers(){
-        return true;
-    }
-    public boolean writeMajors(){
-        return true;
-    }
-    public boolean writeCourses(){
         return true;
     }
 }
