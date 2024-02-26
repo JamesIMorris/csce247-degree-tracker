@@ -73,8 +73,8 @@ public class UI {
     }
 
     private static User findUsername(String username) {
-        for (User user : userList.users) {
-            if (user.username.equals(username)) {
+        for (User user : userList.getUsers()) {
+            if (user.getUsername.equals(username)) {
                 return user;
             }
         }
@@ -151,7 +151,7 @@ public class UI {
                 System.out.println("Major: " + student.getMajor());
 
                 System.out.println("Notes:");
-                for (String note : student.notes) {
+                for (String note : student.getNotes) {
                     System.out.println("\t" + note);
                 }
 
@@ -182,10 +182,10 @@ public class UI {
 
         switch (choice) {
             case 1:
-                
+
                 break;
-                 2:
-                
+            case 2:
+
                 break;
             default:
                 System.out.println("Invalid choice. Returning to main menu.");
