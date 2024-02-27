@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class DataWriter {
+public class DataWriter extends DataConstants{
     public boolean setCourse;
     public boolean setUsers;
     public boolean setMajors;
@@ -34,10 +34,10 @@ public class DataWriter {
         courseDetails.put(COURSE_ID, course.getId().toString());
         courseDetails.put(COURSE_NAME, course.getCourseName());
         courseDetails.put(COURSE_DESCRIPTION, course.getCourseDescription());
-        courseDetails.put(COURSE_CREDIT_HOURS, course.getCourseCreditHours());
-        courseDetails.put(COURSE_SEMESTER_AVAILABILITY, course.getCourseSemesterAvailability());
-        courseDetails.put(COURSE_PREREQUISITES, course.getCoursePreRequisites());
-        courseDetails.put(COURSE_COREQUISITES, course.getCourseCoRequisites());
+        courseDetails.put(CREDIT_HOURS, course.getCourseCreditHours());
+        courseDetails.put(SEMESTER_AVAILABILITY, course.getCourseSemesterAvailability());
+        courseDetails.put(COURSE_PRE_REQUISISTES, course.getCoursePreRequisites());
+        courseDetails.put(COURSE_CO_REQUISITES, course.getCourseCoRequisites());
         courseDetails.put(COURSE_TYPE, course.getCourseType());
     }
 
@@ -65,10 +65,10 @@ public class DataWriter {
         courseDetails.put(COURSE_ID, course.getId().toString());
         courseDetails.put(COURSE_NAME, course.getCourseName());
         courseDetails.put(COURSE_DESCRIPTION, course.getCourseDescription());
-        courseDetails.put(COURSE_CREDIT_HOURS, course.getCourseCreditHours());
-        courseDetails.put(COURSE_SEMESTER_AVAILABILITY, course.getCourseSemesterAvailability());
-        courseDetails.put(COURSE_PREREQUISITES, course.getCoursePreRequisites());
-        courseDetails.put(COURSE_COREQUISITES, course.getCourseCoRequisites());
+        courseDetails.put(CREDIT_HOURS, course.getCourseCreditHours());
+        courseDetails.put(SEMESTER_AVAILABILITY, course.getCourseSemesterAvailability());
+        courseDetails.put(COURSE_PRE_REQUISISTES, course.getCoursePreRequisites());
+        courseDetails.put(COURSE_CO_REQUISITES, course.getCourseCoRequisites());
         courseDetails.put(COURSE_TYPE, course.getCourseType());
     }
 }
