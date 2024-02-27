@@ -1,5 +1,6 @@
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DataLoader extends DataConstants{
   ArrayList<User> users = new ArrayList<User>();
@@ -13,15 +14,24 @@ public class DataLoader extends DataConstants{
 
     for(int i=0; i < studentJSON.size(); i++){
       JSONObject studentJSON = (JSONObject)studentJSON.get(i);
-      UUID id = UUID.fromString((String)studentJSON.get(STUDENT_ID));
+      UserType userType = (UserType)studentJSON.get(USER_TYPE);
       String userName = (String)studentJSON.get(STUDENT_USER_NAME);
+      String password;
       String firstName = (String)studentJSON.get(STUDENT_FIRST_NAME);
       String lastName = (String)studentJSON.get(STUDENT_LAST_NAME);
       String email = (String)studentJson.get(STUDENT_EMAIL);
       String major = (String)studentJSON.get(STUDENT_MAJOR);
       ArrayList<String> notes = (ArrayList<String>)studentJSON.get(STUDENT_NOTES);
 
-      users.add(new Student(id, userName, firstName, lastName, email, notes, ));
+      if(userType == UserType.STUDENT){
+        loadStudent(userName, password, firstName, lastName, email);
+      }
+      else if(userType == UserType.ADVISOR){
+        loadAdvisor(userName, password, firstName, lastName, email);
+      }
+      else
+        users.add(new Admin(userName, password, firstName, lastName, email));
+      
     }
     return users;
   } catch(Exeption e) {
@@ -73,4 +83,23 @@ public class DataLoader extends DataConstants{
     e.printStackTrace();
   }
   return null;
+
+  private boolean loadStudent(String userName, String password, String firstName, String lastName, String email){
+    // Get vars from student.json
+    Major major;
+    ArrayList<Credit> credits;
+    HashMap<Requirement, ArrayList<Credit>> requirements;
+    ArrayList<String> notes;
+    users.add(new Student(userName, password, firstName, lastName, email, major, credits, requirements, notes));
+    return false;
+  }
+  private boolean loadAdvisor(String userName, String password, String firstName, String lastName, String email){
+    // Get vars from admin.json
+    ArrayList<Student> advisees;
+    users.add(new Advisor(userName, password, firstName, lastName, email, advisees));
+    return false;
+  }
+
+
+
 }
