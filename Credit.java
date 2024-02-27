@@ -65,10 +65,10 @@ public class Credit {
     public void setCourse(Course course){
         this.course = course;
     }
-    public Season getSemesterTaken(){
+    public Semester getSemesterTaken(){
         return semesterTaken;
     }
-    public void setSemesterTaken(Season semeseter){
+    public void setSemesterTaken(Semester semeseter){
         semeseterTaken = semester;
     }
     public int getGrade(){
