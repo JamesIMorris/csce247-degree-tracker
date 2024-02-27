@@ -19,7 +19,7 @@ public class DataLoader extends DataConstants{
       String password;
       String firstName = (String)studentJSON.get(STUDENT_FIRST_NAME);
       String lastName = (String)studentJSON.get(STUDENT_LAST_NAME);
-      String email = (String)studentJson.get(STUDENT_EMAIL);
+      String email = (String)studentJSON.get(STUDENT_EMAIL);
       String major = (String)studentJSON.get(STUDENT_MAJOR);
       ArrayList<String> notes = (ArrayList<String>)studentJSON.get(STUDENT_NOTES);
 
@@ -99,7 +99,4 @@ public class DataLoader extends DataConstants{
     users.add(new Advisor(userName, password, firstName, lastName, email, advisees));
     return false;
   }
-
-
-
 }
