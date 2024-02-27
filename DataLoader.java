@@ -7,37 +7,41 @@ public class DataLoader extends DataConstants{
   ArrayList<Major> major = new ArrayList<Major>();
   ArrayList<Courses> courses = new ArrayList<Courses>();
 
-  try{
-    FileReader reader = new FileReader(STUDENT_FILE_NAME);
-    JSONParser parsec = new JSONParser();
-    JSONArray studentJSON = (JSONArray)new JSONParser().parse(reader);
-
-    for(int i=0; i < studentJSON.size(); i++){
-      JSONObject studentJSON = (JSONObject)studentJSON.get(i);
-      UserType userType = (UserType)studentJSON.get(USER_TYPE);
-      String userName = (String)studentJSON.get(STUDENT_USER_NAME);
-      String password;
-      String firstName = (String)studentJSON.get(STUDENT_FIRST_NAME);
-      String lastName = (String)studentJSON.get(STUDENT_LAST_NAME);
-      String email = (String)studentJSON.get(STUDENT_EMAIL);
-      String major = (String)studentJSON.get(STUDENT_MAJOR);
-      ArrayList<String> notes = (ArrayList<String>)studentJSON.get(STUDENT_NOTES);
-
-      if(userType == UserType.STUDENT){
-        loadStudent(userName, password, firstName, lastName, email);
+  public ArrayList<User> getUsers(){
+    try{
+      FileReader reader = new FileReader(USER_FILE_NAME);
+      JSONParser parsec = new JSONParser();
+      JSONArray studentJSON = (JSONArray)new JSONParser().parse(reader);
+  
+      for(int i=0; i < studentJSON.size(); i++){
+        JSONObject studentJSON = (JSONObject)studentJSON.get(i);
+        UserType userType = (UserType)studentJSON.get(USER_TYPE);
+        String userName = (String)studentJSON.get(STUDENT_USER_NAME);
+        String password;
+        String firstName = (String)studentJSON.get(STUDENT_FIRST_NAME);
+        String lastName = (String)studentJSON.get(STUDENT_LAST_NAME);
+        String email = (String)studentJSON.get(STUDENT_EMAIL);
+        String major = (String)studentJSON.get(STUDENT_MAJOR);
+        ArrayList<String> notes = (ArrayList<String>)studentJSON.get(STUDENT_NOTES);
+  
+        if(userType == UserType.STUDENT){
+          loadStudent(userName, password, firstName, lastName, email);
+        }
+        else if(userType == UserType.ADVISOR){
+          loadAdvisor(userName, password, firstName, lastName, email);
+        }
+        else
+          users.add(new Admin(userName, password, firstName, lastName, email));
+        
       }
-      else if(userType == UserType.ADVISOR){
-        loadAdvisor(userName, password, firstName, lastName, email);
-      }
-      else
-        users.add(new Admin(userName, password, firstName, lastName, email));
-      
+      return users;
+    } catch(Exeption e) {
+      e.printStackTrace();
     }
-    return users;
-  } catch(Exeption e) {
-    e.printStackTrace();
+    return null;
   }
-  return null;
+
+  
 
   try{
     FileReader reader = new FileReader(MAJOR_FILE_NAME);
