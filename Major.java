@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Locale.Category;
 
 public class Major {
     private String name;
@@ -6,38 +7,21 @@ public class Major {
     private String department;
     private ArrayList<Requirement> requirements;
 
-    public String getName(){
-        return name;
-    }
-    public void setName(String name){
+    public Major(String name, String school, String department, ArrayList<Requirement> requirements) {
         this.name = name;
-    }
-    public String getSchool(){
-        return this.school;
-    }
-    public void setSchool(String school){
         this.school = school;
-    }
-    public String getDepartment(){
-        return department;
-    }
-    public ArrayList<Requirement> getRequirements(){
-        return requirements;
-    }
-    public ArrayList<Requirement> setRequirements(){
+        this.department = department;
         this.requirements = requirements;
     }
 
-    public boolean addRequirement(String name, Category category, ArrayList<String> courseIDs, int creditsRequired) {
-        return false;
+    public boolean addRequirement(String name, Category category, ArrayList<String> courseIDs,
+            int creditHoursRequired) {
+        Requirement requirement = new Requirement(name, category, courseIDs, creditHoursRequired);
+        return requirements.add(requirement);
     }
 
     public boolean addRequirement(Requirement requirement) {
-        return false;
-    }
-
-    public boolean removeRequirement(Requirement requirement){
-        return false;
+        return requirements.add(requirement);
     }
 
     public Requirement getRequirement(String name) {
