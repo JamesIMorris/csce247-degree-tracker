@@ -16,13 +16,11 @@ public class DataLoader extends DataConstants{
       for(int i=0; i < studentJSON.size(); i++){
         JSONObject studentJSON = (JSONObject)studentJSON.get(i);
         UserType userType = (UserType)studentJSON.get(USER_TYPE);
-        String userName = (String)studentJSON.get(STUDENT_USER_NAME);
-        String password;
-        String firstName = (String)studentJSON.get(STUDENT_FIRST_NAME);
-        String lastName = (String)studentJSON.get(STUDENT_LAST_NAME);
-        String email = (String)studentJSON.get(STUDENT_EMAIL);
-        String major = (String)studentJSON.get(STUDENT_MAJOR);
-        ArrayList<String> notes = (ArrayList<String>)studentJSON.get(STUDENT_NOTES);
+        String userName = (String)studentJSON.get(USER_NAME);
+        String password = (String)studentJSON.get(USER_PASSWORD);
+        String firstName = (String)studentJSON.get(FIRST_NAME);
+        String lastName = (String)studentJSON.get(LAST_NAME);
+        String email = (String)studentJSON.get(EMAIL);
   
         if(userType == UserType.STUDENT){
           loadStudent(userName, password, firstName, lastName, email);
