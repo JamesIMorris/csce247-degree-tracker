@@ -38,6 +38,11 @@ public class UI {
         } else {
             System.out.println("NewUser123 is now logged in");
         }
+
+        degreeTracker.logout();
+
+        System.out.println("NewUser123 is now logged out.");
+
     }
 
     public static void main(String[] args) {

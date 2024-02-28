@@ -4,12 +4,16 @@ public class DegreeTracker {
     private UserList userList;
     private MajorList majorList;
     private CourseList courseList;
+    private boolean isLoggedIn;
+    private String currentUsername;
 
     private DegreeTracker() {
         error = "";
         userList = UserList.getInstance();
         majorList = MajorList.getInstance();
         courseList = CourseList.getInstance();
+        isLoggedIn = false;
+        currentUsername = "";
     }
 
     public static DegreeTracker getInstance() {
@@ -29,6 +33,12 @@ public class DegreeTracker {
     public boolean signup(String username, String password, String firstName, String lastName, String email,
             UserType type) {
         return userList.signup(username, password, firstName, lastName, email, type);
+    }
+
+    public void logout() {
+        isLoggedIn = false;
+        currentUsername = "";
+        System.out.println("Logout successful");
     }
 
 }
