@@ -5,15 +5,13 @@ public class DegreeTracker {
     private MajorList majorList;
     private CourseList courseList;
     private boolean isLoggedIn;
-    private String currentUsername;
 
     private DegreeTracker() {
         error = "";
+        courseList = CourseList.getInstance();
         userList = UserList.getInstance();
         majorList = MajorList.getInstance();
-        courseList = CourseList.getInstance();
         isLoggedIn = false;
-        currentUsername = "";
     }
 
     public static DegreeTracker getInstance() {
@@ -37,7 +35,7 @@ public class DegreeTracker {
 
     public void logout() {
         isLoggedIn = false;
-        currentUsername = "";
+        userList.setCurrentUser(null);
         System.out.println("Logout successful");
     }
 
