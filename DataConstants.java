@@ -1,9 +1,6 @@
 public class DataConstants {
     //General Data Constants
-    protected static final String USER_FILE_NAME = "users.json";
-    protected static final String STUDENT_FILE_NAME = "src/students.json";
-    protected static final String ADVISOR_FILE_NAME = "src/advisors.json";
-    protected static final String ADMIN_FILE_NAME = "src/admin.json";
+    protected static final String USER_FILE_NAME = "src/users.json";
     protected static final String USER_NAME = "username";
     protected static final String FIRST_NAME = "firstName";
     protected static final String LAST_NAME = "lastName";
@@ -13,6 +10,7 @@ public class DataConstants {
     
 
     //Student Data Constants
+    protected static final String STUDENT_FILE_NAME = "src/students.json";
     protected static final String STUDENT_COURSE = "course";
     protected static final String STUDENT_SEMESTER_TAKEN = "semesterTaken";
     protected static final String STUDNET_YEAR_TAKEN = "year";
@@ -27,6 +25,7 @@ public class DataConstants {
 
 
     //Course Data Constants
+    protected static final String COURSE_FILE_NAME = "src/courses.json";
     protected static final String COURSE_ID = "courseId";
     protected static final String COURSE_NAME = "courseName";
     protected static final String COURSE_DESCRIPTION = "courseDescription";
@@ -37,10 +36,27 @@ public class DataConstants {
     protected static final String COURSE_TYPE = "type";
 
     //Advisor Data Constants
+    protected static final String ADVISOR_FILE_NAME = "src/advisors.json";
     protected static final String ADVISOR_ADVISEES = "advisees";
 
-    //Admin Data Constants
+    //requirements Data Constants
+    protected static final String REQUIREMENTS_FILE_NAME = "src/requirements.json";
+    protected static final String REQUIREMENTS_UUID = "UUID";
+    protected static final String REQUIRMENT_NAME = "name";
+    protected static final String REQUIREMENT_CATEGORY = "category";
+    protected static final String REQUIRMENT_COURSE_ID = "courseIDs";
+    protected static final String REQUIREMENT_CREDITS_REQUIRED = "creditsRequired";
 
+    //Majors Data Constants
+    protected static final String MAJOR_FILE_NAME = "src/majors.json";
+    protected static final String MAJOR_ID = "majorID";
+    protected static final String MAJOR_NAME = "name";
+    protected static final String MAJOR_SCHOOL = "school";
+    protected static final String MAJOR_DEPARTMENT = "department";
+    protected static final String MAJOR_REQUIREMENTS = "requirements";
+
+    //Admin Data Constants
+    protected static final String ADMIN_FILE_NAME = "src/admin.json";
 
 
 
