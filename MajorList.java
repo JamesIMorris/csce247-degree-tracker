@@ -29,11 +29,16 @@ public class MajorList {
     }
 
     public Major getMajor(String name) {
-
+        for (Major major : majors) {
+            if (major.getName().equals(name)) {
+                return major;
+            }
+        }
+        return null;
     }
 
-    public Major getMajor(String id) {
+    // public Major getMajor(String id) {
 
-    }
+    // }
 
 }
