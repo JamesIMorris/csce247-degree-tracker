@@ -9,9 +9,8 @@ public class MajorList {
     }
 
     public static MajorList getInstance() {
-        if (majorList == null) {
+        if (majorList == null)
             majorList = new MajorList();
-        }
         return majorList;
     }
 
@@ -25,7 +24,8 @@ public class MajorList {
     }
 
     public ArrayList<Major> addMajors(ArrayList<Major> majors) {
-
+        majors.addAll(majors);
+        return majors;
     }
 
     public Major getMajor(String name) {
@@ -35,4 +35,5 @@ public class MajorList {
     public Major getMajor(String id) {
 
     }
+
 }
