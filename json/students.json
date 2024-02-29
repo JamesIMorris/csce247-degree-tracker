@@ -2,7 +2,6 @@
   {
     "username":"JD123",
     "major":"CIS",
-    "notes":["Student needs to take CSCE247"],
     "credits":
     [
       {
@@ -11,7 +10,12 @@
         "grade":70,
         "type":"DEFAULT",
         "requirementsAssignedTo":1,
-        "note":""
+        "possibleRequirements":
+        [
+            {"requirement":"be61e0a4-1adf-480f-9b76-d34570e39bd2","avialable":true},
+            {"requirement":"f5cf3325-7ca9-466e-aba7-80713d915897","avialable":false}
+        ],
+        "note":"N/A"
       },
       {
         "course":"MATH122",
@@ -143,9 +147,9 @@
     "requirements":
     [
       {"requirement":"ENGL101", "credits":["c8c7e9a2-02be-4067-ae91-49b5aec21c4b"]},
-      {"requirement":"MATH122", "credits":"68539ae6-4cf3-4314-a0e6-6655672af95b"},
-      {"requirement":"MATH141", "credits":"2e2f0a3d-8c31-4d04-b8fa-c5010ea8f892"},
-      {"requirement":"CSCE145", "credits":"020b517e-1941-4772-baad-413626c6ffe3"},
+      {"requirement":"MATH122", "credits":["68539ae6-4cf3-4314-a0e6-6655672af95b"]},
+      {"requirement":"MATH141", "credits":["2e2f0a3d-8c31-4d04-b8fa-c5010ea8f892"]},
+      {"requirement":"CSCE145", "credits":["020b517e-1941-4772-baad-413626c6ffe3"]},
       {"requirement":"CSCE190", "credits":"de9e079f-79f2-4519-9d24-f25d24c243e4"},
       {"requirement":"CC-SCI", "credits":"921d98eb-adfb-490e-9283-f4fd01403d0a"},
       {"requirement":"ENGL102", "credits":"318e2c34-635d-4340-ac72-69761b3edc09"},
@@ -188,6 +192,7 @@
       {"requirement":"CISME", "credits":"b6ce4d11-8c25-4ff5-98ed-a22a74e64d13"},
       {"requirement":"LAE", "credits":"e2429a94-2763-48e7-8213-10e3a3a3ca10"},
       {"requirement":"LAE", "credits":"08dcedc1-b2c2-4ea0-a605-63b7c1ac30ad"}
-    ]
+    ],
+    "notes":["Student needs to take CSCE247"]
   }
 ]
