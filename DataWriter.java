@@ -4,19 +4,18 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class DataWriter extends DataConstants{
+public class DataWriter extends DataConstants {
     public boolean setCourse;
     public boolean setUsers;
     public boolean setMajors;
 
-
-    //Courses
-    public boolean saveCourses(){
+    // Courses
+    public boolean saveCourses() {
         CourseList course = CourseList.getInstance();
         ArrayList<Course> courseList = CourseList.getCourses();
         JSONArray jsonCourses = new JSONArray();
 
-        for(int i=0; i < courseList.size(); i++) {
+        for (int i = 0; i < courseList.size(); i++) {
             jsonCourses.add(getCourseJSON(courseList.get(i)));
         }
 
@@ -25,7 +24,7 @@ public class DataWriter extends DataConstants{
             file.write(jsonCourses.toJSONString());
             file.flush();
 
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -42,14 +41,13 @@ public class DataWriter extends DataConstants{
         courseDetails.put(COURSE_TYPE, course.getCourseType());
     }
 
-
-    //Users
-    public boolean saveUsers(){
+    // Users
+    public boolean saveUsers() {
         UserList user = UserList.getInstance();
         ArrayList<User> userList = user.getUsers();
         JSONArray jsonUsers = new JSONArray();
 
-        for(int i=0; i < userList.size(); i++) {
+        for (int i = 0; i < userList.size(); i++) {
             jsonUsers.add(getUserJSON(userList.get(i)));
         }
 
@@ -58,7 +56,7 @@ public class DataWriter extends DataConstants{
             file.write(jsonUsers.toJSONString());
             file.flush();
 
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -73,13 +71,13 @@ public class DataWriter extends DataConstants{
         userDetails.put(USER_TYPE, user.getUserType());
     }
 
-    //Students
-    public boolean saveStudents(){
+    // Students
+    public boolean saveStudents() {
         UserList User = UserList.getInstance();
         ArrayList<User> userList = User.getUsers();
         JSONArray jsonUsers = new JSONArray();
 
-        for(int i=0; i < UserList.size(); i++) {
+        for (int i = 0; i < UserList.size(); i++) {
             jsonUsers.add(getStudentJSON(userList.get(i)));
         }
 
@@ -88,18 +86,17 @@ public class DataWriter extends DataConstants{
             file.write(jsonUsers.toJSONString());
             file.flush();
 
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static JSONObject getStudentJSON(Student student) {
         JSONObject studentDetails = new JSONObject();
-        //Username, Major, and requirement availability not added in constants
+        // Username, Major, and requirement availability not added in constants
         studentDetails.put(STUDENT_USER_NAME, student.getCourseID());
         studentDetails.put(STUDENT_AVAILABLE, student.getCourseID());
         studentDetails.put(STUDENT_MAJOR, student.getMajor());
-
 
         studentDetails.put(STUDENT_NOTE, student.getNotes());
         studentDetails.put(STUDENT_COURSE, student.getCourseID());
@@ -112,14 +109,13 @@ public class DataWriter extends DataConstants{
         studentDetails.put(STUDENT_CREDITS, student.getCredits());
     }
 
-
-    //Majors
-    public boolean saveMajors(){
+    // Majors
+    public boolean saveMajors() {
         MajorList course = MajorList.getInstance();
         ArrayList<Major> courseList = MajorList.getMajors();
         JSONArray jsonCourses = new JSONArray();
 
-        for(int i=0; i < majorList.size(); i++) {
+        for (int i = 0; i < majorList.size(); i++) {
             jsonMajor.add(getMajorJSON(courseList.get(i)));
         }
 
@@ -128,7 +124,7 @@ public class DataWriter extends DataConstants{
             file.write(jsonMajor.toJSONString());
             file.flush();
 
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

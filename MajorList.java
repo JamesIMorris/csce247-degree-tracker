@@ -5,7 +5,7 @@ public class MajorList {
     private ArrayList<Major> majors;
 
     private MajorList() {
-
+        majors = new ArrayList<>();
     }
 
     public static MajorList getInstance() {
@@ -14,34 +14,31 @@ public class MajorList {
         return majorList;
     }
 
-    public ArrayList<Major> getMajors(){
-
-    }
-    public void setMajors(ArrayList<Major> majors){
-        this.majors = majors;
-    }
-
     public boolean addMajor(String name, String school, String department, ArrayList<Requirement> requirements) {
-
+        Major major = new Major(name, school, department, requirements);
+        return majors.add(major);
     }
 
     public boolean addMajor(Major major) {
-        return false;
+        return majors.add(major);
     }
 
     public ArrayList<Major> addMajors(ArrayList<Major> majors) {
-
+        majors.addAll(majors);
+        return majors;
     }
 
     public Major getMajor(String name) {
-
+        for (Major major : majors) {
+            if (major.getName().equals(name)) {
+                return major;
+            }
+        }
+        return null;
     }
 
     public Major getMajor(String id) {
 
     }
 
-    public Major removeMajor(Major major) {
-
-    }
 }

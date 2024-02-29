@@ -15,15 +15,16 @@ public class Requirement {
     }
 
     public boolean addCourse(String courseID) {
-        return false;
+        return courseIDs.add(courseID);
     }
 
     public ArrayList<String> addCourses(ArrayList<String> courseIDs) {
-        return new ArrayList<>();
+        courseIDs.addAll(courseIDs);
+        return courseIDs;
     }
 
     public boolean hasCourse(String courseID) {
-        return false;
+        return courseIDs.contains(courseID);
     }
 
     public Status getstatus() {
