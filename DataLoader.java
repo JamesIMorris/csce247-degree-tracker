@@ -85,7 +85,7 @@ public class DataLoader extends DataConstants{
   return null;
 
   private boolean loadStudent(String userName, String password, String firstName, String lastName, String email){
-    // Get vars from student.json
+    // Get vars from students.json
     Major major;
     ArrayList<Credit> credits;
     HashMap<Requirement, ArrayList<Credit>> requirements;
@@ -99,7 +99,12 @@ public class DataLoader extends DataConstants{
     users.add(new Advisor(userName, password, firstName, lastName, email, advisees));
     return false;
   }
-
+  private boolean loadUser(String userName, String password, String firstName, String lastName, String email){
+    // Get vars from users.json
+    UserType userType;
+    users.add(new User(userName, password, firstName, lastName, email));
+    return false;
+  }
 
 
 }

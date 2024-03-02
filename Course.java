@@ -36,7 +36,7 @@ public class Course {
         this.creditHours = creditHours;
     }
     public ArrayList<Season> getSemeseterAvailabilty(){
-        retrun semesterAvailability;
+        return semesterAvailability;
     }
     public void addSeason(Season season){
         
