@@ -2,10 +2,14 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 public class DataLoader extends DataConstants{
   ArrayList<User> users = new ArrayList<User>();
   ArrayList<Major> major = new ArrayList<Major>();
-  ArrayList<Courses> courses = new ArrayList<Courses>();
+  ArrayList<Course> courses = new ArrayList<Courses>();
 
   try{
     FileReader reader = new FileReader(STUDENT_FILE_NAME);
