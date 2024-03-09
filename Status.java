@@ -4,13 +4,14 @@ public enum Status {
     COMPLETE,
     FINAL_STEP,
     STARTED,
-    NOT_STARTED
+    NOT_STARTED;
+
+    public static Status getStatus(ArrayList<Credit> courses) {
+
+    }
+    
+    public static Status getStatus(Credit course) {
+        
+    }
 }
 
-public Status getStatus(ArrayList<StudentCourse> courses) {
-
-}
-
-public Status getStatus(Course course) {
-
-}
