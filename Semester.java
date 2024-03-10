@@ -23,4 +23,16 @@ public class Semester{
   public void setSeason(Season season) {
     this.season = season;
   }
+
+  public int compare(Semester compareSemester){
+    if(this.year < compareSemester.getYear())
+      return -1;
+    if(this.year > compareSemester.getYear())
+      return 1;
+    if(this.season.quarter() < compareSemester.getSeason().quarter())
+      return -1;
+    if(this.season.quarter() > compareSemester.getSeason().quarter())
+      return 1;
+    return 0;
+  }
 }
