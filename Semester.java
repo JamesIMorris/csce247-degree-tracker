@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 
 public class Semester{
   private int year;
@@ -22,5 +23,32 @@ public class Semester{
 
   public void setSeason(Season season) {
     this.season = season;
+  }
+
+  public int compare(Semester compareSemester){
+    if(this.year < compareSemester.getYear())
+      return -1;
+    if(this.year > compareSemester.getYear())
+      return 1;
+    if(this.season.quarter() < compareSemester.getSeason().quarter())
+      return -1;
+    if(this.season.quarter() > compareSemester.getSeason().quarter())
+      return 1;
+    return 0;
+  }
+
+  public static Semester current(){
+    int currentYear = LocalDate.now().getYear();
+    Season currentSeason;
+    int currentDay = LocalDate.now().getDayOfYear();
+    if(currentDay > 350 || currentDay < 8)
+      currentSeason = Season.WINTER;
+    else if(currentDay < 95)
+      currentSeason = Season.SPRING;
+    else if(currentDay > 200)
+      currentSeason = Season.FALL;
+    else
+      currentSeason = Season.SUMMER;
+    return new Semester(currentYear, currentSeason);
   }
 }
