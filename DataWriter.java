@@ -4,19 +4,18 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class DataWriter extends DataConstants{
+public class DataWriter extends DataConstants {
     public boolean setCourse;
     public boolean setUsers;
     public boolean setMajors;
 
-
-    //Courses
-    public boolean saveCourses(){
+    // Courses
+    public boolean saveCourses() {
         CourseList course = CourseList.getInstance();
-        ArrayList<Course> courseList = CourseList.getCourses();
+        ArrayList<Course> courseList = CourseList.getCourse();
         JSONArray jsonCourses = new JSONArray();
 
-        for(int i=0; i < courseList.size(); i++) {
+        for (int i = 0; i < courseList.size(); i++) {
             jsonCourses.add(getCourseJSON(courseList.get(i)));
         }
 
@@ -25,7 +24,7 @@ public class DataWriter extends DataConstants{
             file.write(jsonCourses.toJSONString());
             file.flush();
 
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -40,16 +39,17 @@ public class DataWriter extends DataConstants{
         courseDetails.put(COURSE_PRE_REQUISISTES, course.getPreRequisites());
         courseDetails.put(COURSE_CO_REQUISITES, course.getCoRequisites());
         courseDetails.put(COURSE_TYPE, course.getCourseType());
+
+        return courseDetails;
     }
 
-
-    //Users
-    public boolean saveUsers(){
+    // Users
+    public boolean saveUsers() {
         UserList user = UserList.getInstance();
         ArrayList<User> userList = user.getUsers();
         JSONArray jsonUsers = new JSONArray();
 
-        for(int i=0; i < userList.size(); i++) {
+        for (int i = 0; i < userList.size(); i++) {
             jsonUsers.add(getUserJSON(userList.get(i)));
         }
 
@@ -58,7 +58,7 @@ public class DataWriter extends DataConstants{
             file.write(jsonUsers.toJSONString());
             file.flush();
 
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -71,15 +71,17 @@ public class DataWriter extends DataConstants{
         userDetails.put(EMAIL, user.getEmail());
         userDetails.put(PASSWORD, user.getPassword());
         userDetails.put(USER_TYPE, user.getUserType());
+
+        return userDetails;
     }
 
-    //Students
-    public boolean saveStudents(){
+    // Students
+    public boolean saveStudents() {
         UserList User = UserList.getInstance();
         ArrayList<User> userList = User.getUsers();
         JSONArray jsonUsers = new JSONArray();
 
-        for(int i=0; i < UserList.size(); i++) {
+        for (int i = 0; i < userList.size(); i++) {
             jsonUsers.add(getStudentJSON(userList.get(i)));
         }
 
@@ -88,38 +90,47 @@ public class DataWriter extends DataConstants{
             file.write(jsonUsers.toJSONString());
             file.flush();
 
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static JSONObject getStudentJSON(Student student) {
         JSONObject studentDetails = new JSONObject();
-        //Username, Major, and requirement availability not added in constants
+        // Username, Major, and requirement availability not added in constants
         studentDetails.put(STUDENT_USER_NAME, student.getCourseID());
         studentDetails.put(STUDENT_AVAILABLE, student.getCourseID());
         studentDetails.put(STUDENT_MAJOR, student.getMajor());
-
-
-        studentDetails.put(STUDENT_NOTE, student.getNotes());
-        studentDetails.put(STUDENT_COURSE, student.getCourseID());
-        studentDetails.put(STUDENT_SEMESTER_TAKEN, student.getCourseName());
-        studentDetails.put(STUDENT_SEASON, student.getCourseDescription());
-        studentDetails.put(STUDNET_YEAR_TAKEN, student.getCreditHours());
-        studentDetails.put(STUDENT_GRADE, student.getSemesterAvailability());
+        
         studentDetails.put(STUDENT_REQUIREMENT, student.getRequirementCreditHours());
         studentDetails.put(STUDENT_REQUIREMENTS_LIST, student.getRequirements());
-        studentDetails.put(STUDENT_CREDITS, student.getCredits());
+
+        JSONArray studentArray = new JSONArray();
+        studentArray.add(STUDENT_COURSE, student.getCourseID());
+        studentArray.add(STUDENT_SEMESTER_TAKEN, student.getCourseName());
+        studentArray.add(STUDNET_YEAR_TAKEN, student.getCreditHours());
+        studentArray.add(STUDENT_SEASON, student.getCourseDescription());
+        studentArray.add(STUDENT_GRADE, student.getSemesterAvailability());
+        studentArray.add(STUDENT_COURSE_TYPE, student.getCourseType());
+        studentArray.add(STUDENT_REQUIREMENT, student.getRequirementCreditHours());
+        studentArray.add(STUDENT_REQUIREMENTS_LIST, student.getRequiements());
+        studentArray.add(STUDENT_AVAILABLE, student.getSemesterAvailability());
+
+
+        studentArray.put(STUDENT_CREDITS, student.getCredits());
+
+        studentDetails.put(STUDENT_NOTE, student.getNotes());
+
+        return studentDetails;
     }
 
-
-    //Majors
-    public boolean saveMajors(){
+    // Majors
+    public boolean saveMajors() {
         MajorList course = MajorList.getInstance();
         ArrayList<Major> courseList = MajorList.getMajors();
         JSONArray jsonCourses = new JSONArray();
 
-        for(int i=0; i < majorList.size(); i++) {
+        for (int i = 0; i < majorList.size(); i++) {
             jsonMajor.add(getMajorJSON(courseList.get(i)));
         }
 
@@ -128,7 +139,7 @@ public class DataWriter extends DataConstants{
             file.write(jsonMajor.toJSONString());
             file.flush();
 
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -140,5 +151,7 @@ public class DataWriter extends DataConstants{
         majorDetails.put(MAJOR_SCHOOL, major.getSchool());
         majorDetails.put(MAJOR_DEPARTMENT, major.getDepartment());
         majorDetails.put(MAJOR_REQUIREMENTS, major.getRequirements());
+
+        return majorDetails;
     }
 }
