@@ -15,7 +15,11 @@ public class Requirement {
     }
 
     public boolean addCourse(String courseID) {
-        return courseIDs.add(courseID);
+        if (!hasCourse(courseID)) {
+            courseIDs.add(courseID);
+            return true;
+        }
+        return false;
     }
 
     public ArrayList<String> addCourses(ArrayList<String> courseIDs) {
@@ -28,6 +32,6 @@ public class Requirement {
     }
 
     public Status getstatus() {
-
+        return Status.getstatus(credits);
     }
 }
