@@ -1,5 +1,3 @@
-import java.net.http.HttpClient.Redirect;
-
 public enum Category {
     REQUIREMENT(null, "Requirement"),
     CC(REQUIREMENT, "Carolina Core"),
