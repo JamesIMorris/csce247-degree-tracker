@@ -26,8 +26,4 @@ public class Requirement {
     public boolean hasCourse(String courseID) {
         return courseIDs.contains(courseID);
     }
-
-    public Status getstatus() {
-
-    }
 }
