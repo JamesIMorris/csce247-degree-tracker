@@ -8,9 +8,13 @@ public class MajorList {
         majors = new ArrayList<>();
     }
 
+    public ArrayList<Major> getMajors() {
+        return majors;
+    }
+
     public static MajorList getInstance() {
-        if(majorList == null)
-            majorList = new MajorList;
+        if (majorList == null)
+            majorList = new MajorList();
         return majorList;
     }
 
@@ -34,11 +38,13 @@ public class MajorList {
                 return major;
             }
         }
-        return null;
+        throw new RuntimeException("Major not found: " + name);
     }
 
-    public Major getMajor(String id) {
-
-    }
-
+    /*
+     * public Major getMajor(String id) {
+     * 
+     * }
+     * 
+     */
 }
