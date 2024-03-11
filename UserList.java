@@ -5,9 +5,11 @@ public class UserList {
     private static UserList userList;
     private ArrayList<User> users;
     private User currentUser;
+    private DegreeTracker degreeTracker;
 
     private UserList() {
-        loadUsers();
+        DataLoader.getInstance();
+        this.degreeTracker = DegreeTracker.getInstance();
     }
 
     public static UserList getInstance() {
@@ -43,26 +45,26 @@ public class UserList {
                 || lastName.length() < 1
                 || email.length() < 1
                 || type == null) {
-            error += "All fields must be filled";
-            return false;
+            degreeTracker.addError("All fields must be filled");
+            return null;
         }
         if (!usernameAvailable(username)) {
-            error += "Username unavailable";
+            degreeTracker.addError("Username unavailable");
             success = false;
         }
         if (!checkPassword(password))
             success = false;
         if (!emailAvailable(email)) {
-            error += "Email already in use";
+            degreeTracker.addError("Email already in use");
             success = false;
         }
-        User newUser;
         if (!success)
-            return false;
+            return null;
         success = createNewUser(username, password, firstName, lastName, email, type);
         return findUser(username);
     }
 
+   
     public boolean login(String username, String password) {
         User loginUser = findUser(username);
         if (loginUser == null)
@@ -172,6 +174,14 @@ public class UserList {
         return returnList;
     }
 
+    private boolean checkPassword(String password) {
+        if(password.length() < 3){
+            degreeTracker.addError("Password must be at least 3 characters long");
+            return false;
+        }
+        return true;
+    }
+
     private void addUserToList(ArrayList<User> list, User newUser) {
         for (User listUser : list) {
             if (listUser == newUser)
@@ -180,12 +190,4 @@ public class UserList {
         list.add(newUser);
         return;
     }
-
-    private boolean loadUsers() {
-        this.users = DataLoader.getUsers();
-        if (users == null)
-            return false;
-        return true;
-    }
-
 }
