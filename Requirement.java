@@ -32,6 +32,6 @@ public class Requirement {
     }
 
     public Status getstatus() {
-        return Status.getstatus(credits);
+        return Status.getstatus(credit);
     }
 }
