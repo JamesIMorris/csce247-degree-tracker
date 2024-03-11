@@ -31,7 +31,7 @@ public class Requirement {
         return courseIDs.contains(courseID);
     }
 
-    public Status getstatus() {
-        return Status.getstatus(credit);
+    public Status getstatus(Credit credit) {
+        return Status.getStatus(credit);
     }
 }
