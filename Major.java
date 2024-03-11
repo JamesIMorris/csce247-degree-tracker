@@ -14,6 +14,38 @@ public class Major {
         this.requirements = requirements;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public ArrayList<Requirement> getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(ArrayList<Requirement> requirements) {
+        this.requirements = requirements;
+    }
+
     public boolean addRequirement(String name, Category category, ArrayList<String> courseIDs, int creditsRequired) {
         Requirement requirement = new Requirement(name, category, courseIDs, creditsRequired);
         return addRequirement(requirement);
