@@ -116,16 +116,16 @@ public class DataWriter extends DataConstants {
         JSONArray jsonCredits = new JSON Array();
         for (Credit credit : student.getCredits()){
             JSONObject jsonCredit = new JSONObject();
-            jsonCredit.put("STUDENT_COURSE", credit.getCourse());
-            jsonCredit.put("STUDENT_SEMESTER_TAKEN", credit.getSemesterTaken());
+            jsonCredit.put(STUDENT_COURSE, credit.getCourse());
+            jsonCredit.put(STUDENT_SEMESTER_TAKEN, credit.getSemesterTaken());
             jsonCredit.put("type", credit.getType());
             jsonCredit.put("requirementsAssignedTo", credit.getRequiementsAssignedTo());
-
+        }
             JSONArray possibleRequirements = new JSONArray();
             for(Requirement requirement : credit.getPossibleRequirements()) {
                 JSONOBject requirementObject = new JSONOBject();
                 requirementObject.put("requirement", requirement.getRequirements());
-                requirementObject.put("available", requirement.isAvailable());
+                requirementObject.put(STUDENT_AVAILABLE, requirement.isAvailable());
                 possibleRequirements.add(requirementObject);
             }
             jsonCredit.put("possibleRequirement", possibleRequirements);
@@ -196,12 +196,13 @@ public class DataWriter extends DataConstants {
 
     //Admin
     public boolean saveAdmin() {
-        AdminList adminList = Adminlist.getInstance();
+        Admin adminList = Admin.getInstance();
         JSONArray jsonAdmin = new JSONArray();
 
-        for(Admin admin : adminList.getAdmin(admin));
-        jsonAdmin.add(adminDetails);
-    }
+        for(Admin admin : Admin.getAdmin()) {
+            JSONOBject adminDetails = getAdminJSON(admin);
+            jsonAdmin.add(adminDetails);
+        }
 
     try (FileWrtier file = new FileWriter(ADMIN_FILE_NAME)) {
         file.write(jsonAdmins.toJSONString());
@@ -216,12 +217,13 @@ public class DataWriter extends DataConstants {
         adminDetails.put("username", admin.getUsername());
         return adminDetails;
     }
+}
 
     //Advisors
     public boolean saveAdvisors(){
         JSONArray jsonAdvisors = new JSONArray();
 
-        for(Advisor advisor : advisorList.getAdvisors()) {
+        for(Advisor advisor : Advisor.getAdvisors()) {
             JSONObject advisorDetails = getAdvisorJSON(advisor);
             jsonAdvisors.add(advisorDetails);
         }
@@ -236,21 +238,21 @@ public class DataWriter extends DataConstants {
     }
 
     public static JSONObject getAdvisorJSON(Advisor advisor) {
-        JSONObject advisor Details = new JSONObject();
+        JSONObject advisorDetails = new JSONObject();
         advisorDetails.put("username", advisor.getUsername());
 
         JSONArray adviseesArray = new JSONArray();
         for (String advisee : advisor.getAdvisees()) {
             adviseesArray.add(advisee);
         }
-        advisorDetails.put("advisees", adviseesArray);
+        advisorDetails.put(ADVISOR_ADVISEES, adviseesArray);
 
         return advisorDetails;
     }
 
     //Requirements
     public boolean saveRequiremnets() {
-        RequirementList requirementList = RequirementList.getInstance();
+        Requirement requirementList = Requirement.getInstance();
         JSONArray jsonRequirements = new JSONArray();
 
         for (Requirement requirement : requirementList.getRequirements()) {
@@ -269,7 +271,7 @@ public class DataWriter extends DataConstants {
 
     public static JSONObject getRequirementJSON(Requirement requirement) {
         JSONObject requirementDetails = new JSONObject();
-        requirementDetails.put(REQUIREMENTS_UUID, requirement.getUUID());
+        requirementDetails.put(REQUIREMENTS_UUID, requirement.getCourseIDs());
         requirementDetails.put(REQUIRMENT_NAME, requirement.getName());
         requirementDetails.put(REQUIREMENT_CATEGORY, requirement.getCategory());
 
@@ -279,7 +281,7 @@ public class DataWriter extends DataConstants {
         }
         requirementDetails.put(REQUIRMENT_COURSE_ID, courseIDsArray);
 
-        requirementDetails.put(REQUIREMENT_CREDITS_REQUIRED, requirement.getRequirementCreditHours);
+        requirementDetails.put(REQUIREMENT_CREDITS_REQUIRED, requirement.getCreditHoursRequired);
 
         return requirementDetails;
     }
