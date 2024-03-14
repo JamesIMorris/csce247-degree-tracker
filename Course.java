@@ -21,6 +21,14 @@ public class Course {
         this.coRequisites = coRequisites;
         this.isOverlay = isOverlay;
     }
+    public Course(String courseID, String courseName, String courseDescription, int creditHours, ArrayList<Season> semesterAvailability, CourseType type){
+        this.courseID = courseID;
+        this.courseName = courseName;
+        this.courseDescription = courseDescription;
+        this.creditHours = creditHours;
+        this.semesterAvailability = semesterAvailability;
+        this.type = type;
+    }
 
     public String getCourseID(){
         return courseID;
