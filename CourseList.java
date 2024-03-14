@@ -14,6 +14,10 @@ public class CourseList {
     return courseList;
   }
 
+  public void setCourses(ArrayList<Course> courses){
+      this.courses = courses;
+  }
+
   public Course addCourse(String courseName, String courseID, String courseDescription, int creditHours,
       ArrayList<Season> semesterAvailability, ArrayList<String> preRequisites, ArrayList<String> coRequisites,
       CourseType type) {
