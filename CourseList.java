@@ -1,16 +1,16 @@
 import java.util.ArrayList;
 
 public class CourseList {
-  private CourseList courseList;
+  private static CourseList courseList;
   private ArrayList<Course> courses;
 
   private CourseList() {
     loadCourses();
   }
 
-  public CourseList getInstance() {
+  public static CourseList getInstance() {
     if(courseList == null)
-    courseList = new CourseList();
+      courseList = new CourseList();
     return courseList;
   }
 
