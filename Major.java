@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Locale.Category;
 
 public class Major {
     private String name;
@@ -6,24 +7,12 @@ public class Major {
     private String department;
     private ArrayList<Requirement> requirements;
 
-    <<<<<<<HEAD
-
     public Major(String name, String school, String department, ArrayList<Requirement> requirements) {
         this.name = name;
         this.school = school;
         this.department = department;
         this.requirements = requirements;
     }
-
-    public boolean addRequirement(String name, Category category, ArrayList<String> courseIDs,
-            int creditHoursRequired) {
-        Requirement requirement = new Requirement(name, category, courseIDs, creditHoursRequired);
-        return requirements.add(requirement);
-    }
-
-    public boolean addRequirement(Requirement requirement) {
-        return requirements.add(requirement);
-=======
 
     public String getName() {
         return name;
@@ -34,7 +23,7 @@ public class Major {
     }
 
     public String getSchool() {
-        return this.school;
+        return school;
     }
 
     public void setSchool(String school) {
@@ -45,28 +34,34 @@ public class Major {
         return department;
     }
 
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
     public ArrayList<Requirement> getRequirements() {
         return requirements;
     }
 
-    public ArrayList<Requirement> setRequirements() {
+    public void setRequirements(ArrayList<Requirement> requirements) {
         this.requirements = requirements;
     }
 
     public boolean addRequirement(String name, Category category, ArrayList<String> courseIDs, int creditsRequired) {
-        return false;
+        Requirement requirement = new Requirement(name, category, courseIDs, creditsRequired);
+        return addRequirement(requirement);
     }
 
     public boolean addRequirement(Requirement requirement) {
-        return false;
-    }
-
-    public boolean removeRequirement(Requirement requirement){
-        return false;
->>>>>>> majorlist-stub
+        return requirements.add(requirement);
     }
 
     public Requirement getRequirement(String name) {
-
+        for (Requirement requirement : requirements) {
+            if (requirement.getName().equals(name)) {
+                return requirement;
+            }
+        }
+        throw new RuntimeException("Requirement not found: " + name);
     }
+
 }

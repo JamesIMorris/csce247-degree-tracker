@@ -64,7 +64,7 @@ public class Course {
     public ArrayList<String> getCoRequisites(){
         return coRequisites;
     }
-    public boolean addCoRequirisite(String courseID){
+    public boolean addCoRequisite(String courseID){
         return coRequisites.add(courseID);
     }
     public boolean removeCoRequisite(String courseID){
@@ -79,16 +79,29 @@ public class Course {
         return isOverlay();
     }
 
+    public void setOverlay(boolean isOverlay) {
+        this.isOverlay = isOverlay;
+    }
+
+    public CourseType getType() {
+        return type;
+    }
+
+    public void setType(CourseType type) {
+        this.type = type;
+    }
+
     public boolean isPlacement(){
         return false;
     }
 
     public String getSubject(){
-        return "";
+        return courseID.substring(0, Math.min(courseID.length(), 4));
     }
 
     public int getCourseNumber(){
-        return 1;
+        String courseNumberStr = courseID.substring(4);
+        return Integer.parseInt(courseNumberStr);
     }
 
   }

@@ -14,8 +14,44 @@ public class Requirement {
         this.creditHoursRequired = creditHoursRequired;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public ArrayList<String> getCourseIDs() {
+        return courseIDs;
+    }
+
+    public int getCreditHoursRequired() {
+        return creditHoursRequired;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setCourseIDs(ArrayList<String> courseIDs) {
+        this.courseIDs = courseIDs;
+    }
+
+    public void setCreditHoursRequired(int creditHoursRequired) {
+        this.creditHoursRequired = creditHoursRequired;
+    }
+
     public boolean addCourse(String courseID) {
-        return courseIDs.add(courseID);
+        if (!hasCourse(courseID)) {
+            courseIDs.add(courseID);
+            return true;
+        }
+        return false;
     }
 
     public ArrayList<String> addCourses(ArrayList<String> courseIDs) {
@@ -26,4 +62,9 @@ public class Requirement {
     public boolean hasCourse(String courseID) {
         return courseIDs.contains(courseID);
     }
+
+    public Status getstatus(Credit credit) {
+        return Status.getStatus(credit);
+    }
+
 }
