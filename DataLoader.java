@@ -1,9 +1,11 @@
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.JSONArray;
 
 public class DataLoader extends DataConstants{
     private static DataLoader dataLoader;
@@ -19,15 +21,15 @@ public class DataLoader extends DataConstants{
     }
 
     public void loadData(){
-
+        loadCourses();
     }
 
-    private boolean LoadCourses(){
+    private boolean loadCourses(){
         ArrayList<Course> courses = new ArrayList<Course>();
         try{
-            FileReader reader = new FileReader(COURSES_FILE_NAME);
+            FileReader reader = new FileReader(COURSE_FILE_NAME);
             JSONParser parsec = new JSONParser();
-            JSONArray coursesJSON = (JSONArray)new JSONParser().parse(reader);
+            JSONArray coursesJSON = (JSONArray)parsec.parse(reader);
         
             for(Object course : coursesJSON){
                 JSONObject courseJSON = (JSONObject)course;
@@ -35,17 +37,40 @@ public class DataLoader extends DataConstants{
                 String courseName = (String)courseJSON.get(COURSE_NAME);
                 String courseDescription = (String)courseJSON.get(COURSE_DESCRIPTION);
                 int creditHours = (int)courseJSON.get(CREDIT_HOURS);
-                ArrayList<String> semesterAvailability = (ArrayList<String>)courseJSON.get(COURSE_SEMESTER_AVAILABILITY);
-                ArrayList<String> preRequisites = (ArrayList<String>)courseJSON.get(COURSE_PREREQUISITES);
-                ArrayList<String> coRequisites = (ArrayList<String>)courseJSON.get(COURSE_COREQUISITES);
-                String type = (String)courseJSON.get(COURSE_TYPE);
+
+                JSONArray semesterAvailabilityJSON = (JSONArray)courseJSON.get(SEMESTER_AVAILABILITY);
+                String[] semesterAvailableStrings = (String[])semesterAvailabilityJSON.toArray();
+                ArrayList<Season> semesterAvailability = new ArrayList<Season>();
+                for(String string : semesterAvailableStrings){
+                    semesterAvailability.add(Season.fromString(string));
+                }
+                CourseType type = CourseType.fromString((String)courseJSON.get(COURSE_TYPE));
         
-                courses.add(new Course(id, courseName, courseDescription, creditHours, semesterAvailability, preRequisites, coRequisites, type));
+                courses.add(new Course(id, courseName, courseDescription, creditHours, semesterAvailability, type));
             }
-            return users;
+            for(int i=0; i<courses.size(); i++){
+                JSONObject courseJSON = (JSONObject)coursesJSON.get(i);
+                ArrayList<Course> preRequisites = toCourseArrayList((JSONArray)courseJSON.get(COURSE_PRE_REQUISISTES));
+                ArrayList<Course> coRequisites = toCourseArrayList((JSONArray)courseJSON.get(COURSE_CO_REQUISITES));
+                courses.get(i).setPreRequisites(preRequisites);
+                courses.get(i).setCoRequisites(coRequisites);
+            }
+
+            CourseList.getInstance().setCourses(courses);;
+            return true;
         } catch(Exception e) {
-        e.printStackTrace();
+            e.printStackTrace();
+            return false;
         }
+    }
+
+    private ArrayList<Course> toCourseArrayList(JSONArray courseIDsJSON){
+        ArrayList<Course> returnList = new ArrayList<Course>();
+        String[] courseIDs = (String[])courseIDsJSON.toArray();
+        for(String string : courseIDs){
+            returnList.add(CourseList.getInstance().getCourse(string));
+        }
+        return returnList;
     }
 
   
@@ -55,10 +80,10 @@ public class DataLoader extends DataConstants{
         try{
             FileReader reader = new FileReader(MAJOR_FILE_NAME);
             JSONParser parsec = new JSONParser();
-            JSONArray majorJSON = (JSONArray)new JSONParser().parse(reader);
+            JSONArray majorsJSON = (JSONArray)new JSONParser().parse(reader);
 
-            for(int i=0; i < majorJSON.size(); i++){
-                JSONObject majorJSON = (JSONObject)majorJSON.get(i);
+            for(Object major : majorsJSON){
+                JSONObject majorJSON = (JSONObject)major.get(i);
                 UUID id = UUID.fromString((String)majorJSON.get(MAJOR_ID));
                 String name = (String)majorJSON.get(MAJOR_NAME);
                 String school = (String)majorJSON.get(MAJOR_SCHOOL);
@@ -77,7 +102,7 @@ public class DataLoader extends DataConstants{
 
 
     private boolean loadUsers(){
-
+        return false;
     }
 
 
