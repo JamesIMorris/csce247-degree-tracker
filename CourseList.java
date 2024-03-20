@@ -18,10 +18,9 @@ public class CourseList {
       this.courses = courses;
   }
 
-  public Course addCourse(String courseName, String courseID, String courseDescription, int creditHours,
-      ArrayList<Season> semesterAvailability, ArrayList<String> preRequisites, ArrayList<String> coRequisites,
-      CourseType type) {
-        boolean success = true;
+  public Course addCourse(String courseID, String courseName, String courseDescription, int creditHours, ArrayList<Season> semesterAvailability, ArrayList<Course> preRequisites, ArrayList<Course> coRequisites, CourseType type) {
+       
+        //boolean success = true;
         if (courseName == null
         || courseID == null
         || courseDescription == null
@@ -76,7 +75,9 @@ public class CourseList {
     return null;
   }
 
-  private void loadCourses() {
-    this.courses = DataLoader.getInstance().LoadCourses();
+   
+  public void loadCourses() {
+    this.courses = DataLoader.getInstance().loadCourses();
   }
+  
 }

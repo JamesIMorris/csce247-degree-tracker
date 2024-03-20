@@ -20,15 +20,19 @@ public class DataLoader extends DataConstants{
     }
 
     public void loadData(){
-        loadCourses();
+        //ArrayList<Course> courses = DataLoader.loadCourses();
+        CourseList.getInstance().setCourses(courses);
+        //loadCourses();
     }
 
-    private static ArrayList<Course> loadCourses(){
+     static ArrayList<Course> loadCourses(){
         ArrayList<Course> courses = new ArrayList<Course>();
         try{
             FileReader reader = new FileReader(COURSE_FILE_NAME);
             JSONParser parsec = new JSONParser();
             JSONArray coursesJSON = (JSONArray)parsec.parse(reader);
+
+            System.out.println("1");
         
             for(Object course : coursesJSON){
                 JSONObject courseJSON = (JSONObject)course;
@@ -51,18 +55,22 @@ public class DataLoader extends DataConstants{
                 CourseType type = CourseType.fromString((String)courseJSON.get(COURSE_TYPE));
         
                 courses.add(new Course(id, courseName, courseDescription, creditHours, semesterAvailability, type));
+                System.out.println("2");
             }
             for(int i=0; i<courses.size(); i++){
                 JSONObject courseJSON = (JSONObject)coursesJSON.get(i);
-               
+                
                 ArrayList<Course> preRequisites = toCourseArrayList((JSONArray)courseJSON.get(COURSE_PRE_REQUISISTES));
+                System.out.println("3");
                 ArrayList<Course> coRequisites = toCourseArrayList((JSONArray)courseJSON.get(COURSE_CO_REQUISITES));
-
+                
                 //ArrayList<Course> preRequisites = toCourseArrayList((JSONArray)courseJSON.get(COURSE_PRE_REQUISISTES));
                 //ArrayList<Course> coRequisites = toCourseArrayList((JSONArray)courseJSON.get(COURSE_CO_REQUISITES));
                 courses.get(i).setPreRequisites(preRequisites);
                 courses.get(i).setCoRequisites(coRequisites);
+                
             }
+            
 
             return courses;
         } catch(Exception e) {
@@ -71,8 +79,8 @@ public class DataLoader extends DataConstants{
         }
     }
 
-
-    private static ArrayList<Course> toCourseArrayList(JSONArray courseIDsJSON) {
+    
+    static ArrayList<Course> toCourseArrayList(JSONArray courseIDsJSON) {
     ArrayList<Course> returnList = new ArrayList<Course>();
     for (Object obj : courseIDsJSON) {
         if (obj instanceof String) {
@@ -88,6 +96,7 @@ public class DataLoader extends DataConstants{
     return returnList;
 }
 
+
     /* 
     private static ArrayList<Course> toCourseArrayList(JSONArray courseIDsJSON){
         ArrayList<Course> returnList = new ArrayList<Course>();
@@ -100,7 +109,7 @@ public class DataLoader extends DataConstants{
     */
   
 
-  
+    /*
     private boolean loadMajors(){
         try{
             FileReader reader = new FileReader(MAJOR_FILE_NAME);
@@ -129,7 +138,7 @@ public class DataLoader extends DataConstants{
     private boolean loadUsers(){
         return false;
     }
-
+*/
 /* 
     private boolean loadStudent(String userName, String password, String firstName, String lastName, String email){
         // Get vars from students.json
@@ -151,11 +160,12 @@ public class DataLoader extends DataConstants{
     }
     */
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        DataLoader dataLoader = DataLoader.getInstance();
         ArrayList<Course> courses = DataLoader.loadCourses();
-
-        for(Course course: courses){
+    
+        for (Course course : courses) {
             System.out.println(course);
         }
     }
-    }
+}
