@@ -5,7 +5,7 @@ public class CourseList {
   private ArrayList<Course> courses;
 
   private CourseList() {
-    loadCourses();
+    // loadCourses();
   }
 
   public static CourseList getInstance() {
@@ -19,24 +19,20 @@ public class CourseList {
   }
 
   public Course addCourse(String courseName, String courseID, String courseDescription, int creditHours,
-      ArrayList<Season> semesterAvailability, ArrayList<String> preRequisites, ArrayList<String> coRequisites,
+      ArrayList<Season> semesterAvailability, ArrayList<Course> preRequisites, ArrayList<Course> coRequisites,
       CourseType type) {
-        boolean success = true;
         if (courseName == null
-        || courseID == null
-        || courseDescription == null
-        || semesterAvailability == null
-        || preRequisites == null
-        || coRequisites == null
-        || type == null) {
+            || courseID == null
+            || courseDescription == null
+            || semesterAvailability == null
+            || preRequisites == null
+            || coRequisites == null
+            || type == null) 
           return null;
-  }
-        else {
-          Course newCourse = new Course(courseID, courseName, courseDescription, creditHours, semesterAvailability, preRequisites, coRequisites, type);
-          courses.add(newCourse);
-          return newCourse;
+        Course newCourse = new Course(courseID, courseName, courseDescription, creditHours, semesterAvailability, preRequisites, coRequisites, type);
+        courses.add(newCourse);
+        return newCourse;
         }
-}
 
   public boolean addCourse(Course course){
     if (course != null) {
@@ -76,7 +72,7 @@ public class CourseList {
     return null;
   }
 
-  private void loadCourses() {
-    this.courses = DataLoader.getInstance().LoadCourses();
-  }
+  // private void loadCourses() {
+  //   this.courses = DataLoader.getInstance().LoadCourses();
+  // }
 }

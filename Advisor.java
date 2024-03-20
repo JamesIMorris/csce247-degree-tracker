@@ -26,6 +26,13 @@ public class Advisor extends User{
     public boolean addAdvisee(String username){
         return false;
     }
+    public boolean removeAdvisee(Student advisee){
+        return false;
+    }
+    public boolean removeAdvisee(String username){
+        return false;
+    }
+
 
     @Override
     public UserType getUserType() {
