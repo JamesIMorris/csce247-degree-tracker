@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.JSONArray;
 
 public class DataLoader extends DataConstants{
     private static DataLoader dataLoader;
@@ -24,7 +23,7 @@ public class DataLoader extends DataConstants{
         loadCourses();
     }
 
-    private boolean loadCourses(){
+    private static ArrayList<Course> loadCourses(){
         ArrayList<Course> courses = new ArrayList<Course>();
         try{
             FileReader reader = new FileReader(COURSE_FILE_NAME);
@@ -36,35 +35,61 @@ public class DataLoader extends DataConstants{
                 String id = (String)courseJSON.get(COURSE_ID);
                 String courseName = (String)courseJSON.get(COURSE_NAME);
                 String courseDescription = (String)courseJSON.get(COURSE_DESCRIPTION);
-                int creditHours = (int)courseJSON.get(CREDIT_HOURS);
+                int creditHours = ((Long)courseJSON.get(CREDIT_HOURS)).intValue();
 
                 JSONArray semesterAvailabilityJSON = (JSONArray)courseJSON.get(SEMESTER_AVAILABILITY);
-                String[] semesterAvailableStrings = (String[])semesterAvailabilityJSON.toArray();
+                //Change into a new string to avoid error of incompatible types  
+                String[] semesterAvailableStrings = new String[semesterAvailabilityJSON.size()];
+                //String[] semesterAvailableStrings = (String[])semesterAvailabilityJSON.toArray();
                 ArrayList<Season> semesterAvailability = new ArrayList<Season>();
-                for(String string : semesterAvailableStrings){
-                    semesterAvailability.add(Season.fromString(string));
+                for(int i = 0; i< semesterAvailabilityJSON.size(); i++) {
+                    semesterAvailableStrings[i] = (String) semesterAvailabilityJSON.get(i);
                 }
+                //for(String string : semesterAvailableStrings){
+                    //semesterAvailability.add(Season.fromString(string));
+               // }
                 CourseType type = CourseType.fromString((String)courseJSON.get(COURSE_TYPE));
         
                 courses.add(new Course(id, courseName, courseDescription, creditHours, semesterAvailability, type));
             }
             for(int i=0; i<courses.size(); i++){
                 JSONObject courseJSON = (JSONObject)coursesJSON.get(i);
+               
                 ArrayList<Course> preRequisites = toCourseArrayList((JSONArray)courseJSON.get(COURSE_PRE_REQUISISTES));
                 ArrayList<Course> coRequisites = toCourseArrayList((JSONArray)courseJSON.get(COURSE_CO_REQUISITES));
+
+                //ArrayList<Course> preRequisites = toCourseArrayList((JSONArray)courseJSON.get(COURSE_PRE_REQUISISTES));
+                //ArrayList<Course> coRequisites = toCourseArrayList((JSONArray)courseJSON.get(COURSE_CO_REQUISITES));
                 courses.get(i).setPreRequisites(preRequisites);
                 courses.get(i).setCoRequisites(coRequisites);
             }
 
-            CourseList.getInstance().setCourses(courses);;
-            return true;
+            return courses;
         } catch(Exception e) {
             e.printStackTrace();
-            return false;
+            return courses;
         }
     }
 
-    private ArrayList<Course> toCourseArrayList(JSONArray courseIDsJSON){
+
+    private static ArrayList<Course> toCourseArrayList(JSONArray courseIDsJSON) {
+    ArrayList<Course> returnList = new ArrayList<Course>();
+    for (Object obj : courseIDsJSON) {
+        if (obj instanceof String) {
+            String courseId = (String) obj;
+            Course course = CourseList.getInstance().getCourse(courseId);
+            if (course != null) {
+                returnList.add(course);
+            } else {
+                System.out.println("Course with ID " + courseId + " not found.");
+            }
+        }
+    }
+    return returnList;
+}
+
+    /* 
+    private static ArrayList<Course> toCourseArrayList(JSONArray courseIDsJSON){
         ArrayList<Course> returnList = new ArrayList<Course>();
         String[] courseIDs = (String[])courseIDsJSON.toArray();
         for(String string : courseIDs){
@@ -72,7 +97,7 @@ public class DataLoader extends DataConstants{
         }
         return returnList;
     }
-
+    */
   
 
   
@@ -105,7 +130,7 @@ public class DataLoader extends DataConstants{
         return false;
     }
 
-
+/* 
     private boolean loadStudent(String userName, String password, String firstName, String lastName, String email){
         // Get vars from students.json
         Major major;
@@ -123,5 +148,14 @@ public class DataLoader extends DataConstants{
     }
     private boolean loadAdmin(){
         
+    }
+    */
+
+    public static void main(String[] args){
+        ArrayList<Course> courses = DataLoader.loadCourses();
+
+        for(Course course: courses){
+            System.out.println(course);
+        }
     }
     }

@@ -1,6 +1,6 @@
 public class DataConstants {
     // General Data Constants
-    protected static final String USER_FILE_NAME = "src/users.json";
+    protected static final String USER_FILE_NAME = "json/users.json";
     protected static final String USER_NAME = "username";
     protected static final String FIRST_NAME = "firstName";
     protected static final String LAST_NAME = "lastName";
@@ -23,7 +23,7 @@ public class DataConstants {
     protected static final String STUDENT_REQUIREMENTS_LIST = "requirements";
 
     // Course Data Constants
-    protected static final String COURSE_FILE_NAME = "src/courses.json";
+    protected static final String COURSE_FILE_NAME = "json/courses.json";
     protected static final String COURSE_ID = "courseId";
     protected static final String COURSE_NAME = "courseName";
     protected static final String COURSE_DESCRIPTION = "courseDescription";
