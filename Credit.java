@@ -31,7 +31,7 @@ public class Credit {
     private int grade;
     private CreditType type;
     private int requirementsAssignedTo;
-    private PossibleRequirement possibleRequirements;
+    private ArrayList<PossibleRequirement> possibleRequirements;
     private String note;
 
     public Credit(Course course) {
@@ -51,7 +51,7 @@ public class Credit {
         this.type = type;
         this.requirementsAssignedTo = requirementsAssignedTo;
         this.note = note;
-        this.possibleRequirements = new ArrayList<>();
+        this.possibleRequirements = new ArrayList<PossibleRequirement>();
     }
 
     public Credit(String courseID, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
@@ -68,8 +68,8 @@ public class Credit {
     public Semester getSemesterTaken(){
         return semesterTaken;
     }
-    public void setSemesterTaken(Semester semeseter){
-        semeseterTaken = semester;
+    public void setSemesterTaken(Semester semester){
+        semesterTaken = semester;
     }
     public int getGrade(){
         return grade;
@@ -92,7 +92,7 @@ public class Credit {
     public void setNote(String note){
         this.note = note;
     }
-    public PossibleRequirement getPossibleRequirements(){
+    public ArrayList<PossibleRequirement> getPossibleRequirements(){
         return possibleRequirements;
     }
 
@@ -132,4 +132,7 @@ public class Credit {
         return false;
     }
 
+    public void update(Requirement requirement, boolean open){
+        
+    }
 }

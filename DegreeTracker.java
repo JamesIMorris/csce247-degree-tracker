@@ -30,7 +30,9 @@ public class DegreeTracker {
 
     public boolean signup(String username, String password, String firstName, String lastName, String email,
             UserType type) {
-        return userList.signup(username, password, firstName, lastName, email, type);
+        if(userList.signup(username, password, firstName, lastName, email, type) == null)
+            return false;
+        return true;
     }
 
     public void logout() {

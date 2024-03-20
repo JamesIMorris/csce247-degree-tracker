@@ -110,7 +110,9 @@ public class Course {
         String courseNumberStr = courseID.substring(4);
         return Integer.parseInt(courseNumberStr);
     }
-
+    public boolean isOverlay(){
+        return false;
+    }
     public String toString(){
         return this.courseName;
     }
