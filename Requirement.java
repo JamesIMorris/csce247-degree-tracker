@@ -1,17 +1,27 @@
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.Locale.Category;
 
 public class Requirement {
+    private UUID id;
     private String name;
     private Category category;
     private ArrayList<Course> courses;
     private int creditHoursRequired;
 
-    public Requirement(String name, Category category, ArrayList<String> courseIDs, int creditHoursRequired) {
+    public Requirement(UUID id, String name, Category category, ArrayList<String> courseIDs, int creditHoursRequired) {
+        this.id = id;
         this.name = name;
         this.category = category;
         loadCourses(courseIDs);
         this.creditHoursRequired = creditHoursRequired;
+    }
+
+    public UUID getID(){
+        return id;
+    }
+    public void setID(UUID id){
+        this.id = id;
     }
 
     public String getName() {
