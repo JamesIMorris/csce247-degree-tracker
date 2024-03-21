@@ -29,6 +29,9 @@ public class Requirement {
         }
         return courseIDs;
     }
+    public ArrayList<Course> getCourses(){
+        return courses;
+    }
 
     public int getCreditHoursRequired() {
         return creditHoursRequired;
@@ -45,6 +48,9 @@ public class Requirement {
     public void setCourseIDs(ArrayList<String> courseIDs) {
         loadCourses(courseIDs);
     }
+    public void setCourses(ArrayList<Course> courses){
+        this.courses = courses;
+    }
 
     public void setCreditHoursRequired(int creditHoursRequired) {
         this.creditHoursRequired = creditHoursRequired;
@@ -52,6 +58,9 @@ public class Requirement {
 
     public boolean addCourse(String courseID) {
         Course course = CourseList.getInstance().getCourseID(courseID);
+        return addCourse(course);
+    }
+    public boolean addCourse(Course course){
         if (!hasCourse(course)) {
             courses.add(course);
             return true;
@@ -59,9 +68,8 @@ public class Requirement {
         return false;
     }
 
-    public ArrayList<String> addCourses(ArrayList<String> courseIDs) {
-        courseIDs.addAll(courseIDs);
-        return courseIDs;
+    public void addCourses(ArrayList<Course> courses) {
+        this.courses.addAll(courses);
     }
 
     public boolean hasCourse(Course course) {
