@@ -121,7 +121,21 @@ public class Student extends User{
         return false;
     }
     public void notifyCredits(Requirement requirement){
-        
+        int requiredHours = requirement.getCreditHoursRequired();
+        ArrayList<Credit> requirementCredits = requirements.get(requirement);
+        int totalHours = 0;
+        for(Credit credit : requirementCredits){
+            totalHours += credit.getCreditHours();
+        }
+        if(totalHours >= requiredHours)
+            notifyCredits(requirement, false);
+        else
+            notifyCredits(requirement, true);
+    }
+    public void notifyCredits(Requirement requirement, boolean open){
+        for(Credit credit : credits){
+            credit.update(requirement, open);
+        }
     }
     private boolean startChange(){
         return false;
