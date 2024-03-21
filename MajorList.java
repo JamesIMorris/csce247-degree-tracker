@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class MajorList {
     private static MajorList majorList;
@@ -18,7 +19,7 @@ public class MajorList {
         return majorList;
     }
 
-    public boolean addMajor(String id, String name, String school, String department, ArrayList<Requirement> requirements) {
+    public boolean addMajor(UUID id, String name, String school, String department, ArrayList<Requirement> requirements) {
         Major major = new Major(id, name, school, department, requirements);
         return majors.add(major);
     }
@@ -42,7 +43,7 @@ public class MajorList {
     }
 
     
-      public Major getMajorId(String id) {
+      public Major getMajorId(UUID id) {
         for(Major major : majors) {
             if(major.getId().equals(id)) {
                 return major;

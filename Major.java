@@ -1,14 +1,15 @@
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.Locale.Category;
 
 public class Major {
-    private String id;
+    private UUID id;
     private String name;
     private String school;
     private String department;
     private ArrayList<Requirement> requirements;
 
-    public Major(String id, String name, String school, String department, ArrayList<Requirement> requirements) {
+    public Major(UUID id, String name, String school, String department, ArrayList<Requirement> requirements) {
         this.id = id;
         this.name = name;
         this.school = school;
@@ -16,11 +17,11 @@ public class Major {
         this.requirements = requirements;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

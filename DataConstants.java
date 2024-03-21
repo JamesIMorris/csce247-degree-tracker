@@ -9,7 +9,8 @@ public class DataConstants {
     protected static final String USER_TYPE = "userType";
 
     // Student Data Constants
-    protected static final String STUDENT_FILE_NAME = "src/students.json";
+    protected static final String STUDENT_FILE_NAME = "json/students.json";
+    protected static final String STUDENT_USERNAME = "username";
     protected static final String STUDENT_COURSE = "course";
     protected static final String STUDENT_SEMESTER_TAKEN = "semesterTaken";
     protected static final String STUDNET_YEAR_TAKEN = "year";
@@ -46,7 +47,7 @@ public class DataConstants {
     protected static final String REQUIREMENT_CREDITS_REQUIRED = "creditsRequired";
 
     // Majors Data Constants
-    protected static final String MAJOR_FILE_NAME = "src/majors.json";
+    protected static final String MAJOR_FILE_NAME = "json/majors.json";
     protected static final String MAJOR_ID = "majorID";
     protected static final String MAJOR_NAME = "name";
     protected static final String MAJOR_SCHOOL = "school";

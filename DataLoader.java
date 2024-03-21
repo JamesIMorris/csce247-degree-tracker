@@ -22,6 +22,9 @@ public class DataLoader extends DataConstants{
     public void loadData(){
         ArrayList<Course> courses = DataLoader.loadCourses();
         CourseList.getInstance().setCourses(courses);
+
+        ArrayList<Major> majors = loadMajors();
+        MajorList.getInstance().addMajors(majors);
         //loadCourses();
     }
 
@@ -86,7 +89,7 @@ public class DataLoader extends DataConstants{
     for (Object obj : courseIDsJSON) {
         if (obj instanceof String) {
             String courseId = (String) obj;
-            Course course = CourseList.getInstance().getCourse(courseId);
+            Course course = CourseList.getInstance().getCourseID(courseId);
             if (course != null) {
                 returnList.add(course);
             } else {
@@ -110,12 +113,11 @@ public class DataLoader extends DataConstants{
     */
   
 
-    
-    private boolean loadMajors(){
-        ArrayList<Major> majors = new ArrayList<Major>();
+        static ArrayList<Major> loadMajors(){
+        ArrayList<Major> majors = new ArrayList<>();
         try{
             FileReader reader = new FileReader(MAJOR_FILE_NAME);
-            JSONParser parsec = new JSONParser();
+            JSONParser parser = new JSONParser();
             JSONArray majorsJSON = (JSONArray) parser.parse(reader);
             //JSONArray majorsJSON = (JSONArray)new JSONParser().parse(reader);
 
@@ -135,13 +137,13 @@ public class DataLoader extends DataConstants{
                 }
                 //ArrayList<String> requirements = (ArrayList<String>)majorJSON.get(MAJOR_REQUIREMENTS);
 
-                Major newMajor = new Major(name, school, department, requirements);
+                Major newMajor = new Major(id, name, school, department, requirements);
                 majors.add(newMajor);
 
                 //major.add(new Major(majorID, name, school, department, requirements));
             }
            
-        } catch(Exeption e) {
+        } catch(Exception e) {
             e.printStackTrace();
         }
         return majors;
@@ -149,12 +151,85 @@ public class DataLoader extends DataConstants{
     
 
 
-    private boolean loadUsers(){
-        return false;
+     static ArrayList<User> loadUsers(){
+        ArrayList<User> users = new ArrayList<>();
+        try {
+            FileReader reader = new FileReader(USER_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray usersArray = (JSONArray)parser.parse(reader);
+
+            for(Object obj : usersArray) {
+                JSONObject userObj = (JSONObject)obj;
+                String userType = (String)userObj.get(USER_TYPE);
+                String username = (String)userObj.get(USER_NAME);
+                String password = (String)userObj.get(PASSWORD);
+                String firstName = (String)userObj.get(FIRST_NAME);
+                String lastName = (String)userObj.get(LAST_NAME);
+                String email = (String)userObj.get(EMAIL);
+
+                switch(userType) {
+                    case "STUDENT":
+
+                    break;
+                    case "Advisor":
+
+                    break;
+                    case "ADMIN":
+
+                    break;
+                    default:
+                    System.out.println("Invalid");
+                    break;
+                }
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        //return false;
     }
 
-/* 
-    private boolean loadStudent(String userName, String password, String firstName, String lastName, String email){
+    static ArrayList<Student> loadStudents() {
+        FileReader reader = new FileReader(STUDENT_FILE_NAME);
+        JSONParser parser = new JSONParser();
+        JSONArray studentsArray = (JSONArray)parser.parse(reader);
+
+        for(Object obj : studentsArray) {
+            JSONObject studentObj = (JSONObject) obj;
+            String username = (String)studentObj.get(STU)
+        }
+    }
+
+    /* 
+    static ArrayList<Student> loadStudent(){
+        ArrayList<Student> students = new ArrayList<>();
+        try {
+            FileReader reader = new FileReader(STUDENT_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray studentsJSON = (JSONArray)parser.parse(reader);
+
+            for(Object student : studentsJSON) {
+                JSONObject studentJSON = (JSONObject) student;
+                String username = (String)studentJSON.get(STUDENT_USER_NAME);
+                String password = (String)studentJSON.get(STUDENT_PASSWORD);
+                String firstName = (String)studentJSON.get(STUDENT_FIRSTNAME);
+                String lastName = (String)studentJSON.get(STUDENT_LASTNAME);
+                String email = (String)studentJSON.get(STUDENT_EMAIL);
+
+                Major major = parseMajor((JSONObject)studentJSON.get(STUDENT_MAJOR));
+                ArrayList<Credit> credits = parseCredits((JSONArray)studentJSON.get(STUDENT_CREDITS));
+                HashMap<Requirement, ArrayList<Credit>> requirements = parseRequirements((JSONArray)studentJSON.get(STUDENT_REQUIREMENT));
+                ArrayList<String> notes = parseNotes((JSONArray)studentJSON.get(STUDENT_NOTES));
+
+                Student newStudent = new Student(userName, password, firstName, lastName, email, major, credits, requirements, notes);
+                students.add(newStudent);
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return students;
+    }
+    */
+        /* 
         // Get vars from students.json
         Major major;
         ArrayList<Credit> credits;
@@ -163,7 +238,10 @@ public class DataLoader extends DataConstants{
         users.add(new Student(userName, password, firstName, lastName, email, major, credits, requirements, notes));
         return false;
     }
-    private boolean loadAdvisor(String userName, String password, String firstName, String lastName, String email){
+    */
+
+    /*
+    static ArrayList<Advisor> loadAdvisor(String userName, String password, String firstName, String lastName, String email){
         // Get vars from admin.json
         ArrayList<Student> advisees;
         users.add(new Advisor(userName, password, firstName, lastName, email, advisees));
@@ -173,11 +251,13 @@ public class DataLoader extends DataConstants{
         
     }
     */
+    
 
     public static void main(String[] args) {
         DataLoader dataLoader = DataLoader.getInstance();
         ArrayList<Course> courses = DataLoader.loadCourses();
-    
+        ArrayList<Major> majors = DataLoader.loadMajors();
+      
         for (Course course : courses) {
             System.out.println("\n" + course.getCourseID());
             System.out.println(course);
@@ -188,9 +268,17 @@ public class DataLoader extends DataConstants{
             System.out.println("Co-Requisites: " + course.getCoRequisites());
             System.out.println("Type: " + course.getType());
         }
+        
+        
 
         for(Major major : majors) {
             System.out.println("\n" + major.getName());
+            System.out.println("Major ID: " + major.getId());
+            System.out.println("Major School: " + major.getSchool());
+            System.out.println("Major Department: " + major.getDepartment());
+            System.out.println("Major " + major.getRequirements());
         }
+
+        for(Student : Students)
     }
 }
