@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import javax.swing.text.Position;
+
 public class Credit {
     public class PossibleRequirement{
         Requirement requirement;
@@ -9,6 +11,7 @@ public class Credit {
             this.requirement = requirement;
         }
         public PossibleRequirement(Requirement requirement, boolean possible){
+            this.requirement = requirement;
             this.possible = possible;
         }
 
@@ -52,6 +55,7 @@ public class Credit {
         this.requirementsAssignedTo = requirementsAssignedTo;
         this.note = note;
         this.possibleRequirements = new ArrayList<PossibleRequirement>();
+        populatePossibleRequirements();
     }
 
     public Credit(String courseID, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
@@ -95,6 +99,26 @@ public class Credit {
     public ArrayList<PossibleRequirement> getPossibleRequirements(){
         return possibleRequirements;
     }
+    public void populatePossibleRequirements(){
+        ArrayList<Major> majors = MajorList.getInstance().getMajors();
+        for(Major major : majors){
+            ArrayList<Requirement> requirements = major.getRequirements();
+            for(Requirement requirement : requirements){
+                if(requirement.getCourses().contains(this.course)){
+                    addPossibleRequirement(requirement);
+                }
+            }
+        }
+    }
+    public void addPossibleRequirement(Requirement requirement){
+        boolean addPossibleRequirement = true;
+        for(PossibleRequirement possibleRequirement : possibleRequirements){
+            if(possibleRequirement.getRequirement() == requirement)
+                addPossibleRequirement = false;
+        }
+        if(addPossibleRequirement)
+            possibleRequirements.add(new PossibleRequirement(requirement));
+    }
 
     public String getCourseName() {
         return "";
@@ -132,7 +156,14 @@ public class Credit {
         return false;
     }
 
-    public void update(Requirement requirement, boolean open){
-        
+    public boolean update(Requirement requirement, boolean open){
+        boolean hasRequirement = false;
+        for(PossibleRequirement possibleRequirement : possibleRequirements){
+            if(possibleRequirement.getRequirement() == requirement){
+                possibleRequirement.setPossible(open);
+                hasRequirement = true;
+            }
+        }
+        return hasRequirement;
     }
 }

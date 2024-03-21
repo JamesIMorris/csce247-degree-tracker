@@ -1,17 +1,27 @@
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.Locale.Category;
 
 public class Requirement {
+    private UUID id;
     private String name;
     private Category category;
-    private ArrayList<String> courseIDs;
+    private ArrayList<Course> courses;
     private int creditHoursRequired;
 
-    public Requirement(String name, Category category, ArrayList<String> courseIDs, int creditHoursRequired) {
+    public Requirement(UUID id, String name, Category category, ArrayList<String> courseIDs, int creditHoursRequired) {
+        this.id = id;
         this.name = name;
         this.category = category;
-        this.courseIDs = courseIDs;
+        loadCourses(courseIDs);
         this.creditHoursRequired = creditHoursRequired;
+    }
+
+    public UUID getID(){
+        return id;
+    }
+    public void setID(UUID id){
+        this.id = id;
     }
 
     public String getName() {
@@ -23,7 +33,14 @@ public class Requirement {
     }
 
     public ArrayList<String> getCourseIDs() {
+        ArrayList<String> courseIDs = new ArrayList<String>();
+        for(Course course : courses){
+            courseIDs.add(course.getCourseID());
+        }
         return courseIDs;
+    }
+    public ArrayList<Course> getCourses(){
+        return courses;
     }
 
     public int getCreditHoursRequired() {
@@ -39,7 +56,10 @@ public class Requirement {
     }
 
     public void setCourseIDs(ArrayList<String> courseIDs) {
-        this.courseIDs = courseIDs;
+        loadCourses(courseIDs);
+    }
+    public void setCourses(ArrayList<Course> courses){
+        this.courses = courses;
     }
 
     public void setCreditHoursRequired(int creditHoursRequired) {
@@ -47,24 +67,34 @@ public class Requirement {
     }
 
     public boolean addCourse(String courseID) {
-        if (!hasCourse(courseID)) {
-            courseIDs.add(courseID);
+        Course course = CourseList.getInstance().getCourseID(courseID);
+        return addCourse(course);
+    }
+    public boolean addCourse(Course course){
+        if (!hasCourse(course)) {
+            courses.add(course);
             return true;
         }
         return false;
     }
 
-    public ArrayList<String> addCourses(ArrayList<String> courseIDs) {
-        courseIDs.addAll(courseIDs);
-        return courseIDs;
+    public void addCourses(ArrayList<Course> courses) {
+        this.courses.addAll(courses);
     }
 
-    public boolean hasCourse(String courseID) {
-        return courseIDs.contains(courseID);
+    public boolean hasCourse(Course course) {
+        return courses.contains(course);
     }
 
     public Status getstatus(Credit credit) {
         return Status.getStatus(credit);
     }
 
+    private void loadCourses(ArrayList<String> courseIDs){
+        ArrayList<Course> courses = new ArrayList<Course>();
+        for(String courseID : courseIDs){
+            Course course = CourseList.getInstance().getCourseID(courseID);
+            courses.add(course);
+        }
+    }
 }

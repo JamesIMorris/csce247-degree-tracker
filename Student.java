@@ -48,6 +48,7 @@ public class Student extends User{
         this.credits = credits;
         this.requirements = requirements;
         this.notes = notes;
+        notifyForAllRequirements();
     }
 
     public Major getMajor() {
@@ -120,7 +121,28 @@ public class Student extends User{
     public boolean revertChange(){
         return false;
     }
-    public void notifyCredits(){
+    public void notifyForAllRequirements(){
+        ArrayList<Requirement> majoRequirements = major.getRequirements();
+        for(Requirement majoRequirement : majoRequirements){
+            notifyCredits(majoRequirement);
+        }
+    }
+    public void notifyCredits(Requirement requirement){
+        int requiredHours = requirement.getCreditHoursRequired();
+        ArrayList<Credit> requirementCredits = requirements.get(requirement);
+        int totalHours = 0;
+        for(Credit credit : requirementCredits){
+            totalHours += credit.getCreditHours();
+        }
+        if(totalHours >= requiredHours)
+            notifyCredits(requirement, false);
+        else
+            notifyCredits(requirement, true);
+    }
+    public void notifyCredits(Requirement requirement, boolean open){
+        for(Credit credit : credits){
+            credit.update(requirement, open);
+        }
     }
     private boolean startChange(){
         return false;
