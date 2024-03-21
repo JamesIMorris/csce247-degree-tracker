@@ -189,15 +189,51 @@ public class DataLoader extends DataConstants{
     }
 
     static ArrayList<Student> loadStudents() {
-        FileReader reader = new FileReader(STUDENT_FILE_NAME);
-        JSONParser parser = new JSONParser();
-        JSONArray studentsArray = (JSONArray)parser.parse(reader);
+        ArrayList<Student> students = new ArrayList<>();
+        try {
+            FileReader reader = new FileReader(STUDENT_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray studentsArray = (JSONArray)parser.parse(reader);
 
         for(Object obj : studentsArray) {
             JSONObject studentObj = (JSONObject) obj;
-            String username = (String)studentObj.get(STU)
+            String username = (String)studentObj.get(STUDENT_USERNAME);
+            String major = (String)studentObj.get("major");
+            JSONArray creditsArray = (JSONArray)studentObj.get(STUDENT_CREDITS);
+            JSONArray requirementsArray = (JSONArray)studentObj.get(STUDENT_REQUIREMENTS_LIST);
+            JSONArray notesArray = (JSONArray)studentObj.get(STUDENT_NOTES);
+
+            ArrayList<Credit> credits = new ArrayList<>();
+            HashMap<Requirement, ArrayList<Credit>> requirements = new HashMap<>();
+            ArrayList<String> notes = new ArrayList<>();
+
+            for(Object creditObj : creditsArray) {
+                JSONObject creditJSON = (JSONObject)creditObj;
+                String courseID = (String) creditJSON.get(STUDENT_COURSE);
+                int grade = ((Long)creditJSON.get("grade")).intValue();
+                credits.add(new Credit(courseID, grade));
+            }
+
+            for(Object requirementObj : requirementsArray) {
+                JSONObject requirementJSON = (JSONObject)requirementObj;
+                String requirementName = (String)requirementJSON.get()
+            }
+
+            for(Object noteObj : notesArray) {
+                String note = (String)noteObj;
+            }
+
+
+
+            Student student = new Student(username, major, credits, requirements, notes);
+            students.add(student);
         }
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+    return students;
+} 
+
 
     /* 
     static ArrayList<Student> loadStudent(){
