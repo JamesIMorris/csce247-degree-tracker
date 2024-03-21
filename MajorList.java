@@ -48,6 +48,7 @@ public class MajorList {
                 return major;
             }
         }
+        throw new RuntimeException("Major not found with name: " + id);
       }
 
 
