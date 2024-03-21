@@ -184,32 +184,43 @@ public class DataLoader extends DataConstants{
         for(Object obj : studentsArray) {
             JSONObject studentObj = (JSONObject) obj;
             String username = (String)studentObj.get(STUDENT_USERNAME);
-            String major = (String)studentObj.get("major");
+            
+            String majorName = (String)studentObj.get("major");
+            Major major = MajorList.getInstance().getMajor(majorName);
+
             JSONArray creditsArray = (JSONArray)studentObj.get(STUDENT_CREDITS);
-            JSONArray requirementsArray = (JSONArray)studentObj.get(STUDENT_REQUIREMENTS_LIST);
-            JSONArray notesArray = (JSONArray)studentObj.get(STUDENT_NOTES);
-
             ArrayList<Credit> credits = new ArrayList<>();
-            HashMap<Requirement, ArrayList<Credit>> requirements = new HashMap<>();
-            ArrayList<String> notes = new ArrayList<>();
-
             for(Object creditObj : creditsArray) {
-                JSONObject creditJSON = (JSONObject)creditObj;
-                String courseID = (String) creditJSON.get(STUDENT_COURSE);
+                JSONObject creditJSON = (JSONObject) creditObj;
+                String courseID = (String)creditJSON.get(STUDENT_COURSE);
                 int grade = ((Long)creditJSON.get("grade")).intValue();
                 credits.add(new Credit(courseID, grade));
             }
 
-            for(Object requirementObj : requirementsArray) {
-                JSONObject requirementJSON = (JSONObject)requirementObj;
-                String requirementName = (String)requirementJSON.get()
+            JSONArray requirementsArray = (JSONArray)studentObj.get(STUDENT_REQUIREMENTS_LIST);
+            HashMap<Requirement, ArrayList<Credit>> requirements = new HashMap<>();
+            for(Object reqObj : requirementsArray) {
+                JSONObject reqJSON = (JSONObject) reqObj;
+                Requirement requirement = (Requirement) reqJSON.get("requirement");
+                JSONArray creditsArrayForReq = (JSONArray) reqJSON.get("credits");
+                ArrayList<Credit> creditsForReq = new ArrayList<>();
+                for(Object creditObj : creditsArrayForReq) {
+                    JSONObject creditJSON = (JSONObject) creditObj;
+                    String courseID = (String) creditJSON.get("courseID");
+                    int grade = ((Long)creditJSON.get("grade")).intValue();
+                    Credit credit = new Credit(courseID, grade);
+                    creditsForReq.add(credit);
+                    //creditIDs.add((String)creditID);
+                }
+                requirements.put(requirement, creditsForReq);
             }
 
+            JSONArray notesArray = (JSONArray)studentObj.get(STUDENT_NOTES);
+            ArrayList<String> notes = new ArrayList<>();
             for(Object noteObj : notesArray) {
-                String note = (String)noteObj;
+                String note = (String) noteObj;
+                notes.add(note);
             }
-
-
 
             Student student = new Student(username, major, credits, requirements, notes);
             students.add(student);
@@ -274,6 +285,34 @@ public class DataLoader extends DataConstants{
     }
     */
     
+    static ArrayList<Requirement> loadRequirements() {
+        ArrayList<Requirement> requirements = new ArrayList<>();
+        try {
+            FileReader reader = new FileReader(REQUIREMENTS_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray requirementsArray = (JSONArray)parser.parse(reader);
+
+            for(Object req : requirementsArray) {
+                JSONObject reqJSON = (JSONObject) req;
+                String id = (String)reqJSON.get(REQUIREMENTS_UUID);
+                String name = (String)reqJSON.get(REQUIRMENT_NAME);
+                String category = (String)reqJSON.get(REQUIREMENT_CATEGORY);
+                int creditHoursRequired = ((Long)reqJSON.get(REQUIREMENT_CREDITS_REQUIRED)).intValue();
+
+                JSONArray courseIDsArray = (JSONArray)reqJSON.get(REQUIRMENT_COURSE_ID);
+                ArrayList<String> courseIDs = new ArrayList<>();
+                for(Object courseId : courseIDsArray) {
+                    courseIDs.add((String)courseId);
+                }
+
+                Requirement requirement = new Requirement(id, name, category, courseIDs, creditHoursRequired);
+                requirements.add(requirement);
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return requirements;
+    }
 
     public static void main(String[] args) {
         DataLoader dataLoader = DataLoader.getInstance();
