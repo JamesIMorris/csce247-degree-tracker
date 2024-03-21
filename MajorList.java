@@ -18,7 +18,7 @@ public class MajorList {
         return majorList;
     }
 
-    public boolean addMajor(String name, String school, String department, ArrayList<Requirement> requirements) {
+    public boolean addMajor(String id, String name, String school, String department, ArrayList<Requirement> requirements) {
         Major major = new Major(id, name, school, department, requirements);
         return majors.add(major);
     }
