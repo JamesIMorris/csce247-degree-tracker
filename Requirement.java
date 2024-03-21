@@ -9,6 +9,14 @@ public class Requirement {
     private ArrayList<Course> courses;
     private int creditHoursRequired;
 
+    public Requirement(String name, Category category, ArrayList<String> courseIDs, int creditHoursRequired) {
+        id = UUID.randomUUID();
+        this.name = name;
+        this.category = category;
+        loadCourses(courseIDs);
+        this.creditHoursRequired = creditHoursRequired;
+    }
+
     public Requirement(UUID id, String name, Category category, ArrayList<String> courseIDs, int creditHoursRequired) {
         this.id = id;
         this.name = name;
