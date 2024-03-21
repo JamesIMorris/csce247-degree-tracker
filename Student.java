@@ -48,6 +48,7 @@ public class Student extends User{
         this.credits = credits;
         this.requirements = requirements;
         this.notes = notes;
+        notifyForAllRequirements();
     }
 
     public Major getMajor() {
@@ -119,6 +120,12 @@ public class Student extends User{
     }
     public boolean revertChange(){
         return false;
+    }
+    public void notifyForAllRequirements(){
+        ArrayList<Requirement> majoRequirements = major.getRequirements();
+        for(Requirement majoRequirement : majoRequirements){
+            notifyCredits(majoRequirement);
+        }
     }
     public void notifyCredits(Requirement requirement){
         int requiredHours = requirement.getCreditHoursRequired();
