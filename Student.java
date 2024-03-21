@@ -120,7 +120,8 @@ public class Student extends User{
     public boolean revertChange(){
         return false;
     }
-    public void notifyCredits(){
+    public void notifyCredits(Requirement requirement){
+        
     }
     private boolean startChange(){
         return false;

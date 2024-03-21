@@ -132,7 +132,7 @@ public class Credit {
         return false;
     }
 
-    public void update(Requirement requirement, boolean open){
-        
+    public boolean update(Requirement requirement, boolean open){
+        return false;
     }
 }
