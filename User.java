@@ -12,6 +12,10 @@ public abstract class User{
         this.lastName = lastName;
         this.email = email;
     }
+    public User(String username){
+        this.username = username;
+        DataLoader.loadUserData(this);
+    }
 
     public String getUsername() {
         return username;

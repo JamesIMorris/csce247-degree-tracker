@@ -42,6 +42,13 @@ public class Student extends User{
         this.notes = notes;
         this.changeInProgress = false; 
     }
+    public Student(String username, Major major, ArrayList<Credit> credits, HashMap<Requirement, ArrayList<Credit>> requirements, ArrayList<String> notes){
+        super(username);
+        this.major = major;
+        this.credits = credits;
+        this.requirements = requirements;
+        this.notes = notes;
+    }
 
     public Major getMajor() {
         return major;

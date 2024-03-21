@@ -151,8 +151,7 @@ public class DataLoader extends DataConstants{
     
 
 
-     static ArrayList<User> loadUsers(){
-        ArrayList<User> users = new ArrayList<>();
+     static boolean loadUserData(User user){
         try {
             FileReader reader = new FileReader(USER_FILE_NAME);
             JSONParser parser = new JSONParser();
@@ -160,32 +159,19 @@ public class DataLoader extends DataConstants{
 
             for(Object obj : usersArray) {
                 JSONObject userObj = (JSONObject)obj;
-                String userType = (String)userObj.get(USER_TYPE);
                 String username = (String)userObj.get(USER_NAME);
-                String password = (String)userObj.get(PASSWORD);
-                String firstName = (String)userObj.get(FIRST_NAME);
-                String lastName = (String)userObj.get(LAST_NAME);
-                String email = (String)userObj.get(EMAIL);
-
-                switch(userType) {
-                    case "STUDENT":
-
-                    break;
-                    case "Advisor":
-
-                    break;
-                    case "ADMIN":
-
-                    break;
-                    default:
-                    System.out.println("Invalid");
-                    break;
+                if(username == user.getUsername()){
+                    user.setPassword((String)userObj.get(PASSWORD));
+                    user.setFirstName((String)userObj.get(FIRST_NAME));
+                    user.setLastName((String)userObj.get(LAST_NAME));
+                    user.setEmail((String)userObj.get(EMAIL));
+                    return true;
                 }
             }
         } catch(Exception e) {
             e.printStackTrace();
         }
-        //return false;
+        return false;
     }
 
     static ArrayList<Student> loadStudents() {
