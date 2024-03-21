@@ -20,7 +20,7 @@ public class DataLoader extends DataConstants{
     }
 
     public void loadData(){
-        //ArrayList<Course> courses = DataLoader.loadCourses();
+        ArrayList<Course> courses = DataLoader.loadCourses();
         CourseList.getInstance().setCourses(courses);
         //loadCourses();
     }
@@ -49,9 +49,10 @@ public class DataLoader extends DataConstants{
                 for(int i = 0; i< semesterAvailabilityJSON.size(); i++) {
                     semesterAvailableStrings[i] = (String) semesterAvailabilityJSON.get(i);
                 }
-                //for(String string : semesterAvailableStrings){
-                    //semesterAvailability.add(Season.fromString(string));
-               // }
+                for(String string : semesterAvailableStrings){
+                    semesterAvailability.add(Season.fromString(string));
+                    System.out.println(string);
+                }
                 CourseType type = CourseType.fromString((String)courseJSON.get(COURSE_TYPE));
         
                 courses.add(new Course(id, courseName, courseDescription, creditHours, semesterAvailability, type));
@@ -109,28 +110,41 @@ public class DataLoader extends DataConstants{
     */
   
 
-    /*
+    
     private boolean loadMajors(){
+        ArrayList<Major> majors = new ArrayList<Major>();
         try{
             FileReader reader = new FileReader(MAJOR_FILE_NAME);
             JSONParser parsec = new JSONParser();
-            JSONArray majorsJSON = (JSONArray)new JSONParser().parse(reader);
+            JSONArray majorsJSON = (JSONArray) parser.parse(reader);
+            //JSONArray majorsJSON = (JSONArray)new JSONParser().parse(reader);
 
             for(Object major : majorsJSON){
-                JSONObject majorJSON = (JSONObject)major.get(i);
+                JSONObject majorJSON = (JSONObject)major;
                 UUID id = UUID.fromString((String)majorJSON.get(MAJOR_ID));
                 String name = (String)majorJSON.get(MAJOR_NAME);
                 String school = (String)majorJSON.get(MAJOR_SCHOOL);
                 String department = (String)majorJSON.get(MAJOR_DEPARTMENT);
-                ArrayList<String> requirements = (ArrayList<String>)majorJSON.get(MAJOR_REQUIREMENTS);
 
-                major.add(new Major(majorID, name, school, department, requirements));
+                JSONArray requirementsJSON = (JSONArray) majorJSON.get(MAJOR_REQUIREMENTS);
+                ArrayList<Requirement> requirements = new ArrayList<>();
+                for(Object req : requirementsJSON){
+                    String requirementName = (String) req;
+                    Requirement requirement = new Requirement(requirementName, null, null, 0);
+                    requirements.add(requirement);
+                }
+                //ArrayList<String> requirements = (ArrayList<String>)majorJSON.get(MAJOR_REQUIREMENTS);
+
+                Major newMajor = new Major(name, school, department, requirements);
+                majors.add(newMajor);
+
+                //major.add(new Major(majorID, name, school, department, requirements));
             }
-            return major;
+           
         } catch(Exeption e) {
             e.printStackTrace();
         }
-    
+        return majors;
     }
     
 
@@ -138,7 +152,7 @@ public class DataLoader extends DataConstants{
     private boolean loadUsers(){
         return false;
     }
-*/
+
 /* 
     private boolean loadStudent(String userName, String password, String firstName, String lastName, String email){
         // Get vars from students.json
@@ -165,7 +179,18 @@ public class DataLoader extends DataConstants{
         ArrayList<Course> courses = DataLoader.loadCourses();
     
         for (Course course : courses) {
+            System.out.println("\n" + course.getCourseID());
             System.out.println(course);
+            System.out.println("Course Description: " + course.getCourseDescprition());
+            System.out.println("Credit Hours: " + course.getCreditHours());
+            System.out.println("Semester Availability: " + course.getSemeseterAvailabilty());
+            System.out.println("Pre-Requisites: " + course.getPreRequisites());
+            System.out.println("Co-Requisites: " + course.getCoRequisites());
+            System.out.println("Type: " + course.getType());
+        }
+
+        for(Major major : majors) {
+            System.out.println("\n" + major.getName());
         }
     }
 }

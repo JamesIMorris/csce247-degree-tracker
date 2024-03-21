@@ -19,7 +19,7 @@ public class MajorList {
     }
 
     public boolean addMajor(String name, String school, String department, ArrayList<Requirement> requirements) {
-        Major major = new Major(name, school, department, requirements);
+        Major major = new Major(id, name, school, department, requirements);
         return majors.add(major);
     }
 
@@ -41,10 +41,14 @@ public class MajorList {
         throw new RuntimeException("Major not found: " + name);
     }
 
-    /*
-     * public Major getMajor(String id) {
-     * 
-     * }
-     * 
-     */
+    
+      public Major getMajorId(String id) {
+        for(Major major : majors) {
+            if(major.getId().equals(id)) {
+                return major;
+            }
+        }
+      }
+
+
 }

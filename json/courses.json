@@ -8,5 +8,14 @@
     "preRequisites":["CSCE146"],
     "coRequisites":[],
     "type": "DEFAULT"
+  },{
+    "courseId":"CSCE146",
+    "courseName":"Algorithmic Design II",
+    "courseDescription":"Continuation of CSCE 145. Rigorous development of algorithms and computer programs; elementary data structures. Three lecture hours and two laboratory hours per week. Open to all majors.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING", "SUMMER"],
+    "preRequisites":[],
+    "coRequisites":["MATH122","MATH141"],
+    "type": "DEFAULT"
   }]
             
