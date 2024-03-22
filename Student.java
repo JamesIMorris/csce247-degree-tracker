@@ -276,10 +276,13 @@ public class Student extends User{
         }
         return false;
     }
+    public boolean coreqSatisfied(ArrayList<Course> courses, int requiredHours){
+        return false;
+    }
 
     private boolean generateEightSemesterPlan() {
         for (Requirement requirement : major.getRequirements()) {
-
+            
         }
         return false;
     }

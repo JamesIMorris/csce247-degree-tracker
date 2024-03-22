@@ -4,14 +4,12 @@ public class DegreeTracker {
     private UserList userList;
     private MajorList majorList;
     private CourseList courseList;
-    private boolean isLoggedIn;
 
     private DegreeTracker() {
         error = "";
         courseList = CourseList.getInstance();
         userList = UserList.getInstance();
         majorList = MajorList.getInstance();
-        isLoggedIn = false;
     }
 
     public static DegreeTracker getInstance() {
@@ -22,6 +20,17 @@ public class DegreeTracker {
 
     public void addError(String errorMessage) {
         error += "\n" + errorMessage;
+    }
+
+    public String popError(){
+        error = "";
+        return error;
+    }
+    public void clearError(){
+        error = "";
+    }
+    public String getError(){
+        return error;
     }
 
     public boolean login(String username, String password) {
