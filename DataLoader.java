@@ -323,7 +323,7 @@ public class DataLoader extends DataConstants{
 
             for(Object obj : adminsArray) {
                 JSONObject adminObj = (JSONObject)obj;
-                String username = (String)adminObj.get("username");
+                String username = (String)adminObj.get(ADMIN_USER_NAME);
 
                 Admin admin = new Admin(username);
                 admins.add(admin);
@@ -348,12 +348,18 @@ public class DataLoader extends DataConstants{
 
                 ArrayList<Student> advisees = new ArrayList<>();
                 for(Object adviseeObj : adviseesArray) {
-                    String adviseeUsername = (String) adviseeObj;
-                    
+                    String adviseeUsername = (String)adviseeObj;
 
+                    User user = UserList.getInstance().findUser(adviseeUsername);
+                    if(user != null && user instanceof Student) {
+                        advisees.add((Student)user);
+                    } else {
+                        System.out.println("Student with username " + adviseeUsername + "not found");
+                    }
+                    
                 }
-                Advisor advisor = new Advisor(username);
-                advisor.setAdvisees(advisees);
+                Advisor advisor = new Advisor(username, "password", "test", "test", "email@test.com");
+                advisor.setAdvisees.add(advisees);
                 advisors.add(advisor);
             }
         } catch(Exception e) {

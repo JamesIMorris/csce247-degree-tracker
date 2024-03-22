@@ -35,11 +35,11 @@ public class DataConstants {
     protected static final String COURSE_TYPE = "type";
 
     // Advisor Data Constants
-    protected static final String ADVISOR_FILE_NAME = "src/advisors.json";
+    protected static final String ADVISOR_FILE_NAME = "json/advisors.json";
     protected static final String ADVISOR_ADVISEES = "advisees";
 
     // requirements Data Constants
-    protected static final String REQUIREMENTS_FILE_NAME = "src/requirements.json";
+    protected static final String REQUIREMENTS_FILE_NAME = "json/requirements.json";
     protected static final String REQUIREMENTS_UUID = "UUID";
     protected static final String REQUIRMENT_NAME = "name";
     protected static final String REQUIREMENT_CATEGORY = "category";
@@ -55,6 +55,7 @@ public class DataConstants {
     protected static final String MAJOR_REQUIREMENTS = "requirements";
 
     // Admin Data Constants
-    protected static final String ADMIN_FILE_NAME = "src/admin.json";
+    protected static final String ADMIN_FILE_NAME = "json/admin.json";
+    protected static final String ADMIN_USER_NAME = "username";
 
 }
