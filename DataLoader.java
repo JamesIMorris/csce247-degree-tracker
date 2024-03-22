@@ -294,9 +294,10 @@ public class DataLoader extends DataConstants{
 
             for(Object req : requirementsArray) {
                 JSONObject reqJSON = (JSONObject) req;
-                String id = (String)reqJSON.get(REQUIREMENTS_UUID);
+                UUID id = UUID.fromString((String)reqJSON.get(REQUIREMENTS_UUID));
                 String name = (String)reqJSON.get(REQUIRMENT_NAME);
-                String category = (String)reqJSON.get(REQUIREMENT_CATEGORY);
+                String categoryName = (String)reqJSON.get(REQUIREMENT_CATEGORY);
+                Category category = Category.valueOf(categoryName.toUpperCase());
                 int creditHoursRequired = ((Long)reqJSON.get(REQUIREMENT_CREDITS_REQUIRED)).intValue();
 
                 JSONArray courseIDsArray = (JSONArray)reqJSON.get(REQUIRMENT_COURSE_ID);
@@ -323,9 +324,9 @@ public class DataLoader extends DataConstants{
 
             for(Object obj : adminsArray) {
                 JSONObject adminObj = (JSONObject)obj;
-                String username = (String)adminObj.get("username");
+                String username = (String)adminObj.get(ADMIN_USER_NAME);
 
-                Admin admin = new Admin(username);
+                Admin admin = new Admin(username, null, null, null, null);
                 admins.add(admin);
             }
         } catch(Exception e) {
@@ -348,11 +349,17 @@ public class DataLoader extends DataConstants{
 
                 ArrayList<Student> advisees = new ArrayList<>();
                 for(Object adviseeObj : adviseesArray) {
-                    String adviseeUsername = (String) adviseeObj;
-                    
+                    String adviseeUsername = (String)adviseeObj;
 
+                    User user = UserList.getInstance().findUser(adviseeUsername);
+                    if(user != null && user instanceof Student) {
+                        advisees.add((Student)user);
+                    } else {
+                        System.out.println("Student with username " + adviseeUsername + "not found");
+                    }
+                    
                 }
-                Advisor advisor = new Advisor(username);
+                Advisor advisor = new Advisor(username, "password", "test", "test", "email@test.com");
                 advisor.setAdvisees(advisees);
                 advisors.add(advisor);
             }
