@@ -33,7 +33,7 @@ public class DegreeTracker {
     }
 
     public boolean checkSignup(String username, String password){
-        return UserList.getInstance().checkSignup(String username, String password);
+        return userList.checkSignup(String username, String password);
     }
 
     public boolean studentSignup(String username, String password, String firstName, String lastName, String email,
@@ -43,8 +43,8 @@ public class DegreeTracker {
     public boolean advisorSignup(String username, String password, String firstName, String lastName, String email){
         return userList.advisorSignup(username, password, firstName, lastName, email);
     }
-    public boolean studentAssignCourse(String username, String courseID, String requirement){
-        return UserList.getInstance().findUser(username).studentAssignCourse(String username, String courseID, String requirement);
+    public boolean studentAssignCourse(String username, String courseID, String semesterTaken, String requirement){
+        Student test = ((Student)userList.findUser(username)).assignCredit(courseID, semesterTaken, requirement);
     }
     public boolean setApplicationArea(String username, String applicationArea){
         ((Student)userList.findUser(username)).setApplicatioNArea(applicationArea);
