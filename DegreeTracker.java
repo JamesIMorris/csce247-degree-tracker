@@ -44,7 +44,7 @@ public class DegreeTracker {
         return userList.advisorSignup(username, password, firstName, lastName, email);
     }
     public boolean studentAssignCourse(String username, String courseID, String semesterTaken, String requirement){
-        Student test = ((Student)userList.findUser(username)).assignCredit(courseID, semesterTaken, requirement);
+        return ((Student)userList.findUser(username)).assignCredit(courseID, semesterTaken, requirement);
     }
     public boolean setApplicationArea(String username, String applicationArea){
         ((Student)userList.findUser(username)).setApplicatioNArea(applicationArea);
@@ -75,10 +75,6 @@ public class DegreeTracker {
     public static String advisorNotes(){
         return UIFormatter.advisorNotes();
     }
-}
-
-
-
 
     public User getCurrentUser() {
         return userList.getCurrentUser();

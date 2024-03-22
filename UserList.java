@@ -191,6 +191,12 @@ public class UserList {
         return;
     }
 
+    public boolean logout(){
+        DataWriter.getInstance.writeData();
+        this.currentUser = null;
+        return true;
+    }
+
     public boolean checkSignup(String username, String password){
         if(!usernameAvailable(username)){
             DegreeTracker.getInstance().addError("The username \"" + username + "\" is not available");

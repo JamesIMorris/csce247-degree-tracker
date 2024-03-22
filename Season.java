@@ -26,13 +26,14 @@ public enum Season {
   }
 
   static Season fromString(String string) {
-    if(string.toLowerCase().equals("spring"))
+    String abbreviation = string.substring(0, 2);
+    if(abbreviation.equalsIgnoreCase("sp"))
       return SPRING;
-    if(string.toLowerCase().equals("summer"))
-      return SUMMER;
-    if(string.toLowerCase().equals("fall"))
+    if(abbreviation.equalsIgnoreCase("su"))
+     return SUMMER;
+    if(abbreviation.equalsIgnoreCase("fa"))
       return FALL;
-    if(string.toLowerCase().equals("winter"))
+    if(abbreviation.equalsIgnoreCase("wi"))
       return WINTER;
     return null;
   }
