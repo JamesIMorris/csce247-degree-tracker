@@ -5,7 +5,7 @@ public class MajorList {
     private static MajorList majorList;
     private ArrayList<Major> majors;
 
-    private MajorList(DegreeTracker degreeTracker) {
+    private MajorList() {
         majors = new ArrayList<>();
     }
 
@@ -13,9 +13,9 @@ public class MajorList {
         return majors;
     }
 
-    public static MajorList getInstance(DegreeTracker degreeTracker) {
+    public static MajorList getInstance() {
         if (majorList == null)
-            majorList = new MajorList(degreeTracker);
+            majorList = new MajorList();
         return majorList;
     }
 

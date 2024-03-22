@@ -8,9 +8,9 @@ public class CourseList {
     DataLoader.getInstance();
   }
 
-  public static CourseList getInstance(DegreeTracker degreeTracker) {
+  public static CourseList getInstance() {
     if (courseList == null)
-      courseList = new CourseList(degreeTracker);
+      courseList = new CourseList();
     return courseList;
   }
 

@@ -8,9 +8,9 @@ public class DegreeTracker {
 
     private DegreeTracker() {
         error = "";
-        courseList = CourseList.getInstance(this);
-        userList = UserList.getInstance(this);
-        majorList = MajorList.getInstance(this);
+        courseList = CourseList.getInstance();
+        userList = UserList.getInstance();
+        majorList = MajorList.getInstance();
         isLoggedIn = false;
     }
 

@@ -7,15 +7,15 @@ public class UserList {
     private User currentUser;
     private DegreeTracker degreeTracker;
 
-    private UserList(DegreeTracker degreeTracker) {
+    private UserList() {
         DataLoader.getInstance();
         this.degreeTracker = DegreeTracker.getInstance();
 
     }
 
-    public static UserList getInstance(DegreeTracker degreeTracker) {
+    public static UserList getInstance() {
         if (userList == null)
-            userList = new UserList(degreeTracker);
+            userList = new UserList();
         return userList;
     }
 
