@@ -294,9 +294,10 @@ public class DataLoader extends DataConstants{
 
             for(Object req : requirementsArray) {
                 JSONObject reqJSON = (JSONObject) req;
-                String id = (String)reqJSON.get(REQUIREMENTS_UUID);
+                UUID id = UUID.fromString((String)reqJSON.get(REQUIREMENTS_UUID));
                 String name = (String)reqJSON.get(REQUIRMENT_NAME);
-                String category = (String)reqJSON.get(REQUIREMENT_CATEGORY);
+                String categoryName = (String)reqJSON.get(REQUIREMENT_CATEGORY);
+                Category category = Category.valueOf(categoryName.toUpperCase());
                 int creditHoursRequired = ((Long)reqJSON.get(REQUIREMENT_CREDITS_REQUIRED)).intValue();
 
                 JSONArray courseIDsArray = (JSONArray)reqJSON.get(REQUIRMENT_COURSE_ID);
@@ -325,7 +326,7 @@ public class DataLoader extends DataConstants{
                 JSONObject adminObj = (JSONObject)obj;
                 String username = (String)adminObj.get(ADMIN_USER_NAME);
 
-                Admin admin = new Admin(username);
+                Admin admin = new Admin(username, null, null, null, null);
                 admins.add(admin);
             }
         } catch(Exception e) {
