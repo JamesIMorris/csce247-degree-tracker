@@ -284,7 +284,7 @@ public class Student extends User{
         return false;
     }
 
-    public boolean studentAssignCourse(String courseID, String semesterTaken, String requirement){
+    public boolean assignCredit(String courseID, String semesterTaken, String requirement){
         Credit creditToAssign = null;
         for(Credit credit : credits){
             if(credit.getCourseID().equalsIgnoreCase(courseID) && credit.getSemesterTaken().equals(Semester.fromString(semesterTaken))){
