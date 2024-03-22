@@ -33,7 +33,7 @@ public class DegreeTracker {
     }
 
     public boolean checkSignup(String username, String password){
-        return userList.checkSignup(String username, String password);
+        return userList.checkSignup( username, password);
     }
 
     public boolean studentSignup(String username, String password, String firstName, String lastName, String email,
