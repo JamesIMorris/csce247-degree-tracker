@@ -135,18 +135,19 @@ public class DataWriter extends DataConstants {
         studentDetails.put("username", student.getUsername());
         studentDetails.put("major", student.getMajor());
 
-        JSONArray jsonCredits = new JSON Array();
+        JSONArray jsonCredits = new JSONArray();
         for (Credit credit : student.getCredits()){
             JSONObject jsonCredit = new JSONObject();
             jsonCredit.put(STUDENT_COURSE, credit.getCourse());
             jsonCredit.put(STUDENT_SEMESTER_TAKEN, credit.getSemesterTaken());
             jsonCredit.put("type", credit.getType());
-            jsonCredit.put("requirementsAssignedTo", credit.getRequiementsAssignedTo());
+            jsonCredit.put("requirementsAssignedTo", credit.getRequirementsAssignedTo());
         }
             JSONArray possibleRequirements = new JSONArray();
             for(Requirement requirement : credit.getPossibleRequirements()) {
-                JSONOBject requirementObject = new JSONOBject();
-                requirementObject.put("requirement", requirement.getRequirements());
+                JSONObject requirementObject = new JSONObject();
+                Requirement req = new Requirement();
+                requirementObject.put("requirement", req.getName());
                 requirementObject.put(STUDENT_AVAILABLE, requirement.isAvailable());
                 possibleRequirements.add(requirementObject);
             }
@@ -247,9 +248,12 @@ public class DataWriter extends DataConstants {
 
     //Advisors
     public boolean saveAdvisors(){
+        UserList userList = UserList.getInstance();
         JSONArray jsonAdvisors = new JSONArray();
+        ArrayList<User> advisors = userList.searchUserByType(UserType.ADVISOR);
 
-        for(Advisor advisor : Advisor.getAdvisors()) {
+        for(User user : advisors) {
+            Advisor advisor = (Advisor)user;
             JSONObject advisorDetails = getAdvisorJSON(advisor);
             jsonAdvisors.add(advisorDetails);
         }
@@ -268,7 +272,7 @@ public class DataWriter extends DataConstants {
         advisorDetails.put("username", advisor.getUsername());
 
         JSONArray adviseesArray = new JSONArray();
-        for (String advisee : advisor.getAdvisees()) {
+        for (Student advisee : advisor.getAdvisees()) {
             adviseesArray.add(advisee);
         }
         advisorDetails.put(ADVISOR_ADVISEES, adviseesArray);
@@ -278,14 +282,14 @@ public class DataWriter extends DataConstants {
 
     //Requirements
     public boolean saveRequiremnets() {
-        Requirement requirementList = Requirement.getInstance();
+        
         JSONArray jsonRequirements = new JSONArray();
 
-        for (Requirement requirement : requirementList.getRequirements()) {
+        for (Requirement requirement : Major.getRequirements()) {
             jsonRequirements.add(getRequirementJSON(requirement));
         }
 
-        try (FileWrtier file = new FileWrtier(REQUIREMENTS_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(REQUIREMENTS_FILE_NAME)) {
             file.write(jsonRequirements.toJSONString());
             file.flush();
             return true;
