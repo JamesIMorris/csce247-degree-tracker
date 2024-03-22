@@ -1,11 +1,13 @@
 public enum CreditType {
-  DEFAULT("C"),
-  TRANSFER("TC"),
-  WITHDRAWN("W");
+  DEFAULT("Default", "DC"),
+  TRANSFER("Transfer", "TC"),
+  WITHDRAWN("Withdrawn", "W");
 
+  String string;
   String abbreviation;
 
-  CreditType(String abbreviation){
+  CreditType(String string, String abbreviation){
+    this.string = string;
     this.abbreviation = abbreviation;
   }
 

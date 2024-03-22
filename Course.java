@@ -99,6 +99,8 @@ public class Course {
     }
 
     public boolean isPlacement(){
+        if(type == CourseType.PLACEMENT)
+            return true;
         return false;
     }
 
@@ -111,6 +113,8 @@ public class Course {
         return Integer.parseInt(courseNumberStr);
     }
     public boolean isOverlay(){
+        if(type == CourseType.OVERLAY)
+            return true;
         return false;
     }
     public String toString(){

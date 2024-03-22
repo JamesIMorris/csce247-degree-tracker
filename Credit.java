@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-import javax.swing.text.Position;
 
 public class Credit {
     public class PossibleRequirement{
@@ -42,9 +41,13 @@ public class Credit {
     }
 
     public Credit(String courseID) {
-
+        this.course = CourseList.getInstance().getCourse(courseID);
     }
 
+    public Credit(Course course, Semester semesterTaken){
+        this.course = course;
+        this.semesterTaken = semesterTaken;
+    }
 
     public Credit(Course course, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
             String note) {
@@ -58,10 +61,10 @@ public class Credit {
         populatePossibleRequirements();
     }
 
-    public Credit(String courseID, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
-            String note) {
+    // public Credit(String courseID, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
+    //         String note) {
 
-    }
+    // }
 
     public Course getCourse(){
         return course;
@@ -73,7 +76,7 @@ public class Credit {
         return semesterTaken;
     }
     public void setSemesterTaken(Semester semester){
-        semesterTaken = semester;
+        this.semesterTaken = semester;
     }
     public int getGrade(){
         return grade;
@@ -85,7 +88,7 @@ public class Credit {
         return type;
     }
     public void setType(CreditType type){
-
+        this.type = type;
     }
     public int getRequirementsAssignedTo(){
         return requirementsAssignedTo;
@@ -121,38 +124,42 @@ public class Credit {
     }
 
     public String getCourseName() {
-        return "";
+        return this.course.getCourseName();
     }
 
     public String getCourseID() {
-        return "";
+        return this.course.getCourseID();
     }
 
     public String getSubject() {
-        return "";
+        return this.course.getSubject();
     }
 
     public int getCourseNumber() {
-        return 0;
+        return this.course.getCourseNumber();
     }
 
     public int getCreditHours() {
-        return 0;
+        return this.course.getCreditHours();
     }
 
     public boolean isOverlay() {
-        return false;
+        return this.course.isOverlay();
     }
 
     public boolean isPlacement() {
-        return false;
+        return this.course.isPlacement();
     }
 
     public boolean isTransfer() {
+        if(type == CreditType.TRANSFER)
+            return true;
         return false;
     }
 
     public boolean wasWithdrawn() {
+        if(type == CreditType.WITHDRAWN)
+            return true;
         return false;
     }
 

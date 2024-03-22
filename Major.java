@@ -72,7 +72,8 @@ public class Major {
                 return requirement;
             }
         }
-        throw new RuntimeException("Requirement not found: " + name);
+        DegreeTracker.getInstance().addError("Requirement not found: " + name);
+        return null;
     }
 
 }

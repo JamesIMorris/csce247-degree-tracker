@@ -314,6 +314,56 @@ public class DataLoader extends DataConstants{
         return requirements;
     }
 
+    public static ArrayList<Admin> loadAdmins() {
+        ArrayList<Admin> admins = new ArrayList<>();
+        try{
+            FileReader reader = new FileReader(ADMIN_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray adminsArray = (JSONArray)parser.parse(reader);
+
+            for(Object obj : adminsArray) {
+                JSONObject adminObj = (JSONObject)obj;
+                String username = (String)adminObj.get("username");
+
+                Admin admin = new Admin(username);
+                admins.add(admin);
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return admins;
+    }
+
+    static ArrayList<Advisor> loadAdvisors() {
+        ArrayList<Advisor> advisors = new ArrayList<>();
+        try {
+            FileReader reader = new FileReader(ADVISOR_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray advisorsArray = (JSONArray)parser.parse(reader);
+
+            for(Object obj : advisorsArray) {
+                JSONObject advisorObj = (JSONObject)obj;
+                String username = (String)advisorObj.get("username");
+                JSONArray adviseesArray = (JSONArray)advisorObj.get(ADVISOR_ADVISEES);
+
+                ArrayList<Student> advisees = new ArrayList<>();
+                for(Object adviseeObj : adviseesArray) {
+                    String adviseeUsername = (String) adviseeObj;
+                    
+
+                }
+                Advisor advisor = new Advisor(username);
+                advisor.setAdvisees(advisees);
+                advisors.add(advisor);
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return advisors;
+    }
+
+
+
     public static void main(String[] args) {
         DataLoader dataLoader = DataLoader.getInstance();
         ArrayList<Course> courses = DataLoader.loadCourses();

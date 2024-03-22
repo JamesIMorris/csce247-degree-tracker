@@ -82,12 +82,17 @@ public class Student extends User {
         return changeInProgress;
     }
 
-    public boolean changeMajor(Major major) {
-        return false;
+    public void changeMajor(Major major) {
+        startChange();
+        this.major = major;
+        generateEightSemesterPlan();
     }
 
     public boolean addCredit(Credit credit) {
-        return false;
+        if (credit == null || credits.contains(credit))
+            return false;
+        credits.add(credit);
+        return true;
     }
 
     public boolean addCredit(Course course, Semester semester) {
@@ -176,8 +181,11 @@ public class Student extends User {
         }
     }
 
-    private boolean startChange() {
-        return false;
+    private void startChange() {
+        this.changeInProgress = true;
+        this.backUpMajor = this.major;
+        this.backupCredits = this.credits;
+        this.backupRequirements = this.requirements;
     }
 
     private boolean checkChange() {

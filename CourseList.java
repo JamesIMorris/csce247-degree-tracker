@@ -4,8 +4,8 @@ public class CourseList {
   private static CourseList courseList;
   private ArrayList<Course> courses;
 
-  private CourseList(DegreeTracker degreeTracker) {
-    // loadCourses();
+  private CourseList() {
+    DataLoader.getInstance();
   }
 
   public static CourseList getInstance(DegreeTracker degreeTracker) {
@@ -72,8 +72,4 @@ public class CourseList {
     }
     return null;
   }
-
-  // private void loadCourses() {
-  // this.courses = DataLoader.getInstance().LoadCourses();
-  // }
 }
