@@ -51,4 +51,10 @@ public class Semester{
       currentSeason = Season.SUMMER;
     return new Semester(currentYear, currentSeason);
   }
+
+  public static Semester fromString(String abbreviation){
+      int year = Integer.parseInt((abbreviation.substring(2, 4))) + 2000;
+      Season season = Season.fromString(abbreviation.substring(0, 2));
+      return new Semester(year, season);
+  }
 }

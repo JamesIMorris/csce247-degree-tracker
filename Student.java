@@ -284,6 +284,25 @@ public class Student extends User{
         return false;
     }
 
+    public boolean studentAssignCourse(String courseID, String semesterTaken, String requirement){
+        Credit creditToAssign = null;
+        for(Credit credit : credits){
+            if(credit.getCourseID().equalsIgnoreCase(courseID) && credit.getSemesterTaken().equals(Semester.fromString(semesterTaken))){
+                creditToAssign = credit;
+            }
+        }
+        Requirement requirementToAssign = null;
+        for(Requirement majorRequirement : major.getRequirements()){
+            if(majorRequirement.getName().equalsIgnoreCase(requirement)){
+                requirementToAssign = majorRequirement;
+            }
+        }
+        if(creditToAssign == null || requirementToAssign == null)
+            return false;
+        requirements.get(requirementToAssign).add(creditToAssign);
+        return true;
+    }
+
     public UserType getUserType() {
         return UserType.STUDENT;
     }
