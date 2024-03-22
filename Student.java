@@ -306,6 +306,25 @@ public class Student extends User{
         return true;
     }
 
+    public int totalCreditHoursComplete(){
+        int totalHours = 0;
+        for(Credit credit : credits)
+            if(Status.getStatus(credit).equals(Status.COMPLETE))
+                totalHours += credit.getCreditHours();
+        return totalHours;
+    }
+
+    public String getYear(){
+        int totalHours = totalCreditHoursComplete();
+        if(totalHours < 30)
+            return "Freshman";
+        if(totalHours < 60)
+            return "Sophmore";
+        if(totalHours < 90)
+            return "Junior";
+        return "Senior";
+    }
+
     public UserType getUserType() {
         return UserType.STUDENT;
     }
