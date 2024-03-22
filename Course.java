@@ -40,7 +40,7 @@ public class Course {
     public void setCourseName(String name){
         this.courseName = name;
     }
-    public String getCourseDescrpition(){
+    public String getCourseDescription(){
         return courseDescription;
     }
     public void setCourseDescription(String description){
@@ -52,7 +52,7 @@ public class Course {
     public void setCreditHours(int creditHours){
         this.creditHours = creditHours;
     }
-    public ArrayList<Season> getSemeseterAvailabilty(){
+    public ArrayList<Season> getSemesterAvailability(){
         return semesterAvailability;
     }
     public void addSeason(Season season){

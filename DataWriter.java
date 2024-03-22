@@ -47,7 +47,7 @@ public class DataWriter extends DataConstants {
 
         JSONArray preRequisites = new JSONArray();
         for(Course preReq : course.getPreRequisites()) {
-            preRequisites.add(preReq.getCoursID());
+            preRequisites.add(preReq.getCourseID());
         }
         courseDetails.put("preRequisites", preRequisites);
 
@@ -55,7 +55,7 @@ public class DataWriter extends DataConstants {
         for(Course coReq : course.getCoRequisites()) {
             coRequisites.add(coReq.getCourseID());
         }
-        return courseJSON;
+        return courseDetails;
     }
         /* 
         courseJSON.put("coRequisites". coRequisites);
@@ -186,7 +186,7 @@ public class DataWriter extends DataConstants {
     // Majors
     public boolean saveMajors() {
         MajorList majorList = MajorList.getInstance();
-        ArrayList<Major> majorList = majorList.getMajors();
+        ArrayList<Major> majors = majorList.getMajors();
         JSONArray jsonMajors = new JSONArray();
 
         for (Major major : majors) {
@@ -207,7 +207,7 @@ public class DataWriter extends DataConstants {
 
     public static JSONObject getMajorJSON(Major major) {
         JSONObject majorDetails = new JSONObject();
-        majorDetails.put(MAJOR_ID, major.getMajorID().toString());
+        majorDetails.put(MAJOR_ID, major.getId().toString());
         majorDetails.put(MAJOR_NAME, major.getName());
         majorDetails.put(MAJOR_SCHOOL, major.getSchool());
         majorDetails.put(MAJOR_DEPARTMENT, major.getDepartment());
