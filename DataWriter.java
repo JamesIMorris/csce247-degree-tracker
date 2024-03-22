@@ -218,20 +218,24 @@ public class DataWriter extends DataConstants {
 
     //Admin
     public boolean saveAdmin() {
-        Admin adminList = Admin.getInstance();
+        UserList userList = UserList.getInstance();
+        //Admin adminList = Admin.getInstance();
         JSONArray jsonAdmin = new JSONArray();
+        ArrayList<User> admins = userList.searchUserByType(UserType.ADMIN);
 
-        for(Admin admin : Admin.getAdmin()) {
-            JSONOBject adminDetails = getAdminJSON(admin);
+        for(User admin : admins) {
+            JSONObject adminDetails = new JSONObject();
+            adminDetails.put("username", admin.getUsername());
             jsonAdmin.add(adminDetails);
         }
 
-    try (FileWrtier file = new FileWriter(ADMIN_FILE_NAME)) {
-        file.write(jsonAdmins.toJSONString());
+    try (FileWriter file = new FileWriter(ADMIN_FILE_NAME)) {
+        file.write(jsonAdmin.toJSONString());
         return true;
     } catch (IOException e) {
         e.printStackTrace();
         return false;
+    }
     }
 
     public static JSONObject getAdminJSON(Admin admin) {
@@ -239,7 +243,7 @@ public class DataWriter extends DataConstants {
         adminDetails.put("username", admin.getUsername());
         return adminDetails;
     }
-}
+
 
     //Advisors
     public boolean saveAdvisors(){
