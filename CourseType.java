@@ -1,7 +1,13 @@
 public enum CourseType {
-  DEFAUILT,
-  OVERLAY,
-  PLACEMENT;
+  DEFAUILT("Default"),
+  OVERLAY("Overlay"),
+  PLACEMENT("Placement");
+
+  String string;
+
+  CourseType(String string){
+    this.string = string;
+  }
 
   public static CourseType fromString(String string){
     if(string.toLowerCase().equals("default"))
