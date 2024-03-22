@@ -271,9 +271,10 @@ public class Student extends User{
     }
 
     private boolean checkChange() {
-        for (Credit credit : credits) {
+        //TODO
+        // for (Credit credit : credits) {
 
-        }
+        // }
         return false;
     }
     public boolean coreqSatisfied(ArrayList<Course> courses, int requiredHours){
@@ -281,9 +282,10 @@ public class Student extends User{
     }
 
     private boolean generateEightSemesterPlan() {
-        for (Requirement requirement : major.getRequirements()) {
+        //TODO
+        // for (Requirement requirement : major.getRequirements()) {
             
-        }
+        // }
         return false;
     }
 

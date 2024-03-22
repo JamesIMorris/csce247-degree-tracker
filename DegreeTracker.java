@@ -89,4 +89,10 @@ public class DegreeTracker {
         return userList.getCurrentUser();
     }
 
+    public MajorList getMajorList(){
+        return majorList;
+    }
+    public CourseList getCourseList(){
+        return courseList;
+    }
 }

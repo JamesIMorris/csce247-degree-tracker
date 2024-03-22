@@ -192,7 +192,8 @@ public class UserList {
     }
 
     public boolean logout(){
-        DataWriter.getInstance().writeData();
+        //TODO
+        //DataWriter.getInstance().writeData();
         this.currentUser = null;
         return true;
     }
