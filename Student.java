@@ -46,6 +46,7 @@ public class Student extends User {
         this.requirements = requirements;
         this.notes = notes;
         this.changeInProgress = false;
+        populateBackups();
     }
 
     public Student(String username, Major major, ArrayList<Credit> credits,
@@ -56,6 +57,13 @@ public class Student extends User {
         this.requirements = requirements;
         this.notes = notes;
         notifyForAllRequirements();
+        populateBackups();
+    }
+
+    private void populateBackups() {
+        this.backUpMajor = major;
+        this.backupCredits = credits;
+        this.backupRequirements = requirements;
     }
 
     public Major getMajor() {
@@ -96,63 +104,124 @@ public class Student extends User {
     }
 
     public boolean addCredit(Course course, Semester semester) {
-        return false;
+        for (Credit credit : credits) {
+            if (credit.getCourse().equals(course) && credit.getSemesterTaken().equals(semester))
+                return false;
+        }
+        credits.add(new Credit(course, semester));
+        return true;
     }
 
     public boolean removeCredit(Credit credit) {
-        return false;
+        return credits.remove(credit);
     }
 
     public boolean removeCredit(Course course, Semester semester) {
+        // TODO
         return false;
     }
 
-    public Credit getCredit(Course course, Semester semeseter) {
+    public Credit getCredit(Course course, Semester semester) {
+        for (Credit credit : credits) {
+            if (credit.getCourse().equals(course) && credit.getSemesterTaken().equals(semester))
+                return credit;
+        }
         return null;
     }
 
     public ArrayList<Credit> getCredits(Course course) {
-        return null;
+        ArrayList<Credit> returnList = new ArrayList<Credit>();
+        for (Credit credit : credits) {
+            if (credit.getCourse().equals(course))
+                returnList.add(credit);
+        }
+        return returnList;
     }
 
     public ArrayList<Credit> getCredits(Semester semester) {
-        return null;
+        ArrayList<Credit> returnList = new ArrayList<Credit>();
+        for (Credit credit : credits) {
+            if (credit.getSemesterTaken().equals(semester))
+                returnList.add(credit);
+        }
+        return returnList;
     }
 
     public ArrayList<Credit> getCredits(Requirement requirement) {
-        return null;
+        return requirements.get(requirement);
     }
 
     public boolean assignCredit(Credit credit, Requirement requirement) {
-        return false;
+        if (credit == null || requirement == null)
+            return false;
+        boolean open = checkRequierment(requirement);
+        if (open)
+            requirements.get(requirement).add(credit);
+        checkRequierment(requirement);
+        return open;
     }
 
     public boolean unassignCredit(Credit credit, Requirement requirement) {
-        return false;
+        if (credit == null || requirement == null)
+            return false;
+        if (!requirements.get(requirement).contains(credit))
+            return false;
+        requirements.get(requirement).remove(credit);
+        checkRequierment(requirement);
+        return true;
+    }
+
+    public boolean checkRequierment(Requirement requirement) {
+        int requiredHours = requirement.getCreditHoursRequired();
+        int totalHours = 0;
+        for (Credit credit : requirements.get(requirement)) {
+            totalHours += credit.getCreditHours();
+        }
+        boolean open = (totalHours < requiredHours);
+        notifyCredits(requirement, open);
+        return open;
     }
 
     public int getRequirementCreditHours(Requirement requirement) {
-        return 0;
+        ArrayList<Credit> creditList = requirements.get(requirement);
+        int totalHours = 0;
+        for (Credit credit : creditList) {
+            totalHours += credit.getCreditHours();
+        }
+        return totalHours;
     }
 
     public boolean addNote(String note) {
-        return false;
+        if (note == null)
+            return false;
+        return notes.add(note);
     }
 
     public boolean removeNote(String note) {
-        return false;
+        if (note == null)
+            return false;
+        return notes.remove(note);
     }
 
     public boolean removeNote(int index) {
-        return false;
+        if (index >= notes.size())
+            return false;
+        notes.remove(index);
+        return true;
     }
 
     public boolean finalizeChange() {
-        return false;
+        if (!checkChange())
+            return false;
+        changeInProgress = false;
+        populateBackups();
+        return true;
     }
 
-    public boolean revertChange() {
-        return false;
+    public void revertChange() {
+        this.major = backUpMajor;
+        this.credits = backupCredits;
+        this.requirements = backupRequirements;
     }
 
     public void notifyForAllRequirements() {
@@ -189,10 +258,16 @@ public class Student extends User {
     }
 
     private boolean checkChange() {
+        for (Credit credit : credits) {
+
+        }
         return false;
     }
 
     private boolean generateEightSemesterPlan() {
+        for (Requirement requirement : major.getRequirements()) {
+
+        }
         return false;
     }
 
