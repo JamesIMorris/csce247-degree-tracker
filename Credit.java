@@ -44,6 +44,10 @@ public class Credit {
         this.course = CourseList.getInstance().getCourse(courseID);
     }
 
+    public Credit(Course course, Semester semesterTaken){
+        this.course = course;
+        this.semesterTaken = semesterTaken;
+    }
 
     public Credit(Course course, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
             String note) {
