@@ -40,7 +40,7 @@ public class Course {
     public void setCourseName(String name){
         this.courseName = name;
     }
-    public String getCourseDescprition(){
+    public String getCourseDescrpition(){
         return courseDescription;
     }
     public void setCourseDescription(String description){

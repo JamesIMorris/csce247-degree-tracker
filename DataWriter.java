@@ -11,12 +11,13 @@ public class DataWriter extends DataConstants {
 
     // Courses
     public boolean saveCourses() {
-        CourseList course = CourseList.getInstance();
-        ArrayList<Course> courseList = CourseList.getCourse();
+        CourseList courseList = CourseList.getInstance();
+        ArrayList<Course> courses = courseList.getCourses();
         JSONArray jsonCourses = new JSONArray();
 
-        for (int i = 0; i < courseList.size(); i++) {
-            jsonCourses.add(getCourseJSON(courseList.get(i)));
+        for (Course course : courses) {
+            JSONObject courseJSON = getCourseJSON(course);
+            jsonCourses.add(courseJSON);
         }
 
         try (FileWriter file = new FileWriter(COURSE_FILE_NAME)) {
@@ -37,6 +38,27 @@ public class DataWriter extends DataConstants {
         courseDetails.put(COURSE_NAME, course.getCourseName());
         courseDetails.put(COURSE_DESCRIPTION, course.getCourseDescription());
         courseDetails.put(CREDIT_HOURS, course.getCreditHours());
+
+        JSONArray semesterAvailability = new JSONArray();
+        for(Season season : course.getSemesterAvailability()) {
+            semesterAvailability.add(season.toString());
+        }
+        courseDetails.put("semesterAvailability", semesterAvailability);
+
+        JSONArray preRequisites = new JSONArray();
+        for(Course preReq : course.getPreRequisites()) {
+            preRequisites.add(preReq.getCoursID());
+        }
+        courseDetails.put("preRequisites", preRequisites);
+
+        JSONArray coRequisites = new JSONArray();
+        for(Course coReq : course.getCoRequisites()) {
+            coRequisites.add(coReq.getCourseID());
+        }
+        return courseJSON;
+    }
+        /* 
+        courseJSON.put("coRequisites". coRequisites);
         courseDetails.put(SEMESTER_AVAILABILITY, jsonArrayFromArray(course.getSemesterAvailability()));
         courseDetails.put(COURSE_PRE_REQUISISTES, jsonArrayFromArray(course.getPreRequisites()));
         courseDetails.put(COURSE_CO_REQUISITES, jsonArrayFromArray(course.getCoRequisites()));
@@ -51,7 +73,7 @@ public class DataWriter extends DataConstants {
         }
         return jsonArray;
     }
-
+*/
     // Users
     public boolean saveUsers() {
         UserList user = UserList.getInstance();
