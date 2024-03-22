@@ -359,7 +359,7 @@ public class DataLoader extends DataConstants{
                     
                 }
                 Advisor advisor = new Advisor(username, "password", "test", "test", "email@test.com");
-                advisor.setAdvisees.add(advisees);
+                advisor.setAdvisees(advisees);
                 advisors.add(advisor);
             }
         } catch(Exception e) {
