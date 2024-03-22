@@ -76,13 +76,13 @@ public class UserList {
     }
 
     public Student createNewStudent(String username, String password, String firstName, String lastName, String email,
-            Major major) {
+            String uscID) {
         if (username == null
                 || password == null
                 || firstName == null
                 || lastName == null
                 || email == null
-                || major == null)
+                || uscID == null)
             return null;
         if (!usernameAvailable(username)
                 || username.length() < 1
@@ -91,11 +91,11 @@ public class UserList {
                 || lastName.length() < 1
                 || email.length() < 1)
             return null;
-        return new Student(username, password, firstName, lastName, email, major);
+        return new Student(username, password, firstName, lastName, email, uscID);
     }
 
     public Student createNewStudent(String username, String password, String firstName, String lastName, String email,
-            Major major, ArrayList<Credit> credits, HashMap<Requirement, ArrayList<Credit>> requirements) {
+            String uscID, Major major, String applicationArea, ArrayList<Credit> credits, HashMap<Requirement, ArrayList<Credit>> requirements) {
         if (username == null
                 || password == null
                 || firstName == null
@@ -112,7 +112,7 @@ public class UserList {
                 || lastName.length() < 1
                 || email.length() < 1)
             return null;
-        return new Student(username, password, firstName, lastName, email, major, credits, requirements,
+        return new Student(username, password, firstName, lastName, email, uscID, major, applicationArea, credits, requirements,
                 new ArrayList<String>());
     }
 
@@ -189,5 +189,31 @@ public class UserList {
         }
         list.add(newUser);
         return;
+    }
+
+    public boolean checkSignup(String username, String password){
+        if(!usernameAvailable(username)){
+            DegreeTracker.getInstance().addError("The username \"" + username + "\" is not available");
+            return false;
+        }
+        return checkPassword(password);
+    }
+    public boolean studentSignup(String username, String password, String firstName, String lastName, String email, String uscID){
+        users.add(new Student(username, password, firstName, lastName, email, uscID));
+        return true;
+    }
+    public boolean advisorSignup(String username, String password, String firstName, String lastName, String email){
+        users.add(new Advisor(username, password, firstName, lastName, email));
+        return true;
+    }
+    public String findStudentFromID(String uscID){
+        for(User user : users){
+            if(user.getUserType() != UserType.STUDENT)
+                continue;
+            Student student = (Student)user;
+            if(student.getUscID().equalsIgnoreCase(uscID))
+                return student.getUsername();
+        }
+        return "Not found";
     }
 }
