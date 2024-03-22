@@ -182,7 +182,7 @@ public class DataWriter extends DataConstants {
 
         return studentDetails;
         */
-    }
+   // }
 
     // Majors
     public boolean saveMajors() {
@@ -282,11 +282,13 @@ public class DataWriter extends DataConstants {
 
     //Requirements
     public boolean saveRequiremnets() {
-        
+        MajorList majorList = MajorList.getInstance();
         JSONArray jsonRequirements = new JSONArray();
 
-        for (Requirement requirement : Major.getRequirements()) {
-            jsonRequirements.add(getRequirementJSON(requirement));
+        for (Major major : majorList.getMajors()) {
+            for(Requirement requirement : major.getRequirements()){
+                jsonRequirements.add(getRequirementJSON(requirement));
+            }
         }
 
         try (FileWriter file = new FileWriter(REQUIREMENTS_FILE_NAME)) {
@@ -311,7 +313,7 @@ public class DataWriter extends DataConstants {
         }
         requirementDetails.put(REQUIRMENT_COURSE_ID, courseIDsArray);
 
-        requirementDetails.put(REQUIREMENT_CREDITS_REQUIRED, requirement.getCreditHoursRequired);
+        requirementDetails.put(REQUIREMENT_CREDITS_REQUIRED, requirement.getCreditHoursRequired());
 
         return requirementDetails;
     }
