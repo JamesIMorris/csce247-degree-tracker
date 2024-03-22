@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.UUID;
-import java.util.Locale.Category;
 
 public class Requirement {
     private UUID id;
