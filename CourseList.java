@@ -4,44 +4,45 @@ public class CourseList {
   private static CourseList courseList;
   private ArrayList<Course> courses;
 
-  private CourseList() {
+  private CourseList(DegreeTracker degreeTracker) {
     // loadCourses();
   }
 
-  public static CourseList getInstance() {
-    if(courseList == null)
-      courseList = new CourseList();
+  public static CourseList getInstance(DegreeTracker degreeTracker) {
+    if (courseList == null)
+      courseList = new CourseList(degreeTracker);
     return courseList;
   }
 
-  public void setCourses(ArrayList<Course> courses){
-      this.courses = courses;
+  public void setCourses(ArrayList<Course> courses) {
+    this.courses = courses;
   }
 
   public Course addCourse(String courseName, String courseID, String courseDescription, int creditHours,
       ArrayList<Season> semesterAvailability, ArrayList<Course> preRequisites, ArrayList<Course> coRequisites,
       CourseType type) {
-        if (courseName == null
-            || courseID == null
-            || courseDescription == null
-            || semesterAvailability == null
-            || preRequisites == null
-            || coRequisites == null
-            || type == null) 
-          return null;
-        Course newCourse = new Course(courseID, courseName, courseDescription, creditHours, semesterAvailability, preRequisites, coRequisites, type);
-        courses.add(newCourse);
-        return newCourse;
-        }
+    if (courseName == null
+        || courseID == null
+        || courseDescription == null
+        || semesterAvailability == null
+        || preRequisites == null
+        || coRequisites == null
+        || type == null)
+      return null;
+    Course newCourse = new Course(courseID, courseName, courseDescription, creditHours, semesterAvailability,
+        preRequisites, coRequisites, type);
+    courses.add(newCourse);
+    return newCourse;
+  }
 
-  public boolean addCourse(Course course){
+  public boolean addCourse(Course course) {
     if (course != null) {
       return courses.add(course);
     }
     return false;
   }
 
-  public ArrayList<Course> addCourses(ArrayList<Course> courses){
+  public ArrayList<Course> addCourses(ArrayList<Course> courses) {
     boolean added = true;
     for (Course course : courses) {
       if (!courses.add(course)) {
@@ -73,6 +74,6 @@ public class CourseList {
   }
 
   // private void loadCourses() {
-  //   this.courses = DataLoader.getInstance().LoadCourses();
+  // this.courses = DataLoader.getInstance().LoadCourses();
   // }
 }

@@ -7,14 +7,15 @@ public class UserList {
     private User currentUser;
     private DegreeTracker degreeTracker;
 
-    private UserList() {
+    private UserList(DegreeTracker degreeTracker) {
         DataLoader.getInstance();
         this.degreeTracker = DegreeTracker.getInstance();
+
     }
 
-    public static UserList getInstance() {
+    public static UserList getInstance(DegreeTracker degreeTracker) {
         if (userList == null)
-            userList = new UserList();
+            userList = new UserList(degreeTracker);
         return userList;
     }
 
@@ -64,7 +65,6 @@ public class UserList {
         return findUser(username);
     }
 
-   
     public boolean login(String username, String password) {
         User loginUser = findUser(username);
         if (loginUser == null)
@@ -175,7 +175,7 @@ public class UserList {
     }
 
     private boolean checkPassword(String password) {
-        if(password.length() < 3){
+        if (password.length() < 3) {
             degreeTracker.addError("Password must be at least 3 characters long");
             return false;
         }

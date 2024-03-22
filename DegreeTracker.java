@@ -8,9 +8,9 @@ public class DegreeTracker {
 
     private DegreeTracker() {
         error = "";
-        courseList = CourseList.getInstance();
-        userList = UserList.getInstance();
-        majorList = MajorList.getInstance();
+        courseList = CourseList.getInstance(this);
+        userList = UserList.getInstance(this);
+        majorList = MajorList.getInstance(this);
         isLoggedIn = false;
     }
 
@@ -30,7 +30,7 @@ public class DegreeTracker {
 
     public boolean signup(String username, String password, String firstName, String lastName, String email,
             UserType type) {
-        if(userList.signup(username, password, firstName, lastName, email, type) == null)
+        if (userList.signup(username, password, firstName, lastName, email, type) == null)
             return false;
         return true;
     }
@@ -39,6 +39,10 @@ public class DegreeTracker {
         isLoggedIn = false;
         userList.setCurrentUser(null);
         System.out.println("Logout successful");
+    }
+
+    public User getCurrentUser() {
+        return userList.getCurrentUser();
     }
 
 }

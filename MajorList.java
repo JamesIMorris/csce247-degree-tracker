@@ -5,7 +5,7 @@ public class MajorList {
     private static MajorList majorList;
     private ArrayList<Major> majors;
 
-    private MajorList() {
+    private MajorList(DegreeTracker degreeTracker) {
         majors = new ArrayList<>();
     }
 
@@ -13,13 +13,14 @@ public class MajorList {
         return majors;
     }
 
-    public static MajorList getInstance() {
+    public static MajorList getInstance(DegreeTracker degreeTracker) {
         if (majorList == null)
-            majorList = new MajorList();
+            majorList = new MajorList(degreeTracker);
         return majorList;
     }
 
-    public boolean addMajor(UUID id, String name, String school, String department, ArrayList<Requirement> requirements) {
+    public boolean addMajor(UUID id, String name, String school, String department,
+            ArrayList<Requirement> requirements) {
         Major major = new Major(id, name, school, department, requirements);
         return majors.add(major);
     }
@@ -42,15 +43,13 @@ public class MajorList {
         throw new RuntimeException("Major not found: " + name);
     }
 
-    
-      public Major getMajorId(UUID id) {
-        for(Major major : majors) {
-            if(major.getId().equals(id)) {
+    public Major getMajorId(UUID id) {
+        for (Major major : majors) {
+            if (major.getId().equals(id)) {
                 return major;
             }
         }
         throw new RuntimeException("Major not found with name: " + id);
-      }
-
+    }
 
 }
