@@ -39,7 +39,8 @@ public class MajorList {
                 return major;
             }
         }
-        throw new RuntimeException("Major not found: " + name);
+        DegreeTracker.getInstance().addError("Major not found: " + name);
+        return null;
     }
 
     
@@ -49,7 +50,8 @@ public class MajorList {
                 return major;
             }
         }
-        throw new RuntimeException("Major not found with name: " + id);
+        DegreeTracker.getInstance().addError("Major not found with name: " + id);
+        return null;
       }
 
 
