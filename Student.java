@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Student extends User {
+public class Student extends User{
+    private String uscID;
     private Major major;
     private ArrayList<Credit> credits;
     private HashMap<Requirement, ArrayList<Credit>> requirements;
@@ -11,36 +12,26 @@ public class Student extends User {
     private ArrayList<Credit> backupCredits;
     private HashMap<Requirement, ArrayList<Credit>> backupRequirements;
 
-    public Student(String username, String password, String firstName, String lastName, String email) {
+    public Student(String username, String password, String firstName, String lastName, String email, String uscID){
         super(username, password, firstName, lastName, email);
         this.credits = new ArrayList<Credit>();
         this.requirements = new HashMap<Requirement, ArrayList<Credit>>();
         this.notes = new ArrayList<String>();
-        this.changeInProgress = true;
+        this.uscID = uscID;
+        this.changeInProgress = true; 
     }
-
-    public Student(String username, String password, String firstName, String lastName, String email, Major major) {
+    public Student(String username, String password, String firstName, String lastName, String email, String uscID, Major major, ArrayList<Credit> credits){
         super(username, password, firstName, lastName, email);
-        this.major = major;
-        this.credits = new ArrayList<Credit>();
-        this.requirements = new HashMap<Requirement, ArrayList<Credit>>();
-        this.notes = new ArrayList<String>();
-        this.changeInProgress = true;
-    }
-
-    public Student(String username, String password, String firstName, String lastName, String email, Major major,
-            ArrayList<Credit> credits) {
-        super(username, password, firstName, lastName, email);
+        this.uscID = uscID;
         this.major = major;
         this.credits = credits;
         this.requirements = new HashMap<Requirement, ArrayList<Credit>>();
         this.notes = new ArrayList<String>();
         this.changeInProgress = true;
     }
-
-    public Student(String username, String password, String firstName, String lastName, String email, Major major,
-            ArrayList<Credit> credits, HashMap<Requirement, ArrayList<Credit>> requirements, ArrayList<String> notes) {
+    public Student(String username, String password, String firstName, String lastName, String email, String uscID, Major major, ArrayList<Credit> credits, HashMap<Requirement, ArrayList<Credit>> requirements, ArrayList<String> notes){
         super(username, password, firstName, lastName, email);
+        this.uscID = uscID;
         this.major = major;
         this.credits = credits;
         this.requirements = requirements;
@@ -48,10 +39,9 @@ public class Student extends User {
         this.changeInProgress = false;
         populateBackups();
     }
-
-    public Student(String username, Major major, ArrayList<Credit> credits,
-            HashMap<Requirement, ArrayList<Credit>> requirements, ArrayList<String> notes) {
+    public Student(String username, String uscID, Major major, ArrayList<Credit> credits, HashMap<Requirement, ArrayList<Credit>> requirements, ArrayList<String> notes){
         super(username);
+        this.uscID = uscID;
         this.major = major;
         this.credits = credits;
         this.requirements = requirements;
@@ -64,6 +54,15 @@ public class Student extends User {
         this.backUpMajor = major;
         this.backupCredits = credits;
         this.backupRequirements = requirements;
+    }
+
+    public String getUscID(){
+        return this.uscID;
+    }
+    public void setUscID(String uscID){
+        if(uscID == null)
+            return;
+        this.uscID = uscID;
     }
 
     public Major getMajor() {
