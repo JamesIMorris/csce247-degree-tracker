@@ -10,4 +10,16 @@ public class UIFormatter {
 
         return "";
     }
+    public static String adivsorHomePage(String username){
+
+        return "";
+    }
+    public static String advisorStudentPage(String studentUsername){
+
+        return "";
+    }
+    public static String advisorNotes(){
+
+        return "";
+    }
 }

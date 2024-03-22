@@ -28,18 +28,57 @@ public class DegreeTracker {
         return userList.login(username, password);
     }
 
-    public boolean signup(String username, String password, String firstName, String lastName, String email,
-            UserType type) {
-        if (userList.signup(username, password, firstName, lastName, email, type) == null)
-            return false;
-        return true;
+    public boolean logout(){
+        return UserList.getInstance().logout();
     }
 
-    public void logout() {
-        isLoggedIn = false;
-        userList.setCurrentUser(null);
-        System.out.println("Logout successful");
+    public boolean checkSignup(String username, String password){
+        return userList.checkSignup( username, password);
     }
+
+    public boolean studentSignup(String username, String password, String firstName, String lastName, String email,
+            String uscID) {
+        return userList.studentSignup(username, password, firstName, lastName, email, uscID);
+    }
+    public boolean advisorSignup(String username, String password, String firstName, String lastName, String email){
+        return userList.advisorSignup(username, password, firstName, lastName, email);
+    }
+    public boolean studentAssignCourse(String username, String courseID, String semesterTaken, String requirement){
+        Student test = ((Student)userList.findUser(username)).assignCredit(courseID, semesterTaken, requirement);
+    }
+    public boolean setApplicationArea(String username, String applicationArea){
+        ((Student)userList.findUser(username)).setApplicatioNArea(applicationArea);
+        return true;
+    }
+    public String findStudentFromID(String uscID){
+        return userList.findStudentFromID(uscID);
+    }
+    public boolean addNote(String username, String note){
+        return ((Student)userList.findUser(username)).addNote(note);
+    }
+
+    public static String studentHomePage(String username){
+        return UIFormatter.studentHomePage(username);
+    }
+    public static String studentUnsatisfiedRequirements(String username){
+        return UIFormatter.studentUnsatisfiedRequirements(username);
+    }
+    public static String studentPossibleRequirementCredits(String username, String requirement){
+        return UIFormatter.studentPossibleRequirementCredits(username, requirement);
+    }
+    public static String adivsorHomePage(String username){
+        return UIFormatter.adivsorHomePage(username);
+    }
+    public static String advisorStudentPage(String studentUsername){
+        return UIFormatter.advisorStudentPage(studentUsername);
+    }
+    public static String advisorNotes(){
+        return UIFormatter.advisorNotes();
+    }
+}
+
+
+
 
     public User getCurrentUser() {
         return userList.getCurrentUser();
