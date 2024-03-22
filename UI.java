@@ -151,24 +151,73 @@ public class UI {
 
         if (degreeTracker.getCurrentUser().getUserType() == UserType.ADVISOR) {
             Advisor advisor = (Advisor) degreeTracker.getCurrentUser();
-            System.out.println("Adding an advisee...");
-            System.out.print("Enter the username of the advisee: ");
-            String adviseeUsername = scanner.nextLine();
-            if (advisor.addAdvisee(adviseeUsername)) {
-                System.out.println("Advisee added successfully.");
-            } else {
-                System.out.println("Failed to add advisee.");
-            }
-        }
+            boolean exitAdvisorMenu = false;
+            while (!exitAdvisorMenu) {
+                System.out.println("Would you like to:");
+                System.out.println("1. Add an advisee");
+                System.out.println("2. View student progress");
+                System.out.println("3. Logout");
+                System.out.print("Enter your choice: ");
+                int advisorChoice = scanner.nextInt();
+                scanner.nextLine();
 
-        Student student = (Student) UserList.getInstance().findUser(studentid);
-        if (student != null) {
-            System.out.print("Enter the note: ");
-            String note = scanner.nextLine();
-            student.addNote(note);
-            System.out.println("Note added successfully.");
-        } else {
-            System.out.println("Student not found.");
+                switch (advisorChoice) {
+                    case 1:
+                        System.out.println("Adding an advisee...");
+                        System.out.print("Enter the username of the advisee: ");
+                        String adviseeUsername = scanner.nextLine();
+                        if (advisor.addAdvisee(adviseeUsername)) {
+                            System.out.println("Advisee added successfully.");
+                        } else {
+                            System.out.println("Failed to add advisee.");
+                        }
+                        break;
+                    case 2:
+                        System.out.print("Enter the username of the student: ");
+                        String studentUsername = scanner.nextLine();
+                        Student student = (Student) UserList.getInstance().findUser(studentUsername);
+                        if (student != null) {
+
+                            viewProgress(student);
+
+                            System.out.print("Enter the note: ");
+                            String note = scanner.nextLine();
+                            student.addNote(note);
+                            System.out.println("Note added successfully.");
+
+                            boolean viewProgressAgain = true;
+                            while (viewProgressAgain) {
+                                System.out.println("Would you like to:");
+                                System.out.println("1. View student progress again");
+                                System.out.println("2. Return to main menu");
+                                System.out.print("Enter your choice: ");
+                                int progressChoice = scanner.nextInt();
+                                scanner.nextLine();
+
+                                switch (progressChoice) {
+                                    case 1:
+                                        viewProgress(student);
+                                        break;
+                                    case 2:
+                                        viewProgressAgain = false;
+                                        break;
+                                    default:
+                                        System.out.println("Invalid choice. Please try again.");
+                                        break;
+                                }
+                            }
+                        } else {
+                            System.out.println("Student not found.");
+                        }
+                        break;
+                    case 3:
+                        degreeTracker.logout();
+                        break;
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                        break;
+                }
+            }
         }
     }
 
