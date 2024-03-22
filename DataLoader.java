@@ -297,7 +297,7 @@ public class DataLoader extends DataConstants{
                 UUID id = UUID.fromString((String)reqJSON.get(REQUIREMENTS_UUID));
                 String name = (String)reqJSON.get(REQUIRMENT_NAME);
                 String categoryName = (String)reqJSON.get(REQUIREMENT_CATEGORY);
-                Category category = Category.valueOf(categoryName.toUpperCase());
+                Category category = Category.fromAbbreviation(categoryName.toUpperCase());
                 int creditHoursRequired = ((Long)reqJSON.get(REQUIREMENT_CREDITS_REQUIRED)).intValue();
 
                 JSONArray courseIDsArray = (JSONArray)reqJSON.get(REQUIRMENT_COURSE_ID);
