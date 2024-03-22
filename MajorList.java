@@ -52,7 +52,6 @@ public class MajorList {
         }
         DegreeTracker.getInstance().addError("Major not found with name: " + id);
         return null;
-      }throw new RuntimeException("Major not found with name: "+id);
-}
+    }
 
 }
