@@ -184,17 +184,30 @@ public class DataLoader extends DataConstants{
         for(Object obj : studentsArray) {
             JSONObject studentObj = (JSONObject) obj;
             String username = (String)studentObj.get(STUDENT_USERNAME);
+            UUID uscid = UUID.fromString((String)studentObj.get("uscID"));
+            String applicationarea = (String)studentObj.get("applicationArea");
             
             String majorName = (String)studentObj.get("major");
             Major major = MajorList.getInstance().getMajor(majorName);
+            String year = (String)studentObj.get("year");
 
             JSONArray creditsArray = (JSONArray)studentObj.get(STUDENT_CREDITS);
             ArrayList<Credit> credits = new ArrayList<>();
             for(Object creditObj : creditsArray) {
                 JSONObject creditJSON = (JSONObject) creditObj;
-                String courseID = (String)creditJSON.get(STUDENT_COURSE);
+                Course courseID = (Course)creditJSON.get(STUDENT_COURSE);
+
+                JSONObject semesterTakenJSON = (JSONObject)creditJSON.get("semesterTaken");
+                int yearTaken = ((Long)semesterTakenJSON.get("year")).intValue();
+                String seasonTaken = (String)semesterTakenJSON.get("season");
+                Season season = Season.fromString(seasonTaken);
+                Semester semesterTaken = new Semester(yearTaken, season);
                 int grade = ((Long)creditJSON.get("grade")).intValue();
-                credits.add(new Credit(courseID, grade));
+                CreditType type = (CreditType)creditJSON.get("type");
+                int requirementsAssignedTo = ((Long)creditJSON.get("requirementsAssignedTo")).intValue();
+                String note = (String)creditJSON.get("note");
+                Credit credit = new Credit (courseID, semesterTaken, grade, type, requirementsAssignedTo, note);
+                credits.add(credit);
             }
 
             JSONArray requirementsArray = (JSONArray)studentObj.get(STUDENT_REQUIREMENTS_LIST);
@@ -222,7 +235,7 @@ public class DataLoader extends DataConstants{
                 notes.add(note);
             }
 
-            Student student = new Student(username, major, credits, requirements, notes);
+            Student student = new Student(username, major, applicationArea, credits, requirements, notes);
             students.add(student);
         }
     } catch (Exception e) {
@@ -379,9 +392,9 @@ public class DataLoader extends DataConstants{
         for (Course course : courses) {
             System.out.println("\n" + course.getCourseID());
             System.out.println(course);
-            System.out.println("Course Description: " + course.getCourseDescprition());
+            System.out.println("Course Description: " + course.getCourseDescription());
             System.out.println("Credit Hours: " + course.getCreditHours());
-            System.out.println("Semester Availability: " + course.getSemeseterAvailabilty());
+            System.out.println("Semester Availability: " + course.getSemesterAvailability());
             System.out.println("Pre-Requisites: " + course.getPreRequisites());
             System.out.println("Co-Requisites: " + course.getCoRequisites());
             System.out.println("Type: " + course.getType());
