@@ -66,22 +66,27 @@ public class DegreeTracker {
         return ((Student)userList.findUser(username)).addNote(note);
     }
 
-    public static String studentHomePage(String username){
+    public String studentHomePage(String username){
         return UIFormatter.studentHomePage(username);
     }
-    public static String studentUnsatisfiedRequirements(String username){
+    public String studentUnsatisfiedRequirements(String username){
         return UIFormatter.studentUnsatisfiedRequirements(username);
     }
-    public static String studentPossibleRequirementCredits(String username, String requirement){
+    public String studentPossibleRequirementCredits(String username, String requirement){
         return UIFormatter.studentPossibleRequirementCredits(username, requirement);
     }
-    public static String adivsorHomePage(String username){
+    public String adivsorHomePage(String username){
         return UIFormatter.adivsorHomePage(username);
+    }
+    public String homePage(String username){
+        if(userList.getCurrentUser().getUserType().equals(UserType.STUDENT))
+            return studentHomePage(username);
+        return adivsorHomePage(username);
     }
     public static String advisorStudentPage(String studentUsername){
         return UIFormatter.advisorStudentPage(studentUsername);
     }
-    public static String advisorNotes(){
+    public static String advisorNotes(String username){
         return UIFormatter.advisorNotes();
     }
 
