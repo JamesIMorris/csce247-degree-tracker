@@ -111,16 +111,20 @@ public class DataWriter extends DataConstants {
     // Students
     public boolean saveStudents() {
         UserList User = UserList.getInstance();
-        ArrayList<User> userList = User.getUsers();
+        ArrayList<User> students = User.searchUserByType(UserType.STUDENT);
         JSONArray jsonStudents = new JSONArray();
 
-        for (int i = 0; i < userList.size(); i++) {
-            jsonStudents.add(getStudentJSON(userList.get(i)));
+        for(User user : students) {
+            if(user instanceof Student) {
+                Student student = (Student)user;
+                JSONObject studentJSON = getStudentJSON(student);
+                jsonStudents.add(studentJSON);
+            }
         }
 
         try (FileWriter file = new FileWriter(STUDENT_FILE_NAME)) {
 
-            file.write(jsonUsers.toJSONString());
+            file.write(jsonStudents.toJSONString());
             file.flush();
             return true;
 
@@ -133,29 +137,58 @@ public class DataWriter extends DataConstants {
     public static JSONObject getStudentJSON(Student student) {
         JSONObject studentDetails = new JSONObject();
         studentDetails.put("username", student.getUsername());
+        studentDetails.put("uscID", student.getUscID());
+        studentDetails.put("applicationArea", student.getApplicationArea());
         studentDetails.put("major", student.getMajor());
+        studentDetails.put("year", student.getYear());
 
         JSONArray jsonCredits = new JSONArray();
         for (Credit credit : student.getCredits()){
             JSONObject jsonCredit = new JSONObject();
             jsonCredit.put(STUDENT_COURSE, credit.getCourse());
-            jsonCredit.put(STUDENT_SEMESTER_TAKEN, credit.getSemesterTaken());
+            JSONObject semesterTaken = new JSONObject();
+            semesterTaken.put("year", credit.getSemesterTaken().getYear());
+            semesterTaken.put("season", credit.getSemesterTaken().getSeason());
+            jsonCredit.put(STUDENT_SEMESTER_TAKEN, semesterTaken);
+            jsonCredit.put("grade", credit.getGrade());
             jsonCredit.put("type", credit.getType());
             jsonCredit.put("requirementsAssignedTo", credit.getRequirementsAssignedTo());
-        }
+        
             JSONArray possibleRequirements = new JSONArray();
-            for(Requirement requirement : credit.getPossibleRequirements()) {
+            for(Credit.PossibleRequirement possibleRequirement : credit.getPossibleRequirements()) {
                 JSONObject requirementObject = new JSONObject();
-                Requirement req = new Requirement();
-                requirementObject.put("requirement", req.getName());
-                requirementObject.put(STUDENT_AVAILABLE, requirement.isAvailable());
+                
+                requirementObject.put("requirement", possibleRequirement.getRequirement().getName());
+                requirementObject.put("available", possibleRequirement.getPossible());
                 possibleRequirements.add(requirementObject);
             }
             jsonCredit.put("possibleRequirement", possibleRequirements);
 
-            jsonCredit.put("note", credit.getNotes());
+            jsonCredit.put("note", credit.getNote());
             jsonCredits.add(jsonCredits);
+
         }
+        studentDetails.put("credits", jsonCredits);
+
+        JSONArray jsonRequirements = new JSONArray();
+        for(Requirement requirement : student.getRequirements()) {
+            JSONObject requirementObj = new JSONObject();
+            requirementObj.put("requirement", requirement.getName());
+            JSONArray creditsArray = new JSONArray();
+            for(String creditID : requirement.getCredits()){
+                creditsArray.add(creditID);
+            }
+            requirementObj.put("credits", creditsArray);
+            jsonRequirements.add(requirementObj);
+        }
+        studentDetails.put("requirements", jsonRequirements);
+        JSONArray notesArray = new JSONArray();
+        for(String note : student.getNotes()){
+            notesArray.add(note);
+        }
+        studentDetails.put("notes", notesArray);
+        return studentDetails;
+    }
         /* 
                  studentDetails.put(STUDENT_USER_NAME, student.getCourseID());
         studentDetails.put(STUDENT_AVAILABLE, student.getCourseID());
