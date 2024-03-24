@@ -87,7 +87,7 @@ public class DegreeTracker {
         return UIFormatter.advisorStudentPage(studentUsername);
     }
     public static String advisorNotes(String username){
-        return UIFormatter.advisorNotes(String username);
+        return UIFormatter.advisorNotes(username);
     }
 
     public String getCurrentUsername(){
