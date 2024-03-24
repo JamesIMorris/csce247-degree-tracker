@@ -63,7 +63,7 @@ public class DegreeTracker {
         return userList.findStudentFromID(uscID);
     }
     public boolean addNote(String username, String note){
-        return ((Student)userList.findUser(username)).addNote(note);
+        return ((Student)userList.findUser(username)).addNote(note + "\n-" + userList.getCurrentUser());
     }
 
     public String studentHomePage(String username){
