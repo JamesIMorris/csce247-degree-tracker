@@ -19,7 +19,7 @@ public class UIFormatter {
 
         return "";
     }
-    public static String advisorNotes(){
+    public static String advisorNotes(String username){
 
         return "";
     }

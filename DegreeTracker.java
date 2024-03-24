@@ -38,11 +38,11 @@ public class DegreeTracker {
     }
 
     public boolean logout(){
-        return UserList.getInstance().logout();
+        return userList.logout();
     }
 
     public boolean checkSignup(String username, String password){
-        return userList.checkSignup( username, password);
+        return userList.checkSignup(username, password);
     }
 
     public boolean studentSignup(String username, String password, String firstName, String lastName, String email,
@@ -87,7 +87,11 @@ public class DegreeTracker {
         return UIFormatter.advisorStudentPage(studentUsername);
     }
     public static String advisorNotes(String username){
-        return UIFormatter.advisorNotes();
+        return UIFormatter.advisorNotes(username);
+    }
+
+    public String getCurrentUsername(){
+        return userList.getCurrentUser().getUsername();
     }
 
     public User getCurrentUser() {
