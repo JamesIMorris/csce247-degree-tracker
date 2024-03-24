@@ -25,6 +25,12 @@ public class Semester{
     this.season = season;
   }
 
+  public String getAbbreviation(){
+    String seasonAbbreviation = season.abbreviation;
+    String yearAbbreviation = Integer.toString(year).substring(2, 4);
+    return seasonAbbreviation + yearAbbreviation;
+  }
+
   public int compare(Semester compareSemester){
     if(this.year < compareSemester.getYear())
       return -1;
@@ -58,21 +64,21 @@ public class Semester{
       return new Semester(year, season);
   }
 
-  public static Semester trueSemester(Semester currenSemester){
-    if(currenSemester.season == Season.FALL || currenSemester.season == Season.SPRING)
-      return currenSemester;
-    if(currenSemester.season == Season.WINTER)
-      return new Semester(currenSemester.year, Season.FALL);
-    return new Semester(currenSemester.year, Season.SPRING);
+  public Semester trueSemester(){
+    if(season == Season.FALL || season == Season.SPRING)
+      return this;
+    if(season == Season.WINTER)
+      return new Semester(year, Season.FALL);
+    return new Semester(year, Season.SPRING);
   }
 
-  public static Semester incremenSemester(Semester prevSemester){
-    boolean yearChange = false;
-    switch (prevSemester.season.half) {
+  public void incrementSemester(){
+    switch (this.season.half) {
     case(1):
-      return new Semester(prevSemester.getYear() + 1, Season.SPRING);
+      this.year++;
+      this.season = Season.SPRING;
     default:
-      return new Semester(prevSemester.getYear(), Season.FALL);
+      this.season = Season.FALL;
     }
   }
 }
