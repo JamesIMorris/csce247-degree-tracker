@@ -221,7 +221,8 @@ public class UserList {
             if(student.getUscID().equalsIgnoreCase(uscID))
                 return student.getUsername();
         }
-        return "Not found";
+        DegreeTracker.getInstance().addError("USCID Not Found");
+        return null;
     }
 
     public ArrayList<User> searchUserByType(UserType userType) {
