@@ -57,4 +57,22 @@ public class Semester{
       Season season = Season.fromString(abbreviation.substring(0, 2));
       return new Semester(year, season);
   }
+
+  public static Semester trueSemester(Semester currenSemester){
+    if(currenSemester.season == Season.FALL || currenSemester.season == Season.SPRING)
+      return currenSemester;
+    if(currenSemester.season == Season.WINTER)
+      return new Semester(currenSemester.year, Season.FALL);
+    return new Semester(currenSemester.year, Season.SPRING);
+  }
+
+  public static Semester incremenSemester(Semester prevSemester){
+    boolean yearChange = false;
+    switch (prevSemester.season.half) {
+    case(1):
+      return new Semester(prevSemester.getYear() + 1, Season.SPRING);
+    default:
+      return new Semester(prevSemester.getYear(), Season.FALL);
+    }
+  }
 }
