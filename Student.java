@@ -19,7 +19,7 @@ public class Student extends User{
         this.requirements = new HashMap<Requirement, ArrayList<Credit>>();
         this.notes = new ArrayList<String>();
         this.uscID = uscID;
-        this.applicationArea = "Unselected";
+        this.applicationArea = "Undecided";
         this.changeInProgress = true; 
     }
     public Student(String username, String password, String firstName, String lastName, String email, String uscID, Major major, ArrayList<Credit> credits){
@@ -29,7 +29,7 @@ public class Student extends User{
         this.credits = credits;
         this.requirements = new HashMap<Requirement, ArrayList<Credit>>();
         this.notes = new ArrayList<String>();
-        this.applicationArea = "Unselected";
+        this.applicationArea = "Undecided";
         this.changeInProgress = true;
     }
     public Student(String username, String password, String firstName, String lastName, String email, String uscID, Major major, String applicationArea, ArrayList<Credit> credits, HashMap<Requirement, ArrayList<Credit>> requirements, ArrayList<String> notes){
