@@ -221,6 +221,22 @@ public class UserList {
             if(student.getUscID().equalsIgnoreCase(uscID))
                 return student.getUsername();
         }
-        return "Not found";
+        DegreeTracker.getInstance().addError("USCID Not Found");
+        return null;
     }
+
+    public ArrayList<User> searchUserByType(UserType userType) {
+        ArrayList<User> usersByType = new ArrayList<>();
+        for(User user : users) {
+            if(user instanceof Student && userType == UserType.STUDENT){
+                usersByType.add(user);
+            } else if(user instanceof Advisor && userType == UserType.ADVISOR) {
+                usersByType.add(user);
+            } else if(user instanceof Admin && userType == UserType.ADMIN) {
+                usersByType.add(user);
+            }
+        }
+        return usersByType;
+    }
+
 }

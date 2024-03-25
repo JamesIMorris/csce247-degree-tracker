@@ -30,40 +30,6 @@ public class UI {
                 System.out.println(loginUsername + " is now logged in");
                 loggedIn = true;
 
-                User currentUser = degreeTracker.getCurrentUser();
-                if (currentUser != null) {
-                    System.out.println("Welcome, " + currentUser.getFirstName() + " " + currentUser.getLastName());
-
-                    if (currentUser instanceof Student) {
-                        Student student = (Student) currentUser;
-                        System.out.println("Major: " + student.getMajor());
-                        /*
-                         * method to get student's year
-                         * System.out.println("Year: " + student.getYear());
-                         */
-
-                        System.out.println("Choose an option:");
-                        System.out.println("1. View degree progress");
-                        System.out.println("2. Logout");
-                        int option = scanner.nextInt();
-                        scanner.nextLine();
-
-                        switch (option) {
-                            case 1:
-                                viewProgress(student);
-                                break;
-                            case 2:
-                                degreeTracker.logout();
-                                break;
-                            default:
-                                System.out.println("Invalid option. Please choose again.");
-                        }
-                    } else {
-                        System.out.println("User is not a student.");
-                    }
-                } else {
-                    System.out.println("User not found.");
-                }
             } else {
                 System.out.println("Sorry we couldn't log you in. Do you want to try again? (yes/no)");
                 String choice = scanner.nextLine();
@@ -72,38 +38,120 @@ public class UI {
                     break;
                 }
             }
-        }
-    }
 
-    public void viewProgress(Student student) {
-        System.out.println("Your Progress:");
-        System.out.println("---------------");
-        System.out.println("Major: " + student.getMajor());
-        System.out.println("Credits:");
-        for (Credit credit : student.getCredits()) {
-            System.out.println("- Course: " + credit.getCourse().getCourseName() + ", Semester: "
-                    + credit.getSemesterTaken() + ", Grade: " + credit.getGrade());
-        }
-        System.out.println("Requirements:");
-        for (Map.Entry<Requirement, ArrayList<Credit>> entry : student.getRequirements().entrySet()) {
-            Requirement requirement = entry.getKey();
-            ArrayList<Credit> credits = entry.getValue();
-            System.out.println("- " + requirement.getName() + " (" + requirement.getCategory() + "):");
-            System.out.println("  Credits earned:");
-            for (Credit credit : credits) {
-                System.out.println("    - Course: " + credit.getCourse().getCourseName() + ", Semester: "
-                        + credit.getSemesterTaken() + ", Grade: " + credit.getGrade());
+            String homePage = degreeTracker.studentHomePage(loginUsername);
+            System.out.println(homePage);
+
+            System.out.println("Courses yet to take: ");
+            String unsatisifedRequirements = degreeTracker.studentUnsatisfiedRequirements(loginUsername);
+            System.out.println(unsatisifedRequirements);
+
+            System.out.println("\nPossible credits for the following requirements:");
+            String[] requirements = unsatisifedRequirements.split(","); // Split by comma assuming requirements are
+                                                                        // separated by comma
+            for (int i = 0; i < requirements.length; i++) {
+                String possibleCredits = degreeTracker.studentPossibleRequirementCredits(loginUsername,
+                        requirements[i]);
+                System.out.println((i + 1) + ". " + requirements[i] + ": " + possibleCredits);
             }
 
-            ArrayList<Course> coursesNeeded = new ArrayList<>(requirement.getCourses());
-            for (Credit credit : credits) {
-                coursesNeeded.remove(credit.getCourse());
+            System.out.print("\nEnter the course ID you want to select: ");
+            String courseID = scanner.nextLine();
+
+            System.out.println("\nSelect semester (Spring, Fall, Winter, Summer): ");
+            String semesterTaken = scanner.nextLine();
+
+            if (!(semesterTaken.equalsIgnoreCase("Spring") || semesterTaken.equalsIgnoreCase("Fall")
+                    || semesterTaken.equalsIgnoreCase("Winter") || semesterTaken.equalsIgnoreCase("Summer"))) {
+                System.out.println("Invalid semester choice.");
+                return;
             }
 
-            System.out.println("  Courses yet to take:");
-            for (Course course : coursesNeeded) {
-                System.out.println("    - " + course.getCourseName());
+            boolean success = degreeTracker.studentAssignCourse(loginUsername, courseID, semesterTaken,
+                    requirements[0]); // Assuming the first requirement for simplicity
+            if (success) {
+                System.out.println("Course " + courseID + " successfully assigned for " + requirements[0]); // Assuming
+                                                                                                            // the first
+                                                                                                            // requirement
+                                                                                                            // for
+                                                                                                            // simplicity
+            } else {
+                System.out.println("Failed to assign course " + courseID + " for " + requirements[0]); // Assuming the
+                                                                                                       // first
+                                                                                                       // requirement
+                                                                                                       // for simplicity
             }
+
+            System.out.println("\nApplication Area Topics:");
+            System.out.println("1. Science");
+            System.out.println("2. Math");
+            System.out.println("3. Digital Design");
+            System.out.println("4. Robotics");
+            System.out.println("5. Speech");
+
+            System.out.print("Enter the number of your choice: ");
+            int applicationOption = scanner.nextInt();
+            scanner.nextLine();
+
+            String applicationArea;
+            switch (applicationOption) {
+                case 1:
+                    applicationArea = "Science";
+                    break;
+                case 2:
+                    applicationArea = "Math";
+                    break;
+                case 3:
+                    applicationArea = "Digital Design";
+                    break;
+                case 4:
+                    applicationArea = "Robotics";
+                    break;
+                case 5:
+                    applicationArea = "Speech";
+                    break;
+                default:
+                    System.out.println("Invalid option selected. Please select a valid application area.");
+                    return;
+            }
+
+            degreeTracker.setApplicationArea(loginUsername, applicationArea);
+            System.out.println("Application area set to: " + applicationArea);
+
+            System.out.println("\nSelect courses for Digital Design:");
+
+            // courses here
+
+            System.out.println(
+                    "\nSelect courses for Digital Design (Enter course ID, semester taken, and requirement, or type 'done' to finish):");
+            ArrayList<String[]> selectedCourses = new ArrayList<>();
+            String[] courseInfo;
+            while (true) {
+                System.out.print("Enter course ID: ");
+                String selectedCourseID = scanner.nextLine();
+                if (selectedCourseID.equalsIgnoreCase("done")) {
+                    break;
+                }
+                System.out.print("Enter semester taken (e.g., Fall, Spring, Summer, Winter): ");
+                String selectedSemesterTaken = scanner.nextLine();
+                System.out.print("Enter requirement: ");
+                String selectedRequirement = scanner.nextLine();
+                courseInfo = new String[] { selectedCourseID, selectedSemesterTaken, selectedRequirement };
+                selectedCourses.add(courseInfo);
+            }
+
+            for (String[] info : selectedCourses) {
+                boolean successCourse = degreeTracker.studentAssignCourse(loginUsername, info[0], info[1], info[2]);
+                if (successCourse) {
+                    System.out.println("Course " + info[0] + " successfully assigned for " + info[2]);
+                } else {
+                    System.out.println("Failed to assign course " + info[0] + " for " + info[2]);
+                }
+            }
+
+            // eight semester plan
+
+            degreeTracker.logout();
         }
     }
 
@@ -121,7 +169,7 @@ public class UI {
         System.out.print("Enter email: ");
         String email = scanner.nextLine();
 
-        if (degreeTracker.signup(username, password, firstName, lastName, email, UserType.ADVISOR)) {
+        if (degreeTracker.advisorSignup(username, password, firstName, lastName, email)) {
             System.out.println("Advisor account created successfully.");
         } else {
             System.out.println("Failed to create an advisor account.");
@@ -151,73 +199,12 @@ public class UI {
 
         if (degreeTracker.getCurrentUser().getUserType() == UserType.ADVISOR) {
             Advisor advisor = (Advisor) degreeTracker.getCurrentUser();
-            boolean exitAdvisorMenu = false;
-            while (!exitAdvisorMenu) {
-                System.out.println("Would you like to:");
-                System.out.println("1. Add an advisee");
-                System.out.println("2. View student progress");
-                System.out.println("3. Logout");
-                System.out.print("Enter your choice: ");
-                int advisorChoice = scanner.nextInt();
-                scanner.nextLine();
+            degreeTracker.adivsorHomePage(username);
+            degreeTracker.findStudentFromID(uscID);
 
-                switch (advisorChoice) {
-                    case 1:
-                        System.out.println("Adding an advisee...");
-                        System.out.print("Enter the username of the advisee: ");
-                        String adviseeUsername = scanner.nextLine();
-                        if (advisor.addAdvisee(adviseeUsername)) {
-                            System.out.println("Advisee added successfully.");
-                        } else {
-                            System.out.println("Failed to add advisee.");
-                        }
-                        break;
-                    case 2:
-                        System.out.print("Enter the username of the student: ");
-                        String studentUsername = scanner.nextLine();
-                        Student student = (Student) UserList.getInstance().findUser(studentUsername);
-                        if (student != null) {
+            degreeTracker.studentUnsatisfiedRequirements(username);
 
-                            viewProgress(student);
-
-                            System.out.print("Enter the note: ");
-                            String note = scanner.nextLine();
-                            student.addNote(note);
-                            System.out.println("Note added successfully.");
-
-                            boolean viewProgressAgain = true;
-                            while (viewProgressAgain) {
-                                System.out.println("Would you like to:");
-                                System.out.println("1. View student progress again");
-                                System.out.println("2. Return to main menu");
-                                System.out.print("Enter your choice: ");
-                                int progressChoice = scanner.nextInt();
-                                scanner.nextLine();
-
-                                switch (progressChoice) {
-                                    case 1:
-                                        viewProgress(student);
-                                        break;
-                                    case 2:
-                                        viewProgressAgain = false;
-                                        break;
-                                    default:
-                                        System.out.println("Invalid choice. Please try again.");
-                                        break;
-                                }
-                            }
-                        } else {
-                            System.out.println("Student not found.");
-                        }
-                        break;
-                    case 3:
-                        degreeTracker.logout();
-                        break;
-                    default:
-                        System.out.println("Invalid choice. Please try again.");
-                        break;
-                }
-            }
+            degreeTracker.logout();
         }
     }
 
