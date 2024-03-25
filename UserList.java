@@ -31,11 +31,6 @@ public class UserList {
             currentUser = user;
     }
 
-    public boolean createNewUser(String username, String password, String firstName, String lastName, String email,
-            UserType userType) {
-        return false;
-    }
-
     public User signup(String username, String password, String firstName, String lastName, String email,
             UserType type) {
         boolean success = true;
