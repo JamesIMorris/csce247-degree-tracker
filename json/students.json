@@ -8,8 +8,9 @@
     "credits":
     [
       {
+        "id":"32c68043-6537-47bf-995a-a580469e4ffc",
         "course":"ENGL101",
-        "semesterTaken":{"year":2022, "season":"FALL"},
+        "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
         "requirementsAssignedTo":1,
@@ -21,130 +22,116 @@
         "note":"N/A"
       },
       {
+        "id":"c857b376-82b2-4091-acd1-377f7836c7a2",
         "course":"MATH122",
-        "semesterTaken":"FALL",
+        "semesterTaken":"FA22",
         "grade":70,
-        "completion":false,
-        "note":"",
-        "preRequisites":"NONE",
-        "requirement":"CC-ARP"
+        "type":"DEFAULT",
+        "note":""
       },
       {
+        "id":"38f2393a-f978-41c4-8177-ec24cb72dcc3",
         "course":"MATH141",
-        "semesterTaken":"FALL",
+        "semesterTaken":"FA22",
         "grade":70,
-        "completion":false,
-        "note":"",
-        "preRequisites":"NONE",
-        "requirement":"CC-ARP"
+        "type":"DEFAULT",
+        "note":""
       },
       {
+        "id":"11526084-84c8-41c5-8176-b84aea6ecdcc",
         "course":"CSCE145",
-        "semesterTaken":"FALL",
+        "semesterTaken":"FA22",
         "grade":70,
-        "completion":false,
-        "note":"",
-        "preRequisites":"NONE",
-        "requirement":"CC-CMW"
+        "type":"DEFAULT",
+        "note":""
       },
       {
+        "id":"7975cd8c-7820-4dca-b3c1-82da97bec634",
         "course":"CSCE190",
-        "semesterTaken":"FALL",
+        "semesterTaken":"FA22",
         "grade":70,
-        "completion":false,
-        "note":"",
-        "preRequisites":"NONE",
-        "requirement":"CC-CMW"
+        "type":"DEFAULT",
+        "note":""
       },
       {
+        "id":"5c0cc7bd-702d-4a0f-aed8-9f8dc1041167",
         "course":"CSCE146",
-        "semesterTaken":"FALL",
+        "semesterTaken":"FA22",
         "grade":70,
-        "completion":false,
-        "note":"",
-        "preRequisites":"NONE",
-        "requirement":"CC-CMW"
+        "type":"DEFAULT",
+        "note":""
       },
       {
+        "id":"cb88d9bb-7e41-46ca-9125-c32b50c56ac7",
         "course":"CSCE215",
-        "semesterTaken":"FALL",
+        "semesterTaken":"FA22",
         "grade":70,
-        "completion":false,
-        "note":"",
-        "preRequisites":"NONE",
-        "requirement":"CC-CMW"
+        "type":"DEFAULT",
+        "note":""
       },
       {
+        "id":"cb56dc5c-6dc4-467e-8fd8-9bec10bde821",
         "course":"CSCE205",
-        "semesterTaken":"FALL",
+        "semesterTaken":"FA22",
         "grade":70,
-        "completion":false,
-        "note":"",
-        "preRequisites":"NONE",
-        "requirement":"CC-CMW"
+        "type":"DEFAULT",
+        "note":""
       },
       {
+        "id":"",
         "course":"CSCE242",
-        "semesterTaken":"FALL",
+        "semesterTaken":"FA22",
         "grade":70,
-        "completion":false,
-        "note":"",
-        "preRequisites":"NONE",
-        "requirement":"CC-CMW"
+        "type":"DEFAULT",
+        "note":""
       },
       {
+        "id":"857fc00d-57fe-4a58-886e-c1cf2a77a976",
         "course":"CSCE210",
-        "semesterTaken":"FALL",
+        "semesterTaken":"FA22",
         "grade":70,
-        "completion":false,
-        "note":"",
-        "preRequisites":"NONE",
-        "requirement":"CC-CMW"
+        "type":"DEFAULT",
+        "note":""
       },
       {
+        "id":"d0f95853-c541-4d9b-89e0-85ed69b630ee",
         "course":"CSCE247",
-        "semesterTaken":"FALL",
+        "semesterTaken":"FA22",
         "grade":70,
-        "completion":false,
-        "note":"",
-        "preRequisites":"NONE",
-        "requirement":"CC-CMW"
+        "type":"DEFAULT",
+        "note":""
       },
       {
+        "id":"1315c540-624c-4c83-9a4d-e0e148cbd836",
         "course":"ECON224",
-        "semesterTaken":"FALL",
+        "semesterTaken":"FA22",
         "grade":70,
-        "completion":false,
-        "note":"",
-        "preRequisites":"NONE",
-        "requirement":"CC-CMW"
+        "type":"DEFAULT",
+        "note":""
       },
       {
+        "id":"cbf7eff3-bbbf-46b4-aff7-f6090dd53fe1",
         "course":"SPCH140",
-        "semesterTaken":"FALL",
+        "semesterTaken":"FA22",
         "grade":70,
-        "completion":false,
-        "note":"",
-        "preRequisites":"NONE",
-        "requirement":"CC-CMW"
+        "type":"DEFAULT",
+        "note":""
       },
       {
+        "id":"7b9981a4-db0e-4d57-ab1e-53187398f18d",
         "course":"SPCH145",
-        "semesterTaken":"FALL",
+        "semesterTaken":"FA22",
         "grade":70,
-        "completion":false,
-        "note":"",
-        "preRequisites":"NONE",
-        "requirement":"CC-CMW"
+        "type":"DEFAULT",
+        "note":""
       },
       {
+        "id":"63dd9950-69a0-4879-bc4a-533df72d9b10",
         "course":"SPCH230",
-        "semesterTaken":"FALL",
+        "semesterTaken":"FA22",
         "grade":70,
-        "completion":false,
-        "note":"",
-        "preRequisites":"NONE",
-        "requirement":"CC-CMW"
+        "type":"DEFAULT",
+        "note":""
       }
     ],
     "requirements":
