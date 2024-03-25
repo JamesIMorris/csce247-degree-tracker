@@ -347,4 +347,62 @@ public class DataWriter extends DataConstants {
 
         return requirementDetails;
     }
+
+    public static void main(String[] args) {
+        DataWriter writer = new DataWriter();
+        
+        boolean coursesSaved = writer.saveCourses();
+        if (coursesSaved) {
+            System.out.println("Courses saved successfully.");
+        } else {
+            System.out.println("Failed to save courses.");
+        }
+        
+        boolean usersSaved = writer.saveUsers();
+        if (usersSaved) {
+            System.out.println("Users saved successfully.");
+        } else {
+            System.out.println("Failed to save users.");
+        }
+        
+        boolean studentsSaved = writer.saveStudents();
+        if (studentsSaved) {
+            System.out.println("Students saved successfully.");
+        } else {
+            System.out.println("Failed to save students.");
+        }
+        
+        boolean majorsSaved = writer.saveMajors();
+        if (majorsSaved) {
+            System.out.println("Majors saved successfully.");
+        } else {
+            System.out.println("Failed to save majors.");
+        }
+        
+        boolean adminSaved = writer.saveAdmin();
+        if (adminSaved) {
+            System.out.println("Admin saved successfully.");
+        } else {
+            System.out.println("Failed to save admin.");
+        }
+        
+        boolean advisorsSaved = writer.saveAdvisors();
+        if (advisorsSaved) {
+            System.out.println("Advisors saved successfully.");
+        } else {
+            System.out.println("Failed to save advisors.");
+        }
+        
+        boolean requirementsSaved = writer.saveRequiremnets();
+        if (requirementsSaved) {
+            System.out.println("Requirements saved successfully.");
+        } else {
+            System.out.println("Failed to save requirements.");
+        }
+    
+    
+
+
+
+    }
 }

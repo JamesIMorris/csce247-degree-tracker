@@ -104,4 +104,19 @@ public class Requirement {
             courses.add(course);
         }
     }
+
+    public static ArrayList<Requirement> allRequirements(){
+        ArrayList<Requirement> allRequirements = new ArrayList<Requirement>();
+        for(Major major : MajorList.getInstance().getMajors())
+            for(Requirement requirement : major.getRequirements())
+                if(!allRequirements.contains(requirement))
+                    allRequirements.add(requirement);
+        return allRequirements;
+    }
+    public static Requirement fromID(UUID id){
+        for(Requirement requirement : allRequirements())
+            if(requirement.getID().equals(id))
+                return requirement;
+        return null;
+    }
 }

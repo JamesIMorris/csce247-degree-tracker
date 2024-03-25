@@ -159,10 +159,15 @@ public class UI {
                         }
                         break;
                     case 4:
-
-                        // eight semester plan
-
                         System.out.println("\nGenerating 8 semester plan...");
+                        System.out.print("Enter the file name to save the plan: ");
+                        String fileName = scanner.nextLine();
+                        boolean generationSuccess = degreeTracker.eightSemesterPlanToTextFile(fileName, loginUsername);
+                        if (generationSuccess) {
+                            System.out.println("Eight semester plan generated and saved to file: " + fileName + ".txt");
+                        } else {
+                            System.out.println("Failed to generate the eight semester plan.");
+                        }
                         break;
                     case 5:
                         degreeTracker.logout();
