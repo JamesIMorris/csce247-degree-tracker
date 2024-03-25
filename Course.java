@@ -6,12 +6,11 @@ public class Course {
     private String courseDescription;
     private int creditHours;
     private ArrayList<Season> semesterAvailability;
-    private ArrayList<String> preRequisites;
-    private ArrayList<String> coRequisites;
-    private boolean isOverlay;
+    private ArrayList<Course> preRequisites;
+    private ArrayList<Course> coRequisites;
     private CourseType type;
 
-    public Course(String courseID, String courseName, String courseDescription, int creditHours, ArrayList<Season> semesterAvailability, ArrayList<String> preRequisites, ArrayList<String> coRequisites, boolean isOverlay){
+    public Course(String courseID, String courseName, String courseDescription, int creditHours, ArrayList<Season> semesterAvailability, ArrayList<Course> preRequisites, ArrayList<Course> coRequisites, CourseType type){
         this.courseID = courseID;
         this.courseName = courseName;
         this.courseDescription = courseDescription;
@@ -19,7 +18,17 @@ public class Course {
         this.semesterAvailability = semesterAvailability;
         this.preRequisites = preRequisites;
         this.coRequisites = coRequisites;
-        this.isOverlay = isOverlay;
+        this.type = type;
+    }
+    public Course(String courseID, String courseName, String courseDescription, int creditHours, ArrayList<Season> semesterAvailability, CourseType type){
+        this.courseID = courseID;
+        this.courseName = courseName;
+        this.courseDescription = courseDescription;
+        this.creditHours = creditHours;
+        this.semesterAvailability = semesterAvailability;
+        this.preRequisites = new ArrayList<Course>();
+        this.coRequisites = new ArrayList<Course>();
+        this.type = type;
     }
 
     public String getCourseID(){
@@ -31,7 +40,7 @@ public class Course {
     public void setCourseName(String name){
         this.courseName = name;
     }
-    public String getCourseDescprition(){
+    public String getCourseDescription(){
         return courseDescription;
     }
     public void setCourseDescription(String description){
@@ -43,7 +52,7 @@ public class Course {
     public void setCreditHours(int creditHours){
         this.creditHours = creditHours;
     }
-    public ArrayList<Season> getSemeseterAvailabilty(){
+    public ArrayList<Season> getSemesterAvailability(){
         return semesterAvailability;
     }
     public void addSeason(Season season){
@@ -52,43 +61,63 @@ public class Course {
     public void removeSeason(Season season){
         semesterAvailability.remove(season);
     }
-    public ArrayList<String> getPreRequisites(){
+    public ArrayList<Course> getPreRequisites(){
         return preRequisites;
     }
-    public boolean addPreRequirisite(String courseID){
-        return preRequisites.add(courseID);
+    public boolean addPreRequirisite(Course course){
+        return preRequisites.add(course);
     }  
-    public boolean removePreRequisite(String courseID){
-        return preRequisites.remove(courseID);
+    public boolean removePreRequisite(Course course){
+        return preRequisites.remove(course);
     }
-    public ArrayList<String> getCoRequisites(){
+    public void setPreRequisites(ArrayList<Course> courses){
+        this.preRequisites = courses;
+    }
+    public ArrayList<Course> getCoRequisites(){
         return coRequisites;
     }
-    public boolean addCoRequirisite(String courseID){
-        return coRequisites.add(courseID);
+    public boolean addCoRequirisite(Course course){
+        return coRequisites.add(course);
     }
-    public boolean removeCoRequisite(String courseID){
-        return coRequisites.remove(courseID);
+    public boolean removeCoRequisite(Course course){
+        return coRequisites.remove(course);
+    }
+    public void setCoRequisites(ArrayList<Course> courses){
+        this.coRequisites = courses;
     }
 
     public boolean isAvailable(Season season){
         return semesterAvailability.contains(season);
     }
 
-    public boolean isOverlay(){
-        return isOverlay();
+    public CourseType getType() {
+        return type;
+    }
+
+    public void setType(CourseType type) {
+        this.type = type;
     }
 
     public boolean isPlacement(){
+        if(type == CourseType.PLACEMENT)
+            return true;
         return false;
     }
 
     public String getSubject(){
-        return "";
+        return courseID.substring(0, Math.min(courseID.length(), 4));
     }
 
     public int getCourseNumber(){
-        return 1;
+        String courseNumberStr = courseID.substring(4);
+        return Integer.parseInt(courseNumberStr);
     }
-
+    public boolean isOverlay(){
+        if(type == CourseType.OVERLAY)
+            return true;
+        return false;
+    }
+    public String toString(){
+        return this.courseName;
+    }
   }

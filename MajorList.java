@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class MajorList {
     private static MajorList majorList;
@@ -8,14 +9,19 @@ public class MajorList {
         majors = new ArrayList<>();
     }
 
+    public ArrayList<Major> getMajors() {
+        return majors;
+    }
+
     public static MajorList getInstance() {
-        if(majorList == null)
-            majorList = new MajorList;
+        if (majorList == null)
+            majorList = new MajorList();
         return majorList;
     }
 
-    public boolean addMajor(String name, String school, String department, ArrayList<Requirement> requirements) {
-        Major major = new Major(name, school, department, requirements);
+    public boolean addMajor(UUID id, String name, String school, String department,
+            ArrayList<Requirement> requirements) {
+        Major major = new Major(id, name, school, department, requirements);
         return majors.add(major);
     }
 
@@ -24,21 +30,33 @@ public class MajorList {
     }
 
     public ArrayList<Major> addMajors(ArrayList<Major> majors) {
-        majors.addAll(majors);
-        return majors;
+        ArrayList<Major> addMajors = new ArrayList<Major>();
+        for(Major major : majors){
+            if(!this.majors.contains(major))
+                addMajors.add(major);
+        }
+        this.majors.addAll(addMajors);
+        return addMajors;
     }
 
-    public Major getMajor(String name) {
+    public Major getMajorFromName(String name) {
         for (Major major : majors) {
             if (major.getName().equals(name)) {
                 return major;
             }
         }
+        DegreeTracker.getInstance().addError("Major not found: " + name);
         return null;
     }
 
-    public Major getMajor(String id) {
-
+    public Major getMajorFromID(UUID id) {
+        for (Major major : majors) {
+            if (major.getId().equals(id)) {
+                return major;
+            }
+        }
+        DegreeTracker.getInstance().addError("Major not found with name: " + id);
+        return null;
     }
 
 }

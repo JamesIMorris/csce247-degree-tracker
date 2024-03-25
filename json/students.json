@@ -1,7 +1,10 @@
 [
   {
     "username":"JD123",
+    "uscID":"P1234567",
+    "applicationArea":"Undecided",
     "major":"CIS",
+    "year": "Junior",
     "credits":
     [
       {

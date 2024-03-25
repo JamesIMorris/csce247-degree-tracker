@@ -19,13 +19,33 @@ public class Advisor extends User{
     public void setAdvisees(ArrayList<Student> advisees) {
         this.advisees = advisees;
     }
-
     public boolean addAdvisee(Student advisee){
-        return false;
+        if(advisee == null)
+            return false;
+        if(!advisees.contains(advisee))
+            advisees.add(advisee);
+        return true;
     }
     public boolean addAdvisee(String username){
-        return false;
+        User user = UserList.getInstance().findUser(username);
+        if(user == null || user.getUserType() != UserType.STUDENT)
+            return false;
+        return addAdvisee((Student)user);
     }
+    public boolean removeAdvisee(Student advisee){
+        if(advisee == null)
+            return false;
+        if(advisees.contains(advisee))
+            advisees.remove(advisee);
+        return true;
+    }
+    public boolean removeAdvisee(String username){
+        User user = UserList.getInstance().findUser(username);
+        if(user == null || user.getUserType() != UserType.STUDENT)
+            return false;
+        return addAdvisee((Student)user);
+    }
+
 
     @Override
     public UserType getUserType() {

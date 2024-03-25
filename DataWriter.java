@@ -11,21 +11,24 @@ public class DataWriter extends DataConstants {
 
     // Courses
     public boolean saveCourses() {
-        CourseList course = CourseList.getInstance();
-        ArrayList<Course> courseList = CourseList.getCourses();
+        CourseList courseList = CourseList.getInstance();
+        ArrayList<Course> courses = courseList.getCourses();
         JSONArray jsonCourses = new JSONArray();
 
-        for (int i = 0; i < courseList.size(); i++) {
-            jsonCourses.add(getCourseJSON(courseList.get(i)));
+        for (Course course : courses) {
+            JSONObject courseJSON = getCourseJSON(course);
+            jsonCourses.add(courseJSON);
         }
 
         try (FileWriter file = new FileWriter(COURSE_FILE_NAME)) {
 
             file.write(jsonCourses.toJSONString());
             file.flush();
+            return true;
 
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -35,12 +38,42 @@ public class DataWriter extends DataConstants {
         courseDetails.put(COURSE_NAME, course.getCourseName());
         courseDetails.put(COURSE_DESCRIPTION, course.getCourseDescription());
         courseDetails.put(CREDIT_HOURS, course.getCreditHours());
-        courseDetails.put(SEMESTER_AVAILABILITY, course.getSemesterAvailability());
-        courseDetails.put(COURSE_PRE_REQUISISTES, course.getPreRequisites());
-        courseDetails.put(COURSE_CO_REQUISITES, course.getCoRequisites());
+
+        JSONArray semesterAvailability = new JSONArray();
+        for(Season season : course.getSemesterAvailability()) {
+            semesterAvailability.add(season.toString());
+        }
+        courseDetails.put("semesterAvailability", semesterAvailability);
+
+        JSONArray preRequisites = new JSONArray();
+        for(Course preReq : course.getPreRequisites()) {
+            preRequisites.add(preReq.getCourseID());
+        }
+        courseDetails.put("preRequisites", preRequisites);
+
+        JSONArray coRequisites = new JSONArray();
+        for(Course coReq : course.getCoRequisites()) {
+            coRequisites.add(coReq.getCourseID());
+        }
+        return courseDetails;
+    }
+        /* 
+        courseJSON.put("coRequisites". coRequisites);
+        courseDetails.put(SEMESTER_AVAILABILITY, jsonArrayFromArray(course.getSemesterAvailability()));
+        courseDetails.put(COURSE_PRE_REQUISISTES, jsonArrayFromArray(course.getPreRequisites()));
+        courseDetails.put(COURSE_CO_REQUISITES, jsonArrayFromArray(course.getCoRequisites()));
         courseDetails.put(COURSE_TYPE, course.getCourseType());
+        return courseDetails;
     }
 
+    private static JSONArray jsonArrayFromArray(ArrayList<String> list) {
+        JSONArray jsonArray = new JSONArray();
+        for(String item : list) {
+            jsonArray.add(item);
+        }
+        return jsonArray;
+    }
+*/
     // Users
     public boolean saveUsers() {
         UserList user = UserList.getInstance();
@@ -55,10 +88,12 @@ public class DataWriter extends DataConstants {
 
             file.write(jsonUsers.toJSONString());
             file.flush();
+            return true;
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
+            return false;
+        } 
     }
 
     public static JSONObject getUserJSON(User user) {
@@ -69,72 +104,250 @@ public class DataWriter extends DataConstants {
         userDetails.put(EMAIL, user.getEmail());
         userDetails.put(PASSWORD, user.getPassword());
         userDetails.put(USER_TYPE, user.getUserType());
+
+        return userDetails;
     }
 
     // Students
     public boolean saveStudents() {
         UserList User = UserList.getInstance();
-        ArrayList<User> userList = User.getUsers();
-        JSONArray jsonUsers = new JSONArray();
+        ArrayList<User> students = User.searchUserByType(UserType.STUDENT);
+        JSONArray jsonStudents = new JSONArray();
 
-        for (int i = 0; i < UserList.size(); i++) {
-            jsonUsers.add(getStudentJSON(userList.get(i)));
+        for(User user : students) {
+            if(user instanceof Student) {
+                Student student = (Student)user;
+                JSONObject studentJSON = getStudentJSON(student);
+                jsonStudents.add(studentJSON);
+            }
         }
 
         try (FileWriter file = new FileWriter(STUDENT_FILE_NAME)) {
 
-            file.write(jsonUsers.toJSONString());
+            file.write(jsonStudents.toJSONString());
             file.flush();
+            return true;
 
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
     public static JSONObject getStudentJSON(Student student) {
         JSONObject studentDetails = new JSONObject();
-        // Username, Major, and requirement availability not added in constants
-        studentDetails.put(STUDENT_USER_NAME, student.getCourseID());
+        studentDetails.put("username", student.getUsername());
+        studentDetails.put("uscID", student.getUscID());
+        studentDetails.put("applicationArea", student.getApplicationArea());
+        studentDetails.put("major", student.getMajor());
+        studentDetails.put("year", student.getYear());
+
+        JSONArray jsonCredits = new JSONArray();
+        for (Credit credit : student.getCredits()){
+            JSONObject jsonCredit = new JSONObject();
+            jsonCredit.put(STUDENT_COURSE, credit.getCourse());
+            JSONObject semesterTaken = new JSONObject();
+            semesterTaken.put("year", credit.getSemesterTaken().getYear());
+            semesterTaken.put("season", credit.getSemesterTaken().getSeason());
+            jsonCredit.put(STUDENT_SEMESTER_TAKEN, semesterTaken);
+            jsonCredit.put("grade", credit.getGrade());
+            jsonCredit.put("type", credit.getType());
+            jsonCredit.put("requirementsAssignedTo", credit.getRequirementsAssignedTo());
+        
+            JSONArray possibleRequirements = new JSONArray();
+            for(Credit.PossibleRequirement possibleRequirement : credit.getPossibleRequirements()) {
+                JSONObject requirementObject = new JSONObject();
+                
+                requirementObject.put("requirement", possibleRequirement.getRequirement().getName());
+                requirementObject.put("available", possibleRequirement.getPossible());
+                possibleRequirements.add(requirementObject);
+            }
+            jsonCredit.put("possibleRequirement", possibleRequirements);
+
+            jsonCredit.put("note", credit.getNote());
+            jsonCredits.add(jsonCredits);
+
+        }
+        studentDetails.put("credits", jsonCredits);
+
+        JSONArray jsonRequirements = new JSONArray();
+        for(Requirement requirement : student.getRequirements()) {
+            JSONObject requirementObj = new JSONObject();
+            requirementObj.put("requirement", requirement.getName());
+            JSONArray creditsArray = new JSONArray();
+            for(String creditID : requirement.getCredits()){
+                creditsArray.add(creditID);
+            }
+            requirementObj.put("credits", creditsArray);
+            jsonRequirements.add(requirementObj);
+        }
+        studentDetails.put("requirements", jsonRequirements);
+        JSONArray notesArray = new JSONArray();
+        for(String note : student.getNotes()){
+            notesArray.add(note);
+        }
+        studentDetails.put("notes", notesArray);
+        return studentDetails;
+    }
+        /* 
+                 studentDetails.put(STUDENT_USER_NAME, student.getCourseID());
         studentDetails.put(STUDENT_AVAILABLE, student.getCourseID());
         studentDetails.put(STUDENT_MAJOR, student.getMajor());
-
-        studentDetails.put(STUDENT_NOTE, student.getNotes());
-        studentDetails.put(STUDENT_COURSE, student.getCourseID());
-        studentDetails.put(STUDENT_SEMESTER_TAKEN, student.getCourseName());
-        studentDetails.put(STUDENT_SEASON, student.getCourseDescription());
-        studentDetails.put(STUDNET_YEAR_TAKEN, student.getCreditHours());
-        studentDetails.put(STUDENT_GRADE, student.getSemesterAvailability());
+        
         studentDetails.put(STUDENT_REQUIREMENT, student.getRequirementCreditHours());
         studentDetails.put(STUDENT_REQUIREMENTS_LIST, student.getRequirements());
-        studentDetails.put(STUDENT_CREDITS, student.getCredits());
-    }
+
+        JSONArray studentArray = new JSONArray();
+        studentArray.add(STUDENT_COURSE, student.getCourseID());
+        studentArray.add(STUDENT_SEMESTER_TAKEN, student.getCourseName());
+        studentArray.add(STUDNET_YEAR_TAKEN, student.getCreditHours());
+        studentArray.add(STUDENT_SEASON, student.getCourseDescription());
+        studentArray.add(STUDENT_GRADE, student.getSemesterAvailability());
+        studentArray.add(STUDENT_COURSE_TYPE, student.getCourseType());
+        studentArray.add(STUDENT_REQUIREMENT, student.getRequirementCreditHours());
+        studentArray.add(STUDENT_REQUIREMENTS_LIST, student.getRequiements());
+        studentArray.add(STUDENT_AVAILABLE, student.getSemesterAvailability());
+
+
+        studentArray.put(STUDENT_CREDITS, student.getCredits());
+
+        studentDetails.put(STUDENT_NOTE, student.getNotes());
+
+        return studentDetails;
+        */
+   // }
 
     // Majors
     public boolean saveMajors() {
-        MajorList course = MajorList.getInstance();
-        ArrayList<Major> courseList = MajorList.getMajors();
-        JSONArray jsonCourses = new JSONArray();
+        MajorList majorList = MajorList.getInstance();
+        ArrayList<Major> majors = majorList.getMajors();
+        JSONArray jsonMajors = new JSONArray();
 
-        for (int i = 0; i < majorList.size(); i++) {
-            jsonMajor.add(getMajorJSON(courseList.get(i)));
+        for (Major major : majors) {
+            jsonMajors.add(getMajorJSON(major));
         }
 
         try (FileWriter file = new FileWriter(MAJOR_FILE_NAME)) {
 
-            file.write(jsonMajor.toJSONString());
+            file.write(jsonMajors.toJSONString());
             file.flush();
+            return true;
 
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
     public static JSONObject getMajorJSON(Major major) {
         JSONObject majorDetails = new JSONObject();
-        majorDetails.put(MAJOR_ID, major.getMajorID().toString());
+        majorDetails.put(MAJOR_ID, major.getId().toString());
         majorDetails.put(MAJOR_NAME, major.getName());
         majorDetails.put(MAJOR_SCHOOL, major.getSchool());
         majorDetails.put(MAJOR_DEPARTMENT, major.getDepartment());
         majorDetails.put(MAJOR_REQUIREMENTS, major.getRequirements());
+
+        return majorDetails;
+    }
+
+    //Admin
+    public boolean saveAdmin() {
+        UserList userList = UserList.getInstance();
+        //Admin adminList = Admin.getInstance();
+        JSONArray jsonAdmin = new JSONArray();
+        ArrayList<User> admins = userList.searchUserByType(UserType.ADMIN);
+
+        for(User admin : admins) {
+            JSONObject adminDetails = new JSONObject();
+            adminDetails.put("username", admin.getUsername());
+            jsonAdmin.add(adminDetails);
+        }
+
+    try (FileWriter file = new FileWriter(ADMIN_FILE_NAME)) {
+        file.write(jsonAdmin.toJSONString());
+        return true;
+    } catch (IOException e) {
+        e.printStackTrace();
+        return false;
+    }
+    }
+
+    public static JSONObject getAdminJSON(Admin admin) {
+        JSONObject adminDetails = new JSONObject();
+        adminDetails.put("username", admin.getUsername());
+        return adminDetails;
+    }
+
+
+    //Advisors
+    public boolean saveAdvisors(){
+        UserList userList = UserList.getInstance();
+        JSONArray jsonAdvisors = new JSONArray();
+        ArrayList<User> advisors = userList.searchUserByType(UserType.ADVISOR);
+
+        for(User user : advisors) {
+            Advisor advisor = (Advisor)user;
+            JSONObject advisorDetails = getAdvisorJSON(advisor);
+            jsonAdvisors.add(advisorDetails);
+        }
+
+        try (FileWriter file = new FileWriter(ADVISOR_FILE_NAME)) {
+            file.write(jsonAdvisors.toJSONString());
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static JSONObject getAdvisorJSON(Advisor advisor) {
+        JSONObject advisorDetails = new JSONObject();
+        advisorDetails.put("username", advisor.getUsername());
+
+        JSONArray adviseesArray = new JSONArray();
+        for (Student advisee : advisor.getAdvisees()) {
+            adviseesArray.add(advisee);
+        }
+        advisorDetails.put(ADVISOR_ADVISEES, adviseesArray);
+
+        return advisorDetails;
+    }
+
+    //Requirements
+    public boolean saveRequiremnets() {
+        MajorList majorList = MajorList.getInstance();
+        JSONArray jsonRequirements = new JSONArray();
+
+        for (Major major : majorList.getMajors()) {
+            for(Requirement requirement : major.getRequirements()){
+                jsonRequirements.add(getRequirementJSON(requirement));
+            }
+        }
+
+        try (FileWriter file = new FileWriter(REQUIREMENTS_FILE_NAME)) {
+            file.write(jsonRequirements.toJSONString());
+            file.flush();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static JSONObject getRequirementJSON(Requirement requirement) {
+        JSONObject requirementDetails = new JSONObject();
+        requirementDetails.put(REQUIREMENTS_UUID, requirement.getCourseIDs());
+        requirementDetails.put(REQUIRMENT_NAME, requirement.getName());
+        requirementDetails.put(REQUIREMENT_CATEGORY, requirement.getCategory());
+
+        JSONArray courseIDsArray = new JSONArray();
+        for(String courseID : requirement.getCourseIDs()) {
+            courseIDsArray.add(courseID);
+        }
+        requirementDetails.put(REQUIRMENT_COURSE_ID, courseIDsArray);
+
+        requirementDetails.put(REQUIREMENT_CREDITS_REQUIRED, requirement.getCreditHoursRequired());
+
+        return requirementDetails;
     }
 }

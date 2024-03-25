@@ -12,6 +12,10 @@ public abstract class User{
         this.lastName = lastName;
         this.email = email;
     }
+    public User(String username){
+        this.username = username;
+        DataLoader.loadUserData(this);
+    }
 
     public String getUsername() {
         return username;
@@ -23,6 +27,10 @@ public abstract class User{
 
     public boolean passwordMathes(String password) {
         return this.password.equals(password);
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {

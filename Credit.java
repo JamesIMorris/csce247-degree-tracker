@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class Credit {
     public class PossibleRequirement{
         Requirement requirement;
@@ -9,6 +10,7 @@ public class Credit {
             this.requirement = requirement;
         }
         public PossibleRequirement(Requirement requirement, boolean possible){
+            this.requirement = requirement;
             this.possible = possible;
         }
 
@@ -31,7 +33,7 @@ public class Credit {
     private int grade;
     private CreditType type;
     private int requirementsAssignedTo;
-    private PossibleRequirement possibleRequirements;
+    private ArrayList<PossibleRequirement> possibleRequirements;
     private String note;
 
     public Credit(Course course) {
@@ -39,9 +41,13 @@ public class Credit {
     }
 
     public Credit(String courseID) {
-
+        this.course = CourseList.getInstance().getCourseFromName(courseID);
     }
 
+    public Credit(Course course, Semester semesterTaken){
+        this.course = course;
+        this.semesterTaken = semesterTaken;
+    }
 
     public Credit(Course course, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
             String note) {
@@ -51,13 +57,14 @@ public class Credit {
         this.type = type;
         this.requirementsAssignedTo = requirementsAssignedTo;
         this.note = note;
-        this.possibleRequirements = new ArrayList<>();
+        this.possibleRequirements = new ArrayList<PossibleRequirement>();
+        populatePossibleRequirements();
     }
 
-    public Credit(String courseID, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
-            String note) {
+    // public Credit(String courseID, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
+    //         String note) {
 
-    }
+    // }
 
     public Course getCourse(){
         return course;
@@ -68,8 +75,8 @@ public class Credit {
     public Semester getSemesterTaken(){
         return semesterTaken;
     }
-    public void setSemesterTaken(Semester semeseter){
-        semeseterTaken = semester;
+    public void setSemesterTaken(Semester semester){
+        this.semesterTaken = semester;
     }
     public int getGrade(){
         return grade;
@@ -81,7 +88,7 @@ public class Credit {
         return type;
     }
     public void setType(CreditType type){
-
+        this.type = type;
     }
     public int getRequirementsAssignedTo(){
         return requirementsAssignedTo;
@@ -92,44 +99,78 @@ public class Credit {
     public void setNote(String note){
         this.note = note;
     }
-    public PossibleRequirement getPossibleRequirements(){
+    public ArrayList<PossibleRequirement> getPossibleRequirements(){
         return possibleRequirements;
+    }
+    public void populatePossibleRequirements(){
+        ArrayList<Major> majors = MajorList.getInstance().getMajors();
+        for(Major major : majors){
+            ArrayList<Requirement> requirements = major.getRequirements();
+            for(Requirement requirement : requirements){
+                if(requirement.getCourses().contains(this.course)){
+                    addPossibleRequirement(requirement);
+                }
+            }
+        }
+    }
+    public void addPossibleRequirement(Requirement requirement){
+        boolean addPossibleRequirement = true;
+        for(PossibleRequirement possibleRequirement : possibleRequirements){
+            if(possibleRequirement.getRequirement() == requirement)
+                addPossibleRequirement = false;
+        }
+        if(addPossibleRequirement)
+            possibleRequirements.add(new PossibleRequirement(requirement));
     }
 
     public String getCourseName() {
-        return "";
+        return this.course.getCourseName();
     }
 
     public String getCourseID() {
-        return "";
+        return this.course.getCourseID();
     }
 
     public String getSubject() {
-        return "";
+        return this.course.getSubject();
     }
 
     public int getCourseNumber() {
-        return 0;
+        return this.course.getCourseNumber();
     }
 
     public int getCreditHours() {
-        return 0;
+        return this.course.getCreditHours();
     }
 
     public boolean isOverlay() {
-        return false;
+        return this.course.isOverlay();
     }
 
     public boolean isPlacement() {
-        return false;
+        return this.course.isPlacement();
     }
 
     public boolean isTransfer() {
+        if(type == CreditType.TRANSFER)
+            return true;
         return false;
     }
 
     public boolean wasWithdrawn() {
+        if(type == CreditType.WITHDRAWN)
+            return true;
         return false;
     }
 
+    public boolean update(Requirement requirement, boolean open){
+        boolean hasRequirement = false;
+        for(PossibleRequirement possibleRequirement : possibleRequirements){
+            if(possibleRequirement.getRequirement() == requirement){
+                possibleRequirement.setPossible(open);
+                hasRequirement = true;
+            }
+        }
+        return hasRequirement;
+    }
 }
