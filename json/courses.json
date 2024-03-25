@@ -535,7 +535,7 @@
     "courseName":"Advanced Programming Techniques",
     "courseDescription":"Pointers; memory management; advanced programming language structures: operator overloading, iterators, multiple inheritance, polymorphism, templates, virtual functions; Unix programming environment.",
     "creditHours":3,
-    "semesterAvailability":["FALL","SPRING"],
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
     "preRequisites":["CSCE215","CSCE146"],
     "coRequisites":[],
     "type": "DEFAULT"
@@ -580,7 +580,7 @@
     "courseName":"Professional Issues in Computer Science and Engineering",
     "courseDescription":"Professional issues in the information technology professions; history and social context of computing; professional responsibilities; privacy; intellectual property; risks and liabilities of computer-based systems.",
     "creditHours":1,
-    "semesterAvailability":["FALL","SPRING"],
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
     "preRequisites":["CSCE240","MATH174","MATH374","MATH574","MATH141","MATH122"],
     "coRequisites":[],
     "type": "DEFAULT"
@@ -1241,6 +1241,196 @@
     "preRequisites":["PHYS212"],
     "coRequisites":["PHYS212"],
     "type": "DEFAULT"
+  },{
+    "courseId":"CSCE211",
+    "courseName":"Digital Logic Design",
+    "courseDescription":"Number systems, Boolean algebra, logic design, sequential machines.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
+    "preRequisites":["CSCE211","CSCE145","CSCE106"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE212",
+    "courseName":"Introduction to Computer Arcitecture",
+    "courseDescription":"Computer architecture, components. and organization; memory addressing; Input/Output; instruction sets; interrupts; assembly-language programming.  Students may not apply both CSCE 210 and CSCE 212 to any minor or major program of study.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
+    "preRequisites":["CSCE211","CSCE145","CSCE206"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MATH241",
+    "courseName":"Vector Calculus",
+    "courseDescription":"Vector algebra, geometry of three-dimensional space; lines, planes, and curves in space; polar, cylindrical, and spherical coordinate systems; partial differentiation, max-min theory; multiple and iterated integration, line integrals, and Green’s theorem in the plane.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["MATH142"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE311",
+    "courseName":"Operating Systems",
+    "courseDescription":"Operating system structure and function; process implementation, scheduling, and synchronization; memory management; security; naming protection; resource allocation; network file systems.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
+    "preRequisites":["CSCE240","CSCE210","CSCE212"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE330",
+    "courseName":"Programming Language Structures",
+    "courseDescription":"Formal specification of syntax and semantics; structure of algorithms; list processing and string manipulation languages; statement types, control structures, and interfacing procedures.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SUMMER"],
+    "preRequisites":["CSCE240","MATH174","MATH374","MATH574"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE355",
+    "courseName":"Foundadtions of Computation",
+    "courseDescription":"Basic theoretical principles of computing as modeled by formal languages, grammars, automata, and Turing machines; fundamental limits of computation.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MATH344",
+    "courseName":"Linear Applied Algebra",
+    "courseDescription":"General solutions of systems of linear equations, vector spaces and subspaces, linear transformations, determinants, orthogonality, characteristic polynomials, eigenvalues and eigenvectors, singular value decomposition, and generalized inverse. MATH 344L is an optional laboratory course where additional applications will be discussed.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["MATH142"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MATH344L",
+    "courseName":"Linear Applied Algebra Lab",
+    "courseDescription":"Computer based applications of linear algebra for science and engineering students. Topics include numerical analysis of matrices, direct and indirect methods for solving linear systems, and least squares method (regression). Typical applications include practical issues related to discrete Markov processes, image compression, and linear programming.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["MATH344"],
+    "coRequisites":["MATH344"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"AFAM201",
+    "courseName":"Introduction to African American Studies: Social and Historical Foundations",
+    "courseDescription":"Introduction to the key debates, figures, and concepts that are fundamental to the interdisciplinary study of the historical, political, and social development of black life in America.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"AFAM218",
+    "courseName":"Convergence and Divergence in African American and Jewish Relations: Historical and Contemporary",
+    "courseDescription":"An examination of African American and Jewish American inter-ethnic, historical and contemporary connections and disconnections. Implications for educational, social, and social settings are considered.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"AFAM355",
+    "courseName":"Race and Ethnic Relations",
+    "courseDescription":"Theoretical and empirical approaches related to race/ethnicity and the current state of race relations in American, with some attention to global issues.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ANTH101",
+    "courseName":"Primates, People, and Prehistory",
+    "courseDescription":"An exploration of human origins, human evolution, human prehistory, and cultural existence from its less complex forms to early civilizations. An introduction to the concepts, methods, and data of physical, biological, and archaeological anthropology.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ANTH102",
+    "courseName":"Understanding Other Cultures",
+    "courseDescription":"An exploration and comparison of selected contemporary cultures, including their languages. An introduction to the concepts, methods, and data of socio-cultural anthropology and anthropological linguistics.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ANTH204",
+    "courseName":"Plagues Past and Present",
+    "courseDescription":"An overview of how plagues and epidemics have shaped human prehistory and history. How large-scale social transformations have produced forms of human/disease interactions. How infectious disease has been conceptualized at different times and by different cultural groups and treated as a threat to the social order.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ANTH210",
+    "courseName":"Human Life Cycles in Different Cultures",
+    "courseDescription":"Childhood, maturity, old age, and gender socialization within the family.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ANTH211",
+    "courseName":"Learning Across Cultures",
+    "courseDescription":"Classroom ethnography, bilingualism, cultural minorities, communication across cultural boundaries. Films, videotapes, and fieldwork in classroom settings.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ANTH212",
+    "courseName":"Food and Culture",
+    "courseDescription":"Biological and cultural interactions affecting foodways around the world, and associated ethical issues.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "OVERLAY"
+  },{
+    "courseId":"ANTH213",
+    "courseName":"Ethnobotany: Plants and Peoples",
+    "courseDescription":"Anthropological overview of the interactions between cultures around the world and the plants that affect them, from cultural, biological, archaeological, and linguistic points of view.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ANTH244",
+    "courseName":"American Indian Nations Today: From Hard Times to Hard Rock",
+    "courseDescription":"Contemporary Indian Country in anthropological, historical, cultural, economic, and political contexts.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "OVERLAY"
+  },{
+    "courseId":"ANTH273",
+    "courseName":"Cross-Cultural Communication",
+    "courseDescription":"This course introduces students to the fields of interactional sociolinguistics and linguistic anthropology. Students will learn how they approach the study of cross-cultural and intercultural forms of (mis)communication within the context of globally interconnected people, places, and systems of communication.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ANTH280",
+    "courseName":"Humans Going Nuclear: Atomic Bombs, Cold War, and the Fallout",
+    "courseDescription":"Ethnographic study of the Cold War, nuclear culture, and its aftermath.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "OVERLAY"
+  },{
   }
 ]
             
