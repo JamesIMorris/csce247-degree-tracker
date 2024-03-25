@@ -30,8 +30,13 @@ public class MajorList {
     }
 
     public ArrayList<Major> addMajors(ArrayList<Major> majors) {
-        majors.addAll(majors);
-        return majors;
+        ArrayList<Major> addMajors = new ArrayList<Major>();
+        for(Major major : majors){
+            if(!this.majors.contains(major))
+                addMajors.add(major);
+        }
+        this.majors.addAll(addMajors);
+        return addMajors;
     }
 
     public Major getMajor(String name) {
