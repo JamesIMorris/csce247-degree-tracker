@@ -39,7 +39,7 @@ public class MajorList {
         return addMajors;
     }
 
-    public Major getMajor(String name) {
+    public Major getMajorFromName(String name) {
         for (Major major : majors) {
             if (major.getName().equals(name)) {
                 return major;
@@ -49,7 +49,7 @@ public class MajorList {
         return null;
     }
 
-    public Major getMajorId(UUID id) {
+    public Major getMajorFromID(UUID id) {
         for (Major major : majors) {
             if (major.getId().equals(id)) {
                 return major;
