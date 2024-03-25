@@ -32,34 +32,6 @@ public class UserList {
             currentUser = user;
     }
 
-    public User signup(String username, String password, String firstName, String lastName, String email,
-            UserType type) {
-        boolean success = true;
-        if (username.length() < 1
-                || password.length() < 1
-                || firstName.length() < 1
-                || lastName.length() < 1
-                || email.length() < 1
-                || type == null) {
-            degreeTracker.addError("All fields must be filled");
-            return null;
-        }
-        if (!usernameAvailable(username)) {
-            degreeTracker.addError("Username unavailable");
-            success = false;
-        }
-        if (!checkPassword(password))
-            success = false;
-        if (!emailAvailable(email)) {
-            degreeTracker.addError("Email already in use");
-            success = false;
-        }
-        if (!success)
-            return null;
-        success = createNewUser(username, password, firstName, lastName, email, type);
-        return findUser(username);
-    }
-
     public boolean login(String username, String password) {
         User loginUser = findUser(username);
         if (loginUser == null)
