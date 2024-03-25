@@ -83,10 +83,10 @@ public class DegreeTracker {
             return studentHomePage(username);
         return adivsorHomePage(username);
     }
-    public static String advisorStudentPage(String studentUsername){
+    public String advisorStudentPage(String studentUsername){
         return UIFormatter.advisorStudentPage(studentUsername);
     }
-    public static String advisorNotes(String username){
+    public String advisorNotes(String username){
         return UIFormatter.advisorNotes(username);
     }
 
