@@ -521,5 +521,726 @@
     "preRequisites":[],
     "coRequisites":[],
     "type": "DEFAULT"
-  }]
+  },{
+    "courseId":"CSCE201",
+    "courseName":"Introduction to Computer Security",
+    "courseDescription":"Introduction to the theory and practice of computer security, including security policies, authentification, digital certificates, firewalls, malicious code, legal and ethical issues, and incident handling.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["CSCE101","CSCE102","CSCE145"],
+    "coRequisites":["CSCE101","CSCE102","CSCE145"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE240",
+    "courseName":"Advanced Programming Techniques",
+    "courseDescription":"Pointers; memory management; advanced programming language structures: operator overloading, iterators, multiple inheritance, polymorphism, templates, virtual functions; Unix programming environment.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["CSCE215","CSCE146"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MATH174",
+    "courseName":"Discrete Math for Computer Science",
+    "courseDescription":"Logic, number theory, sequences, series, recursion, mathematical induction, set theory, enumeration, functions, relations, graphs and trees. Connections to computers and to programming are emphasized when possible.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["MATH112"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MATH374",
+    "courseName":"Discrete Structures",
+    "courseDescription":"Propositional and predicate logic; proof techniques; recursion and recurrence relations; sets, combinatorics, and probability; functions, relations, and matrices; algebraic structures.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["MATH142","CSCE106","CSCE146"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MGSC290",
+    "courseName":"Computer Information Systems in Business",
+    "courseDescription":"Computer Information Systems in Business is designed for students to develop a strong foundation and proficiency in the use of Microsoft Excel as a tool in business communications, analysis and decision making. Students learn how to develop spreadsheets and databases through the use of Microsoft Office 2016. This course satisfies the computer literacy requirement.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE350",
+    "courseName":"Data Structures and Algorithms",
+    "courseDescription":"Techniques for representing and processing information, including the use of lists, trees, and graphs; analysis of algorithms; sorting, searching, and hashing techniques.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["CSCE240","MATH174","MATH374","MATH574","MATH141","MATH122"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE390",
+    "courseName":"Professional Issues in Computer Science and Engineering",
+    "courseDescription":"Professional issues in the information technology professions; history and social context of computing; professional responsibilities; privacy; intellectual property; risks and liabilities of computer-based systems.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["CSCE240","MATH174","MATH374","MATH574","MATH141","MATH122"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"STAT515",
+    "courseName":"Statistical Methods I",
+    "courseDescription":"Applications and principles of elementary probability, essential discrete and continuous probability distributions, sampling distributions, estimation, and hypothesis testing. Inferences for means, variances, proportions, one-way ANOVA, simple linear regression, and contingency tables. Statistical packages such as SAS or R.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
+    "preRequisites":["MATH122","MATH141","MATH111"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"STAT509",
+    "courseName":"Statistics for Engineers",
+    "courseDescription":"Basic probability and statistics with applications and examples in engineering. Elementary probability, random variables and their distribution, random processes, statistical inference, linear regression, correlation and basic design of experiments with application to quality assurance, reliability, and life testing. May not be taken concurrently with or after STAT 513, STAT 515, or STAT 516. Not for C.A.S., M.A.S., or Ph.D credit in Statistics.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["MATH142"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ACCT222",
+    "courseName":"Survey of Accounting",
+    "courseDescription":"Survey of accounting topics related to business decisions including financial reporting, managerial accounting, and other special topics.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["MATH122"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MGMT371",
+    "courseName":"Principles of Management",
+    "courseDescription":"A comprehensive survey of the basic principles of management applicable to all forms of business. The course provides the student with a basis for thinking about complex business situations in the framework of analysis of the management process.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ENGL462",
+    "courseName":"Technical Writing",
+    "courseDescription":"Preparation for and practice in types of writing important to scientists, engineers, and computer scientists, from brief technical letters to formal articles and reports.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["ENGL101","ENGL102"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ENGL463",
+    "courseName":"Business Writing",
+    "courseDescription":"Extensive practice in different types of business writing, from brief letters to formal articles and reports.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["ENGL101","ENGL102"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE520",
+    "courseName":"Database System Design",
+    "courseDescription":"Database management systems; database design and implementation; security, integrity, and privacy.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["CSCE240","GEOG563"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE594",
+    "courseName":"Strategic Management of Information Systems",
+    "courseDescription":"Strategic management and use of information systems in organizations.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"STAT516",
+    "courseName":"Statistical Methods II",
+    "courseDescription":"Applications and principles of linear models. Simple and multiple linear regression, analysis of variance for basic designs, multiple comparisons, random effects, and analysis of covariance. Statistical packages such as SAS.",
+    "creditHours":3,
+    "semesterAvailability":["SPRING","SUMMER"],
+    "preRequisites":["STAT515","STAT509","STAT512"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE416",
+    "courseName":"Introduction to Computer Networks",
+    "courseDescription":"Concepts and components of computer networks and the Internet; network applications; network protocol stack.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["CSCE146","MATH174","MATH374"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE490",
+    "courseName":"Capstone Computing Project I fall only",
+    "courseDescription":"Major team-based software design project to be undertaken in a student’s final year of study; project planning, software requirements analysis, design, and specification. Written reports and oral presentations in a technical setting.",
+    "creditHours":3,
+    "semesterAvailability":["FALL"],
+    "preRequisites":["CSCE240","CSCE350"],
+    "coRequisites":["CSCE350"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE522",
+    "courseName":"Information Security Principles fall only",
+    "courseDescription":"Threats to information resources and appropriate countermeasures. Cryptography, identification and authentication, access control models and mechanisms, multilevel database security, steganography, Internet security, and intrusion detection and prevention.",
+    "creditHours":3,
+    "semesterAvailability":["FALL"],
+    "preRequisites":["CSCE146","MATH174","MATH374"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE492",
+    "courseName":"Capstone Computing Project II",
+    "courseDescription":"Continuation of CSCE490. Computer system implementation, testing, verification and validation of results. Written reports and oral presentations in a technical setting.",
+    "creditHours":3,
+    "semesterAvailability":["FALL"],
+    "preRequisites":["CSCE490","CSCE350","CSCE240"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ANTH161",
+    "courseName":"Human Origins: An Introduction to Biological Anthropology",
+    "courseDescription":"An introduction to the science of biological anthropology, a sub-field of anthropology that emphasizes a focus on humanity and its origin from a biological perspective, employing laboratory components to complement and reinforce lecture materials.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ASTR101",
+    "courseName":"Introduction to Astronomy",
+    "courseDescription":"An introduction to the solar system and universe accomplished with interactive lectures, demonstrations, and laboratory experience. Designed primarily for the non-science major.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ASTR201",
+    "courseName":"Introduction to Astronomy II: The Dark Universe",
+    "courseDescription":"Astronomical topics including stellar death, black holes, dark matter, dark energy and cosmology. Astronomical techniques and application of the scientific method in astronomy.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["ASTR101","SCHC115"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"BIOL101",
+    "courseName":"Biological Principles I",
+    "courseDescription":"Introductory survey of macromolecules, cell structure and function, genetics, and molecular biology.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"BIOL101L",
+    "courseName":"Biological Principles I Laboratory",
+    "courseDescription":"(Recommended concurrent with BIOL 101). Experimental examination of basic principles of cell biology, genetics and metabolism. Three hours per week.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"BIOL102",
+    "courseName":"Biological Principles II",
+    "courseDescription":"Introductory survey of plant and animal development, physiology, ecology, and evolution.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"BIOL102L",
+    "courseName":"Biological Principles II Laboratory",
+    "courseDescription":"Experimental examination of structure and function of plant and animal systems, biodiversity, ecology. BIOL 101, BIOL 102, BIOL 101L and BIOL 102L must be completed prior to enrolling in 300-level or above Biology courses.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":["BIOL102"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"BIOL110",
+    "courseName":"General Biology",
+    "courseDescription":"Basic biological concepts and issues for non-biology majors. Credit may not be given for both this course and BIOL 120. Three lecture, two laboratory hours per week.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"BIOL120",
+    "courseName":"Human Biology",
+    "courseDescription":"Fundamental principles of human biology. Credit may not be given for both BIOL 110 and BIOL 120. Three lecture hours per week. Not for major credit.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"BIOL120L",
+    "courseName":"Laboratory in Human Biology",
+    "courseDescription":"Exercises dealing with basic concepts of human biology. Not for major credit.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["BIOL120"],
+    "coRequisites":["BIOL120"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"BIOL202",
+    "courseName":"Infectious Diseases, Human Health, and Ethics",
+    "courseDescription":"An introduction to pathogens including bacteria, viruses, and protozoans. Basic elements of the immune system coupled with discussion of how pathogens cause disease. This information is placed in the context of how scientific research leads to the discovery, treatment, and prevention of the disease. The ethical implications of each pathogen and its treatment strategies are discussed.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "OVERLAY"
+  },{
+    "courseId":"BIOL206",
+    "courseName":"Genetics and Society",
+    "courseDescription":"(Designed for non-major students.) Genetic principles, emphasizing human heredity. Relevance of recent advances in genetics. Three lecture hours per week.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"BIOL208",
+    "courseName":"Our Hungry World from Malthus to McDonalds",
+    "courseDescription":"Scientific and social issues concerning the interrelationship of culture and agricultural biotic diversity and technology, climate change, resources management, food security, and human health.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "OVERLAY"
+  },{
+    "courseId":"BIOL243",
+    "courseName":"Human Anatomy and Physiology I",
+    "courseDescription":"Functional anatomy and physiology of the human body, including the integumentary, skeletal, muscular, and nervous systems. Not available for biology major credit. Three lecture hours per week.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"BIOL243L",
+    "courseName":"Human Anatomy and Physiology Laboratory",
+    "courseDescription":"The principles of anatomy and physiology as demonstrated by microscopic studies, animal dissection, and physiological experiments. One three-hour laboratory per week.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["BIOL243"],
+    "coRequisites":["BIOL243"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"BIOL244",
+    "courseName":"Human Anatomy and Physiology II",
+    "courseDescription":"Functional anatomy and physiology of the human body, including the cardiovascular, endocrine, excretory, reproductive, digestive, and respiratory systems. Not available for biology major credit. Three lecture hours per week.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["BIOL243"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"BIOL243L",
+    "courseName":"Human Anatomy and Physiology Laboratory",
+    "courseDescription":"A continuation of BIOL 243L. One three-hour laboratory per week.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":["BIOL244"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"BIOL270",
+    "courseName":"Introduction to Environmental Biology",
+    "courseDescription":"Basic ecological principles and the impacts of human population growth and technology. Not for major credit.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"BIOL270L",
+    "courseName":"Introduction to Environmental Biology Laboratory",
+    "courseDescription":"Demonstrations, data analyses, discussions, and films relating to human ecology, resource use, and environmental impact. Not for major credit. Two hours per week.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["BIOL270"],
+    "coRequisites":["BIOL270"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CHEM101",
+    "courseName":"Fundamental Chemistry I",
+    "courseDescription":"A science elective surveying inorganic and solution chemistry. First of a terminal two-semester sequence. Three lecture, one recitation, and two laboratory hours per week.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CHEM102",
+    "courseName":"Fundamental Chemistry II",
+    "courseDescription":"An introductory survey of organic and biochemistry. Three lecture, one recitation, and two laboratory hours per week.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["CHEM101","CHEM111"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CHEM105",
+    "courseName":"Chemistry and Modern Society I",
+    "courseDescription":"A conceptual and qualitative approach to chemistry, its evolution, achievements, and goals and its impact on technology, the environment, and modern life and thought. (Specifically designed for non-science majors.) Three lecture and three laboratory hours per week.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CHEM106",
+    "courseName":"Chemistry and Modern Society II",
+    "courseDescription":"A continuation of Chemistry 105. Three lecture hours per week.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["CHEM105"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CHEM107",
+    "courseName":"Introduction to Forensic Science",
+    "courseDescription":"Surveys chemical aspects of criminal investigation and adjudication including drug, arson, DNA, paint, and fiber identification.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CHEM107L",
+    "courseName":"Introduction to Forensic Science Laboratory",
+    "courseDescription":"An analytical approach to surveys of criminal investigation and adjudication of crime scene analysis and collection and preservation of evidence. Analysis will include but not be limited to drug, arson, DNA, fingerprints, blood splatter, and fiber identification. Note: Three laboratory hours per week.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CHEM111",
+    "courseName":"General Chemistry I",
+    "courseDescription":"Survey of the principles that underlie all chemistry with applications illustrating these principles. Three lecture and one recitation hours per week.identification. Note: Three laboratory hours per week.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["MATH111","MATH115","MATH122","MATH141","MATH122","MATH141"],
+    "coRequisites":["CHEM111L"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CHEM111L",
+    "courseName":"General Chemistry I Lab",
+    "courseDescription":"Introduction to the principles and techniques of experimental chemistry with emphasis on formula investigations, equations, elementary statistics, and chemical reactivity.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["MATH111","MATH115"],
+    "coRequisites":["CHEM111"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CHEM112",
+    "courseName":"General Chemistry II",
+    "courseDescription":"Continuation of CHEM 111. Special emphasis on chemical equilibrium. Three lecture and one recitation hours per week.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["CHEM111","MATH111","MATH115","MATH122","MATH141"],
+    "coRequisites":["CHEM112L"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CHEM112L",
+    "courseName":"General Chemistry II Lab",
+    "courseDescription":"Continuation of CHEM 111L with emphasis on solution properties, kinetics, equilibrium, acids and bases, and qualitative analysis.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["CHEM111","CHEM111L","CHEM141"],
+    "coRequisites":["CHEM112"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CHEM141",
+    "courseName":"Principles of Chemistry I",
+    "courseDescription":"Advanced general chemistry I. Atoms and chemical bonds. Three lecture hours, one recitation hour, and three laboratory hours per week. Credit cannot be received for both CHEM 111 and CHEM 141.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["MATH141","MATH142"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ENVR101",
+    "courseName":"Introduction to the Environment",
+    "courseDescription":"Analysis of environmental issues and the role of science in their identification and resolution.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ENVR101L",
+    "courseName":"Introduction to the Environment Lab",
+    "courseDescription":"Demonstrations, field trips, data analyses, and discussion relating to environmental issues, such as sustainability, resource management, and pollution control.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["ENVR101"],
+    "coRequisites":["ENVR101"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ENVR200",
+    "courseName":"Natural History of South Carolina",
+    "courseDescription":"General review of plants, animals, and geological features of South Carolina, with an emphasis on connections to the natural world.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"GEOG104",
+    "courseName":"Introduction to Physical Geography",
+    "courseDescription":"Basic concepts of landform geography, climatology and meteorology, and biogeography.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"GEOG104",
+    "courseName":"Landform Geography",
+    "courseDescription":"Hydrology, soil science, and interpretation of physical features formed by water, wind, and ice, with emphasis on environmental change. Three hours of lecture and one two-hour laboratory per week.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"GEOG202",
+    "courseName":"Weather and Climate",
+    "courseDescription":"Processes that influence weather and climate patterns on the earth. Three lectures and one two-hour laboratory per week.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"GEOL101",
+    "courseName":"Introduction to the Earth",
+    "courseDescription":"Origin and nature of the earth with emphasis on internal processes and phenomena such as earthquakes, volcanoes, and mountain building; surface processes, including landform evolution. Three lectures and three laboratory hours each week.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"GEOL103",
+    "courseName":"Environment of the Earth",
+    "courseDescription":"Analysis of basic energy cycles of the earth. Interaction of human activity with earth processes to affect the environment. Three lectures and three laboratory hours each week. Field trips required.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"GEOL110",
+    "courseName":"Cultural Geology",
+    "courseDescription":"The growth of geological concepts, scientific and non-scientific. The impact of geological factors on human affairs. The role of time and evolution (biological and physical). Restricted to non-science majors.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"GEOL170",
+    "courseName":"The Water Planet",
+    "courseDescription":"Introduction to the origin of water and water properties, water in the universe, water in the solar system, water on Earth and its geological history.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"GEOL205",
+    "courseName":"Earth Resources",
+    "courseDescription":"Mineral, energy, and water resources with emphasis on geological processes governing their distribution. Intended for non-science majors. Three lecture hours each week with occasional field trips.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"GEOL215",
+    "courseName":"Coastal Environments of the Southeastern U.S.",
+    "courseDescription":"Coastal zones of South Carolina and neighboring states, including geologic history, geomorphology, stratigraphy, hydrogeology, shoreline processes, environmental issues, and effects of man. Not available for geological science or marine science major credit. Three lecture hours each week plus optional field trips.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"GEOL215L",
+    "courseName":"Coastal Environments of the Southeastern U.S. (Laboratory)",
+    "courseDescription":"Exercises examining coastal ecology, geomorphology, hydrogeology, shoreline processes, environmental issues, and human impact. Not available for marine science major credit. Two laboratory hours per week. Scheduled field trips required.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["GEOL215","MSCI215"],
+    "coRequisites":["GEOL215","MSCI215"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"GEOL230",
+    "courseName":"Geology of the National Parks",
+    "courseDescription":"Examination of the geologic setting and scientific significance of selected National Parks. Three lecture hours.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MSCI101",
+    "courseName":"The Ocean Environment",
+    "courseDescription":"Origin and evolution of the oceans, plate tectonics, ocean circulation, waves and tides, seawater and sediment composition, and influences on biology. Three lecture and three laboratory hours per week. Scheduled field trips required.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MSCI102",
+    "courseName":"The Living Ocean",
+    "courseDescription":"Origin, evolution, and diversity of marine life, biological production, trophic dynamics, nutrient cycles, marine resources, and environmental concerns. Three lecture and three laboratory hours per week. Scheduled field trips required.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MSCI210",
+    "courseName":"Oceans and Society",
+    "courseDescription":"A nontechnical introduction to human interactions with the marine environment: marine organisms, marine systems, and the physical and chemical characteristics of oceans and estuaries. Not available for marine science major credit.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MSCI210L",
+    "courseName":"Oceans and Society Laboratory",
+    "courseDescription":"Experiments and exercises which illustrate how specific components of marine environments are structured, function, and can be measured. Two laboratory hours per week. Not available for marine science major credit. Attendance on designated field trips may be required.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["MSCI210"],
+    "coRequisites":["MSCI210"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MSCI215",
+    "courseName":"Coastal Environments of the Southeastern U.S.",
+    "courseDescription":"Coastal zones of South Carolina and neighboring states, including geologic history, geomorphology, stratigraphy, hydrogeology, shoreline processes, environmental issues, and effects of man. Not available for geological science or marine science major credit. Three lecture hours each week plus optional field trips.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MSCI215L",
+    "courseName":"Coastal Environments of the Southeastern U.S. (Laboratory)",
+    "courseDescription":"Exercises examining coastal ecology, geomorphology, hydrogeology, shoreline processes, environmental issues, and human impact. Not available for marine science major credit. Two laboratory hours per week. Scheduled field trips required.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["GEOL215","MSCI215"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"PHYS101",
+    "courseName":"The Physics of How Things Work I",
+    "courseDescription":"A practical introduction to physics and science in everyday life-from concrete examples to basic physical principles.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"PHYS101L",
+    "courseName":"The Physics of How Things Work I Lab",
+    "courseDescription":"Experiments, exercises, and demonstrations to accompany PHYS 101.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["PHYS101"],
+    "coRequisites":["PHYS101"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"PHYS201",
+    "courseName":"General Physics I",
+    "courseDescription":"First part of an introductory course sequence. Topics include mechanics, and selections from wave motion, sound, fluids, and heat. No previous background in physics is assumed.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["MATH111","MATH111L","MATH122","MATH115","MATH116","MATH122","MATH141"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"PHYS201L",
+    "courseName":"General Physics Laboratory I",
+    "courseDescription":"Experiments, exercises, and demonstrations to accompany PHYS 201.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["PHYS201"],
+    "coRequisites":["PHYS201"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"PHYS202",
+    "courseName":"General Physics II",
+    "courseDescription":"Continuation of PHYS 201; includes electromagnetism, and selected topics from optics, relativity, quantum physics, atomic and nuclear physics.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["PHYS201"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"PHYS202L",
+    "courseName":"General Physics Laboratory II",
+    "courseDescription":"Experiments, exercises, and demonstrations to accompany PHYS 202.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["PHYS202"],
+    "coRequisites":["PHYS202"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"PHYS211",
+    "courseName":"Essentials of Physics I",
+    "courseDescription":"Classical mechanics and wave motion. Calculus-level course for students of science and engineering.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["MATH141"],
+    "coRequisites":["PHYS211L"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"PHYS211L",
+    "courseName":"Essentials of Physics I Lab",
+    "courseDescription":"Experiments, exercises, and demonstrations to accompany PHYS 211.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["PHYS211"],
+    "coRequisites":["PHYS211"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"PHYS212",
+    "courseName":"Essentials of Physics II",
+    "courseDescription":"Experiments, exercises, and demonstrations to accompany PHYS 211.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["PHYS211","MATH142"],
+    "coRequisites":["PHYS212L"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"PHYS212L",
+    "courseName":"Essentials of Physics II Lab",
+    "courseDescription":"Experiments, exercises, and demonstrations to accompany PHYS 212.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["PHYS212"],
+    "coRequisites":["PHYS212"],
+    "type": "DEFAULT"
+  }
+]
             
