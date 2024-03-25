@@ -17,5 +17,509 @@
     "preRequisites":[],
     "coRequisites":["MATH122","MATH141"],
     "type": "DEFAULT"
+  },{
+    "courseId":"ENGL101",
+    "courseName":"Critical Reading and Composition",
+    "courseDescription":"Instruction in strategies for critically reading and analyzing literature and non-literary texts; structured, sustained practice in composing expository and analytical essays.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ENGL102",
+    "courseName":"Rhetoric and Composition",
+    "courseDescription":"Instruction and intensive practice in researching, analyzing, and composing written arguments about academic and public issues.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["ENGL101"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MATH122",
+    "courseName":"Calculus for Business Administration and Social Sciences",
+    "courseDescription":"Derivatives and integrals of elementary algebraic, exponential, and logarithmic functions. Maxima, minima, rate of change, motion, work, area under a curve, and volume.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
+    "preRequisites":["MATH111","MATH115"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MATH141",
+    "courseName":"Calculus 1",
+    "courseDescription":"Functions, limits, derivatives, introduction to integrals, the Fundamental Theorem of Calculus, applications of derivatives and integrals. Four classroom hours and one laboratory hour per week.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
+    "preRequisites":["MATH112","MATH115","MATH116"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE145",
+    "courseName":"Algorithmic Design I",
+    "courseDescription":"Problem-solving, algorithmic design, and programming. Two lecture hours and four laboratory hours per week. Open to all majors. Carolina Core ARP.",
+    "creditHours":4,
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
+    "preRequisites":[],
+    "coRequisites":["MATH111","MATH115"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE190",
+    "courseName":"Computing in the Modern World",
+    "courseDescription":"An introduction to the field of computing: trends in computing technology, the profession, and careers; subdisciplines in computing; the nature of research and development. Open to all majors. Not auditable.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["CSCE145","CSCE204","CSCE205","CSCE206"],
+    "coRequisites":["CSCE145","CSCE204","CSCE205","CSCE206"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE215",
+    "courseName":"UNIX/Linux Fundamentals",
+    "courseDescription":"UNIX operating system, user-level system commands, and programming tools. UNIX scripting languages.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
+    "preRequisites":["CSCE145"],
+    "coRequisites":["MATH122","MATH141"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE215",
+    "courseName":"UNIX/Linux Fundamentals",
+    "courseDescription":"UNIX operating system, user-level system commands, and programming tools. UNIX scripting languages.",
+    "creditHours":1,
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
+    "preRequisites":["CSCE145"],
+    "coRequisites":["MATH122","MATH141"],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE205",
+    "courseName":"Business Applications Programming",
+    "courseDescription":"Introduction to the theory and practice of computer security, including security policies, authentification, digital certificates, firewalls, malicious code, legal and ethical issues, and incident handling. Not auditable.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
+    "preRequisites":["MGSC290","CSCE101"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE242",
+    "courseName":"Web Applications",
+    "courseDescription":"Web technologies to support client-server computing. Implementation of client-server applications.",
+    "creditHours":3,
+    "semesterAvailability":["FALL"],
+    "preRequisites":["CSCE190","CSCE146"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CSCE210",
+    "courseName":"Computer Hardware Foundations",
+    "courseDescription":"Number representation, data formats, CPU and memory organization, assembly language, I/O and peripherals, computer networks.  Students may not apply both CSCE 210 and CSCE 212 to any minor or major program of study.",
+    "creditHours":3,
+    "semesterAvailability":["FALL"],
+    "preRequisites":["CSCE145","CSCE204","CSCE205","CSCE206","CSCE207"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ECON224",
+    "courseName":"Introduction to Economics",
+    "courseDescription":"The study of supply and demand, markets, household and firm decision-making, gross domestic product, inflation, unemployment, and government policies. Open to all students except business administration and economics majors.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"SPCH140",
+    "courseName":"Public Communication",
+    "courseDescription":"Introduction to theory and practice of oral communication in public, social, and institutional contexts. Includes foundational and cumulative training in the invention, performance, and critical analysis of oral communication, with emphasis on argumentation, persuasion, audience analysis, delivery, and ethical forms of engagement.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING","SUMMER"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"SPCH145",
+    "courseName":"Online Public Communication",
+    "courseDescription":"Introduction to theory and practice of live and recorded online spoken communication in public, social, and institutional contexts. Training in invention, performance, and critical analysis of online spoken communication, including audience analysis, persuasion, delivery, and ethical engagement. Includes significant practice in preparing and presenting live online public communication.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"SPCH230",
+    "courseName":"Business and Professional Speaking",
+    "courseDescription":"Fundamentals of oral communication within business and professional settings. Includes performance.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"AFAM202",
+    "courseName":"Introduction to African-American Studies",
+    "courseDescription":"Introduction to the analysis and discussion of creative works and traditions by and about African Americans through folklore, music, art, dance, and literature.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ARTE101",
+    "courseName":"Introduction to Art",
+    "courseDescription":"Introduction to art appreciation. Elements and principles of the visual arts, with examples from the history of art.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ARTE260",
+    "courseName":"Interdisciplinary Relationships in the Arts",
+    "courseDescription":"The study of relationships among visual arts, music, theatre, and dance.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ARTH105",
+    "courseName":"History of Western Art I",
+    "courseDescription":"The visual arts from Paleolithic times to the Renaissance.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ARTH106",
+    "courseName":"History of Western Art II",
+    "courseDescription":"The visual arts from the Renaissance to the present.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ARTS103",
+    "courseName":"History of Western Art II",
+    "courseDescription":"Introduction to visual thinking and principles of two-dimensional design.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ARTS104",
+    "courseName":"3-Dimensional Design I",
+    "courseDescription":"Introduction to visual thinking and principles of three-dimensional design.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CLAS220",
+    "courseName":"Introduction to Classical Mythology",
+    "courseDescription":"Major gods, goddesses, heroes, and heroines of classical mythology as portrayed in major literary works; the function of myth in society and its relevance to modern life.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"CPLT150",
+    "courseName":"Values and Ethics in Literature",
+    "courseDescription":"Analysis of major works of world literature focusing on values, ethics, and social responsibility.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "OVERLAY"
+  },{
+    "courseId":"CPLT270",
+    "courseName":"World Literature",
+    "courseDescription":"Analysis of major works of world literature focusing on values, ethics, and social responsibility.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"DANC101",
+    "courseName":"Dance Appreciation",
+    "courseDescription":"An eclectic survey of various dance forms including primitive, historic, ballet, modern, and Broadway musical.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ENGL200",
+    "courseName":"Creative Writing, Voice, and Community",
+    "courseDescription":"Workshop course on creative writing with a focus on values, ethics, and social responsibility.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["ENGL101","ENGL102"],
+    "coRequisites":[],
+    "type": "OVERLAY"
+  },{
+    "courseId":"ENGL270",
+    "courseName":"World Literature",
+    "courseDescription":"Selected masterpieces of world literature from antiquity to present.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["ENGL101","ENGL102"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ENGL280",
+    "courseName":"Literature and Society",
+    "courseDescription":"Fiction, poetry, drama and other cultural texts engaged with questions of values, ethics and social responsibility.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["ENGL101","ENGL102"],
+    "coRequisites":[],
+    "type": "OVERLAY"
+  },{
+    "courseId":"ENGL282",
+    "courseName":"Special Topics in Fiction",
+    "courseDescription":"Special topics in fiction from several countries and historical periods, illustrating the nature of the genre. May be repeated for credit. Content varies by title and semester.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["ENGL101","ENGL102"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ENGL284",
+    "courseName":"Drama",
+    "courseDescription":"Drama from several countries and historical periods, illustrating the nature of the genre.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["ENGL101","ENGL102"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ENGL285",
+    "courseName":"Special Topics in American Literature",
+    "courseDescription":"Special topics in American literature exemplifying persistent themes of American culture. May be repeated for credit. Content varies by title and semester.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["ENGL101","ENGL102"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ENGL286",
+    "courseName":"Poetry",
+    "courseDescription":"Poetry from several countries and historical periods, illustrating the nature of the genre.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["ENGL101","ENGL102"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ENGL287",
+    "courseName":"American Literature",
+    "courseDescription":"An introduction to American literary history, emphasizing the analysis of literary texts, the development of literary traditions over time, the emergence of new genres and forms, and the writing of successful essays about literature. Designed for English majors.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["ENGL101","ENGL102"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"ENGL288",
+    "courseName":"English Literature",
+    "courseDescription":"An introduction to English literary history, emphasizing the analysis of literary texts, the development of literary traditions over time, the emergence of new genres and forms, and the writing of successful essays about literature. Designed for English majors. Designed for English majors.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["ENGL101","ENGL102"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"FAMS110",
+    "courseName":"Media Culture",
+    "courseDescription":"Introduction to the critical study of film, video, photography, audio, and new media.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"FAMS180",
+    "courseName":"Film Culture",
+    "courseDescription":"How the film industry developed and the impact the movies have had on global popular culture. Does not count toward the film studies major.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"FAMS240",
+    "courseName":"Film and Media Analysis",
+    "courseDescription":"Introduction to the critical study of film and media. Students will closely analyze moving images and develop written arguments about film and media.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"FREN290",
+    "courseName":"French Literature in Translation",
+    "courseDescription":"Readings and discussion in English, with consideration of the cultural context.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"GERM270",
+    "courseName":"Knights and Ladies",
+    "courseDescription":"Survey of medieval romances and love lyrics of Germany. History and culture of the High Middle Ages in Germany, especially courtly society. The function of chivalry and courtly literature in society.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"GERM290",
+    "courseName":"Viking Mythology",
+    "courseDescription":"Survey of Germanic mythological and heroic texts of the Viking Age. History and culture of Germanic tribes, especially the Vikings. The function of myth in society.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MART101",
+    "courseName":"Making Media That Matters",
+    "courseDescription":"Introductory media arts creation and study for non-majors, with emphasis on developing an individual aesthetic for screen and related media.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MART110",
+    "courseName":"Media Culture",
+    "courseDescription":"Introduction to the critical study of film,video, photography, audio, and new media.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MART201",
+    "courseName":"Foundations of Media Arts Productione",
+    "courseDescription":"Fundamental conceptual and technical aspects of media.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MART210",
+    "courseName":"Digital Media Arts Fundamentals",
+    "courseDescription":"Introduction to theory and practice of origination, sequencing, and processing of screen-based and related media art.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MUSC110",
+    "courseName":"Introduction to Music",
+    "courseDescription":"Perceptive listening and appreciation of musical elements, forms and style periods, including composers' lives, individual styles and representative works. Emphasis on classical music; jazz and American popular music included.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MUSC113",
+    "courseName":"Special Topics in Popular Music",
+    "courseDescription":"An investigation into the function of popular music in contemporary society. May be repeated as content varies by title.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MUSC114",
+    "courseName":"Introduction to Music Theory",
+    "courseDescription":"Practice in basic written theory and aural skills. Concepts of rhythm, melody, harmony, form, and expression. Open to non-music majors. Not for credit toward major requirements in music degrees. Subdiscipline: Music (Theory and Composistion).",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MUSC115",
+    "courseName":"Music Theory I",
+    "courseDescription":"A survey of the sound, harmony, melody, rhythm, and form of diatonic tonal music of a variety of styles.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":["MUSC114"],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"MUSC310",
+    "courseName":"Selected Topics",
+    "courseDescription":"Course content varies by title. Intended for nonmajors unless otherwise indicated.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"RELG270",
+    "courseName":"Religion and the Arts",
+    "courseDescription":"Literary, visual, and/or performance art associated with religious discourse and practice.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"RELG280",
+    "courseName":"Introduction to Russian Civilization",
+    "courseDescription":"A multimedia introduction to Russian culture from its beginnings to the present. No knowledge of Russian required.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"SPAN220",
+    "courseName":"Selected Works of Hispanic Literature in English Translation",
+    "courseDescription":"Selected major works, especially contemporary works, in all genres of Hispanic literature in English translation.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"THEA170",
+    "courseName":"Selected Works of Hispanic Literature in English Translation",
+    "courseDescription":"Introduction to the art and craft of acting. Practical exploration through improvisation and scripted scene work. Includes a brief history of the development of modern acting techniques.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"THEA181",
+    "courseName":"Shakespeare in Performance",
+    "courseDescription":"Introduction to Shakespeare’s works on page, stage, and screen. Emphasis placed on performances of scripts. History of Shakespeare’s works/productions, stage/screen technique. Viewings of film adaptations required.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
+  },{
+    "courseId":"THEA200",
+    "courseName":"Understanding and Appreciation of Theatre",
+    "courseDescription":"An introduction to the understanding and appreciation of theatrical experience. Attendance at theatrical performances required.",
+    "creditHours":3,
+    "semesterAvailability":["FALL","SPRING"],
+    "preRequisites":[],
+    "coRequisites":[],
+    "type": "DEFAULT"
   }]
             
