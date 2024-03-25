@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.Scanner;
 
 public class UI {
@@ -41,117 +40,139 @@ public class UI {
 
             String homePage = degreeTracker.studentHomePage(loginUsername);
             System.out.println(homePage);
+            boolean continueSession = true;
 
-            System.out.println("Courses yet to take: ");
-            String unsatisifedRequirements = degreeTracker.studentUnsatisfiedRequirements(loginUsername);
-            System.out.println(unsatisifedRequirements);
+            while (continueSession) {
+                System.out.println("\nOptions:");
+                System.out.println("1. View courses yet to take");
+                System.out.println("2. Assign Courses");
+                System.out.println("3. Set Application Area");
+                System.out.println("4. Generate Eight-Semester Plan");
+                System.out.println("5. Logout");
 
-            System.out.println("\nPossible credits for the following requirements:");
-            String[] requirements = unsatisifedRequirements.split(","); // Split by comma assuming requirements are
-                                                                        // separated by comma
-            for (int i = 0; i < requirements.length; i++) {
-                String possibleCredits = degreeTracker.studentPossibleRequirementCredits(loginUsername,
-                        requirements[i]);
-                System.out.println((i + 1) + ". " + requirements[i] + ": " + possibleCredits);
-            }
+                System.out.print("Enter your choice: ");
+                int option = scanner.nextInt();
+                scanner.nextLine();
 
-            System.out.print("\nEnter the course ID you want to select: ");
-            String courseID = scanner.nextLine();
+                switch (option) {
+                    case 1:
+                        System.out.println("Courses yet to take: ");
+                        String unsatisifedRequirements = degreeTracker.studentUnsatisfiedRequirements(loginUsername);
+                        System.out.println(unsatisifedRequirements);
+                        break;
+                    case 2:
 
-            System.out.println("\nSelect semester (Spring, Fall, Winter, Summer): ");
-            String semesterTaken = scanner.nextLine();
+                        System.out.println("\nPossible credits for requirements:");
+                        String possibleCredits = degreeTracker.studentPossibleRequirementCredits(loginUsername, "GFL");
+                        System.out.println(possibleCredits);
 
-            if (!(semesterTaken.equalsIgnoreCase("Spring") || semesterTaken.equalsIgnoreCase("Fall")
-                    || semesterTaken.equalsIgnoreCase("Winter") || semesterTaken.equalsIgnoreCase("Summer"))) {
-                System.out.println("Invalid semester choice.");
-                return;
-            }
+                        System.out.print("\nEnter the course ID for the course you would like to take: ");
+                        String courseID = scanner.nextLine();
 
-            boolean success = degreeTracker.studentAssignCourse(loginUsername, courseID, semesterTaken,
-                    requirements[0]); // Assuming the first requirement for simplicity
-            if (success) {
-                System.out.println("Course " + courseID + " successfully assigned for " + requirements[0]); // Assuming
-                                                                                                            // the first
-                                                                                                            // requirement
-                                                                                                            // for
-                                                                                                            // simplicity
-            } else {
-                System.out.println("Failed to assign course " + courseID + " for " + requirements[0]); // Assuming the
-                                                                                                       // first
-                                                                                                       // requirement
-                                                                                                       // for simplicity
-            }
+                        System.out.println("\nSelect semester for the course (Spring, Fall, Winter, Summer): ");
+                        String semesterTaken = scanner.nextLine();
 
-            System.out.println("\nApplication Area Topics:");
-            System.out.println("1. Science");
-            System.out.println("2. Math");
-            System.out.println("3. Digital Design");
-            System.out.println("4. Robotics");
-            System.out.println("5. Speech");
+                        if (!(semesterTaken.equalsIgnoreCase("Spring") || semesterTaken.equalsIgnoreCase("Fall")
+                                || semesterTaken.equalsIgnoreCase("Winter")
+                                || semesterTaken.equalsIgnoreCase("Summer"))) {
+                            System.out.println("Invalid semester choice. Exiting scenario.");
+                            return;
+                        }
 
-            System.out.print("Enter the number of your choice: ");
-            int applicationOption = scanner.nextInt();
-            scanner.nextLine();
+                        boolean success = degreeTracker.studentAssignCourse(loginUsername, courseID, semesterTaken,
+                                "GFL");
+                        if (success) {
+                            System.out.println("Course " + courseID + " successfully assigned.");
+                        } else {
+                            System.out.println("Failed to assign course " + courseID + " .");
+                        }
+                        break;
 
-            String applicationArea;
-            switch (applicationOption) {
-                case 1:
-                    applicationArea = "Science";
-                    break;
-                case 2:
-                    applicationArea = "Math";
-                    break;
-                case 3:
-                    applicationArea = "Digital Design";
-                    break;
-                case 4:
-                    applicationArea = "Robotics";
-                    break;
-                case 5:
-                    applicationArea = "Speech";
-                    break;
-                default:
-                    System.out.println("Invalid option selected. Please select a valid application area.");
-                    return;
-            }
+                    case 3:
 
-            degreeTracker.setApplicationArea(loginUsername, applicationArea);
-            System.out.println("Application area set to: " + applicationArea);
+                        System.out.println("\nApplication Area Topics:");
+                        System.out.println("1. Science");
+                        System.out.println("2. Math");
+                        System.out.println("3. Digital Design");
+                        System.out.println("4. Robotics");
+                        System.out.println("5. Speech");
 
-            System.out.println("\nSelect courses for Digital Design:");
+                        System.out.print("Enter the number of your choice: ");
+                        int applicationOption = scanner.nextInt();
+                        scanner.nextLine();
 
-            // courses here
+                        String applicationArea;
+                        switch (applicationOption) {
+                            case 1:
+                                applicationArea = "Science";
+                                break;
+                            case 2:
+                                applicationArea = "Math";
+                                break;
+                            case 3:
+                                applicationArea = "Digital Design";
+                                break;
+                            case 4:
+                                applicationArea = "Robotics";
+                                break;
+                            case 5:
+                                applicationArea = "Speech";
+                                break;
+                            default:
+                                System.out.println("Invalid option selected. Please select a valid application area.");
+                                return;
+                        }
 
-            System.out.println(
-                    "\nSelect courses for Digital Design (Enter course ID, semester taken, and requirement, or type 'done' to finish):");
-            ArrayList<String[]> selectedCourses = new ArrayList<>();
-            String[] courseInfo;
-            while (true) {
-                System.out.print("Enter course ID: ");
-                String selectedCourseID = scanner.nextLine();
-                if (selectedCourseID.equalsIgnoreCase("done")) {
-                    break;
+                        degreeTracker.setApplicationArea(loginUsername, applicationArea);
+                        System.out.println("Application area set to: " + applicationArea);
+
+                        System.out.println("\nSelect courses for Digital Design:");
+
+                        // courses here
+
+                        System.out.println(
+                                "\nSelect courses for Digital Design (Enter course ID, semester taken, and requirement, or type 'done' to finish):");
+                        ArrayList<String[]> selectedCourses = new ArrayList<>();
+                        String[] courseInfo;
+                        while (true) {
+                            System.out.print("Enter course ID: ");
+                            String selectedCourseID = scanner.nextLine();
+                            if (selectedCourseID.equalsIgnoreCase("done")) {
+                                break;
+                            }
+                            System.out.print("Enter semester taken (e.g., Fall, Spring, Summer, Winter): ");
+                            String selectedSemesterTaken = scanner.nextLine();
+                            System.out.print("Enter requirement: ");
+                            String selectedRequirement = scanner.nextLine();
+                            courseInfo = new String[] { selectedCourseID, selectedSemesterTaken, selectedRequirement };
+                            selectedCourses.add(courseInfo);
+                        }
+
+                        for (String[] info : selectedCourses) {
+                            boolean successCourse = degreeTracker.studentAssignCourse(loginUsername, info[0], info[1],
+                                    info[2]);
+                            if (successCourse) {
+                                System.out.println("Course " + info[0] + " successfully assigned for " + info[2]);
+                            } else {
+                                System.out.println("Failed to assign course " + info[0] + " for " + info[2]);
+                            }
+                        }
+                        break;
+                    case 4:
+
+                        // eight semester plan
+
+                        System.out.println("\nGenerating 8 semester plan...");
+                        break;
+                    case 5:
+                        degreeTracker.logout();
+                        continueSession = false;
+                        return;
+                    default:
+                        System.out.println("Invalid option.  Please select a valid option");
                 }
-                System.out.print("Enter semester taken (e.g., Fall, Spring, Summer, Winter): ");
-                String selectedSemesterTaken = scanner.nextLine();
-                System.out.print("Enter requirement: ");
-                String selectedRequirement = scanner.nextLine();
-                courseInfo = new String[] { selectedCourseID, selectedSemesterTaken, selectedRequirement };
-                selectedCourses.add(courseInfo);
+
             }
-
-            for (String[] info : selectedCourses) {
-                boolean successCourse = degreeTracker.studentAssignCourse(loginUsername, info[0], info[1], info[2]);
-                if (successCourse) {
-                    System.out.println("Course " + info[0] + " successfully assigned for " + info[2]);
-                } else {
-                    System.out.println("Failed to assign course " + info[0] + " for " + info[2]);
-                }
-            }
-
-            // eight semester plan
-
-            degreeTracker.logout();
         }
     }
 
@@ -199,12 +220,66 @@ public class UI {
 
         if (degreeTracker.getCurrentUser().getUserType() == UserType.ADVISOR) {
             Advisor advisor = (Advisor) degreeTracker.getCurrentUser();
+            boolean continueSession = true;
+
             degreeTracker.adivsorHomePage(username);
-            degreeTracker.findStudentFromID(uscID);
 
-            degreeTracker.studentUnsatisfiedRequirements(username);
+            while (continueSession) {
+                System.out.println("\nOptions:");
+                System.out.println("1. Add an advisee");
+                System.out.println("2. View another student's progress");
+                System.out.println("3. Add a note to the student's account");
+                System.out.println("4. Logout");
 
-            degreeTracker.logout();
+                int option = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (option) {
+                    case 1:
+                        System.out.print("Enter Student ID: ");
+                        String studentID = scanner.nextLine();
+                        String studentUsername = degreeTracker.findStudentFromID(studentID);
+                        if (studentUsername != null) {
+                            Student studentUser = (Student) degreeTracker.getUserList().findUser(studentUsername);
+                            advisor.addAdvisee(studentUser);
+                            System.out.println("Student added as an advisee.");
+                        } else {
+                            System.out.println("Student not found.");
+                        }
+                        break;
+                    case 2:
+                        System.out.print("Enter Student ID: ");
+                        String studentIDToView = scanner.nextLine();
+                        String studentUsernameToView = degreeTracker.findStudentFromID(studentIDToView);
+                        if (studentUsernameToView != null) {
+                            System.out.println("Viewing Student's current progress:");
+                            String studentHomePage = degreeTracker.studentHomePage(studentUsernameToView);
+                            System.out.println(studentHomePage);
+                        } else {
+                            System.out.println("Student not found.");
+                        }
+                        break;
+                    case 3:
+                        System.out.print("Enter Student ID: ");
+                        String studentIDForNote = scanner.nextLine();
+                        String studentUsernameForNote = degreeTracker.findStudentFromID(studentIDForNote);
+                        if (studentUsernameForNote != null) {
+                            System.out.println("Enter note: ");
+                            String note = scanner.nextLine();
+                            degreeTracker.addNote(studentUsernameForNote, note);
+                            System.out.println("Note added successfully.");
+                        } else {
+                            System.out.println("Student not found.");
+                        }
+                        break;
+                    case 4:
+                        degreeTracker.logout();
+                        continueSession = false;
+                        break;
+                    default:
+                        System.out.println("Invalid option.  Please select a valid option");
+                }
+            }
         }
     }
 
