@@ -74,7 +74,7 @@ public class Requirement {
     }
 
     public boolean addCourse(String courseID) {
-        Course course = CourseList.getInstance().getCourseID(courseID);
+        Course course = CourseList.getInstance().getCourseFromID(courseID);
         return addCourse(course);
     }
     public boolean addCourse(Course course){
@@ -100,7 +100,7 @@ public class Requirement {
     private void loadCourses(ArrayList<String> courseIDs){
         ArrayList<Course> courses = new ArrayList<Course>();
         for(String courseID : courseIDs){
-            Course course = CourseList.getInstance().getCourseID(courseID);
+            Course course = CourseList.getInstance().getCourseFromID(courseID);
             courses.add(course);
         }
     }

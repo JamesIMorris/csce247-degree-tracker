@@ -41,7 +41,7 @@ public class Credit {
     }
 
     public Credit(String courseID) {
-        this.course = CourseList.getInstance().getCourse(courseID);
+        this.course = CourseList.getInstance().getCourseFromName(courseID);
     }
 
     public Credit(Course course, Semester semesterTaken){
