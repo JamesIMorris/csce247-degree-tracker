@@ -146,10 +146,7 @@ public class DataWriter extends DataConstants {
         for (Credit credit : student.getCredits()){
             JSONObject jsonCredit = new JSONObject();
             jsonCredit.put(STUDENT_COURSE, credit.getCourse());
-            JSONObject semesterTaken = new JSONObject();
-            semesterTaken.put("year", credit.getSemesterTaken().getYear());
-            semesterTaken.put("season", credit.getSemesterTaken().getSeason());
-            jsonCredit.put(STUDENT_SEMESTER_TAKEN, semesterTaken);
+            jsonCredit.put(STUDENT_SEMESTER_TAKEN, credit.getSemesterTaken().getAbbreviation());
             jsonCredit.put("grade", credit.getGrade());
             jsonCredit.put("type", credit.getType());
             jsonCredit.put("requirementsAssignedTo", credit.getRequirementsAssignedTo());
