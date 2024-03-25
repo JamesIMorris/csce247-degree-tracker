@@ -118,7 +118,6 @@ public class DegreeTracker {
         if(userList.findUser(studentUsername).getUserType() != UserType.STUDENT)
             return false;
         String eightSemesterPlan = "***** Eight Semester Plan *****\n";
-        Student student = (Student)userList.findUser(studentUsername);
         eightSemesterPlan += UIFormatter.studentHomePage(studentUsername);
         eightSemesterPlan += "\n***** Unassigned Requirements *****\n";
         eightSemesterPlan += UIFormatter.studentUnsatisfiedRequirements(studentUsername);
