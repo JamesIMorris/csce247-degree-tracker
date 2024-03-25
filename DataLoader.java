@@ -6,8 +6,6 @@ import java.util.UUID;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 
-import Credit.PossibleRequirement;
-
 public class DataLoader extends DataConstants{
     private static DataLoader dataLoader;
 
@@ -186,8 +184,8 @@ public class DataLoader extends DataConstants{
         for(Object obj : studentsArray) {
             JSONObject studentObj = (JSONObject)obj;
             String username = (String)studentObj.get(STUDENT_USERNAME);
-            UUID uscid = UUID.fromString((String)studentObj.get("uscID"));
-            String applicationarea = (String)studentObj.get("applicationArea");
+            String uscID = (String)studentObj.get("uscID");
+            String applicationArea = (String)studentObj.get("applicationArea");
             
             String majorName = (String)studentObj.get("major");
             Major major = MajorList.getInstance().getMajorFromName(majorName);
@@ -197,6 +195,7 @@ public class DataLoader extends DataConstants{
             ArrayList<Credit> credits = new ArrayList<>();
             for(Object creditObj : creditsArray) {
                 JSONObject creditJSON = (JSONObject) creditObj;
+                UUID id = UUID.fromString((String)creditJSON.get("id"));
                 Course courseID = (Course)creditJSON.get(STUDENT_COURSE);
 
                 JSONObject semesterTakenJSON = (JSONObject)creditJSON.get("semesterTaken");
@@ -208,18 +207,18 @@ public class DataLoader extends DataConstants{
                 CreditType type = (CreditType)creditJSON.get("type");
                 int requirementsAssignedTo = ((Long)creditJSON.get("requirementsAssignedTo")).intValue();
                 JSONArray possibleRequirementArray = (JSONArray)creditJSON.get("possibleRequirements");
-                ArrayList<PossibleRequirement> possibleRequirements = new ArrayList<>();
+                ArrayList<PossibleRequirement> possibleRequirements = new ArrayList<PossibleRequirement>();
                 for(Object possibleReqObj : possibleRequirementArray) {
                     JSONObject possibleReqJSON = (JSONObject)possibleReqObj;
-                    Requirement requirementID = UUID.fromString((String)possibleReqJSON.get("requirement"));
-                    Requirement requirement = Requirement.getCourseIDs;
+                    UUID requirementID = UUID.fromString((String)possibleReqJSON.get("requirement"));
+                    Requirement requirement = Requirement.fromID(requirementID);
                     boolean available = (boolean)possibleReqJSON.get("available");
-                    Credit PossibleRequirement = new Credit(requirementID, available);
+                    PossibleRequirement possibleRequirement = new PossibleRequirement(requirement, available);
                     possibleRequirements.add(possibleRequirement);
                 }
 
                 String note = (String)creditJSON.get("note");
-                Credit credit = new Credit (courseID, semesterTaken, grade, type, requirementsAssignedTo, note);
+                Credit credit = new Credit (id, courseID, semesterTaken, grade, type, requirementsAssignedTo, note);
                 credits.add(credit);
             }
 
@@ -232,9 +231,9 @@ public class DataLoader extends DataConstants{
                 ArrayList<Credit> creditsForReq = new ArrayList<>();
                 for(Object creditObj : creditsArrayForReq) {
                     JSONObject creditJSON = (JSONObject) creditObj;
-                    Course courseID = (Course) creditJSON.get("courseID");
-                    int grade = ((Long)creditJSON.get("grade")).intValue();
-                    Credit credit = new Credit(courseID, grade);
+                    Course course = CourseList.getInstance().getCourseFromID((String)creditJSON.get("course"));
+                    Semester semesterTaken = Semester.fromString((String)creditJSON.get("semesterTaken"));
+                    Credit credit = ((Student)UserList.getInstance().findUser(username)).getCredit(course, semesterTaken);
                     creditsForReq.add(credit);
                     //creditIDs.add((String)creditID);
                 }
@@ -248,7 +247,7 @@ public class DataLoader extends DataConstants{
                 notes.add(note);
             }
 
-            Student student = new Student(username, major, applicationArea, credits, requirements, notes);
+            Student student = new Student(username, uscID, major, applicationArea, credits, requirements, notes);
             students.add(student);
         }
     } catch (Exception e) {
@@ -423,6 +422,8 @@ public class DataLoader extends DataConstants{
             System.out.println("Major " + major.getRequirements());
         }
 
-        for(Student : Students)
+        // for(Student student : students){
+
+        // }
     }
 }
