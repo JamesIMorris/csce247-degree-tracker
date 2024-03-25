@@ -91,7 +91,7 @@ public class DataLoader extends DataConstants{
     for (Object obj : courseIDsJSON) {
         if (obj instanceof String) {
             String courseId = (String) obj;
-            Course course = CourseList.getInstance().getCourseID(courseId);
+            Course course = CourseList.getInstance().getCourseFromID(courseId);
             if (course != null) {
                 returnList.add(course);
             } else {
@@ -184,13 +184,13 @@ public class DataLoader extends DataConstants{
             JSONArray studentsArray = (JSONArray)parser.parse(reader);
 
         for(Object obj : studentsArray) {
-            JSONObject studentObj = (JSONObject) obj;
+            JSONObject studentObj = (JSONObject)obj;
             String username = (String)studentObj.get(STUDENT_USERNAME);
             UUID uscid = UUID.fromString((String)studentObj.get("uscID"));
             String applicationarea = (String)studentObj.get("applicationArea");
             
             String majorName = (String)studentObj.get("major");
-            Major major = MajorList.getInstance().getMajor(majorName);
+            Major major = MajorList.getInstance().getMajorFromName(majorName);
             String year = (String)studentObj.get("year");
 
             JSONArray creditsArray = (JSONArray)studentObj.get(STUDENT_CREDITS);
@@ -208,13 +208,13 @@ public class DataLoader extends DataConstants{
                 CreditType type = (CreditType)creditJSON.get("type");
                 int requirementsAssignedTo = ((Long)creditJSON.get("requirementsAssignedTo")).intValue();
                 JSONArray possibleRequirementArray = (JSONArray)creditJSON.get("possibleRequirements");
-                ArrayList<Requirement> possibleRequirements = new ArrayList<>();
-                for(Object possibleReqObj : ) {
+                ArrayList<PossibleRequirement> possibleRequirements = new ArrayList<>();
+                for(Object possibleReqObj : possibleRequirementArray) {
                     JSONObject possibleReqJSON = (JSONObject)possibleReqObj;
-                    UUID requirementID = UUID.fromString((String)possibleReqJSON.get("requirement"));
-                    Requirement requirement = Requirement.getID;
+                    Requirement requirementID = UUID.fromString((String)possibleReqJSON.get("requirement"));
+                    Requirement requirement = Requirement.getCourseIDs;
                     boolean available = (boolean)possibleReqJSON.get("available");
-                    Requirement possibleRequirement = new (requirementID, available);
+                    Credit PossibleRequirement = new Credit(requirementID, available);
                     possibleRequirements.add(possibleRequirement);
                 }
 
