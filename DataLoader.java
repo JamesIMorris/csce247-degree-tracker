@@ -6,6 +6,8 @@ import java.util.UUID;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 
+import Credit.PossibleRequirement;
+
 public class DataLoader extends DataConstants{
     private static DataLoader dataLoader;
 
@@ -205,6 +207,17 @@ public class DataLoader extends DataConstants{
                 int grade = ((Long)creditJSON.get("grade")).intValue();
                 CreditType type = (CreditType)creditJSON.get("type");
                 int requirementsAssignedTo = ((Long)creditJSON.get("requirementsAssignedTo")).intValue();
+                JSONArray possibleRequirementArray = (JSONArray)creditJSON.get("possibleRequirements");
+                ArrayList<Requirement> possibleRequirements = new ArrayList<>();
+                for(Object possibleReqObj : ) {
+                    JSONObject possibleReqJSON = (JSONObject)possibleReqObj;
+                    UUID requirementID = UUID.fromString((String)possibleReqJSON.get("requirement"));
+                    Requirement requirement = Requirement.getID;
+                    boolean available = (boolean)possibleReqJSON.get("available");
+                    Requirement possibleRequirement = new (requirementID, available);
+                    possibleRequirements.add(possibleRequirement);
+                }
+
                 String note = (String)creditJSON.get("note");
                 Credit credit = new Credit (courseID, semesterTaken, grade, type, requirementsAssignedTo, note);
                 credits.add(credit);
@@ -219,7 +232,7 @@ public class DataLoader extends DataConstants{
                 ArrayList<Credit> creditsForReq = new ArrayList<>();
                 for(Object creditObj : creditsArrayForReq) {
                     JSONObject creditJSON = (JSONObject) creditObj;
-                    String courseID = (String) creditJSON.get("courseID");
+                    Course courseID = (Course) creditJSON.get("courseID");
                     int grade = ((Long)creditJSON.get("grade")).intValue();
                     Credit credit = new Credit(courseID, grade);
                     creditsForReq.add(credit);
