@@ -58,8 +58,14 @@ public class UIFormatter {
         Student student = (Student)UserList.getInstance().findUser(username);
         String unsatisfiedRequiremetns = "\n";
         for(Requirement requirement : student.getMajor().getRequirements())
-            if(!student.checkRequierment(requirement))
-                unsatisfiedRequiremetns += requirement.getCategory().abbreviation + requirement.toString() + "\n";
+            if(!student.checkRequierment(requirement)){
+                int takenHours = 0;
+                for(Credit credit : student.getCredits(requirement))
+                    takenHours += credit.getCreditHours();
+                int remainingHours = requirement.getCreditHoursRequired() - takenHours;
+                unsatisfiedRequiremetns += requirement.getCategory().abbreviation + ": " + requirement.getName() + " - " + remainingHours + " Credit Hours Remaining" + "\n";
+            }
+                
         return unsatisfiedRequiremetns;
     }
     public static String studentPossibleRequirementCredits(String username, String requirement){

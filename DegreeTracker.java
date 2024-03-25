@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+
 public class DegreeTracker {
     private static DegreeTracker degreeTracker;
     private String error;
@@ -96,6 +99,40 @@ public class DegreeTracker {
 
     public User getCurrentUser() {
         return userList.getCurrentUser();
+    }
+
+    public boolean eightSemesterPlanToTextFile(String fileName, String studentUsername)){
+        if(userList.findUser(studentUsername).getUserType() != UserType.STUDENT)
+            return false;
+        String eightSemesterPlan = "***** Eight Semester Plan *****\n";
+        Student student = (Student)userList.findUser(studentUsername);
+        eightSemesterPlan += UIFormatter.studentHomePage(studentUsername);
+        eightSemesterPlan += "\n***** Unassigned Requirements *****\n";
+        eightSemesterPlan += UIFormatter.studentUnsatisfiedRequirements(studentUsername);
+        try{
+            File planFile = new File(fileName + ".txt");
+            planFile.createNewFile();
+        }
+        catch(Exception e){
+            addError("Error creating semester plan file");
+            e.printStackTrace();
+            return false;
+        }
+        try{
+            FileWriter fileWriter = new FileWriter(fileName + ".txt");
+            fileWriter.write(eightSemesterPlan);
+            fileWriter.close();
+        }
+        catch(Exception e){
+            addError("Error writing semester plan to file");
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean eightSemesterPlanToTextFile(String fileName){
+        return eightSemesterPlanToTextFile(fileName, userList.getCurrentUser().getUsername());
     }
 
     public MajorList getMajorList(){
