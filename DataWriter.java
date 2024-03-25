@@ -171,12 +171,12 @@ public class DataWriter extends DataConstants {
         studentDetails.put("credits", jsonCredits);
 
         JSONArray jsonRequirements = new JSONArray();
-        for(Requirement requirement : student.getRequirements()) {
+        for(Requirement requirement : student.getMajor().getRequirements()) {
             JSONObject requirementObj = new JSONObject();
-            requirementObj.put("requirement", requirement.getName());
+            requirementObj.put("requirement", requirement.getID());
             JSONArray creditsArray = new JSONArray();
-            for(String creditID : requirement.getCredits()){
-                creditsArray.add(creditID);
+            for(Credit credit : student.getCredits(requirement)){
+                creditsArray.add(credit.getID());
             }
             requirementObj.put("credits", creditsArray);
             jsonRequirements.add(requirementObj);
