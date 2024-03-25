@@ -22,14 +22,16 @@ public class DegreeTracker {
         error += "\n" + errorMessage;
     }
 
-    public String popError(){
+    public String popError() {
         error = "";
         return error;
     }
-    public void clearError(){
+
+    public void clearError() {
         error = "";
     }
-    public String getError(){
+
+    public String getError() {
         return error;
     }
 
@@ -37,11 +39,11 @@ public class DegreeTracker {
         return userList.login(username, password);
     }
 
-    public boolean logout(){
+    public boolean logout() {
         return userList.logout();
     }
 
-    public boolean checkSignup(String username, String password){
+    public boolean checkSignup(String username, String password) {
         return userList.checkSignup(username, password);
     }
 
@@ -49,48 +51,59 @@ public class DegreeTracker {
             String uscID) {
         return userList.studentSignup(username, password, firstName, lastName, email, uscID);
     }
-    public boolean advisorSignup(String username, String password, String firstName, String lastName, String email){
+
+    public boolean advisorSignup(String username, String password, String firstName, String lastName, String email) {
         return userList.advisorSignup(username, password, firstName, lastName, email);
     }
-    public boolean studentAssignCourse(String username, String courseID, String semesterTaken, String requirement){
-        return ((Student)userList.findUser(username)).assignCredit(courseID, semesterTaken, requirement);
-    }
-    public boolean setApplicationArea(String username, String applicationArea){
-        ((Student)userList.findUser(username)).setApplicatioNArea(applicationArea);
-        return true;
-    }
-    public String findStudentFromID(String uscID){
-        return userList.findStudentFromID(uscID);
-    }
-    public boolean addNote(String username, String note){
-        return ((Student)userList.findUser(username)).addNote(note + "\n-" + userList.getCurrentUser());
+
+    public boolean studentAssignCourse(String username, String courseID, String semesterTaken, String requirement) {
+        return ((Student) userList.findUser(username)).assignCredit(courseID, semesterTaken, requirement);
     }
 
-    public String studentHomePage(String username){
+    public boolean setApplicationArea(String username, String applicationArea) {
+        ((Student) userList.findUser(username)).setApplicatioNArea(applicationArea);
+        return true;
+    }
+
+    public String findStudentFromID(String uscID) {
+        return userList.findStudentFromID(uscID);
+    }
+
+    public boolean addNote(String username, String note) {
+        return ((Student) userList.findUser(username)).addNote(note + "\n-" + userList.getCurrentUser());
+    }
+
+    public String studentHomePage(String username) {
         return UIFormatter.studentHomePage(username);
     }
-    public String studentUnsatisfiedRequirements(String username){
+
+    public String studentUnsatisfiedRequirements(String username) {
         return UIFormatter.studentUnsatisfiedRequirements(username);
     }
-    public String studentPossibleRequirementCredits(String username, String requirement){
+
+    public String studentPossibleRequirementCredits(String username, String requirement) {
         return UIFormatter.studentPossibleRequirementCredits(username, requirement);
     }
-    public String adivsorHomePage(String username){
+
+    public String adivsorHomePage(String username) {
         return UIFormatter.adivsorHomePage(username);
     }
-    public String homePage(String username){
-        if(userList.getCurrentUser().getUserType().equals(UserType.STUDENT))
+
+    public String homePage(String username) {
+        if (userList.getCurrentUser().getUserType().equals(UserType.STUDENT))
             return studentHomePage(username);
         return adivsorHomePage(username);
     }
-    public String advisorStudentPage(String studentUsername){
+
+    public static String advisorStudentPage(String studentUsername) {
         return UIFormatter.advisorStudentPage(studentUsername);
     }
-    public String advisorNotes(String username){
+
+    public static String advisorNotes(String username) {
         return UIFormatter.advisorNotes(username);
     }
 
-    public String getCurrentUsername(){
+    public String getCurrentUsername() {
         return userList.getCurrentUser().getUsername();
     }
 
@@ -98,10 +111,15 @@ public class DegreeTracker {
         return userList.getCurrentUser();
     }
 
-    public MajorList getMajorList(){
+    public MajorList getMajorList() {
         return majorList;
     }
-    public CourseList getCourseList(){
+
+    public CourseList getCourseList() {
         return courseList;
+    }
+
+    public UserList getUserList() {
+        return userList;
     }
 }
