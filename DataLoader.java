@@ -228,24 +228,9 @@ public class DataLoader extends DataConstants {
                     Course course = courseList.getCourseFromID((String)creditJSON.get(STUDENT_COURSE));;
                     Semester semesterTaken = Semester.fromString((String)creditJSON.get("semesterTaken"));;
                     int grade = ((Long) creditJSON.get("grade")).intValue();
-                    CreditType type = null;
+                    CreditType type = CreditType.fromString((String)creditJSON.get("type"));
                     int requirementsAssignedTo = ((Long) creditJSON.get("requirementsAssignedTo")).intValue();
                     String note = (String) creditJSON.get("note");
-
-
-
-                    // (Course) creditJSON.get(STUDENT_COURSE);
-
-                    for (Object possibleReqObj : possibleRequirementArray) {
-                        JSONObject possibleReqJSON = (JSONObject) possibleReqObj;
-                        UUID requirementID = UUID.fromString((String) possibleReqJSON.get("requirement"));
-                        Requirement requirement = Requirement.fromID(requirementID);
-                        boolean available = (boolean) possibleReqJSON.get("available");
-                        PossibleRequirement possibleRequirement = new PossibleRequirement(requirement, available);
-                        possibleRequirements.add(possibleRequirement);
-                    }
-
-                    
                     Credit credit = new Credit(id, course, semesterTaken, grade, type,
                             requirementsAssignedTo, note);
                     credits.add(credit);
