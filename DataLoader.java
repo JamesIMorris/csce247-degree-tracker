@@ -109,17 +109,9 @@ public class DataLoader extends DataConstants {
                 String department = (String)majorJSON.get(MAJOR_DEPARTMENT);
                 ArrayList<Requirement> requirements = new ArrayList<Requirement>();
 
-                JSONArray requirementsJSON = (JSONArray) majorJSON.get(MAJOR_REQUIREMENTS);
-                
-                for(Object req : requirementsJSON){
-                    String requirementName = (String) req;
-                    Requirement requirement =
-                    Requirement.fromID(UUID.fromString(requirementName));
-                    if(requirement != null) {
-                        requirements.add(requirement);
-                    } else {
-                        System.out.println("Requirement with ID " + requirementName + " not found.");
-                    }
+                JSONArray requirementsJSON = (JSONArray)majorJSON.get(MAJOR_REQUIREMENTS);
+                for (int i = 0; i < requirementsJSON.size(); i++) {
+                    requirements.add()
                 }
                 
                 majorList.addMajor(new Major(id, name, school, department, requirements));
@@ -145,7 +137,7 @@ public class DataLoader extends DataConstants {
                 String categoryName = (String)reqJSON.get(REQUIREMENT_CATEGORY);
                 Category category = Category.fromAbbreviation(categoryName.toUpperCase());
                 int creditHoursRequired = ((Long)reqJSON.get(REQUIREMENT_CREDITS_REQUIRED)).intValue();
-                ArrayList<String> courseIDs = new ArrayList<>();
+                ArrayList<String> courseIDs = new ArrayList<String>();
 
                 JSONArray courseIDsJSON = (JSONArray) reqJSON.get(REQUIRMENT_COURSE_ID);
                 for (int i = 0; i < courseIDsJSON.size(); i++) 
