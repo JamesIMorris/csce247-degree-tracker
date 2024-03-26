@@ -7,7 +7,8 @@ public class MajorList {
     private ArrayList<Requirement> requirements;
 
     private MajorList() {
-        majors = new ArrayList<>();
+        majors = new ArrayList<Major>();
+        requirements = new ArrayList<Requirement>();
     }
 
     public ArrayList<Major> getMajors() {
