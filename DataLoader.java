@@ -260,7 +260,7 @@ public class DataLoader extends DataConstants {
                     }
                     requirements.put(requirement, creditsForRequirement);
                 }
-                student.setRequirements();
+                student.setRequirements(requirements);
 
                 userList.addUser(student);
             }
