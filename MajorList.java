@@ -7,6 +7,7 @@ public class MajorList {
 
     private MajorList() {
         majors = new ArrayList<>();
+        //majors = new ArrayList<>();
     }
 
     public ArrayList<Major> getMajors() {
@@ -57,6 +58,10 @@ public class MajorList {
         }
         DegreeTracker.getInstance().addError("Major not found with name: " + id);
         return null;
+    }
+
+    public void loadMajors() {
+        majors = DataLoader.loadMajors();
     }
 
 }

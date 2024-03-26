@@ -20,6 +20,7 @@ public class Requirement {
         this.id = id;
         this.name = name;
         this.category = category;
+        this.courses = new ArrayList<>();
         loadCourses(courseIDs);
         this.creditHoursRequired = creditHoursRequired;
     }

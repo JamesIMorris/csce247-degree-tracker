@@ -5,7 +5,8 @@ public class CourseList {
   private ArrayList<Course> courses;
 
   private CourseList() {
-    DataLoader.getInstance();
+    courses = new ArrayList<>();
+    //DataLoader.getInstance();
   }
 
   public static CourseList getInstance() {
@@ -73,4 +74,8 @@ public class CourseList {
   public ArrayList<Course> getCourses() {
     return courses;
   }
+
+  public void loadCourses() {
+    courses = DataLoader.loadCourses();
+}
 }
