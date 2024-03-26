@@ -5,18 +5,18 @@
     "courseDescription":"Fundamentals of software design and development; software implementation strategies; object-oriented design techniques; functional design techniques; design patterns; design process; source control; testing.",
     "creditHours":3,
     "semesterAvailability":["FALL","SPRING"],
+    "type": "DEFAULT",
     "preRequisites":["CSCE146"],
-    "coRequisites":[],
-    "type": "DEFAULT"
+    "coRequisites":[]
   },{
     "courseId":"CSCE146",
     "courseName":"Algorithmic Design II",
     "courseDescription":"Continuation of CSCE 145. Rigorous development of algorithms and computer programs; elementary data structures. Three lecture hours and two laboratory hours per week. Open to all majors.",
     "creditHours":4,
     "semesterAvailability":["FALL","SPRING", "SUMMER"],
+    "type": "DEFAULT",
     "preRequisites":[],
-    "coRequisites":["MATH122","MATH141"],
-    "type": "DEFAULT"
+    "coRequisites":["MATH122","MATH141"]
   }
 ]
             

@@ -11,6 +11,9 @@ public class DataLoader extends DataConstants {
     private CourseList courseList;
     private MajorList majorList;
     private UserList userList;
+    private ArrayList<Course> courses;
+    private ArrayList<Major> majors;
+    private ArrayList<User> users;
 
     private DataLoader() {
         courseList = CourseList.getInstance();
@@ -26,109 +29,73 @@ public class DataLoader extends DataConstants {
     }
 
     public void loadData() {
-        courseList.setCourses(loadCourses());
-        majorList.setMajors(loadMajors());
-        userList.setUsers(loadUsers());
+        loadCourses();
+        loadMajors();
+        loadUsers();
+        courseList.setCourses(courses);
+        majorList.setMajors(majors);
+        userList.setUsers(users);
     }
 
 
-
-
+// {
+//     "courseId":"CSCE247",
+//     "courseName":"Software Engineering",
+//     "courseDescription":"Fundamentals of software design and development; software implementation strategies; object-oriented design techniques; functional design techniques; design patterns; design process; source control; testing.",
+//     "creditHours":3,
+//     "semesterAvailability":["FALL","SPRING"],
+//     "preRequisites":["CSCE146"],
+//     "coRequisites":[],
+//     "type": "DEFAULT"
+// }
 
 
     public ArrayList<Course> loadCourses() {
-        ArrayList<Course> courses = new ArrayList<Course>();
         try {
             FileReader reader = new FileReader(COURSE_FILE_NAME);
             JSONParser parsec = new JSONParser();
             JSONArray coursesJSON = (JSONArray) parsec.parse(reader);
-            System.out.println("Debug: Loading courses from JSON file");
 
-            // System.out.println("1");
 
-            for (Object course : coursesJSON) {
-                JSONObject courseJSON = (JSONObject) course;
-                String id = (String) courseJSON.get(COURSE_ID);
-                System.out.println("Debug: Course ID - " + id);
+
+            for (Object courseObject : coursesJSON) {
+                JSONObject courseJSON = (JSONObject)courseObject;
+                String id = (String)courseJSON.get(COURSE_ID);
                 String courseName = (String) courseJSON.get(COURSE_NAME);
                 String courseDescription = (String) courseJSON.get(COURSE_DESCRIPTION);
                 int creditHours = ((Long) courseJSON.get(CREDIT_HOURS)).intValue();
-
-                JSONArray semesterAvailabilityJSON = (JSONArray) courseJSON.get(SEMESTER_AVAILABILITY);
-                // Change into a new string to avoid error of incompatible types
-                String[] semesterAvailableStrings = new String[semesterAvailabilityJSON.size()];
-                // String[] semesterAvailableStrings =
-                // (String[])semesterAvailabilityJSON.toArray();
                 ArrayList<Season> semesterAvailability = new ArrayList<Season>();
+                CourseType type = CourseType.fromString((String)courseJSON.get(COURSE_TYPE));
+
+                JSONArray semesterAvailabilityJSON = (JSONArray)courseJSON.get(SEMESTER_AVAILABILITY);
+                
                 for (int i = 0; i < semesterAvailabilityJSON.size(); i++) {
-                    semesterAvailableStrings[i] = (String) semesterAvailabilityJSON.get(i);
+                    semesterAvailability.add(Season.fromString((String)semesterAvailabilityJSON.get(i)));
                 }
-                for (String string : semesterAvailableStrings) {
-                    semesterAvailability.add(Season.fromString(string));
-                    // System.out.println(string);
-                }
-                JSONArray preRequisiteJSON = (JSONArray) courseJSON.get("preRequisites");
-                System.out.println("Debug: Pre-Requisites JSON: " + preRequisiteJSON);
-                // String[] preRequisiteStrings = new String[preRequisiteJSON.size()];
-                ArrayList<Course> preRequisites = new ArrayList<>();
-                for (Object preReq : preRequisiteJSON) {
-                    String courseId = (String) preReq;
-                    Course preRequisite = CourseList.getInstance().getCourseFromID(courseId);
-                    System.out.println("Test CourseID " + courseId);
-                    if (preRequisite != null) {
-                        preRequisites.add(preRequisite);
-                    } else {
-                        System.out.println("Course with ID " + courseId + " not found.");
-                    }
-                    // preRequisites.add((Course)preReq);
-                }
-                System.out.println("Debug: Pre-Requisites for " + id + ": " + preRequisites);
-
-                JSONArray coRequisiteJSON = (JSONArray) courseJSON.get("coRequisites");
-                ArrayList<Course> coRequisites = new ArrayList<>();
-                for (Object coReq : coRequisiteJSON) {
-                    coRequisites.add((Course) coReq);
-                }
-                System.out.println("Debug: Co-Requisites for " + id + ": " + coRequisites);
-
-                CourseType type = CourseType.fromString((String) courseJSON.get(COURSE_TYPE));
-
-                courses.add(new Course(id, courseName, courseDescription, creditHours, semesterAvailability,
-                        preRequisites, coRequisites, type));
-                // System.out.println("2");
+                
+                courses.add(new Course(id, courseName, courseDescription, creditHours, semesterAvailability, type));
             }
 
-            for (Course course : courses) {
-                Course existingCourse = CourseList.getInstance().getCourseFromID(course.getCourseID());
-                if (existingCourse != null) {
-                    System.out.println("Debug: Course " + existingCourse.getCourseID() + " found in CourseList.");
-                } else {
-                    System.out.println("Debug: Course " + course.getCourseID() + " not found in CourseList.");
-                }
-            }
-
-            /*
-             * ArrayList<Course> preRequisites =
-             * toCourseArrayList((JSONArray)courseJSON.get("preRequisites"));
-             * System.out.println("Debug: Pre-Requisites for " + course.getCourseID() + ": "
-             * + preRequisites);
-             * //System.out.println("3");
-             * ArrayList<Course> coRequisites =
-             * toCourseArrayList((JSONArray)courseJSON.get("coRequisites"));
-             * System.out.println("Debug: Co-Requisites for " + course.getCourseID() + ": "
-             * + coRequisites);
-             * 
-             * 
-             * //ArrayList<Course> preRequisites =
-             * toCourseArrayList((JSONArray)courseJSON.get(COURSE_PRE_REQUISISTES));
-             * //ArrayList<Course> coRequisites =
-             * toCourseArrayList((JSONArray)courseJSON.get(COURSE_CO_REQUISITES));
-             * courses.get(i).setPreRequisites(preRequisites);
-             * courses.get(i).setCoRequisites(coRequisites);
-             * 
-             * }
-             */
-
+            
+              ArrayList<Course> preRequisites =
+              toCourseArrayList((JSONArray)courseJSON.get("preRequisites"));
+              System.out.println("Debug: Pre-Requisites for " + course.getCourseID() + ": "
+              + preRequisites);
+              //System.out.println("3");
+              ArrayList<Course> coRequisites =
+              toCourseArrayList((JSONArray)courseJSON.get("coRequisites"));
+              System.out.println("Debug: Co-Requisites for " + course.getCourseID() + ": "
+              + coRequisites);
+              
+              
+              //ArrayList<Course> preRequisites =
+              toCourseArrayList((JSONArray)courseJSON.get(COURSE_PRE_REQUISISTES));
+              //ArrayList<Course> coRequisites =
+              toCourseArrayList((JSONArray)courseJSON.get(COURSE_CO_REQUISITES));
+              courses.get(i).setPreRequisites(preRequisites);
+              courses.get(i).setCoRequisites(coRequisites);
+              
+              
             System.out.println("Debug: Courses loaded successfully");
             return courses;
         } catch (Exception e) {
