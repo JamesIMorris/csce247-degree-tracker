@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class Student extends User{
     private String uscID;
@@ -139,6 +140,13 @@ public class Student extends User{
             if (credit.getCourse().equals(course) && credit.getSemesterTaken().equals(semester))
                 return credit;
         }
+        return null;
+    }
+
+    public Credit getCreditFromID(UUID id){
+        for(Credit credit : credits)
+            if(credit.getID().equals(id))
+                return credit;
         return null;
     }
 
