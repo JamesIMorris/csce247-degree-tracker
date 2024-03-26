@@ -206,6 +206,11 @@ public class UserList {
         return usersByType;
     }
 
+    public boolean addUser(User user){
+        if(users.contains(user) || user == null)
+            return false;
+        return users.add(user);
+    }
         
     public void setUsers(ArrayList<User> users){
         this.users = users;
