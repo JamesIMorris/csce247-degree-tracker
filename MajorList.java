@@ -32,6 +32,12 @@ public class MajorList {
             return false;
         return requirements.add(requirement);
     }
+    public Requirement getRequirementFromID(UUID id){
+        for(Requirement requirement : requirements)
+            if(requirement.getID().equals(id))
+                return requirement;
+        return null;
+    }
 
     public boolean addMajor(UUID id, String name, String school, String department,
             ArrayList<Requirement> requirements) {
