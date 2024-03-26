@@ -11,7 +11,6 @@ public class DataLoader extends DataConstants {
     private CourseList courseList;
     private MajorList majorList;
     private UserList userList;
-    private ArrayList<Requirement> allRequirements;
 
     private DataLoader() {
         courseList = CourseList.getInstance();
@@ -67,16 +66,17 @@ public class DataLoader extends DataConstants {
                     semesterAvailability.add(Season.fromString((String) semesterAvailabilityJSON.get(i)));
                 }
 
-                courseList.addCourse(new Course(id, courseName, courseDescription, creditHours, semesterAvailability, type));
+                courseList.addCourse(
+                        new Course(id, courseName, courseDescription, creditHours, semesterAvailability, type));
             }
 
             for (Object courseObject : coursesJSON) {
                 JSONObject courseJSON = (JSONObject) courseObject;
-                String id = (String)courseJSON.get(COURSE_ID);
+                String id = (String) courseJSON.get(COURSE_ID);
                 Course course = courseList.getCourseFromID(id);
 
-                JSONArray preReqsJSON = (JSONArray)courseJSON.get(COURSE_CO_REQUISITES);
-                JSONArray coReqsJSON = (JSONArray)courseJSON.get(COURSE_PRE_REQUISISTES);
+                JSONArray preReqsJSON = (JSONArray) courseJSON.get(COURSE_CO_REQUISITES);
+                JSONArray coReqsJSON = (JSONArray) courseJSON.get(COURSE_PRE_REQUISISTES);
 
                 for (int i = 0; i < preReqsJSON.size(); i++) {
                     Course preReq = courseList.getCourseFromID(id);
@@ -94,52 +94,76 @@ public class DataLoader extends DataConstants {
         return true;
     }
 
-
-
-
-
-
-
     public ArrayList<Major> loadMajors(){
-      ArrayList<Major> majors = new ArrayList<>();
-      try{
-      FileReader reader = new FileReader(MAJOR_FILE_NAME);
-      JSONParser parser = new JSONParser();
-      JSONArray majorsJSON = (JSONArray) parser.parse(reader);
-      //JSONArray majorsJSON = (JSONArray)new JSONParser().parse(reader);
-      
-      for(Object major : majorsJSON){
-      JSONObject majorJSON = (JSONObject)major;
-      UUID id = UUID.fromString((String)majorJSON.get(MAJOR_ID));
-      String name = (String)majorJSON.get(MAJOR_NAME);
-      String school = (String)majorJSON.get(MAJOR_SCHOOL);
-      String department = (String)majorJSON.get(MAJOR_DEPARTMENT);
-      
-      JSONArray requirementsJSON = (JSONArray) majorJSON.get(MAJOR_REQUIREMENTS);
-      ArrayList<Requirement> requirements = new ArrayList<>();
-      for(Object req : requirementsJSON){
-      String requirementName = (String) req;
-      Requirement requirement =
-      Requirement.fromID(UUID.fromString(requirementName));
-      if(requirement != null) {
-      requirements.add(requirement);
-      } else {
-      System.out.println("Requirement with ID " + requirementName + " not found.");
-      }
-      }
-      //ArrayList<String> requirements =
-      (ArrayList<String>)majorJSON.get(MAJOR_REQUIREMENTS);
-      
-      Major newMajor = new Major(id, name, school, department, requirements);
-      majors.add(newMajor);
-      
-      //major.add(new Major(majorID, name, school, department, requirements));
-      }
-      
-      } catch(Exception e) {
-      e.printStackTrace();
-      }
-      return majors;
+        loadRequirements();
+        ArrayList<Major> majors = new ArrayList<>();
+        try{
+            FileReader reader = new FileReader(MAJOR_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray majorsJSON = (JSONArray) parser.parse(reader);
+            //JSONArray majorsJSON = (JSONArray)new JSONParser().parse(reader);
+        
+            for(Object major : majorsJSON){
+                JSONObject majorJSON = (JSONObject)major;
+                UUID id = UUID.fromString((String)majorJSON.get(MAJOR_ID));
+                String name = (String)majorJSON.get(MAJOR_NAME);
+                String school = (String)majorJSON.get(MAJOR_SCHOOL);
+                String department = (String)majorJSON.get(MAJOR_DEPARTMENT);
+                
+                JSONArray requirementsJSON = (JSONArray) majorJSON.get(MAJOR_REQUIREMENTS);
+                ArrayList<Requirement> requirements = new ArrayList<>();
+                for(Object req : requirementsJSON){
+                    String requirementName = (String) req;
+                    Requirement requirement =
+                    Requirement.fromID(UUID.fromString(requirementName));
+                    if(requirement != null) {
+                        requirements.add(requirement);
+                    } else {
+                        System.out.println("Requirement with ID " + requirementName + " not found.");
+                    }
+                }
+                //ArrayList<String> requirements =
+                (ArrayList<String>)majorJSON.get(MAJOR_REQUIREMENTS);
+                
+                Major newMajor = new Major(id, name, school, department, requirements);
+                majors.add(newMajor);
+                
+                //major.add(new Major(majorID, name, school, department, requirements));
+            }
+        
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return majors;
+    }
+
+    public boolean loadRequirements() {
+        try {
+            FileReader reader = new FileReader(REQUIREMENTS_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray requirementsArray = (JSONArray) parser.parse(reader);
+
+            for (Object req : requirementsArray) {
+                JSONObject reqJSON = (JSONObject) req;
+                UUID id = UUID.fromString((String) reqJSON.get(REQUIREMENTS_UUID));
+                String name = (String) reqJSON.get(REQUIRMENT_NAME);
+                String categoryName = (String)reqJSON.get(REQUIREMENT_CATEGORY);
+                Category category = Category.fromAbbreviation(categoryName.toUpperCase());
+                int creditHoursRequired = ((Long)reqJSON.get(REQUIREMENT_CREDITS_REQUIRED)).intValue();
+                ArrayList<String> courseIDs = new ArrayList<>();
+
+                JSONArray courseIDsJSON = (JSONArray) reqJSON.get(REQUIRMENT_COURSE_ID);
+                for (int i = 0; i < courseIDsJSON.size(); i++) 
+                    courseIDs.add((String)courseIDs.get(i));
+
+                majorList.addRequirement(new Requirement(id, name, category, courseIDs,
+                        creditHoursRequired));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
 
@@ -148,10 +172,11 @@ public class DataLoader extends DataConstants {
 
 
 
+    
     public boolean loadUsers() {
-        if(!loadStudents())
+        if (!loadStudents())
             return false;
-        if(!loadAdvisors())
+        if (!loadAdvisors())
             return false;
         return true;
         // loadAdmin(); TODO
@@ -307,38 +332,6 @@ public class DataLoader extends DataConstants {
 
     private boolean loadAdmin() {
 
-    }
-
-    public ArrayList<Requirement> loadRequirements() {
-        ArrayList<Requirement> requirements = new ArrayList<>();
-        try {
-            FileReader reader = new FileReader(REQUIREMENTS_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONArray requirementsArray = (JSONArray) parser.parse(reader);
-
-            for (Object req : requirementsArray) {
-                JSONObject reqJSON = (JSONObject) req;
-                UUID id = UUID.fromString((String) reqJSON.get(REQUIREMENTS_UUID));
-                String name = (String) reqJSON.get(REQUIRMENT_NAME);
-                String categoryName = (String) reqJSON.get(REQUIREMENT_CATEGORY);
-                Category category = Category.fromAbbreviation(categoryName.toUpperCase());
-                int creditHoursRequired = ((Long) reqJSON.get(REQUIREMENT_CREDITS_REQUIRED)).intValue();
-
-                JSONArray courseIDsArray = (JSONArray) reqJSON.get(REQUIRMENT_COURSE_ID);
-                ArrayList<String> courseIDs = new ArrayList<>();
-                for (Object courseId : courseIDsArray) {
-                    courseIDs.add((String) courseId);
-                }
-                // ArrayList<Course> courses = loadCourses(courseIDs);
-
-                Requirement requirement = new Requirement(id, name, category, courseIDs,
-                        creditHoursRequired);
-                requirements.add(requirement);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return requirements;
     }
 
     public ArrayList<Admin> loadAdmins() {
