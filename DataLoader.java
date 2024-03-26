@@ -223,7 +223,7 @@ public class DataLoader extends DataConstants {
 
                 JSONArray creditsArray = (JSONArray) studentJSON.get(STUDENT_CREDITS);
                 for (int j=0; i<creditsArray.size(); j++) {
-                    JSONObject creditJSON = (JSONObject)creditsArray.get(i);
+                    JSONObject creditJSON = (JSONObject)creditsArray.get(j);
                     UUID id = UUID.fromString((String) creditJSON.get("id"));
                     Course course = courseList.getCourseFromID((String)creditJSON.get(STUDENT_COURSE));;
                     Semester semesterTaken = Semester.fromString((String)creditJSON.get("semesterTaken"));;
@@ -256,9 +256,8 @@ public class DataLoader extends DataConstants {
                 }
 
                 JSONArray notesArray = (JSONArray) studentJSON.get(STUDENT_NOTES);
-                ArrayList<String> notes = new ArrayList<>();
-                for (Object noteObj : notesArray) {
-                    String note = (String) noteObj;
+                for (int j=0; j<notesArray.size(); j++) {
+                    String note = (String) notesArray.get(j);
                     notes.add(note);
                 }
 
