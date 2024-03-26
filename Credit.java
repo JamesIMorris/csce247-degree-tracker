@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 
 public class Credit {
@@ -28,6 +29,7 @@ public class Credit {
         }
     }
 
+    private UUID id;
     private Course course;
     private Semester semesterTaken;
     private int grade;
@@ -37,20 +39,24 @@ public class Credit {
     private String note;
 
     public Credit(Course course) {
+        this.id = UUID.randomUUID();
         this.course = course;
     }
 
     public Credit(String courseID) {
+        this.id = UUID.randomUUID();
         this.course = CourseList.getInstance().getCourse(courseID);
     }
 
     public Credit(Course course, Semester semesterTaken){
+        this.id = UUID.randomUUID();
         this.course = course;
         this.semesterTaken = semesterTaken;
     }
 
-    public Credit(Course course, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
+    public Credit(UUID id, Course course, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
             String note) {
+        this.id = id;
         this.course = course;
         this.semesterTaken = semesterTaken;
         this.grade = grade;
@@ -58,7 +64,6 @@ public class Credit {
         this.requirementsAssignedTo = requirementsAssignedTo;
         this.note = note;
         this.possibleRequirements = new ArrayList<PossibleRequirement>();
-        populatePossibleRequirements();
     }
 
     // public Credit(String courseID, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
