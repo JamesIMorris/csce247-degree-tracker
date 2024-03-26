@@ -71,6 +71,13 @@ public class Credit {
 
     // }
 
+    public UUID getID(){
+        return this.id;
+    }
+    public void setID(UUID id){
+        this.id = id;
+    }
+
     public Course getCourse(){
         return course;
     }
