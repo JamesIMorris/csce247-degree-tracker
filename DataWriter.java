@@ -152,7 +152,7 @@ public class DataWriter extends DataConstants {
             jsonCredit.put("requirementsAssignedTo", credit.getRequirementsAssignedTo());
         
             JSONArray possibleRequirements = new JSONArray();
-            for(Credit.PossibleRequirement possibleRequirement : credit.getPossibleRequirements()) {
+            for(PossibleRequirement possibleRequirement : credit.getPossibleRequirements()) {
                 JSONObject requirementObject = new JSONObject();
                 
                 requirementObject.put("requirement", possibleRequirement.getRequirement().getName());
