@@ -111,7 +111,9 @@ public class DataLoader extends DataConstants {
 
                 JSONArray requirementsJSON = (JSONArray)majorJSON.get(MAJOR_REQUIREMENTS);
                 for (int i = 0; i < requirementsJSON.size(); i++) {
-                    requirements.add()
+                    UUID requirementID = UUID.fromString((String)requirementsJSON.get(i));
+                    Requirement requirement = majorList.getRequirementFromID(requirementID);
+                    requirements.add(requirement);
                 }
                 
                 majorList.addMajor(new Major(id, name, school, department, requirements));
