@@ -7,10 +7,15 @@ import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants {
+
+    // VARIABLES //
+
     private static DataLoader dataLoader;
     private CourseList courseList;
     private MajorList majorList;
     private UserList userList;
+
+    // INITIALIZATION //
 
     private DataLoader() {
         courseList = CourseList.getInstance();
@@ -31,21 +36,16 @@ public class DataLoader extends DataConstants {
         loadUsers();
     }
 
-    // {
-    // "courseId":"CSCE247",
-    // "courseName":"Software Engineering",
-    // "courseDescription":"Fundamentals of software design and development;
-    // software implementation strategies; object-oriented design techniques;
-    // functional design techniques; design patterns; design process; source
-    // control; testing.",
-    // "creditHours":3,
-    // "semesterAvailability":["FALL","SPRING"],
-    // "preRequisites":["CSCE146"],
-    // "coRequisites":[],
-    // "type": "DEFAULT"
-    // }
 
-    public boolean loadCourses() {
+
+
+    // LOADING //
+
+
+
+    // LOAD COURSES //
+
+    private boolean loadCourses() {
         try {
             FileReader reader = new FileReader(COURSE_FILE_NAME);
             JSONParser parsec = new JSONParser();
@@ -94,7 +94,11 @@ public class DataLoader extends DataConstants {
         return true;
     }
 
-    public boolean loadMajors(){
+
+
+    // LOAD MAJORS //
+
+    private boolean loadMajors(){
         loadRequirements();
         try{
             FileReader reader = new FileReader(MAJOR_FILE_NAME);
@@ -126,7 +130,7 @@ public class DataLoader extends DataConstants {
         return true;
     }
 
-    public boolean loadRequirements() {
+    private boolean loadRequirements() {
         try {
             FileReader reader = new FileReader(REQUIREMENTS_FILE_NAME);
             JSONParser parser = new JSONParser();
@@ -157,44 +161,34 @@ public class DataLoader extends DataConstants {
 
 
 
-
-
-
-
+    // LOAD USERS //
     
-    public boolean loadUsers() {
-        if (!loadStudents())
+    private boolean loadUsers() {
+        JSONArray userData = loadUserData();
+        if(!loadStudents(userData))
             return false;
-        if (!loadAdvisors())
+        if(!loadAdvisors(userData))
             return false;
+        // TODO
+        // if(!loadAdmin(userData))
+        //     return false;
         return true;
-        // loadAdmin(); TODO
+        
     }
 
-    public boolean loadUserData(User user) {
+    private JSONArray loadUserData() {
+        JSONArray usersArray = null;
         try {
             FileReader reader = new FileReader(USER_FILE_NAME);
             JSONParser parser = new JSONParser();
-            JSONArray usersArray = (JSONArray) parser.parse(reader);
-
-            for (Object obj : usersArray) {
-                JSONObject userObj = (JSONObject) obj;
-                String username = (String) userObj.get(USER_NAME);
-                if (username == user.getUsername()) {
-                    user.setPassword((String) userObj.get(PASSWORD));
-                    user.setFirstName((String) userObj.get(FIRST_NAME));
-                    user.setLastName((String) userObj.get(LAST_NAME));
-                    user.setEmail((String) userObj.get(EMAIL));
-                    return true;
-                }
-            }
+            usersArray = (JSONArray)parser.parse(reader);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return usersArray;
     }
 
-    public boolean loadStudents() {
+    private boolean loadStudents(JSONArray userData) {
         ArrayList<Student> students = new ArrayList<>();
         try {
             FileReader reader = new FileReader(STUDENT_FILE_NAME);
@@ -206,7 +200,6 @@ public class DataLoader extends DataConstants {
                 String username = (String) studentObj.get(STUDENT_USERNAME);
                 String uscID = (String) studentObj.get("uscID");
                 String applicationArea = (String) studentObj.get("applicationArea");
-
                 String majorName = (String) studentObj.get("major");
                 Major major = MajorList.getInstance().getMajorFromName(majorName);
                 String year = (String) studentObj.get("year");
@@ -279,7 +272,7 @@ public class DataLoader extends DataConstants {
         return students;
     }
 
-    public ArrayList<Student> loadStudent() {
+    private ArrayList<Student> loadStudent() {
         ArrayList<Student> students = new ArrayList<>();
         try {
             FileReader reader = new FileReader(STUDENT_FILE_NAME);
@@ -310,7 +303,7 @@ public class DataLoader extends DataConstants {
         return students;
     }
 
-    public ArrayList<Advisor> loadAdvisor(String userName, String password,
+    private ArrayList<Advisor> loadAdvisor(String userName, String password,
             String firstName, String lastName, String email) {
         // Get vars from admin.json
         ArrayList<Student> advisees;
@@ -319,11 +312,7 @@ public class DataLoader extends DataConstants {
         return false;
     }
 
-    private boolean loadAdmin() {
-
-    }
-
-    public ArrayList<Admin> loadAdmins() {
+    private ArrayList<Admin> loadAdmins() {
         ArrayList<Admin> admins = new ArrayList<>();
         try {
             FileReader reader = new FileReader(ADMIN_FILE_NAME);
@@ -343,7 +332,7 @@ public class DataLoader extends DataConstants {
         return admins;
     }
 
-    public boolean loadAdvisors() {
+    private boolean loadAdvisors() {
         ArrayList<Advisor> advisors = new ArrayList<>();
         try {
             FileReader reader = new FileReader(ADVISOR_FILE_NAME);
