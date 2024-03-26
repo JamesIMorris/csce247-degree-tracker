@@ -38,7 +38,7 @@ public class DataLoader extends DataConstants{
             JSONParser parsec = new JSONParser();
             JSONArray coursesJSON = (JSONArray)parsec.parse(reader);
             System.out.println("Debug: Loading courses from JSON file");
-
+            
             //System.out.println("1");
         
             for(Object course : coursesJSON){
@@ -61,17 +61,46 @@ public class DataLoader extends DataConstants{
                     semesterAvailability.add(Season.fromString(string));
                     //System.out.println(string);
                 }
+                JSONArray preRequisiteJSON = (JSONArray) courseJSON.get("preRequisites");
+                System.out.println("Debug: Pre-Requisites JSON: " + preRequisiteJSON);
+                //String[] preRequisiteStrings = new String[preRequisiteJSON.size()];
+                ArrayList<Course> preRequisites = new ArrayList<>();
+                for(Object preReq : preRequisiteJSON) {
+                    String courseId = (String)preReq;
+                    Course preRequisite = CourseList.getInstance().getCourseFromID(courseId);
+                    System.out.println("Test CourseID " + courseId);
+                    if (preRequisite != null) {
+                        preRequisites.add(preRequisite);
+                    } else {
+                        System.out.println("Course with ID " + courseId + " not found.");
+                    }
+                   // preRequisites.add((Course)preReq);
+                }
+                System.out.println("Debug: Pre-Requisites for " + id + ": " + preRequisites);
+
+                JSONArray coRequisiteJSON = (JSONArray) courseJSON.get("coRequisites");
+                ArrayList<Course> coRequisites = new ArrayList<>();
+                for(Object coReq : coRequisiteJSON) {
+                    coRequisites.add((Course)coReq);
+                }
+                System.out.println("Debug: Co-Requisites for " + id + ": " + coRequisites);
+
                 CourseType type = CourseType.fromString((String)courseJSON.get(COURSE_TYPE));
         
-                courses.add(new Course(id, courseName, courseDescription, creditHours, semesterAvailability, type));
+                courses.add(new Course(id, courseName, courseDescription, creditHours, semesterAvailability, preRequisites, coRequisites, type));
                 //System.out.println("2");
             }
-            for(int i=0; i<courses.size(); i++){
-                Course course = courses.get(i);
-                JSONObject courseJSON = (JSONObject)coursesJSON.get(i);
 
-                
-                
+            for (Course course : courses) {
+                Course existingCourse = CourseList.getInstance().getCourseFromID(course.getCourseID());
+                if (existingCourse != null) {
+                    System.out.println("Debug: Course " + existingCourse.getCourseID() + " found in CourseList.");
+                } else {
+                    System.out.println("Debug: Course " + course.getCourseID() + " not found in CourseList.");
+                }
+            }
+        
+                /* 
                 ArrayList<Course> preRequisites = toCourseArrayList((JSONArray)courseJSON.get("preRequisites"));
                 System.out.println("Debug: Pre-Requisites for " + course.getCourseID() + ": " + preRequisites);
                 //System.out.println("3");
@@ -85,6 +114,7 @@ public class DataLoader extends DataConstants{
                 courses.get(i).setCoRequisites(coRequisites);
                 
             }
+            */
             
             System.out.println("Debug: Courses loaded successfully");
             return courses;
@@ -92,11 +122,11 @@ public class DataLoader extends DataConstants{
             e.printStackTrace();
             return courses;
         }
-    }
-
+     }
+/* 
     
-    static ArrayList<Course> toCourseArrayList(JSONArray courseIDsJSON) {
-    ArrayList<Course> returnList = new ArrayList<Course>();
+    public static ArrayList<Course> toCourseArrayList(JSONArray coursesJSON) {
+    ArrayList<Course> returnList = new ArrayList<>();
     if (courseIDsJSON != null && !courseIDsJSON.isEmpty()) {
         for (Object obj : courseIDsJSON) {
             if (obj instanceof String) {
@@ -112,9 +142,10 @@ public class DataLoader extends DataConstants{
     }
     return returnList;
 }
+    
+     
 
-
-    /* 
+    
     private static ArrayList<Course> toCourseArrayList(JSONArray courseIDsJSON){
         ArrayList<Course> returnList = new ArrayList<Course>();
         String[] courseIDs = (String[])courseIDsJSON.toArray();
@@ -123,7 +154,7 @@ public class DataLoader extends DataConstants{
         }
         return returnList;
     }
-    */
+    
   
         
         static ArrayList<Major> loadMajors(){
@@ -145,9 +176,13 @@ public class DataLoader extends DataConstants{
                 ArrayList<Requirement> requirements = new ArrayList<>();
                 for(Object req : requirementsJSON){
                     String requirementName = (String) req;
-                    Requirement requirement = new Requirement(requirementName, null, null, 0);
+                    Requirement requirement = Requirement.fromID(UUID.fromString(requirementName));
+                if(requirement != null) {
                     requirements.add(requirement);
+                } else {
+                    System.out.println("Requirement with ID " + requirementName + " not found.");
                 }
+            }
                 //ArrayList<String> requirements = (ArrayList<String>)majorJSON.get(MAJOR_REQUIREMENTS);
 
                 Major newMajor = new Major(id, name, school, department, requirements);
@@ -270,37 +305,38 @@ public class DataLoader extends DataConstants{
 } 
 
 
-    /* 
+    
     static ArrayList<Student> loadStudent(){
-        ArrayList<Student> students = new ArrayList<>();
-        try {
-            FileReader reader = new FileReader(STUDENT_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONArray studentsJSON = (JSONArray)parser.parse(reader);
+    ArrayList<Student> students = new ArrayList<>();
+    try {
+        FileReader reader = new FileReader(STUDENT_FILE_NAME);
+        JSONParser parser = new JSONParser();
+        JSONArray studentsJSON = (JSONArray)parser.parse(reader);
 
-            for(Object student : studentsJSON) {
-                JSONObject studentJSON = (JSONObject) student;
-                String username = (String)studentJSON.get(STUDENT_USER_NAME);
-                String password = (String)studentJSON.get(STUDENT_PASSWORD);
-                String firstName = (String)studentJSON.get(STUDENT_FIRSTNAME);
-                String lastName = (String)studentJSON.get(STUDENT_LASTNAME);
-                String email = (String)studentJSON.get(STUDENT_EMAIL);
+        for(Object student : studentsJSON) {
+            JSONObject studentJSON = (JSONObject) student;
+            String username = (String)studentJSON.get(STUDENT_USER_NAME);
+            String password = (String)studentJSON.get(STUDENT_PASSWORD);
+            String firstName = (String)studentJSON.get(STUDENT_FIRSTNAME);
+            String lastName = (String)studentJSON.get(STUDENT_LASTNAME);
+            String email = (String)studentJSON.get(STUDENT_EMAIL);
 
-                Major major = parseMajor((JSONObject)studentJSON.get(STUDENT_MAJOR));
-                ArrayList<Credit> credits = parseCredits((JSONArray)studentJSON.get(STUDENT_CREDITS));
-                HashMap<Requirement, ArrayList<Credit>> requirements = parseRequirements((JSONArray)studentJSON.get(STUDENT_REQUIREMENT));
-                ArrayList<String> notes = parseNotes((JSONArray)studentJSON.get(STUDENT_NOTES));
+            Major major = parseMajor((JSONObject)studentJSON.get(STUDENT_MAJOR));
+            ArrayList<Credit> credits = parseCredits((JSONArray)studentJSON.get(STUDENT_CREDITS));
+            HashMap<Requirement, ArrayList<Credit>> requirements = parseRequirements((JSONArray)studentJSON.get(STUDENT_REQUIREMENT));
+            ArrayList<String> notes = parseNotes((JSONArray)studentJSON.get(STUDENT_NOTES));
 
-                Student newStudent = new Student(userName, password, firstName, lastName, email, major, credits, requirements, notes);
-                students.add(newStudent);
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
+            Student newStudent = new Student(userName, password, firstName, lastName, email, major, credits, requirements, notes);
+            students.add(newStudent);
         }
-        return students;
+    } catch(Exception e) {
+        e.printStackTrace();
     }
-    */
-        /* 
+    return students;
+}
+}
+    
+        
         // Get vars from students.json
         Major major;
         ArrayList<Credit> credits;
@@ -308,10 +344,10 @@ public class DataLoader extends DataConstants{
         ArrayList<String> notes;
         users.add(new Student(userName, password, firstName, lastName, email, major, credits, requirements, notes));
         return false;
-    }
-    */
+    
+    
 
-    /*
+    
     static ArrayList<Advisor> loadAdvisor(String userName, String password, String firstName, String lastName, String email){
         // Get vars from admin.json
         ArrayList<Student> advisees;
@@ -321,7 +357,7 @@ public class DataLoader extends DataConstants{
     private boolean loadAdmin(){
         
     }
-    */
+    
     
     static ArrayList<Requirement> loadRequirements() {
         ArrayList<Requirement> requirements = new ArrayList<>();
@@ -408,14 +444,14 @@ public class DataLoader extends DataConstants{
         return advisors;
     }
 
-
+    */
 
     public static void main(String[] args) {
 
         
         //DataLoader dataLoader = DataLoader.getInstance();
         ArrayList<Course> courses = DataLoader.loadCourses();
-        ArrayList<Major> majors = DataLoader.loadMajors();
+        //ArrayList<Major> majors = DataLoader.loadMajors();
       
         for (Course course : courses) {
             System.out.println("\n" + course.getCourseID());
@@ -423,13 +459,24 @@ public class DataLoader extends DataConstants{
             System.out.println("Course Description: " + course.getCourseDescription());
             System.out.println("Credit Hours: " + course.getCreditHours());
             System.out.println("Semester Availability: " + course.getSemesterAvailability());
-            System.out.println("Pre-Requisites: " + course.getPreRequisites());
-            System.out.println("Co-Requisites: " + course.getCoRequisites());
+            //System.out.print("Pre-Requisites: ");
+
+            ArrayList<Course> preRequisites = course.getPreRequisites();
+            for (Course preReq : preRequisites) {
+            System.out.print(preReq.getCourseID() + " ");
+        }
+
+            ArrayList<Course> coRequisites = course.getCoRequisites();
+            for (Course preReq : preRequisites) {
+            System.out.print(preReq.getCourseID() + " ");
+        }
+            System.out.println();
+            //System.out.println("Co-Requisites: " + course.getCoRequisites());
             System.out.println("Type: " + course.getType());
         }
          
         
-        
+        /* 
         for(Major major : majors) {
             System.out.println("\n" + major.getName());
             System.out.println("Major ID: " + major.getId());
@@ -437,10 +484,10 @@ public class DataLoader extends DataConstants{
             System.out.println("Major Department: " + major.getDepartment());
             System.out.println("Major " + major.getRequirements());
         }
-        
+        */
 
         // for(Student student : students){
 
         // }
-    }
+        }
 }
