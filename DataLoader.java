@@ -189,7 +189,6 @@ public class DataLoader extends DataConstants {
     }
 
     private boolean loadStudents(JSONArray userData) {
-        ArrayList<Student> students = new ArrayList<>();
         try {
             FileReader reader = new FileReader(STUDENT_FILE_NAME);
             JSONParser parser = new JSONParser();
@@ -248,7 +247,7 @@ public class DataLoader extends DataConstants {
                 for (int j=0; j<requirementsArray.size(); j++) {
                     JSONObject requirementHashJSON = (JSONObject)requirementsArray.get(j);
                     Requirement requirement = null;
-                    ArrayList<Credit> creditsForReq = new ArrayList<>();
+                    ArrayList<Credit> creditsForRequirement = new ArrayList<>();
 
                     UUID requirementID = UUID.fromString((String)requirementHashJSON.get("requirement"));
                     requirement = majorList.getRequirementFromID(requirementID);
@@ -256,18 +255,20 @@ public class DataLoader extends DataConstants {
                     JSONArray creditsArrayForRequirement = (JSONArray)requirementHashJSON.get("credits");
                     for (int k=0; k<creditsArrayForRequirement.size(); k++) {
                         UUID creditID = UUID.fromString((String)creditsArrayForRequirement.get(k));
-                        
+                        Credit credit = student.getCreditFromID(creditID);
+                        creditsForRequirement.add(credit);
                     }
-                    requirements.put(requirement, creditsForReq);
+                    requirements.put(requirement, creditsForRequirement);
                 }
+                student.setRequirements();
 
-
-                students.add(student);
+                userList.addUser(student);
             }
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-        return students;
+        return true;
     }
 
     private ArrayList<Student> loadStudent() {
