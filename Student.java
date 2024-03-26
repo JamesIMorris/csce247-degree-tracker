@@ -159,6 +159,10 @@ public class Student extends User{
         return returnList;
     }
 
+    public void setRequirements(HashMap<Requirement, ArrayList<Credit>> requirements){
+        this.requirements = requirements;
+    }
+
     public ArrayList<Credit> getCredits(Semester semester) {
         ArrayList<Credit> returnList = new ArrayList<Credit>();
         for (Credit credit : credits) {
