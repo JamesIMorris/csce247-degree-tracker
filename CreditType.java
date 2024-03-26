@@ -11,6 +11,16 @@ public enum CreditType {
     this.abbreviation = abbreviation;
   }
 
+  public CreditType fromString(String string){
+    for(CreditType type : CreditType.values())
+      if(type.getString().equalsIgnoreCase(string))
+        return type;
+    return null;
+  }
+
+  public String getString(){
+    return string;
+  }
   public String getAbbreviation() {
       return abbreviation;
   }
