@@ -12,6 +12,9 @@ public class MajorList {
     public ArrayList<Major> getMajors() {
         return majors;
     }
+    public void setMajors(ArrayList<Major> majors){
+        this.majors = majors;
+    }
 
     public static MajorList getInstance() {
         if (majorList == null)
