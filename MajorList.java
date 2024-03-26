@@ -4,6 +4,7 @@ import java.util.UUID;
 public class MajorList {
     private static MajorList majorList;
     private ArrayList<Major> majors;
+    private ArrayList<Requirement> requirements;
 
     private MajorList() {
         majors = new ArrayList<>();
@@ -17,6 +18,18 @@ public class MajorList {
         if (majorList == null)
             majorList = new MajorList();
         return majorList;
+    }
+
+    public void setRequirements(ArrayList<Requirement> requirements){
+        this.requirements = requirements;
+    }
+    public ArrayList<Requirement> getRequirements(){
+        return this.requirements;
+    }
+    public boolean addRequirement(Requirement requirement){
+        if(requirements.contains(requirement) || requirement == null)
+            return false;
+        return requirements.add(requirement);
     }
 
     public boolean addMajor(UUID id, String name, String school, String department,
