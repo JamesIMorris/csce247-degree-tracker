@@ -37,7 +37,6 @@ public class Credit {
         this.requirementsAssignedTo = requirementsAssignedTo;
         this.note = note;
         this.possibleRequirements = new ArrayList<PossibleRequirement>();
-        populatePossibleRequirements();
     }
 
     // public Credit(String courseID, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
