@@ -64,7 +64,7 @@ public class MajorList {
     }
 
     public void loadMajors() {
-        majors = DataLoader.loadMajors();
+        majors = DataLoader.getInstance().loadMajors();
     }
 
 }

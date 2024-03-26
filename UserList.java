@@ -206,4 +206,9 @@ public class UserList {
         return usersByType;
     }
 
+        
+    public void setUsers(ArrayList<User> users){
+        this.users = users;
+    }
+
 }

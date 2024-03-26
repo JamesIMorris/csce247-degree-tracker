@@ -76,6 +76,6 @@ public class CourseList {
   }
 
   public void loadCourses() {
-    courses = DataLoader.loadCourses();
+    courses = DataLoader.getInstance().loadCourses();
 }
 }
