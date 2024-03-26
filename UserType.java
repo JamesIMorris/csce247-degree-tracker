@@ -11,6 +11,13 @@ public enum UserType{
         this.string = string;
     }
 
+    public static UserType fromString(String string){
+        for(UserType type : UserType.values())
+            if(string.equals(type.toString()))
+                return type;
+        return null;
+    }
+
     public String toString(){
         return string;
     }
