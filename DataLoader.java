@@ -94,14 +94,12 @@ public class DataLoader extends DataConstants {
         return true;
     }
 
-    public ArrayList<Major> loadMajors(){
+    public boolean loadMajors(){
         loadRequirements();
-        ArrayList<Major> majors = new ArrayList<>();
         try{
             FileReader reader = new FileReader(MAJOR_FILE_NAME);
             JSONParser parser = new JSONParser();
             JSONArray majorsJSON = (JSONArray) parser.parse(reader);
-            //JSONArray majorsJSON = (JSONArray)new JSONParser().parse(reader);
         
             for(Object major : majorsJSON){
                 JSONObject majorJSON = (JSONObject)major;
@@ -109,9 +107,10 @@ public class DataLoader extends DataConstants {
                 String name = (String)majorJSON.get(MAJOR_NAME);
                 String school = (String)majorJSON.get(MAJOR_SCHOOL);
                 String department = (String)majorJSON.get(MAJOR_DEPARTMENT);
-                
+                ArrayList<Requirement> requirements = new ArrayList<Requirement>();
+
                 JSONArray requirementsJSON = (JSONArray) majorJSON.get(MAJOR_REQUIREMENTS);
-                ArrayList<Requirement> requirements = new ArrayList<>();
+                
                 for(Object req : requirementsJSON){
                     String requirementName = (String) req;
                     Requirement requirement =
@@ -122,19 +121,15 @@ public class DataLoader extends DataConstants {
                         System.out.println("Requirement with ID " + requirementName + " not found.");
                     }
                 }
-                //ArrayList<String> requirements =
-                (ArrayList<String>)majorJSON.get(MAJOR_REQUIREMENTS);
                 
-                Major newMajor = new Major(id, name, school, department, requirements);
-                majors.add(newMajor);
-                
-                //major.add(new Major(majorID, name, school, department, requirements));
+                majorList.addMajor(new Major(id, name, school, department, requirements));
             }
         
         } catch(Exception e) {
             e.printStackTrace();
+            return false;
         }
-        return majors;
+        return true;
     }
 
     public boolean loadRequirements() {
