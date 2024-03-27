@@ -53,6 +53,7 @@ public class DataLoader extends DataConstants {
             JSONArray coursesJSON = (JSONArray) parsec.parse(reader);
 
             for (Object courseObject : coursesJSON) {
+                
                 JSONObject courseJSON = (JSONObject) courseObject;
                 String id = (String) courseJSON.get(COURSE_ID);
                 String courseName = (String) courseJSON.get(COURSE_NAME);
@@ -147,8 +148,8 @@ public class DataLoader extends DataConstants {
                 ArrayList<String> courseIDs = new ArrayList<String>();
 
                 JSONArray courseIDsJSON = (JSONArray) reqJSON.get(REQUIRMENT_COURSE_ID);
-                for (int i = 0; i < courseIDsJSON.size(); i++) 
-                    courseIDs.add((String)courseIDs.get(i));
+                for (int i = 0; i<courseIDsJSON.size(); i++) 
+                    courseIDs.add((String)courseIDsJSON.get(i));
 
                 majorList.addRequirement(new Requirement(id, name, category, courseIDs,
                         creditHoursRequired));
@@ -215,7 +216,7 @@ public class DataLoader extends DataConstants {
                 ArrayList<String> notes = new ArrayList<String>();
 
                 JSONArray creditsArray = (JSONArray) studentJSON.get(STUDENT_CREDITS);
-                for (int j=0; i<creditsArray.size(); j++) {
+                for (int j=0; j<creditsArray.size(); j++) {
                     JSONObject creditJSON = (JSONObject)creditsArray.get(j);
                     UUID id = UUID.fromString((String) creditJSON.get("id"));
                     Course course = courseList.getCourseFromID((String)creditJSON.get(STUDENT_COURSE));;
@@ -280,7 +281,7 @@ public class DataLoader extends DataConstants {
                 String firstName = null;
                 String lastName = null;
                 String email = null;
-                for(int j=0; i<userData.size(); j++){
+                for(int j=0; j<userData.size(); j++){
                     JSONObject userJSON = (JSONObject)userData.get(j);
                     if(!userJSON.get(USER_NAME).equals(username))
                         continue;
@@ -320,7 +321,7 @@ public class DataLoader extends DataConstants {
                 String firstName = null;
                 String lastName = null;
                 String email = null;
-                for(int j=0; i<userData.size(); j++){
+                for(int j=0; j<userData.size(); j++){
                     JSONObject userJSON = (JSONObject)userData.get(j);
                     if(!userJSON.get(USER_NAME).equals(username))
                         continue;
