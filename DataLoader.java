@@ -53,7 +53,7 @@ public class DataLoader extends DataConstants {
             JSONArray coursesJSON = (JSONArray) parsec.parse(reader);
 
             for (Object courseObject : coursesJSON) {
-                
+
                 JSONObject courseJSON = (JSONObject) courseObject;
                 String id = (String) courseJSON.get(COURSE_ID);
                 String courseName = (String) courseJSON.get(COURSE_NAME);
@@ -354,6 +354,6 @@ public class DataLoader extends DataConstants {
         CourseList courseList = dataLoader.getCourseList();
         MajorList majorList = dataLoader.getMajorList();
         UserList userList = dataLoader.getUserList();
-        
+        System.out.println("YAY!");
     }
 }
