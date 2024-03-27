@@ -14,13 +14,11 @@ public class StatusTest {
 
     @BeforeEach
     public void setUp() {
-        // Initialize the ArrayList before each test
         credits = new ArrayList<>();
     }
 
     @AfterEach
     public void tearDown() {
-        // Clean up resources after each test
         credits.clear();
     }
 
@@ -39,18 +37,14 @@ public class StatusTest {
       Credit notStartedCredit = new Credit(course3, new Semester(2024, Season.SPRING));
       notStartedCredit.setGrade(0);
 
-        // Add credits to the ArrayList
       credits.add(completeCredit);
       credits.add(inProgressCredit);
       credits.add(notStartedCredit);
-
-        // Test getStatus(ArrayList<Credit> credits)
       assertEquals(Status.COMPLETE, Status.getStatus(credits));
     }
 
     @Test
     public void testGetStatusCredit() {
-        // Test getStatus(Credit credit)
       Credit completeCredit = new Credit(course1, new Semester(2024, Season.SPRING));
       completeCredit.setGrade(80);
 
@@ -60,12 +54,9 @@ public class StatusTest {
       Credit notStartedCredit = new Credit(course3, new Semester(2024, Season.SPRING));
       notStartedCredit.setGrade(0);
 
-    // Add credits to the ArrayList
       credits.add(completeCredit);
       credits.add(inProgressCredit);
       credits.add(notStartedCredit);
-
-    // Test getStatus(Credit credit)
       assertEquals(Status.COMPLETE, Status.getStatus(completeCredit));
       assertEquals(Status.IN_PROGRESS, Status.getStatus(inProgressCredit));
       assertEquals(Status.NOT_STARTED, Status.getStatus(notStartedCredit));

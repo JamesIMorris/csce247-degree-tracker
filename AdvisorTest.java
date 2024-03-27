@@ -12,7 +12,7 @@ public class AdvisorTest {
     public void setUp() {
         advisor = new Advisor("advisor1", "password", "John", "Doe", "john.doe@example.com");
         student = new Student("student1", "password", "Alice", "Smith", "alice.smith@example.com", "123456");
-        advisor.getAdvisees().clear(); // Ensure advisees list is empty before each test
+        advisor.getAdvisees().clear();
     }
 
     @Test

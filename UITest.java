@@ -21,22 +21,18 @@ public class UITest {
 
     @Test
     public void testScenario1() {
-        // Mock user input
         when(scanner.nextLine()).thenReturn("testUser", "password", "2", "CS101", "Fall", "yes", "5");
 
-        // Mock DegreeTracker behavior
         when(degreeTracker.login("testUser", "password")).thenReturn(true);
         when(degreeTracker.studentHomePage("testUser")).thenReturn("Home page content");
         when(degreeTracker.studentAssignCourse("testUser", "CS101", "Fall", "GFL")).thenReturn(true);
 
-        // Call the method to be tested
         ui.scenario1();
 
-        // Verify interactions
         verify(degreeTracker).login("testUser", "password");
         verify(degreeTracker).studentHomePage("testUser");
         verify(degreeTracker).studentAssignCourse("testUser", "CS101", "Fall", "GFL");
     }
 
-    // Add more test cases for other scenarios and methods as needed
+
 }
