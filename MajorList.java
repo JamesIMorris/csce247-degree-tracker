@@ -81,9 +81,4 @@ public class MajorList {
         DegreeTracker.getInstance().addError("Major not found with name: " + id);
         return null;
     }
-
-    public void loadMajors() {
-        DataLoader.getInstance().loadMajors();
-    }
-
 }
