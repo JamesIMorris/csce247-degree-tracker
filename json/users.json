@@ -22,5 +22,13 @@
       "firstName":"Portia",
       "lastName":"Plante",
       "email":"pplante@cse.sc.edu"
+    },
+    {
+      "type":"STUDENT",
+      "username":"BRWest",
+      "password":"CSCE247!",
+      "firstName":"Brax",
+      "lastName":"West",
+      "email":"BRWest@email.sc.edu"
     }
   ]
