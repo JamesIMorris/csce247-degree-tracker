@@ -8,7 +8,6 @@ public class UserList {
     private DegreeTracker degreeTracker;
 
     private UserList() {
-        DataLoader.getInstance();
         this.degreeTracker = DegreeTracker.getInstance();
 
     }
