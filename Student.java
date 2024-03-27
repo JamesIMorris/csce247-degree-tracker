@@ -182,6 +182,7 @@ public class Student extends User{
 
     public void setRequirements(HashMap<Requirement, ArrayList<Credit>> requirements){
         this.requirements = requirements;
+        populateHashMap();
     }
 
     public ArrayList<Credit> getCredits(Semester semester) {
