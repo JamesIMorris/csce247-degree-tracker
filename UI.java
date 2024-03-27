@@ -11,9 +11,74 @@ public class UI {
     }
 
     public void run() {
+        welcome();
+        landingPage();
         scenario1();
         scenario2();
+        scanner.close();
+        // degreeTracker.writeData();
+    }
 
+    private void welcome(){
+        System.out.println("Welcome to the No Name Degree Tracker");
+    }
+
+    private void landingPage(){
+        System.out.println( "\n"
+                            + "1. Login\n"
+                            + "2. Signup as Student\n"
+                            + "3. Signup as Advisor");
+        int lauchDecision = scanner.nextInt();
+        scanner.nextLine();
+        switch (lauchDecision) {
+        case 1:
+            login();
+            break;
+        case 2:
+            signupStudent();
+            break;
+        case 3:
+            signupAdvisor();
+            break;
+        default:
+            System.out.println("That was not an option");
+            landingPage();
+            break;
+        }
+    }
+
+    private void signupStudent(){
+
+    }
+
+    private void signupAdvisor(){
+
+    }
+
+    private void login(){
+        System.out.print("Username: ");
+        String username = scanner.nextLine();
+        System.out.print("Password: ");
+        String password = scanner.nextLine();
+        if(!degreeTracker.login(username, password)){
+            System.out.println(degreeTracker.popError());
+            login();
+        }
+        else{
+            homePage(username);
+        }
+    }
+
+    private void homePage(String username){
+        System.out.println(username + " is now logged in!\n");
+        // if(degreeTracker.isStudent(username))
+            studentHomePage(username);
+        // else
+        //     adivsorHomePage(username);
+    }
+
+    private void studentHomePage(String username){
+        String homePage = degreeTracker.studentHomePage(username);
     }
 
     public void scenario1() {
