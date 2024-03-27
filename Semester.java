@@ -44,18 +44,19 @@ public class Semester{
   }
 
   public static Semester current(){
-    int currentYear = LocalDate.now().getYear();
-    Season currentSeason;
-    int currentDay = LocalDate.now().getDayOfYear();
-    if(currentDay > 350 || currentDay < 8)
-      currentSeason = Season.WINTER;
-    else if(currentDay < 95)
-      currentSeason = Season.SPRING;
-    else if(currentDay > 200)
-      currentSeason = Season.FALL;
-    else
-      currentSeason = Season.SUMMER;
-    return new Semester(currentYear, currentSeason);
+    return fromString("FA23");
+    // int currentYear = LocalDate.now().getYear();
+    // Season currentSeason;
+    // int currentDay = LocalDate.now().getDayOfYear();
+    // if(currentDay > 350 || currentDay < 8)
+    //   currentSeason = Season.WINTER;
+    // else if(currentDay < 95)
+    //   currentSeason = Season.SPRING;
+    // else if(currentDay > 200)
+    //   currentSeason = Season.FALL;
+    // else
+    //   currentSeason = Season.SUMMER;
+    // return new Semester(currentYear, currentSeason);
   }
 
   public static Semester fromString(String abbreviation){
@@ -73,12 +74,14 @@ public class Semester{
   }
 
   public void incrementSemester(){
-    switch (this.season.half) {
-    case(1):
-      this.year++;
-      this.season = Season.SPRING;
-    default:
+    Semester semester = this.trueSemester();
+    if(season == Season.SPRING){
       this.season = Season.FALL;
     }
+    else {
+      this.season = Season.SPRING;
+      this.year += 1;
+    }
+
   }
 }
