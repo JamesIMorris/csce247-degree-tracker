@@ -1,63 +1,63 @@
 [
   {
-    "UUID": "be61e0a4-1adf-480f-9b76-d34570e39bd2",
-    "name":"Carolina Core Aesthetic and Interpretive Understanding",
+    "id": "be61e0a4-1adf-480f-9b76-d34570e39bd2",
+    "requirementName":"Carolina Core Aesthetic and Interpretive Understanding",
     "category":"CC-AIU",
-    "courseIDs":["AFAM202","ARTE101","ARTE260","ARTH105","ARTH106","ARTS103","ARTS104","ARTS210","CLAS220","CPLT150","CPLT270","DANC101","ENGL200","ENGL270","ENGL280","ENGL282","ENGL284","ENGL285","ENGL286","ENGL287","ENGL288","FAMS110","FAMS180","FAMS240","FREN290","GERM270","GERM290","MART101","MART110","MART201","MART210","MUSC110","MUSC113","MUSC114","MUSC115","MUSC140","MUSC310","RELG270","RUSS280","SPAN220","THEA170","THEA181","THEA200"],
+    "courses":["AFAM202","ARTE101","ARTE260","ARTH105","ARTH106","ARTS103","ARTS104","ARTS210","CLAS220","CPLT150","CPLT270","DANC101","ENGL200","ENGL270","ENGL280","ENGL282","ENGL284","ENGL285","ENGL286","ENGL287","ENGL288","FAMS110","FAMS180","FAMS240","FREN290","GERM270","GERM290","MART101","MART110","MART201","MART210","MUSC110","MUSC113","MUSC114","MUSC115","MUSC140","MUSC310","RELG270","RUSS280","SPAN220","THEA170","THEA181","THEA200"],
     "creditHoursRequired":6
   },{
-    "UUID": "4bd7c2fe-29de-4ee0-8fd1-543fc4cb6b08",
-    "name":"Carolina Core Scientific Literacy",
+    "id": "4bd7c2fe-29de-4ee0-8fd1-543fc4cb6b08",
+    "requirementName":"Carolina Core Scientific Literacy",
     "category":"CC-SCI",
-    "courseIDs":["ANTH161","ASTR101","ASTR201","BIOL101","BIOL101L","BIOL102","BIOL102L","BIOL110","BIOL120","BIOL120L","BIOL202","BIOL206","BIOL208","BIOL220","BIOL243","BIOL243L","BIOL244","BIOL244L","BIOL270","BIOL270L","CHEM101","CHEM102","CHEM105","CHEM106","CHEM107","CHEM107L","CHEM111","CHEM111L","CHEM112","CHEM112L","CHEM141","ENVR101","ENVR101L","ENVR200","GEOG104","GEOG201","GEOG202","GEOL101","GEOL103","GEOL110","GEOL170","GEOL205","GEOL215","GEOL215L","GEOL230","MSCI101","MSCI210","MSCI210L","MSCI215","MSCI215L","PHYS101","PHYS101L","PHYS201","PHYS201L","PHYS202","PHYS202L","PHYS211","PHYS211L","PHYS212","PHYS212L"],
+    "courses":["ANTH161","ASTR101","ASTR201","BIOL101","BIOL101L","BIOL102","BIOL102L","BIOL110","BIOL120","BIOL120L","BIOL202","BIOL206","BIOL208","BIOL220","BIOL243","BIOL243L","BIOL244","BIOL244L","BIOL270","BIOL270L","CHEM101","CHEM102","CHEM105","CHEM106","CHEM107","CHEM107L","CHEM111","CHEM111L","CHEM112","CHEM112L","CHEM141","ENVR101","ENVR101L","ENVR200","GEOG104","GEOG201","GEOG202","GEOL101","GEOL103","GEOL110","GEOL170","GEOL205","GEOL215","GEOL215L","GEOL230","MSCI101","MSCI210","MSCI210L","MSCI215","MSCI215L","PHYS101","PHYS101L","PHYS201","PHYS201L","PHYS202","PHYS202L","PHYS211","PHYS211L","PHYS212","PHYS212L"],
     "creditHoursRequired":7
   },{
-    "UUID": "1b00f129-9b6b-4077-bf32-7e0b3c83290f",
-    "name":"Carolina Core Effective, Engaged, and Persuasive Communication: Written Component",
+    "id": "1b00f129-9b6b-4077-bf32-7e0b3c83290f",
+    "requirementName":"Carolina Core Effective, Engaged, and Persuasive Communication: Written Component",
     "category":"CC-CMW",
-    "courseIDs":["ENGL101","ENGL102"],
+    "courses":["ENGL101","ENGL102"],
     "creditHoursRequired":6
   },{
-    "UUID": "3e3d9765-ea10-4e4d-8f2a-b6c5c403ad9f",
-    "name":"Carolina Core Analytical Reasoning and Problem- Solving",
+    "id": "3e3d9765-ea10-4e4d-8f2a-b6c5c403ad9f",
+    "requirementName":"Carolina Core Analytical Reasoning and Problem- Solving",
     "category":"CC-ARP",
-    "courseIDs":["GEOG105","MATH122","MATH141","MATH142","MATH170","MATH172","MATH174","PHIL111","PHIL115","STAT110","STAT112","STAT201","STAT205","STAT206","CSCE101","CSCE102","CSCE145"],
+    "courses":["GEOG105","MATH122","MATH141","MATH142","MATH170","MATH172","MATH174","PHIL111","PHIL115","STAT110","STAT112","STAT201","STAT205","STAT206","CSCE101","CSCE102","CSCE145"],
     "creditHoursRequired":6
   },{
-    "UUID": "6b57be0e-dd1a-4273-8f1b-5ce70ead5c24",
-    "name":"Carolina Core Information Literacy",
+    "id": "6b57be0e-dd1a-4273-8f1b-5ce70ead5c24",
+    "requirementName":"Carolina Core Information Literacy",
     "category":"CC-INF",
-    "courseIDs":["ENGL102","SPCH145","STAT112","ISCI202","LIBR101"],
+    "courses":["ENGL102","SPCH145","STAT112","ISCI202","LIBR101"],
     "creditHoursRequired":3  
   },{
-    "UUID": "9d3e3613-f256-4534-acfb-b46dcb06b207",
-    "name":"Carolina Core Effective, Engaged and Persuasive Communication: Spoken Component",
+    "id": "9d3e3613-f256-4534-acfb-b46dcb06b207",
+    "requirementName":"Carolina Core Effective, Engaged and Persuasive Communication: Spoken Component",
     "category":"CC-CMS",
-    "courseIDs":["PHIL213","PIHL325","SAEL200","SPCH140","SPCH145","SPCH213","SPCH230","SPCH260","ENGL101","ENGL102"],
+    "courses":["PHIL213","PIHL325","SAEL200","SPCH140","SPCH145","SPCH213","SPCH230","SPCH260","ENGL101","ENGL102"],
     "creditHoursRequired":3
   },{
-    "UUID": "d902a562-87f7-41a6-94f4-2803f2ddcb56",
-    "name":"Carolina Core Global Citizenship and Multicultural Understanding: Historical Thinking",
+    "id": "d902a562-87f7-41a6-94f4-2803f2ddcb56",
+    "requirementName":"Carolina Core Global Citizenship and Multicultural Understanding: Historical Thinking",
     "category":"CC-GHS",
-    "courseIDs":["ARTH107","FAMS300","GERM280","HIST101","HIST102","HIST103","HIST104","HIST105","HIST106","HIST108","HIST109","HIST110","HIST111","HIST112","HIST201","HIST214","SOST201","SOST202"],
+    "courses":["ARTH107","FAMS300","GERM280","HIST101","HIST102","HIST103","HIST104","HIST105","HIST106","HIST108","HIST109","HIST110","HIST111","HIST112","HIST201","HIST214","SOST201","SOST202"],
     "creditHoursRequired":3
   },{
-    "UUID": "0686024d-06fc-4da5-b2a9-b1577c238baf",
-    "name":"Carolina Core Global Citizenship and Multicultural Understanding: Social Sciences",
+    "id": "0686024d-06fc-4da5-b2a9-b1577c238baf",
+    "requirementName":"Carolina Core Global Citizenship and Multicultural Understanding: Social Sciences",
     "category":"CC-GSS",
-    "courseIDs":["AFAM201","AFAM218","AFAM355","ANTH101","ANTH102","ANTH204","ANTH210","ANTH211","ANTH212","ANTH213","ANTH244","ANTH273","ANTH280","CRJU101","CYBR101","GEOG103","GEOG121","GEOG210","GEOG221","GEOG223","GEOG223","GEOG225","GEOG226","GEOG228","GLST101","JSTU218","LASP331","LING101","LING273","POLI101","POLI201","PSYC101","RELG101","RELG338","SOCY101","SOCY301","SOCY307","SOCY309","SOCY310","SOCY340","SOCY355","WGST112","WGST113","WGST210","WGST300","HTMT280","EDEX205","EDTE202","EDTE218","EDUC360","MUSC210","SOWK222","COLA298"],
+    "courses":["AFAM201","AFAM218","AFAM355","ANTH101","ANTH102","ANTH204","ANTH210","ANTH211","ANTH212","ANTH213","ANTH244","ANTH273","ANTH280","CRJU101","CYBR101","GEOG103","GEOG121","GEOG210","GEOG221","GEOG223","GEOG223","GEOG225","GEOG226","GEOG228","GLST101","JSTU218","LASP331","LING101","LING273","POLI101","POLI201","PSYC101","RELG101","RELG338","SOCY101","SOCY301","SOCY307","SOCY309","SOCY310","SOCY340","SOCY355","WGST112","WGST113","WGST210","WGST300","HTMT280","EDEX205","EDTE202","EDTE218","EDUC360","MUSC210","SOWK222","COLA298"],
     "creditHoursRequired":3
   },{
-    "UUID": "c0ead0ee-a5f2-4033-82f2-e6e60ccfec63",
-    "name":"Carolina Core Global Citizenship and Multicultural Understanding: Foreign Language",
+    "id": "c0ead0ee-a5f2-4033-82f2-e6e60ccfec63",
+    "requirementName":"Carolina Core Global Citizenship and Multicultural Understanding: Foreign Language",
     "category":"CC-GFL",
-    "courseIDs":["ARAB121","ARAB122","ASLG121","ASLG122","CHIN121","CHIN122","FREN109","FREN110","FREN121","FREN122","GERM109","GERM110","GERM121","GREK122","ITAL121","ITAL122","JAPA121","JAPA122","LATN109","LATN110","LATN122","PORT121","PORT122","RUSS121","RUSS122","SPAN109","SPAN110","SPAN111","SPAN121","SPAN122"],
+    "courses":["ARAB121","ARAB122","ASLG121","ASLG122","CHIN121","CHIN122","FREN109","FREN110","FREN121","FREN122","GERM109","GERM110","GERM121","GREK122","ITAL121","ITAL122","JAPA121","JAPA122","LATN109","LATN110","LATN122","PORT121","PORT122","RUSS121","RUSS122","SPAN109","SPAN110","SPAN111","SPAN121","SPAN122"],
     "creditHoursRequired":0
   },{
-    "UUID": "f239a9a0-8b58-482f-81a8-43c1bbcbfc4f",
-    "name":"Carolina Core Values, Ethics, and Social Responsibility",
+    "id": "f239a9a0-8b58-482f-81a8-43c1bbcbfc4f",
+    "requirementName":"Carolina Core Values, Ethics, and Social Responsibility",
     "category":"CC-VSR",
-    "courseIDs":["AFAM200","AFAM218","ANTH212","ANTH216","ANTH244","ANTH280","BIOL202","BIOL208","CPLT150","CYBR101","ENGL200","ENGL280","ENVR322","HIST108","HIST110","JSTU218","LING240","PHIL103","PHIL211","PHIL213","PHIL320","PHIL321","PHIL322","PHIL324","PHIL325","PHIL335","POLI201","POLI240","POLI302","POLI303","POLI304","RELG205","SAEL200","SPCH213","WGST112","SPTE385","EDTE202","EDTE218","CSCE390","ITEC101","ISCI215"],
+    "courses":["AFAM200","AFAM218","ANTH212","ANTH216","ANTH244","ANTH280","BIOL202","BIOL208","CPLT150","CYBR101","ENGL200","ENGL280","ENVR322","HIST108","HIST110","JSTU218","LING240","PHIL103","PHIL211","PHIL213","PHIL320","PHIL321","PHIL322","PHIL324","PHIL325","PHIL335","POLI201","POLI240","POLI302","POLI303","POLI304","RELG205","SAEL200","SPCH213","WGST112","SPTE385","EDTE202","EDTE218","CSCE390","ITEC101","ISCI215"],
     "creditHoursRequired":3
   }
 ]

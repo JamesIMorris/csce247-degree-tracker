@@ -1,6 +1,6 @@
 [
   {
-    "courseId":"CSCE247",
+    "id":"CSCE247",
     "courseName":"Software Engineering",
     "courseDescription":"Fundamentals of software design and development; software implementation strategies; object-oriented design techniques; functional design techniques; design patterns; design process; source control; testing.",
     "creditHours":3,
@@ -9,7 +9,7 @@
     "preRequisites":["CSCE146"],
     "coRequisites":[]
   },{
-    "courseId":"CSCE146",
+    "id":"CSCE146",
     "courseName":"Algorithmic Design II",
     "courseDescription":"Continuation of CSCE 145. Rigorous development of algorithms and computer programs; elementary data structures. Three lecture hours and two laboratory hours per week. Open to all majors.",
     "creditHours":4,
@@ -18,7 +18,7 @@
     "preRequisites":[],
     "coRequisites":["MATH122","MATH141"]
   },{
-      "courseId":"ENGL101",
+      "id":"ENGL101",
       "courseName":"Critical Reading and Composition",
       "courseDescription":"Instruction in strategies for critically reading and analyzing literature and non-literary texts; structured, sustained practice in composing expository and analytical essays.",
       "creditHours":3,
@@ -27,7 +27,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ENGL102",
+      "id":"ENGL102",
       "courseName":"Rhetoric and Composition",
       "courseDescription":"Instruction and intensive practice in researching, analyzing, and composing written arguments about academic and public issues.",
       "creditHours":3,
@@ -36,7 +36,7 @@
       "preRequisites":["ENGL101"],
       "coRequisites":[]
     },{
-      "courseId":"MATH122",
+      "id":"MATH122",
       "courseName":"Calculus for Business Administration and Social Sciences",
       "courseDescription":"Derivatives and integrals of elementary algebraic, exponential, and logarithmic functions. Maxima, minima, rate of change, motion, work, area under a curve, and volume.",
       "creditHours":3,
@@ -45,7 +45,7 @@
       "preRequisites":["MATH111","MATH115"],
       "coRequisites":[]
     },{
-      "courseId":"MATH141",
+      "id":"MATH141",
       "courseName":"Calculus 1",
       "courseDescription":"Functions, limits, derivatives, introduction to integrals, the Fundamental Theorem of Calculus, applications of derivatives and integrals. Four classroom hours and one laboratory hour per week.",
       "creditHours":4,
@@ -54,7 +54,7 @@
       "preRequisites":["MATH112","MATH115","MATH116"],
       "coRequisites":[]
     },{
-      "courseId":"CSCE145",
+      "id":"CSCE145",
       "courseName":"Algorithmic Design I",
       "courseDescription":"Problem-solving, algorithmic design, and programming. Two lecture hours and four laboratory hours per week. Open to all majors. Carolina Core ARP.",
       "creditHours":4,
@@ -63,7 +63,7 @@
       "preRequisites":[],
       "coRequisites":["ATH111","MATH115"]
     },{
-      "courseId":"CSCE190",
+      "id":"CSCE190",
       "courseName":"Computing in the Modern World",
       "courseDescription":"An introduction to the field of computing: trends in computing technology, the profession, and careers; subdisciplines in computing; the nature of research and development. Open to all majors. Not auditable.",
       "creditHours":1,
@@ -72,7 +72,7 @@
       "preRequisites":["CSCE145","CSCE204","CSCE205","CSCE206"],
       "coRequisites":["SCE145","CSCE204","CSCE205","CSCE206"]
     },{
-      "courseId":"CSCE215",
+      "id":"CSCE215",
       "courseName":"UNIX/Linux Fundamentals",
       "courseDescription":"UNIX operating system, user-level system commands, and programming tools. UNIX scripting languages.",
       "creditHours":1,
@@ -81,7 +81,7 @@
       "preRequisites":["CSCE145"],
       "coRequisites":["ATH122","MATH141"]
     },{
-      "courseId":"CSCE215",
+      "id":"CSCE215",
       "courseName":"UNIX/Linux Fundamentals",
       "courseDescription":"UNIX operating system, user-level system commands, and programming tools. UNIX scripting languages.",
       "creditHours":1,
@@ -90,7 +90,7 @@
       "preRequisites":["CSCE145"],
       "coRequisites":["ATH122","MATH141"]
     },{
-      "courseId":"CSCE205",
+      "id":"CSCE205",
       "courseName":"Business Applications Programming",
       "courseDescription":"Introduction to the theory and practice of computer security, including security policies, authentification, digital certificates, firewalls, malicious code, legal and ethical issues, and incident handling. Not auditable.",
       "creditHours":3,
@@ -99,7 +99,7 @@
       "preRequisites":["MGSC290","CSCE101"],
       "coRequisites":[]
     },{
-      "courseId":"CSCE242",
+      "id":"CSCE242",
       "courseName":"Web Applications",
       "courseDescription":"Web technologies to support client-server computing. Implementation of client-server applications.",
       "creditHours":3,
@@ -108,7 +108,7 @@
       "preRequisites":["CSCE190","CSCE146"],
       "coRequisites":[]
     },{
-      "courseId":"CSCE210",
+      "id":"CSCE210",
       "courseName":"Computer Hardware Foundations",
       "courseDescription":"Number representation, data formats, CPU and memory organization, assembly language, I/O and peripherals, computer networks.  Students may not apply both CSCE 210 and CSCE 212 to any minor or major program of study.",
       "creditHours":3,
@@ -117,7 +117,7 @@
       "preRequisites":["CSCE145","CSCE204","CSCE205","CSCE206","CSCE207"],
       "coRequisites":[]
     },{
-      "courseId":"ECON224",
+      "id":"ECON224",
       "courseName":"Introduction to Economics",
       "courseDescription":"The study of supply and demand, markets, household and firm decision-making, gross domestic product, inflation, unemployment, and government policies. Open to all students except business administration and economics majors.",
       "creditHours":3,
@@ -126,7 +126,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"SPCH140",
+      "id":"SPCH140",
       "courseName":"Public Communication",
       "courseDescription":"Introduction to theory and practice of oral communication in public, social, and institutional contexts. Includes foundational and cumulative training in the invention, performance, and critical analysis of oral communication, with emphasis on argumentation, persuasion, audience analysis, delivery, and ethical forms of engagement.",
       "creditHours":3,
@@ -135,7 +135,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"SPCH145",
+      "id":"SPCH145",
       "courseName":"Online Public Communication",
       "courseDescription":"Introduction to theory and practice of live and recorded online spoken communication in public, social, and institutional contexts. Training in invention, performance, and critical analysis of online spoken communication, including audience analysis, persuasion, delivery, and ethical engagement. Includes significant practice in preparing and presenting live online public communication.",
       "creditHours":3,
@@ -144,7 +144,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"SPCH230",
+      "id":"SPCH230",
       "courseName":"Business and Professional Speaking",
       "courseDescription":"Fundamentals of oral communication within business and professional settings. Includes performance.",
       "creditHours":3,
@@ -153,7 +153,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"AFAM202",
+      "id":"AFAM202",
       "courseName":"Introduction to African-American Studies",
       "courseDescription":"Introduction to the analysis and discussion of creative works and traditions by and about African Americans through folklore, music, art, dance, and literature.",
       "creditHours":3,
@@ -162,7 +162,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ARTE101",
+      "id":"ARTE101",
       "courseName":"Introduction to Art",
       "courseDescription":"Introduction to art appreciation. Elements and principles of the visual arts, with examples from the history of art.",
       "creditHours":3,
@@ -171,7 +171,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ARTE260",
+      "id":"ARTE260",
       "courseName":"Interdisciplinary Relationships in the Arts",
       "courseDescription":"The study of relationships among visual arts, music, theatre, and dance.",
       "creditHours":3,
@@ -180,7 +180,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ARTH105",
+      "id":"ARTH105",
       "courseName":"History of Western Art I",
       "courseDescription":"The visual arts from Paleolithic times to the Renaissance.",
       "creditHours":3,
@@ -189,7 +189,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ARTH106",
+      "id":"ARTH106",
       "courseName":"History of Western Art II",
       "courseDescription":"The visual arts from the Renaissance to the present.",
       "creditHours":3,
@@ -198,7 +198,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ARTS103",
+      "id":"ARTS103",
       "courseName":"History of Western Art II",
       "courseDescription":"Introduction to visual thinking and principles of two-dimensional design.",
       "creditHours":3,
@@ -207,7 +207,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ARTS104",
+      "id":"ARTS104",
       "courseName":"3-Dimensional Design I",
       "courseDescription":"Introduction to visual thinking and principles of three-dimensional design.",
       "creditHours":3,
@@ -216,7 +216,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"CLAS220",
+      "id":"CLAS220",
       "courseName":"Introduction to Classical Mythology",
       "courseDescription":"Major gods, goddesses, heroes, and heroines of classical mythology as portrayed in major literary works; the function of myth in society and its relevance to modern life.",
       "creditHours":3,
@@ -225,7 +225,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"CPLT150",
+      "id":"CPLT150",
       "courseName":"Values and Ethics in Literature",
       "courseDescription":"Analysis of major works of world literature focusing on values, ethics, and social responsibility.",
       "creditHours":3,
@@ -234,7 +234,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"CPLT270",
+      "id":"CPLT270",
       "courseName":"World Literature",
       "courseDescription":"Analysis of major works of world literature focusing on values, ethics, and social responsibility.",
       "creditHours":3,
@@ -243,7 +243,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"DANC101",
+      "id":"DANC101",
       "courseName":"Dance Appreciation",
       "courseDescription":"An eclectic survey of various dance forms including primitive, historic, ballet, modern, and Broadway musical.",
       "creditHours":3,
@@ -252,7 +252,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ENGL200",
+      "id":"ENGL200",
       "courseName":"Creative Writing, Voice, and Community",
       "courseDescription":"Workshop course on creative writing with a focus on values, ethics, and social responsibility.",
       "creditHours":3,
@@ -261,7 +261,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"ENGL270",
+      "id":"ENGL270",
       "courseName":"World Literature",
       "courseDescription":"Selected masterpieces of world literature from antiquity to present.",
       "creditHours":3,
@@ -270,7 +270,7 @@
       "preRequisites":["ENGL101","ENGL102"],
       "coRequisites":[]
     },{
-      "courseId":"ENGL280",
+      "id":"ENGL280",
       "courseName":"Literature and Society",
       "courseDescription":"Fiction, poetry, drama and other cultural texts engaged with questions of values, ethics and social responsibility.",
       "creditHours":3,
@@ -279,7 +279,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"ENGL282",
+      "id":"ENGL282",
       "courseName":"Special Topics in Fiction",
       "courseDescription":"Special topics in fiction from several countries and historical periods, illustrating the nature of the genre. May be repeated for credit. Content varies by title and semester.",
       "creditHours":3,
@@ -288,7 +288,7 @@
       "preRequisites":["ENGL101","ENGL102"],
       "coRequisites":[]
     },{
-      "courseId":"ENGL284",
+      "id":"ENGL284",
       "courseName":"Drama",
       "courseDescription":"Drama from several countries and historical periods, illustrating the nature of the genre.",
       "creditHours":3,
@@ -297,7 +297,7 @@
       "preRequisites":["ENGL101","ENGL102"],
       "coRequisites":[]
     },{
-      "courseId":"ENGL285",
+      "id":"ENGL285",
       "courseName":"Special Topics in American Literature",
       "courseDescription":"Special topics in American literature exemplifying persistent themes of American culture. May be repeated for credit. Content varies by title and semester.",
       "creditHours":3,
@@ -306,7 +306,7 @@
       "preRequisites":["ENGL101","ENGL102"],
       "coRequisites":[]
     },{
-      "courseId":"ENGL286",
+      "id":"ENGL286",
       "courseName":"Poetry",
       "courseDescription":"Poetry from several countries and historical periods, illustrating the nature of the genre.",
       "creditHours":3,
@@ -315,7 +315,7 @@
       "preRequisites":["ENGL101","ENGL102"],
       "coRequisites":[]
     },{
-      "courseId":"ENGL287",
+      "id":"ENGL287",
       "courseName":"American Literature",
       "courseDescription":"An introduction to American literary history, emphasizing the analysis of literary texts, the development of literary traditions over time, the emergence of new genres and forms, and the writing of successful essays about literature. Designed for English majors.",
       "creditHours":3,
@@ -324,7 +324,7 @@
       "preRequisites":["ENGL101","ENGL102"],
       "coRequisites":[]
     },{
-      "courseId":"ENGL288",
+      "id":"ENGL288",
       "courseName":"English Literature",
       "courseDescription":"An introduction to English literary history, emphasizing the analysis of literary texts, the development of literary traditions over time, the emergence of new genres and forms, and the writing of successful essays about literature. Designed for English majors. Designed for English majors.",
       "creditHours":3,
@@ -333,7 +333,7 @@
       "preRequisites":["ENGL101","ENGL102"],
       "coRequisites":[]
     },{
-      "courseId":"FAMS110",
+      "id":"FAMS110",
       "courseName":"Media Culture",
       "courseDescription":"Introduction to the critical study of film, video, photography, audio, and new media.",
       "creditHours":3,
@@ -342,7 +342,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"FAMS180",
+      "id":"FAMS180",
       "courseName":"Film Culture",
       "courseDescription":"How the film industry developed and the impact the movies have had on global popular culture. Does not count toward the film studies major.",
       "creditHours":3,
@@ -351,7 +351,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"FAMS240",
+      "id":"FAMS240",
       "courseName":"Film and Media Analysis",
       "courseDescription":"Introduction to the critical study of film and media. Students will closely analyze moving images and develop written arguments about film and media.",
       "creditHours":3,
@@ -360,7 +360,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"FREN290",
+      "id":"FREN290",
       "courseName":"French Literature in Translation",
       "courseDescription":"Readings and discussion in English, with consideration of the cultural context.",
       "creditHours":3,
@@ -369,7 +369,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GERM270",
+      "id":"GERM270",
       "courseName":"Knights and Ladies",
       "courseDescription":"Survey of medieval romances and love lyrics of Germany. History and culture of the High Middle Ages in Germany, especially courtly society. The function of chivalry and courtly literature in society.",
       "creditHours":3,
@@ -378,7 +378,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GERM290",
+      "id":"GERM290",
       "courseName":"Viking Mythology",
       "courseDescription":"Survey of Germanic mythological and heroic texts of the Viking Age. History and culture of Germanic tribes, especially the Vikings. The function of myth in society.",
       "creditHours":3,
@@ -387,7 +387,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MART101",
+      "id":"MART101",
       "courseName":"Making Media That Matters",
       "courseDescription":"Introductory media arts creation and study for non-majors, with emphasis on developing an individual aesthetic for screen and related media.",
       "creditHours":3,
@@ -396,7 +396,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MART110",
+      "id":"MART110",
       "courseName":"Media Culture",
       "courseDescription":"Introduction to the critical study of film,video, photography, audio, and new media.",
       "creditHours":3,
@@ -405,7 +405,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MART201",
+      "id":"MART201",
       "courseName":"Foundations of Media Arts Productione",
       "courseDescription":"Fundamental conceptual and technical aspects of media.",
       "creditHours":3,
@@ -414,7 +414,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MART210",
+      "id":"MART210",
       "courseName":"Digital Media Arts Fundamentals",
       "courseDescription":"Introduction to theory and practice of origination, sequencing, and processing of screen-based and related media art.",
       "creditHours":3,
@@ -423,7 +423,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MUSC110",
+      "id":"MUSC110",
       "courseName":"Introduction to Music",
       "courseDescription":"Perceptive listening and appreciation of musical elements, forms and style periods, including composers' lives, individual styles and representative works. Emphasis on classical music; jazz and American popular music included.",
       "creditHours":3,
@@ -432,7 +432,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MUSC113",
+      "id":"MUSC113",
       "courseName":"Special Topics in Popular Music",
       "courseDescription":"An investigation into the function of popular music in contemporary society. May be repeated as content varies by title.",
       "creditHours":3,
@@ -441,7 +441,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MUSC114",
+      "id":"MUSC114",
       "courseName":"Introduction to Music Theory",
       "courseDescription":"Practice in basic written theory and aural skills. Concepts of rhythm, melody, harmony, form, and expression. Open to non-music majors. Not for credit toward major requirements in music degrees. Subdiscipline: Music (Theory and Composistion).",
       "creditHours":3,
@@ -450,7 +450,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MUSC115",
+      "id":"MUSC115",
       "courseName":"Music Theory I",
       "courseDescription":"A survey of the sound, harmony, melody, rhythm, and form of diatonic tonal music of a variety of styles.",
       "creditHours":3,
@@ -459,7 +459,7 @@
       "preRequisites":["MUSC114"],
       "coRequisites":[]
     },{
-      "courseId":"MUSC310",
+      "id":"MUSC310",
       "courseName":"Selected Topics",
       "courseDescription":"Course content varies by title. Intended for nonmajors unless otherwise indicated.",
       "creditHours":3,
@@ -468,7 +468,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"RELG270",
+      "id":"RELG270",
       "courseName":"Religion and the Arts",
       "courseDescription":"Literary, visual, and/or performance art associated with religious discourse and practice.",
       "creditHours":3,
@@ -477,7 +477,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"RELG280",
+      "id":"RELG280",
       "courseName":"Introduction to Russian Civilization",
       "courseDescription":"A multimedia introduction to Russian culture from its beginnings to the present. No knowledge of Russian required.",
       "creditHours":3,
@@ -486,7 +486,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"SPAN220",
+      "id":"SPAN220",
       "courseName":"Selected Works of Hispanic Literature in English Translation",
       "courseDescription":"Selected major works, especially contemporary works, in all genres of Hispanic literature in English translation.",
       "creditHours":3,
@@ -495,7 +495,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"THEA170",
+      "id":"THEA170",
       "courseName":"Selected Works of Hispanic Literature in English Translation",
       "courseDescription":"Introduction to the art and craft of acting. Practical exploration through improvisation and scripted scene work. Includes a brief history of the development of modern acting techniques.",
       "creditHours":3,
@@ -504,7 +504,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"THEA181",
+      "id":"THEA181",
       "courseName":"Shakespeare in Performance",
       "courseDescription":"Introduction to Shakespeare’s works on page, stage, and screen. Emphasis placed on performances of scripts. History of Shakespeare’s works/productions, stage/screen technique. Viewings of film adaptations required.",
       "creditHours":3,
@@ -513,7 +513,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"THEA200",
+      "id":"THEA200",
       "courseName":"Understanding and Appreciation of Theatre",
       "courseDescription":"An introduction to the understanding and appreciation of theatrical experience. Attendance at theatrical performances required.",
       "creditHours":3,
@@ -522,7 +522,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"CSCE201",
+      "id":"CSCE201",
       "courseName":"Introduction to Computer Security",
       "courseDescription":"Introduction to the theory and practice of computer security, including security policies, authentification, digital certificates, firewalls, malicious code, legal and ethical issues, and incident handling.",
       "creditHours":3,
@@ -531,7 +531,7 @@
       "preRequisites":["CSCE101","CSCE102","CSCE145"],
       "coRequisites":["SCE101","CSCE102","CSCE145"]
     },{
-      "courseId":"CSCE240",
+      "id":"CSCE240",
       "courseName":"Advanced Programming Techniques",
       "courseDescription":"Pointers; memory management; advanced programming language structures: operator overloading, iterators, multiple inheritance, polymorphism, templates, virtual functions; Unix programming environment.",
       "creditHours":3,
@@ -540,7 +540,7 @@
       "preRequisites":["CSCE215","CSCE146"],
       "coRequisites":[]
     },{
-      "courseId":"MATH174",
+      "id":"MATH174",
       "courseName":"Discrete Math for Computer Science",
       "courseDescription":"Logic, number theory, sequences, series, recursion, mathematical induction, set theory, enumeration, functions, relations, graphs and trees. Connections to computers and to programming are emphasized when possible.",
       "creditHours":3,
@@ -549,7 +549,7 @@
       "preRequisites":["MATH112"],
       "coRequisites":[]
     },{
-      "courseId":"MATH374",
+      "id":"MATH374",
       "courseName":"Discrete Structures",
       "courseDescription":"Propositional and predicate logic; proof techniques; recursion and recurrence relations; sets, combinatorics, and probability; functions, relations, and matrices; algebraic structures.",
       "creditHours":3,
@@ -558,7 +558,7 @@
       "preRequisites":["MATH142","CSCE106","CSCE146"],
       "coRequisites":[]
     },{
-      "courseId":"MGSC290",
+      "id":"MGSC290",
       "courseName":"Computer Information Systems in Business",
       "courseDescription":"Computer Information Systems in Business is designed for students to develop a strong foundation and proficiency in the use of Microsoft Excel as a tool in business communications, analysis and decision making. Students learn how to develop spreadsheets and databases through the use of Microsoft Office 2016. This course satisfies the computer literacy requirement.",
       "creditHours":3,
@@ -567,7 +567,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"CSCE350",
+      "id":"CSCE350",
       "courseName":"Data Structures and Algorithms",
       "courseDescription":"Techniques for representing and processing information, including the use of lists, trees, and graphs; analysis of algorithms; sorting, searching, and hashing techniques.",
       "creditHours":3,
@@ -576,7 +576,7 @@
       "preRequisites":["CSCE240","MATH174","MATH374","MATH574","MATH141","MATH122"],
       "coRequisites":[]
     },{
-      "courseId":"CSCE390",
+      "id":"CSCE390",
       "courseName":"Professional Issues in Computer Science and Engineering",
       "courseDescription":"Professional issues in the information technology professions; history and social context of computing; professional responsibilities; privacy; intellectual property; risks and liabilities of computer-based systems.",
       "creditHours":1,
@@ -585,7 +585,7 @@
       "preRequisites":["CSCE240","MATH174","MATH374","MATH574","MATH141","MATH122"],
       "coRequisites":[]
     },{
-      "courseId":"STAT515",
+      "id":"STAT515",
       "courseName":"Statistical Methods I",
       "courseDescription":"Applications and principles of elementary probability, essential discrete and continuous probability distributions, sampling distributions, estimation, and hypothesis testing. Inferences for means, variances, proportions, one-way ANOVA, simple linear regression, and contingency tables. Statistical packages such as SAS or R.",
       "creditHours":3,
@@ -594,7 +594,7 @@
       "preRequisites":["MATH122","MATH141","MATH111"],
       "coRequisites":[]
     },{
-      "courseId":"STAT509",
+      "id":"STAT509",
       "courseName":"Statistics for Engineers",
       "courseDescription":"Basic probability and statistics with applications and examples in engineering. Elementary probability, random variables and their distribution, random processes, statistical inference, linear regression, correlation and basic design of experiments with application to quality assurance, reliability, and life testing. May not be taken concurrently with or after STAT 513, STAT 515, or STAT 516. Not for C.A.S., M.A.S., or Ph.D credit in Statistics.",
       "creditHours":3,
@@ -603,7 +603,7 @@
       "preRequisites":["MATH142"],
       "coRequisites":[]
     },{
-      "courseId":"ACCT222",
+      "id":"ACCT222",
       "courseName":"Survey of Accounting",
       "courseDescription":"Survey of accounting topics related to business decisions including financial reporting, managerial accounting, and other special topics.",
       "creditHours":3,
@@ -612,7 +612,7 @@
       "preRequisites":["MATH122"],
       "coRequisites":[]
     },{
-      "courseId":"MGMT371",
+      "id":"MGMT371",
       "courseName":"Principles of Management",
       "courseDescription":"A comprehensive survey of the basic principles of management applicable to all forms of business. The course provides the student with a basis for thinking about complex business situations in the framework of analysis of the management process.",
       "creditHours":3,
@@ -621,7 +621,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ENGL462",
+      "id":"ENGL462",
       "courseName":"Technical Writing",
       "courseDescription":"Preparation for and practice in types of writing important to scientists, engineers, and computer scientists, from brief technical letters to formal articles and reports.",
       "creditHours":3,
@@ -630,7 +630,7 @@
       "preRequisites":["ENGL101","ENGL102"],
       "coRequisites":[]
     },{
-      "courseId":"ENGL463",
+      "id":"ENGL463",
       "courseName":"Business Writing",
       "courseDescription":"Extensive practice in different types of business writing, from brief letters to formal articles and reports.",
       "creditHours":3,
@@ -639,7 +639,7 @@
       "preRequisites":["ENGL101","ENGL102"],
       "coRequisites":[]
     },{
-      "courseId":"CSCE520",
+      "id":"CSCE520",
       "courseName":"Database System Design",
       "courseDescription":"Database management systems; database design and implementation; security, integrity, and privacy.",
       "creditHours":3,
@@ -648,7 +648,7 @@
       "preRequisites":["CSCE240","GEOG563"],
       "coRequisites":[]
     },{
-      "courseId":"CSCE594",
+      "id":"CSCE594",
       "courseName":"Strategic Management of Information Systems",
       "courseDescription":"Strategic management and use of information systems in organizations.",
       "creditHours":3,
@@ -657,7 +657,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"STAT516",
+      "id":"STAT516",
       "courseName":"Statistical Methods II",
       "courseDescription":"Applications and principles of linear models. Simple and multiple linear regression, analysis of variance for basic designs, multiple comparisons, random effects, and analysis of covariance. Statistical packages such as SAS.",
       "creditHours":3,
@@ -666,7 +666,7 @@
       "preRequisites":["STAT515","STAT509","STAT512"],
       "coRequisites":[]
     },{
-      "courseId":"CSCE416",
+      "id":"CSCE416",
       "courseName":"Introduction to Computer Networks",
       "courseDescription":"Concepts and components of computer networks and the Internet; network applications; network protocol stack.",
       "creditHours":3,
@@ -675,7 +675,7 @@
       "preRequisites":["CSCE146","MATH174","MATH374"],
       "coRequisites":[]
     },{
-      "courseId":"CSCE490",
+      "id":"CSCE490",
       "courseName":"Capstone Computing Project I fall only",
       "courseDescription":"Major team-based software design project to be undertaken in a student’s final year of study; project planning, software requirements analysis, design, and specification. Written reports and oral presentations in a technical setting.",
       "creditHours":3,
@@ -684,7 +684,7 @@
       "preRequisites":["CSCE240","CSCE350"],
       "coRequisites":["SCE350"]
     },{
-      "courseId":"CSCE522",
+      "id":"CSCE522",
       "courseName":"Information Security Principles fall only",
       "courseDescription":"Threats to information resources and appropriate countermeasures. Cryptography, identification and authentication, access control models and mechanisms, multilevel database security, steganography, Internet security, and intrusion detection and prevention.",
       "creditHours":3,
@@ -693,7 +693,7 @@
       "preRequisites":["CSCE146","MATH174","MATH374"],
       "coRequisites":[]
     },{
-      "courseId":"CSCE492",
+      "id":"CSCE492",
       "courseName":"Capstone Computing Project II",
       "courseDescription":"Continuation of CSCE490. Computer system implementation, testing, verification and validation of results. Written reports and oral presentations in a technical setting.",
       "creditHours":3,
@@ -702,7 +702,7 @@
       "preRequisites":["CSCE490","CSCE350","CSCE240"],
       "coRequisites":[]
     },{
-      "courseId":"ANTH161",
+      "id":"ANTH161",
       "courseName":"Human Origins: An Introduction to Biological Anthropology",
       "courseDescription":"An introduction to the science of biological anthropology, a sub-field of anthropology that emphasizes a focus on humanity and its origin from a biological perspective, employing laboratory components to complement and reinforce lecture materials.",
       "creditHours":4,
@@ -711,7 +711,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ASTR101",
+      "id":"ASTR101",
       "courseName":"Introduction to Astronomy",
       "courseDescription":"An introduction to the solar system and universe accomplished with interactive lectures, demonstrations, and laboratory experience. Designed primarily for the non-science major.",
       "creditHours":4,
@@ -720,7 +720,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ASTR201",
+      "id":"ASTR201",
       "courseName":"Introduction to Astronomy II: The Dark Universe",
       "courseDescription":"Astronomical topics including stellar death, black holes, dark matter, dark energy and cosmology. Astronomical techniques and application of the scientific method in astronomy.",
       "creditHours":3,
@@ -729,7 +729,7 @@
       "preRequisites":["ASTR101","SCHC115"],
       "coRequisites":[]
     },{
-      "courseId":"BIOL101",
+      "id":"BIOL101",
       "courseName":"Biological Principles I",
       "courseDescription":"Introductory survey of macromolecules, cell structure and function, genetics, and molecular biology.",
       "creditHours":3,
@@ -738,7 +738,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"BIOL101L",
+      "id":"BIOL101L",
       "courseName":"Biological Principles I Laboratory",
       "courseDescription":"(Recommended concurrent with BIOL 101). Experimental examination of basic principles of cell biology, genetics and metabolism. Three hours per week.",
       "creditHours":1,
@@ -747,7 +747,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"BIOL102",
+      "id":"BIOL102",
       "courseName":"Biological Principles II",
       "courseDescription":"Introductory survey of plant and animal development, physiology, ecology, and evolution.",
       "creditHours":3,
@@ -756,7 +756,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"BIOL102L",
+      "id":"BIOL102L",
       "courseName":"Biological Principles II Laboratory",
       "courseDescription":"Experimental examination of structure and function of plant and animal systems, biodiversity, ecology. BIOL 101, BIOL 102, BIOL 101L and BIOL 102L must be completed prior to enrolling in 300-level or above Biology courses.",
       "creditHours":1,
@@ -765,7 +765,7 @@
       "preRequisites":[],
       "coRequisites":["IOL102"]
     },{
-      "courseId":"BIOL110",
+      "id":"BIOL110",
       "courseName":"General Biology",
       "courseDescription":"Basic biological concepts and issues for non-biology majors. Credit may not be given for both this course and BIOL 120. Three lecture, two laboratory hours per week.",
       "creditHours":4,
@@ -774,7 +774,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"BIOL120",
+      "id":"BIOL120",
       "courseName":"Human Biology",
       "courseDescription":"Fundamental principles of human biology. Credit may not be given for both BIOL 110 and BIOL 120. Three lecture hours per week. Not for major credit.",
       "creditHours":3,
@@ -783,7 +783,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"BIOL120L",
+      "id":"BIOL120L",
       "courseName":"Laboratory in Human Biology",
       "courseDescription":"Exercises dealing with basic concepts of human biology. Not for major credit.",
       "creditHours":1,
@@ -792,7 +792,7 @@
       "preRequisites":["BIOL120"],
       "coRequisites":["IOL120"]
     },{
-      "courseId":"BIOL202",
+      "id":"BIOL202",
       "courseName":"Infectious Diseases, Human Health, and Ethics",
       "courseDescription":"An introduction to pathogens including bacteria, viruses, and protozoans. Basic elements of the immune system coupled with discussion of how pathogens cause disease. This information is placed in the context of how scientific research leads to the discovery, treatment, and prevention of the disease. The ethical implications of each pathogen and its treatment strategies are discussed.",
       "creditHours":3,
@@ -801,7 +801,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"BIOL206",
+      "id":"BIOL206",
       "courseName":"Genetics and Society",
       "courseDescription":"(Designed for non-major students.) Genetic principles, emphasizing human heredity. Relevance of recent advances in genetics. Three lecture hours per week.",
       "creditHours":3,
@@ -810,7 +810,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"BIOL208",
+      "id":"BIOL208",
       "courseName":"Our Hungry World from Malthus to McDonalds",
       "courseDescription":"Scientific and social issues concerning the interrelationship of culture and agricultural biotic diversity and technology, climate change, resources management, food security, and human health.",
       "creditHours":3,
@@ -819,7 +819,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"BIOL243",
+      "id":"BIOL243",
       "courseName":"Human Anatomy and Physiology I",
       "courseDescription":"Functional anatomy and physiology of the human body, including the integumentary, skeletal, muscular, and nervous systems. Not available for biology major credit. Three lecture hours per week.",
       "creditHours":3,
@@ -828,7 +828,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"BIOL243L",
+      "id":"BIOL243L",
       "courseName":"Human Anatomy and Physiology Laboratory",
       "courseDescription":"The principles of anatomy and physiology as demonstrated by microscopic studies, animal dissection, and physiological experiments. One three-hour laboratory per week.",
       "creditHours":1,
@@ -837,7 +837,7 @@
       "preRequisites":["BIOL243"],
       "coRequisites":["IOL243"]
     },{
-      "courseId":"BIOL244",
+      "id":"BIOL244",
       "courseName":"Human Anatomy and Physiology II",
       "courseDescription":"Functional anatomy and physiology of the human body, including the cardiovascular, endocrine, excretory, reproductive, digestive, and respiratory systems. Not available for biology major credit. Three lecture hours per week.",
       "creditHours":3,
@@ -846,7 +846,7 @@
       "preRequisites":["BIOL243"],
       "coRequisites":[]
     },{
-      "courseId":"BIOL243L",
+      "id":"BIOL243L",
       "courseName":"Human Anatomy and Physiology Laboratory",
       "courseDescription":"A continuation of BIOL 243L. One three-hour laboratory per week.",
       "creditHours":1,
@@ -855,7 +855,7 @@
       "preRequisites":[],
       "coRequisites":["IOL244"]
     },{
-      "courseId":"BIOL270",
+      "id":"BIOL270",
       "courseName":"Introduction to Environmental Biology",
       "courseDescription":"Basic ecological principles and the impacts of human population growth and technology. Not for major credit.",
       "creditHours":3,
@@ -864,7 +864,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"BIOL270L",
+      "id":"BIOL270L",
       "courseName":"Introduction to Environmental Biology Laboratory",
       "courseDescription":"Demonstrations, data analyses, discussions, and films relating to human ecology, resource use, and environmental impact. Not for major credit. Two hours per week.",
       "creditHours":1,
@@ -873,7 +873,7 @@
       "preRequisites":["BIOL270"],
       "coRequisites":["IOL270"]
     },{
-      "courseId":"CHEM101",
+      "id":"CHEM101",
       "courseName":"Fundamental Chemistry I",
       "courseDescription":"A science elective surveying inorganic and solution chemistry. First of a terminal two-semester sequence. Three lecture, one recitation, and two laboratory hours per week.",
       "creditHours":4,
@@ -882,7 +882,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"CHEM102",
+      "id":"CHEM102",
       "courseName":"Fundamental Chemistry II",
       "courseDescription":"An introductory survey of organic and biochemistry. Three lecture, one recitation, and two laboratory hours per week.",
       "creditHours":4,
@@ -891,7 +891,7 @@
       "preRequisites":["CHEM101","CHEM111"],
       "coRequisites":[]
     },{
-      "courseId":"CHEM105",
+      "id":"CHEM105",
       "courseName":"Chemistry and Modern Society I",
       "courseDescription":"A conceptual and qualitative approach to chemistry, its evolution, achievements, and goals and its impact on technology, the environment, and modern life and thought. (Specifically designed for non-science majors.) Three lecture and three laboratory hours per week.",
       "creditHours":4,
@@ -900,7 +900,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"CHEM106",
+      "id":"CHEM106",
       "courseName":"Chemistry and Modern Society II",
       "courseDescription":"A continuation of Chemistry 105. Three lecture hours per week.",
       "creditHours":3,
@@ -909,7 +909,7 @@
       "preRequisites":["CHEM105"],
       "coRequisites":[]
     },{
-      "courseId":"CHEM107",
+      "id":"CHEM107",
       "courseName":"Introduction to Forensic Science",
       "courseDescription":"Surveys chemical aspects of criminal investigation and adjudication including drug, arson, DNA, paint, and fiber identification.",
       "creditHours":3,
@@ -918,7 +918,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"CHEM107L",
+      "id":"CHEM107L",
       "courseName":"Introduction to Forensic Science Laboratory",
       "courseDescription":"An analytical approach to surveys of criminal investigation and adjudication of crime scene analysis and collection and preservation of evidence. Analysis will include but not be limited to drug, arson, DNA, fingerprints, blood splatter, and fiber identification. Note: Three laboratory hours per week.",
       "creditHours":1,
@@ -927,7 +927,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"CHEM111",
+      "id":"CHEM111",
       "courseName":"General Chemistry I",
       "courseDescription":"Survey of the principles that underlie all chemistry with applications illustrating these principles. Three lecture and one recitation hours per week.identification. Note: Three laboratory hours per week.",
       "creditHours":3,
@@ -936,7 +936,7 @@
       "preRequisites":["MATH111","MATH115","MATH122","MATH141","MATH122","MATH141"],
       "coRequisites":["HEM111L"]
     },{
-      "courseId":"CHEM111L",
+      "id":"CHEM111L",
       "courseName":"General Chemistry I Lab",
       "courseDescription":"Introduction to the principles and techniques of experimental chemistry with emphasis on formula investigations, equations, elementary statistics, and chemical reactivity.",
       "creditHours":1,
@@ -945,7 +945,7 @@
       "preRequisites":["MATH111","MATH115"],
       "coRequisites":["HEM111"]
     },{
-      "courseId":"CHEM112",
+      "id":"CHEM112",
       "courseName":"General Chemistry II",
       "courseDescription":"Continuation of CHEM 111. Special emphasis on chemical equilibrium. Three lecture and one recitation hours per week.",
       "creditHours":3,
@@ -954,7 +954,7 @@
       "preRequisites":["CHEM111","MATH111","MATH115","MATH122","MATH141"],
       "coRequisites":["HEM112L"]
     },{
-      "courseId":"CHEM112L",
+      "id":"CHEM112L",
       "courseName":"General Chemistry II Lab",
       "courseDescription":"Continuation of CHEM 111L with emphasis on solution properties, kinetics, equilibrium, acids and bases, and qualitative analysis.",
       "creditHours":1,
@@ -963,7 +963,7 @@
       "preRequisites":["CHEM111","CHEM111L","CHEM141"],
       "coRequisites":["HEM112"]
     },{
-      "courseId":"CHEM141",
+      "id":"CHEM141",
       "courseName":"Principles of Chemistry I",
       "courseDescription":"Advanced general chemistry I. Atoms and chemical bonds. Three lecture hours, one recitation hour, and three laboratory hours per week. Credit cannot be received for both CHEM 111 and CHEM 141.",
       "creditHours":4,
@@ -972,7 +972,7 @@
       "preRequisites":["MATH141","MATH142"],
       "coRequisites":[]
     },{
-      "courseId":"ENVR101",
+      "id":"ENVR101",
       "courseName":"Introduction to the Environment",
       "courseDescription":"Analysis of environmental issues and the role of science in their identification and resolution.",
       "creditHours":3,
@@ -981,7 +981,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ENVR101L",
+      "id":"ENVR101L",
       "courseName":"Introduction to the Environment Lab",
       "courseDescription":"Demonstrations, field trips, data analyses, and discussion relating to environmental issues, such as sustainability, resource management, and pollution control.",
       "creditHours":1,
@@ -990,7 +990,7 @@
       "preRequisites":["ENVR101"],
       "coRequisites":["NVR101"]
     },{
-      "courseId":"ENVR200",
+      "id":"ENVR200",
       "courseName":"Natural History of South Carolina",
       "courseDescription":"General review of plants, animals, and geological features of South Carolina, with an emphasis on connections to the natural world.",
       "creditHours":4,
@@ -999,7 +999,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOG104",
+      "id":"GEOG104",
       "courseName":"Introduction to Physical Geography",
       "courseDescription":"Basic concepts of landform geography, climatology and meteorology, and biogeography.",
       "creditHours":3,
@@ -1008,7 +1008,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOG104",
+      "id":"GEOG104",
       "courseName":"Landform Geography",
       "courseDescription":"Hydrology, soil science, and interpretation of physical features formed by water, wind, and ice, with emphasis on environmental change. Three hours of lecture and one two-hour laboratory per week.",
       "creditHours":4,
@@ -1017,7 +1017,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOG202",
+      "id":"GEOG202",
       "courseName":"Weather and Climate",
       "courseDescription":"Processes that influence weather and climate patterns on the earth. Three lectures and one two-hour laboratory per week.",
       "creditHours":4,
@@ -1026,7 +1026,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOL101",
+      "id":"GEOL101",
       "courseName":"Introduction to the Earth",
       "courseDescription":"Origin and nature of the earth with emphasis on internal processes and phenomena such as earthquakes, volcanoes, and mountain building; surface processes, including landform evolution. Three lectures and three laboratory hours each week.",
       "creditHours":4,
@@ -1035,7 +1035,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOL103",
+      "id":"GEOL103",
       "courseName":"Environment of the Earth",
       "courseDescription":"Analysis of basic energy cycles of the earth. Interaction of human activity with earth processes to affect the environment. Three lectures and three laboratory hours each week. Field trips required.",
       "creditHours":4,
@@ -1044,7 +1044,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOL110",
+      "id":"GEOL110",
       "courseName":"Cultural Geology",
       "courseDescription":"The growth of geological concepts, scientific and non-scientific. The impact of geological factors on human affairs. The role of time and evolution (biological and physical). Restricted to non-science majors.",
       "creditHours":4,
@@ -1053,7 +1053,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOL170",
+      "id":"GEOL170",
       "courseName":"The Water Planet",
       "courseDescription":"Introduction to the origin of water and water properties, water in the universe, water in the solar system, water on Earth and its geological history.",
       "creditHours":3,
@@ -1062,7 +1062,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOL205",
+      "id":"GEOL205",
       "courseName":"Earth Resources",
       "courseDescription":"Mineral, energy, and water resources with emphasis on geological processes governing their distribution. Intended for non-science majors. Three lecture hours each week with occasional field trips.",
       "creditHours":3,
@@ -1071,7 +1071,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOL215",
+      "id":"GEOL215",
       "courseName":"Coastal Environments of the Southeastern U.S.",
       "courseDescription":"Coastal zones of South Carolina and neighboring states, including geologic history, geomorphology, stratigraphy, hydrogeology, shoreline processes, environmental issues, and effects of man. Not available for geological science or marine science major credit. Three lecture hours each week plus optional field trips.",
       "creditHours":3,
@@ -1080,7 +1080,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOL215L",
+      "id":"GEOL215L",
       "courseName":"Coastal Environments of the Southeastern U.S. (Laboratory)",
       "courseDescription":"Exercises examining coastal ecology, geomorphology, hydrogeology, shoreline processes, environmental issues, and human impact. Not available for marine science major credit. Two laboratory hours per week. Scheduled field trips required.",
       "creditHours":1,
@@ -1089,7 +1089,7 @@
       "preRequisites":["GEOL215","MSCI215"],
       "coRequisites":["EOL215","MSCI215"]
     },{
-      "courseId":"GEOL230",
+      "id":"GEOL230",
       "courseName":"Geology of the National Parks",
       "courseDescription":"Examination of the geologic setting and scientific significance of selected National Parks. Three lecture hours.",
       "creditHours":3,
@@ -1098,7 +1098,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MSCI101",
+      "id":"MSCI101",
       "courseName":"The Ocean Environment",
       "courseDescription":"Origin and evolution of the oceans, plate tectonics, ocean circulation, waves and tides, seawater and sediment composition, and influences on biology. Three lecture and three laboratory hours per week. Scheduled field trips required.",
       "creditHours":4,
@@ -1107,7 +1107,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MSCI102",
+      "id":"MSCI102",
       "courseName":"The Living Ocean",
       "courseDescription":"Origin, evolution, and diversity of marine life, biological production, trophic dynamics, nutrient cycles, marine resources, and environmental concerns. Three lecture and three laboratory hours per week. Scheduled field trips required.",
       "creditHours":4,
@@ -1116,7 +1116,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MSCI210",
+      "id":"MSCI210",
       "courseName":"Oceans and Society",
       "courseDescription":"A nontechnical introduction to human interactions with the marine environment: marine organisms, marine systems, and the physical and chemical characteristics of oceans and estuaries. Not available for marine science major credit.",
       "creditHours":3,
@@ -1125,7 +1125,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MSCI210L",
+      "id":"MSCI210L",
       "courseName":"Oceans and Society Laboratory",
       "courseDescription":"Experiments and exercises which illustrate how specific components of marine environments are structured, function, and can be measured. Two laboratory hours per week. Not available for marine science major credit. Attendance on designated field trips may be required.",
       "creditHours":1,
@@ -1134,7 +1134,7 @@
       "preRequisites":["MSCI210"],
       "coRequisites":["SCI210"]
     },{
-      "courseId":"MSCI215",
+      "id":"MSCI215",
       "courseName":"Coastal Environments of the Southeastern U.S.",
       "courseDescription":"Coastal zones of South Carolina and neighboring states, including geologic history, geomorphology, stratigraphy, hydrogeology, shoreline processes, environmental issues, and effects of man. Not available for geological science or marine science major credit. Three lecture hours each week plus optional field trips.",
       "creditHours":3,
@@ -1143,7 +1143,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MSCI215L",
+      "id":"MSCI215L",
       "courseName":"Coastal Environments of the Southeastern U.S. (Laboratory)",
       "courseDescription":"Exercises examining coastal ecology, geomorphology, hydrogeology, shoreline processes, environmental issues, and human impact. Not available for marine science major credit. Two laboratory hours per week. Scheduled field trips required.",
       "creditHours":1,
@@ -1152,7 +1152,7 @@
       "preRequisites":["GEOL215","MSCI215"],
       "coRequisites":[]
     },{
-      "courseId":"PHYS101",
+      "id":"PHYS101",
       "courseName":"The Physics of How Things Work I",
       "courseDescription":"A practical introduction to physics and science in everyday life-from concrete examples to basic physical principles.",
       "creditHours":3,
@@ -1161,7 +1161,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"PHYS101L",
+      "id":"PHYS101L",
       "courseName":"The Physics of How Things Work I Lab",
       "courseDescription":"Experiments, exercises, and demonstrations to accompany PHYS 101.",
       "creditHours":1,
@@ -1170,7 +1170,7 @@
       "preRequisites":["PHYS101"],
       "coRequisites":["HYS101"]
     },{
-      "courseId":"PHYS201",
+      "id":"PHYS201",
       "courseName":"General Physics I",
       "courseDescription":"First part of an introductory course sequence. Topics include mechanics, and selections from wave motion, sound, fluids, and heat. No previous background in physics is assumed.",
       "creditHours":3,
@@ -1179,7 +1179,7 @@
       "preRequisites":["MATH111","MATH111L","MATH122","MATH115","MATH116","MATH122","MATH141"],
       "coRequisites":[]
     },{
-      "courseId":"PHYS201L",
+      "id":"PHYS201L",
       "courseName":"General Physics Laboratory I",
       "courseDescription":"Experiments, exercises, and demonstrations to accompany PHYS 201.",
       "creditHours":1,
@@ -1188,7 +1188,7 @@
       "preRequisites":["PHYS201"],
       "coRequisites":["HYS201"]
     },{
-      "courseId":"PHYS202",
+      "id":"PHYS202",
       "courseName":"General Physics II",
       "courseDescription":"Continuation of PHYS 201; includes electromagnetism, and selected topics from optics, relativity, quantum physics, atomic and nuclear physics.",
       "creditHours":3,
@@ -1197,7 +1197,7 @@
       "preRequisites":["PHYS201"],
       "coRequisites":[]
     },{
-      "courseId":"PHYS202L",
+      "id":"PHYS202L",
       "courseName":"General Physics Laboratory II",
       "courseDescription":"Experiments, exercises, and demonstrations to accompany PHYS 202.",
       "creditHours":1,
@@ -1206,7 +1206,7 @@
       "preRequisites":["PHYS202"],
       "coRequisites":["HYS202"]
     },{
-      "courseId":"PHYS211",
+      "id":"PHYS211",
       "courseName":"Essentials of Physics I",
       "courseDescription":"Classical mechanics and wave motion. Calculus-level course for students of science and engineering.",
       "creditHours":3,
@@ -1215,7 +1215,7 @@
       "preRequisites":["MATH141"],
       "coRequisites":["HYS211L"]
     },{
-      "courseId":"PHYS211L",
+      "id":"PHYS211L",
       "courseName":"Essentials of Physics I Lab",
       "courseDescription":"Experiments, exercises, and demonstrations to accompany PHYS 211.",
       "creditHours":3,
@@ -1224,7 +1224,7 @@
       "preRequisites":["PHYS211"],
       "coRequisites":["HYS211"]
     },{
-      "courseId":"PHYS212",
+      "id":"PHYS212",
       "courseName":"Essentials of Physics II",
       "courseDescription":"Experiments, exercises, and demonstrations to accompany PHYS 211.",
       "creditHours":3,
@@ -1233,7 +1233,7 @@
       "preRequisites":["PHYS211","MATH142"],
       "coRequisites":["HYS212L"]
     },{
-      "courseId":"PHYS212L",
+      "id":"PHYS212L",
       "courseName":"Essentials of Physics II Lab",
       "courseDescription":"Experiments, exercises, and demonstrations to accompany PHYS 212.",
       "creditHours":3,
@@ -1242,7 +1242,7 @@
       "preRequisites":["PHYS212"],
       "coRequisites":["HYS212"]
     },{
-      "courseId":"CSCE211",
+      "id":"CSCE211",
       "courseName":"Digital Logic Design",
       "courseDescription":"Number systems, Boolean algebra, logic design, sequential machines.",
       "creditHours":3,
@@ -1251,7 +1251,7 @@
       "preRequisites":["CSCE211","CSCE145","CSCE106"],
       "coRequisites":[]
     },{
-      "courseId":"CSCE212",
+      "id":"CSCE212",
       "courseName":"Introduction to Computer Arcitecture",
       "courseDescription":"Computer architecture, components. and organization; memory addressing; Input/Output; instruction sets; interrupts; assembly-language programming.  Students may not apply both CSCE 210 and CSCE 212 to any minor or major program of study.",
       "creditHours":3,
@@ -1260,7 +1260,7 @@
       "preRequisites":["CSCE211","CSCE145","CSCE206"],
       "coRequisites":[]
     },{
-      "courseId":"MATH241",
+      "id":"MATH241",
       "courseName":"Vector Calculus",
       "courseDescription":"Vector algebra, geometry of three-dimensional space; lines, planes, and curves in space; polar, cylindrical, and spherical coordinate systems; partial differentiation, max-min theory; multiple and iterated integration, line integrals, and Green’s theorem in the plane.",
       "creditHours":3,
@@ -1269,7 +1269,7 @@
       "preRequisites":["MATH142"],
       "coRequisites":[]
     },{
-      "courseId":"CSCE311",
+      "id":"CSCE311",
       "courseName":"Operating Systems",
       "courseDescription":"Operating system structure and function; process implementation, scheduling, and synchronization; memory management; security; naming protection; resource allocation; network file systems.",
       "creditHours":3,
@@ -1278,7 +1278,7 @@
       "preRequisites":["CSCE240","CSCE210","CSCE212"],
       "coRequisites":[]
     },{
-      "courseId":"CSCE330",
+      "id":"CSCE330",
       "courseName":"Programming Language Structures",
       "courseDescription":"Formal specification of syntax and semantics; structure of algorithms; list processing and string manipulation languages; statement types, control structures, and interfacing procedures.",
       "creditHours":3,
@@ -1287,7 +1287,7 @@
       "preRequisites":["CSCE240","MATH174","MATH374","MATH574"],
       "coRequisites":[]
     },{
-      "courseId":"CSCE355",
+      "id":"CSCE355",
       "courseName":"Foundadtions of Computation",
       "courseDescription":"Basic theoretical principles of computing as modeled by formal languages, grammars, automata, and Turing machines; fundamental limits of computation.",
       "creditHours":3,
@@ -1296,7 +1296,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MATH344",
+      "id":"MATH344",
       "courseName":"Linear Applied Algebra",
       "courseDescription":"General solutions of systems of linear equations, vector spaces and subspaces, linear transformations, determinants, orthogonality, characteristic polynomials, eigenvalues and eigenvectors, singular value decomposition, and generalized inverse. MATH 344L is an optional laboratory course where additional applications will be discussed.",
       "creditHours":3,
@@ -1305,7 +1305,7 @@
       "preRequisites":["MATH142"],
       "coRequisites":[]
     },{
-      "courseId":"MATH344L",
+      "id":"MATH344L",
       "courseName":"Linear Applied Algebra Lab",
       "courseDescription":"Computer based applications of linear algebra for science and engineering students. Topics include numerical analysis of matrices, direct and indirect methods for solving linear systems, and least squares method (regression). Typical applications include practical issues related to discrete Markov processes, image compression, and linear programming.",
       "creditHours":1,
@@ -1314,7 +1314,7 @@
       "preRequisites":["MATH344"],
       "coRequisites":["ATH344"]
     },{
-      "courseId":"AFAM201",
+      "id":"AFAM201",
       "courseName":"Introduction to African American Studies: Social and Historical Foundations",
       "courseDescription":"Introduction to the key debates, figures, and concepts that are fundamental to the interdisciplinary study of the historical, political, and social development of black life in America.",
       "creditHours":3,
@@ -1323,7 +1323,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"AFAM218",
+      "id":"AFAM218",
       "courseName":"Convergence and Divergence in African American and Jewish Relations: Historical and Contemporary",
       "courseDescription":"An examination of African American and Jewish American inter-ethnic, historical and contemporary connections and disconnections. Implications for educational, social, and social settings are considered.",
       "creditHours":3,
@@ -1332,7 +1332,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"AFAM355",
+      "id":"AFAM355",
       "courseName":"Race and Ethnic Relations",
       "courseDescription":"Theoretical and empirical approaches related to race/ethnicity and the current state of race relations in American, with some attention to global issues.",
       "creditHours":3,
@@ -1341,7 +1341,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ANTH101",
+      "id":"ANTH101",
       "courseName":"Primates, People, and Prehistory",
       "courseDescription":"An exploration of human origins, human evolution, human prehistory, and cultural existence from its less complex forms to early civilizations. An introduction to the concepts, methods, and data of physical, biological, and archaeological anthropology.",
       "creditHours":3,
@@ -1350,7 +1350,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ANTH102",
+      "id":"ANTH102",
       "courseName":"Understanding Other Cultures",
       "courseDescription":"An exploration and comparison of selected contemporary cultures, including their languages. An introduction to the concepts, methods, and data of socio-cultural anthropology and anthropological linguistics.",
       "creditHours":3,
@@ -1359,7 +1359,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ANTH204",
+      "id":"ANTH204",
       "courseName":"Plagues Past and Present",
       "courseDescription":"An overview of how plagues and epidemics have shaped human prehistory and history. How large-scale social transformations have produced forms of human/disease interactions. How infectious disease has been conceptualized at different times and by different cultural groups and treated as a threat to the social order.",
       "creditHours":3,
@@ -1368,7 +1368,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ANTH210",
+      "id":"ANTH210",
       "courseName":"Human Life Cycles in Different Cultures",
       "courseDescription":"Childhood, maturity, old age, and gender socialization within the family.",
       "creditHours":3,
@@ -1377,7 +1377,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ANTH211",
+      "id":"ANTH211",
       "courseName":"Learning Across Cultures",
       "courseDescription":"Classroom ethnography, bilingualism, cultural minorities, communication across cultural boundaries. Films, videotapes, and fieldwork in classroom settings.",
       "creditHours":3,
@@ -1386,7 +1386,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ANTH212",
+      "id":"ANTH212",
       "courseName":"Food and Culture",
       "courseDescription":"Biological and cultural interactions affecting foodways around the world, and associated ethical issues.",
       "creditHours":3,
@@ -1395,7 +1395,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"ANTH213",
+      "id":"ANTH213",
       "courseName":"Ethnobotany: Plants and Peoples",
       "courseDescription":"Anthropological overview of the interactions between cultures around the world and the plants that affect them, from cultural, biological, archaeological, and linguistic points of view.",
       "creditHours":3,
@@ -1404,7 +1404,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ANTH244",
+      "id":"ANTH244",
       "courseName":"American Indian Nations Today: From Hard Times to Hard Rock",
       "courseDescription":"Contemporary Indian Country in anthropological, historical, cultural, economic, and political contexts.",
       "creditHours":3,
@@ -1413,7 +1413,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"ANTH273",
+      "id":"ANTH273",
       "courseName":"Cross-Cultural Communication",
       "courseDescription":"This course introduces students to the fields of interactional sociolinguistics and linguistic anthropology. Students will learn how they approach the study of cross-cultural and intercultural forms of (mis)communication within the context of globally interconnected people, places, and systems of communication.",
       "creditHours":3,
@@ -1422,7 +1422,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ANTH280",
+      "id":"ANTH280",
       "courseName":"Humans Going Nuclear: Atomic Bombs, Cold War, and the Fallout",
       "courseDescription":"Ethnographic study of the Cold War, nuclear culture, and its aftermath.",
       "creditHours":3,
@@ -1431,7 +1431,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"COLA298",
+      "id":"COLA298",
       "courseName":"Interdisciplinary Special Topics in the Liberal Arts: Social Sciences",
       "courseDescription":"Interdisciplinary special topics emphasizing the social sciences. May be repeated as content varies by title and section.",
       "creditHours":3,
@@ -1440,7 +1440,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"CRJU101",
+      "id":"CRJU101",
       "courseName":"The American Criminal Justice System",
       "courseDescription":"Survey of crime and societal responses to crime, including law enforcement, courts, corrections, and the juvenile justice system.",
       "creditHours":3,
@@ -1449,7 +1449,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"CYBR101",
+      "id":"CYBR101",
       "courseName":"Internet and Society in a Connected World",
       "courseDescription":"Examines the effects of the internet and connected technologies on different societies around the world and the transformations that these forms of connection are having on individuals, societies, and global affairs.",
       "creditHours":3,
@@ -1458,7 +1458,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"EDEX205",
+      "id":"EDEX205",
       "courseName":"Understanding the Foundations of Disability",
       "courseDescription":"The role of historical events, politics, media, race, gender, and other issues in shaping how disability is viewed. A critical framework for understanding how disability is viewed in Western culture and the effects of those views on individuals with disabilities.",
       "creditHours":3,
@@ -1467,7 +1467,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"EDTE202",
+      "id":"EDTE202",
       "courseName":"Global Citizenship and Social Responsibility through Education",
       "courseDescription":"Examining the continuing evolution of education and the direct impact on the development of social responsibility, values, and our place as global citizens.",
       "creditHours":3,
@@ -1476,7 +1476,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"EDTE218",
+      "id":"EDTE218",
       "courseName":"Convergence and Divergence in African American and Jewish Relations: Historical and Contemporary",
       "courseDescription":"An examination of African American and Jewish American inter-ethnic, historical and contemporary connections and disconnections. Implications for educational, social, and social settings are considered.",
       "creditHours":3,
@@ -1485,7 +1485,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"EDUC360",
+      "id":"EDUC360",
       "courseName":"Global and Multicultural Perspectives on Education in International Settings",
       "courseDescription":"Study abroad course in which students apply social science knowledge and analytical methods to understand the ways in which culture, society, politics, and global forces affect education and schooling in diverse international settings. May be repeated as content varies by destination.",
       "creditHours":3,
@@ -1494,7 +1494,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOG103",
+      "id":"GEOG103",
       "courseName":"Foundations of Geography",
       "courseDescription":"A survey of the principles and methods of geographic inquiry. Not required for the geography major.",
       "creditHours":3,
@@ -1503,7 +1503,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOG121",
+      "id":"GEOG121",
       "courseName":"Geographies of Global Change",
       "courseDescription":"Introduction to processes of political, economic, social, and environmental change around the world; topics include geopolitical transitions, nationalism, trade, uneven development, conflict, environmental geopolitics, and demographic change, with an emphasis on non-U.S. contexts.",
       "creditHours":3,
@@ -1512,7 +1512,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOG121",
+      "id":"GEOG121",
       "courseName":"Geographies of Global Change",
       "courseDescription":"Introduction to processes of political, economic, social, and environmental change around the world; topics include geopolitical transitions, nationalism, trade, uneven development, conflict, environmental geopolitics, and demographic change, with an emphasis on non-U.S. contexts.",
       "creditHours":3,
@@ -1521,7 +1521,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOG210",
+      "id":"GEOG210",
       "courseName":"Peoples, Places, and Environments",
       "courseDescription":"Basic principles of human geography.",
       "creditHours":3,
@@ -1530,7 +1530,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOG221",
+      "id":"GEOG221",
       "courseName":"Geography of South Carolina",
       "courseDescription":"An intensive regional analysis of South Carolina. Selected phenomena such as urbanization, industrialization, land use, the physical environment, and their interrelationships.",
       "creditHours":3,
@@ -1539,7 +1539,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOG224",
+      "id":"GEOG224",
       "courseName":"Geography of North America",
       "courseDescription":"An intensive regional analysis of South Carolina. Selected phenomena such as urbanization, industrialization, land use, the physical environment, and their interrelationships.",
       "creditHours":3,
@@ -1548,7 +1548,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOG225",
+      "id":"GEOG225",
       "courseName":"Geography of Europe",
       "courseDescription":"Physical and human geography of Europe.",
       "creditHours":3,
@@ -1557,7 +1557,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOG226",
+      "id":"GEOG226",
       "courseName":"Geography of the Middle East",
       "courseDescription":"A regional geographic approach to the environmental, social, economic, and political aspects of the Middle East (Southwest Asia and north Africa) with emphasis on contemporary problems.",
       "creditHours":3,
@@ -1566,7 +1566,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GEOG228",
+      "id":"GEOG228",
       "courseName":"Geography of Sub-Saharan Africa",
       "courseDescription":"A regional approach to the physical, social, economic, and political aspects of Sub-Saharan Africa with emphasis on contemporary problems.",
       "creditHours":3,
@@ -1575,7 +1575,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GLST101",
+      "id":"GLST101",
       "courseName":"Global Studies: Context, Connection, and Change",
       "courseDescription":"Survey of global issues from multi-disciplinary perspectives with emphasis on the local patterns of globalization related to poverty, health and development, environmental change, peace and conflict, migration, and intercultural relations.",
       "creditHours":3,
@@ -1584,7 +1584,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"HTMT280",
+      "id":"HTMT280",
       "courseName":"Foundations of Tourism",
       "courseDescription":"Basic introduction to the social science of tourism in the US and the world, including definitional issues, motivations for travel, factors influencing demand-side and supply-side growth, the tourism product, market segmentation and marketing, socioeconomic, and ecological impacts, and destination life cycle dynamics. May not be used to satisfy Carolina Core requirements for HTMT majors.",
       "creditHours":3,
@@ -1593,7 +1593,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"JSTU218",
+      "id":"JSTU218",
       "courseName":"Convergence and Divergence in African American and Jewish Relations: Historical and Contemporary",
       "courseDescription":"An examination of African American and Jewish American inter-ethnic, historical and contemporary connections and disconnections. Implications for educational, social, and social settings are considered.",
       "creditHours":3,
@@ -1602,7 +1602,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"JSTU218",
+      "id":"JSTU218",
       "courseName":"Convergence and Divergence in African American and Jewish Relations: Historical and Contemporary",
       "courseDescription":"An examination of African American and Jewish American inter-ethnic, historical and contemporary connections and disconnections. Implications for educational, social, and social settings are considered.",
       "creditHours":3,
@@ -1611,7 +1611,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"LASP331",
+      "id":"LASP331",
       "courseName":"Geography of Latin America",
       "courseDescription":"Physical and human geography of Latin America.",
       "creditHours":3,
@@ -1620,7 +1620,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"LING101",
+      "id":"LING101",
       "courseName":"Linguistics 1: Introduction to Language",
       "courseDescription":"Introduction to the human capacity for language and to how it is acquired. Investigation of language varieties, dialects, and styles. Examination of the social and geographical factors that contribute to language variation and change.",
       "creditHours":3,
@@ -1629,7 +1629,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"LING273",
+      "id":"LING273",
       "courseName":"Cross-Cultural Communication",
       "courseDescription":"This course introduces students to the fields of interactional sociolinguistics and linguistic anthropology. Students will learn how they approach the study of cross-cultural and intercultural forms of (mis)communication within the context of globally interconnected people, places, and systems of communication.",
       "creditHours":3,
@@ -1638,7 +1638,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"MUSC210",
+      "id":"MUSC210",
       "courseName":"Understanding the Psychology of Music",
       "courseDescription":"Various psychological and psychosocial aspects of human musical behavior, including introductory musical acoustics, perception and cognition of music, music and the brain, music processing across world cultures, music and emotions, music and human health, music in social contexts, and principles of experimental design.",
       "creditHours":3,
@@ -1647,7 +1647,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"POLI101",
+      "id":"POLI101",
       "courseName":"Introduction to Global Politics",
       "courseDescription":"Introduction to theories about global politics. Issues and controversies central to global politics.",
       "creditHours":3,
@@ -1656,7 +1656,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"POLI201",
+      "id":"POLI201",
       "courseName":"American National Government",
       "courseDescription":"The formation and development of the national government, its organization and powers. Overlay Course.",
       "creditHours":3,
@@ -1665,7 +1665,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"PSYC101",
+      "id":"PSYC101",
       "courseName":"Introduction to Psychology",
       "courseDescription":"An introduction to and survey of the basic concepts and findings within the field of psychology.",
       "creditHours":3,
@@ -1674,7 +1674,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"RELG101",
+      "id":"RELG101",
       "courseName":"Exploring Religion",
       "courseDescription":"Beliefs and practices of the world's religions and the methods scholars use to study them.",
       "creditHours":3,
@@ -1683,7 +1683,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"RELG338",
+      "id":"RELG338",
       "courseName":"Sociology of Religion",
       "courseDescription":"Sociological perspectives related to selected aspects of religious behavior. Includes references to non-Western religions.",
       "creditHours":3,
@@ -1692,7 +1692,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"SOCY101",
+      "id":"SOCY101",
       "courseName":"Introductory Sociology",
       "courseDescription":"An introduction to sociological facts and principles: an analysis of group-making processes and products.",
       "creditHours":3,
@@ -1701,7 +1701,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"SOCY301",
+      "id":"SOCY301",
       "courseName":"Sex and Gender",
       "courseDescription":"Offers a sociological lens to develop critical ways of thinking about sex and gender as social processes in everyday lives. This course considers how sex and gender shape and affect the experiences of women, men, girls, boys, and individuals who live in the spaces in-between (those who are intersex or transgender) across a wide range of social institutions (family, work, education, politics, etc.).",
       "creditHours":3,
@@ -1710,7 +1710,7 @@
       "preRequisites":["SOCY101"],
       "coRequisites":[]
     },{
-      "courseId":"SOCY307",
+      "id":"SOCY307",
       "courseName":"Sociology of Religion",
       "courseDescription":"Sociological perspectives related to selected aspects of religious behavior. Includes references to non-Western religions.",
       "creditHours":3,
@@ -1719,7 +1719,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"SOCY309",
+      "id":"SOCY309",
       "courseName":"An Introduction to Social Inequality",
       "courseDescription":"A sociological analysis of the distribution of wealth and income in selected societies.",
       "creditHours":3,
@@ -1728,7 +1728,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"SOCY310",
+      "id":"SOCY310",
       "courseName":"Social Demography",
       "courseDescription":"Introduction to key areas of population studies. Methodological approaches, time trends, regional differences, and contemporary policy issues.",
       "creditHours":3,
@@ -1737,7 +1737,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"SOCY340",
+      "id":"SOCY340",
       "courseName":"Introduction to Social Problems",
       "courseDescription":"Contemporary social issues such as poverty, health, the criminal justice system, globalization and the environment, their causes and possible solutions.",
       "creditHours":3,
@@ -1746,7 +1746,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"SOCY355",
+      "id":"SOCY355",
       "courseName":"Race and Ethnic Relations",
       "courseDescription":"Theoretical and empirical approaches related to race/ethnicity and the current state of race relations in America, with some attention to global issues.",
       "creditHours":3,
@@ -1755,7 +1755,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"SOWK222",
+      "id":"SOWK222",
       "courseName":"Social Welfare Policies and Programs",
       "courseDescription":"This course introduces students to the historical and current context of social welfare policies and programs in the United States, including examination of social inequalities and the processes of social policy development.",
       "creditHours":3,
@@ -1764,7 +1764,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"WGST112",
+      "id":"WGST112",
       "courseName":"Introduction to Women's and Gender Studies",
       "courseDescription":"A social science perspective of women in psychological, sociological, historical, anthropological, economic, and political contexts; the changing roles, images, and institutions.",
       "creditHours":3,
@@ -1773,7 +1773,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"WGST113",
+      "id":"WGST113",
       "courseName":"Women's Health",
       "courseDescription":"Basic functioning of the female body; effects of society on processes of health and disease. Not for natural sciences credit.",
       "creditHours":3,
@@ -1782,7 +1782,7 @@
       "coRequisites":[],
       "type": "OVERLAY"
     },{
-      "courseId":"WGST210",
+      "id":"WGST210",
       "courseName":"Human Life Cycles in Different Cultures",
       "courseDescription":"Childhood, maturity, old age, and gender socialization within the family.",
       "creditHours":3,
@@ -1791,7 +1791,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"WGST300",
+      "id":"WGST300",
       "courseName":"Sex and Gender",
       "courseDescription":"Offers a sociological lens to develop critical ways of thinking about sex and gender as social processes in everyday lives. This course considers how sex and gender shape and affect the experiences of women, men, girls, boys, and individuals who live in the spaces in-between (those who are intersex or transgender) across a wide range of social institutions (family, work, education, politics, etc.).",
       "creditHours":3,
@@ -1800,7 +1800,7 @@
       "preRequisites":["SOCY101"],
       "coRequisites":[]
     },{
-      "courseId":"ARAB121",
+      "id":"ARAB121",
       "courseName":"Elementary Arabic",
       "courseDescription":"Grammar and practical vocabulary necessary for fundamental communication skills. Assumes no prior experience in the language. Offered only in fall.",
       "creditHours":4,
@@ -1809,7 +1809,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ARAB122",
+      "id":"ARAB122",
       "courseName":"Basic Proficiency in Arabic",
       "courseDescription":"Practice and further development of essential listening, reading, speaking, and writing skills. Admission only by successful completion of Arabic 121. Offered only in spring.",
       "creditHours":4,
@@ -1818,7 +1818,7 @@
       "preRequisites":["ARAB121"],
       "coRequisites":[]
     },{
-      "courseId":"ASLG121",
+      "id":"ASLG121",
       "courseName":"Elementary American Sign Language",
       "courseDescription":"Introduction to basic vocabulary and common grammar structures of ASL. Focus on communication and familiarization with aspects of deaf culture.",
       "creditHours":4,
@@ -1827,7 +1827,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ASLG122",
+      "id":"ASLG122",
       "courseName":"Basic Proficiency in American Sign Language",
       "courseDescription":"Practice and further development in the language and culture of the American deaf community.",
       "creditHours":4,
@@ -1836,7 +1836,7 @@
       "preRequisites":["ASLG121"],
       "coRequisites":[]
     },{
-      "courseId":"CHIN121",
+      "id":"CHIN121",
       "courseName":"Elementary Chinese Mandarin",
       "courseDescription":"Grammar and practical vocabulary necessary for fundamental communication skills. Assumes no prior experience in the language.",
       "creditHours":4,
@@ -1845,7 +1845,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"CHIN122",
+      "id":"CHIN122",
       "courseName":"Basic Proficiency in Mandarin Chinese",
       "courseDescription":"Practice and further development of essential listening, reading, speaking, and writing skills. Admission only by successful completion of Chinese 121.",
       "creditHours":4,
@@ -1854,7 +1854,7 @@
       "preRequisites":["CHIN121"],
       "coRequisites":[]
     },{
-      "courseId":"FREN109",
+      "id":"FREN109",
       "courseName":"Beginning French I",
       "courseDescription":"Introduction to grammar and practical vocabulary necessary for fundamental communication skills. Admission to FREN 109 restricted to those who have never studied French, who have not studied French in the previous five years, or who have a score of F-1 on the placement test.",
       "creditHours":3,
@@ -1863,7 +1863,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"FREN110",
+      "id":"FREN110",
       "courseName":"Beginning French II",
       "courseDescription":"Introduction to grammar and practical vocabulary necessary for fundamental communication skills. Admission to 110 restricted to those who have completed FREN 109. Credit may be received only for one of the following: FREN 109/FREN 110 or FREN 121.",
       "creditHours":3,
@@ -1872,7 +1872,7 @@
       "preRequisites":["FREN109"],
       "coRequisites":[]
     },{
-      "courseId":"FREN121",
+      "id":"FREN121",
       "courseName":"Elementary French",
       "courseDescription":"Grammar and vocabulary necessary for fundamental communication skills. Assumes prior experience in French. Admission to FREN 121 restricted to those who have a score of F-2 on the placement test. Credit may be received for only one of the following: FREN 109/FREN 100 or FREN 121.",
       "creditHours":3,
@@ -1881,7 +1881,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"FREN122",
+      "id":"FREN122",
       "courseName":"Basic Proficiency in French",
       "courseDescription":"Practice and further development of essential listening, reading, speaking, and writing skills.",
       "creditHours":3,
@@ -1890,7 +1890,7 @@
       "preRequisites":["FREN110","FREN121"],
       "coRequisites":[]
     },{
-      "courseId":"GERM109",
+      "id":"GERM109",
       "courseName":"Beginning German I",
       "courseDescription":"Introduction to grammar and practical vocabulary necessary for fundamental communication skills. Restricted to those who have never studied German or who have placed by examination into GERM 109. Credit may be received only for one of the following GERM 109; GERM110; GERM 111; GERM 121.",
       "creditHours":3,
@@ -1899,7 +1899,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GERM110",
+      "id":"GERM110",
       "courseName":"Beginning German II",
       "courseDescription":"Introduction to grammar and practical vocabulary necessary for fundamental communication skills. Credit may be received only for one of the following: GERM 109; GERM 110; GERM 111; GERM 121.",
       "creditHours":3,
@@ -1908,7 +1908,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GERM121",
+      "id":"GERM121",
       "courseName":"Elementary German",
       "courseDescription":"Grammar and vocabulary necessary for fundamental communication skills. Assumes prior experience in German. Admission only by proficiency examination. Credit may be received for only one of the following: GERM 109; GERM 110; GERM 111; GERM 121.",
       "creditHours":4,
@@ -1917,7 +1917,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GERM122",
+      "id":"GERM122",
       "courseName":"Basic Proficiency in German",
       "courseDescription":"Practice and further development of essential listening, reading, speaking, and writing skills. Prerequisites: Admission either by placement examination or successful completion of GERM110, GERM111, or GERM121.",
       "creditHours":3,
@@ -1926,7 +1926,7 @@
       "preRequisites":["GERM121"],
       "coRequisites":[]
     },{
-      "courseId":"GREK121",
+      "id":"GREK121",
       "courseName":"Elementary Ancient Greek I",
       "courseDescription":"Basic grammar and vocabulary necessary for reading Classical and Koine Greek. Assumes no prior experience in the language.",
       "creditHours":3,
@@ -1935,7 +1935,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GREK122",
+      "id":"GREK122",
       "courseName":"Elementary Ancient Greek II",
       "courseDescription":"Additional grammar and vocabulary necessary for reading Classical and Koine Greek.",
       "creditHours":3,
@@ -1944,7 +1944,7 @@
       "preRequisites":["GREK121"],
       "coRequisites":[]
     },{
-      "courseId":"ITAL121",
+      "id":"ITAL121",
       "courseName":"Elementary Italian",
       "courseDescription":"Grammar and practical vocabulary necessary for fundamental communication skills.",
       "creditHours":4,
@@ -1953,7 +1953,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"ITAL122",
+      "id":"ITAL122",
       "courseName":"Basic Proficiency in Italian",
       "courseDescription":"Practice and further development of essential listening, reading, speaking, and writing skills.",
       "creditHours":3,
@@ -1962,7 +1962,7 @@
       "preRequisites":["ITAL121"],
       "coRequisites":[]
     },{
-      "courseId":"JAPA121",
+      "id":"JAPA121",
       "courseName":"Elementary Japanese",
       "courseDescription":"Grammar and practical vocabulary necessary for fundamental communication skills. Assumes no prior experience in the language.",
       "creditHours":4,
@@ -1971,7 +1971,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"JAPA122",
+      "id":"JAPA122",
       "courseName":"Basic Proficiency in Japanese",
       "courseDescription":"Practice and further development of essential listening, reading, speaking, and writing skills. Admission only by successful completion of Japanese 121.",
       "creditHours":3,
@@ -1980,7 +1980,7 @@
       "preRequisites":["JAPA121"],
       "coRequisites":[]
     },{
-      "courseId":"LATN109",
+      "id":"LATN109",
       "courseName":"Beginning Latin I",
       "courseDescription":"Introduction to grammar and practical vocabulary necessary for fundamental reading skills. Admission to 109 restricted to those who have never studied Latin, who have not studied Latin in the previous five years, or who have a score of L-1 on the placement test.",
       "creditHours":3,
@@ -1989,7 +1989,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"LATN110",
+      "id":"LATN110",
       "courseName":"Beginning Latin II",
       "courseDescription":"Introduction to grammar and practical vocabulary necessary for fundamental reading skills. Credit may not be received for both LATN 109/LATN 110 and LATN 121.",
       "creditHours":3,
@@ -1998,7 +1998,7 @@
       "preRequisites":["LATN109"],
       "coRequisites":[]
     },{
-      "courseId":"LATN121",
+      "id":"LATN121",
       "courseName":"Elementary Latin",
       "courseDescription":"Grammar and vocabulary necessary for fundamental reading skills. Assumes prior experience in Latin. Admission only by proficiency examination. Credit may be received for only one of the following: LATN 109/LATN 110 or LATN 121.",
       "creditHours":4,
@@ -2007,7 +2007,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"LATN122",
+      "id":"LATN122",
       "courseName":"Basic Proficiency in Latin",
       "courseDescription":"Practice and further development of essential reading skills.",
       "creditHours":3,
@@ -2016,7 +2016,7 @@
       "preRequisites":["LATN110","LATN121"],
       "coRequisites":[]
     },{
-      "courseId":"PORT121",
+      "id":"PORT121",
       "courseName":"Elementary Portuguese",
       "courseDescription":"Grammar and practical vocabulary necessary for fundamental communication skills. Assumes no prior experience in the language.",
       "creditHours":3,
@@ -2025,7 +2025,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"PORT122",
+      "id":"PORT122",
       "courseName":"Basic Proficiency in Portuguese",
       "courseDescription":"Practice and further development of essential listening, reading, speaking, and writing skills.",
       "creditHours":3,
@@ -2034,7 +2034,7 @@
       "preRequisites":["PORT121"],
       "coRequisites":[]
     },{
-      "courseId":"RUSS121",
+      "id":"RUSS121",
       "courseName":"Elementary Russian",
       "courseDescription":"Grammar and practical vocabulary necessary for fundamental communication skills. Assumes no prior experience in the language.",
       "creditHours":4,
@@ -2043,7 +2043,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"RUSS122",
+      "id":"RUSS122",
       "courseName":"Basic Proficiency in Russian",
       "courseDescription":"Practice and further development of essential listening, reading, speaking, and writing skills.",
       "creditHours":4,
@@ -2052,7 +2052,7 @@
       "preRequisites":["RUSS121"],
       "coRequisites":[]
     },{
-      "courseId":"SPAN109",
+      "id":"SPAN109",
       "courseName":"Beginning Spanish I",
       "courseDescription":"Introduction to grammar and practical vocabulary necessary for fundamental communication skills. Restricted to those who have never studied Spanish or placed by examination into SPAN 109. Credit may be received only for one of the following: SPAN 109, SPAN 110; SPAN 111; or SPAN 121.",
       "creditHours":3,
@@ -2061,7 +2061,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"SPAN110",
+      "id":"SPAN110",
       "courseName":"Beginning Spanish II",
       "courseDescription":"Introduction to grammar and practical vocabulary necessary for fundamental communication skills. Restricted to those who have completed SPAN 109. Credit may be received only for one of the following: SPAN 109, SPAN 110; SPAN 111; or SPAN 121.",
       "creditHours":3,
@@ -2070,7 +2070,7 @@
       "preRequisites":["SPAN109"],
       "coRequisites":[]
     },{
-      "courseId":"SPAN111",
+      "id":"SPAN111",
       "courseName":"Intensive Beginning Spanish",
       "courseDescription":"Intensive introduction to grammar and practical vocabulary necessary for fundamental communication skills. Admission only to highly motivated beginning students who obtain the permission of the department. Credit may be received only for one of the following: SPAN 109, SPAN 110, SPAN 111, or SPAN 121.",
       "creditHours":6,
@@ -2079,7 +2079,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"SPAN121",
+      "id":"SPAN121",
       "courseName":"Elementary Spanish",
       "courseDescription":"Grammar and vocabulary necessary for fundamental communication skills. Assumes prior experience in Spanish. Admission only by proficiency examination. Credit may be received for only one of the following: SPAN 109, SPAN 110, SPAN 111, or SPAN 121.",
       "creditHours":3,
@@ -2088,7 +2088,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"SPAN122",
+      "id":"SPAN122",
       "courseName":"Basic Proficiency in Spanish",
       "courseDescription":"Practice and further development of essential listening, reading, speaking, and writing skills.",
       "creditHours":3,
@@ -2097,7 +2097,7 @@
       "preRequisites":["SPAN109","SPAN110","SPAN121"],
       "coRequisites":[]
     },{
-      "courseId":"ARTH107",
+      "id":"ARTH107",
       "courseName":"History of Asian Art",
       "courseDescription":"Art and culture of India, China, and Japan from prehistory to the present.",
       "creditHours":3,
@@ -2106,7 +2106,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"FAMS300",
+      "id":"FAMS300",
       "courseName":"Film and Media History",
       "courseDescription":"Surveys the development of cinema and related media from the 1820s to the present. Attention to the relations among key technological, cultural, and industrial changes, their causes, and consequences.",
       "creditHours":3,
@@ -2115,7 +2115,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"GERM280",
+      "id":"GERM280",
       "courseName":"German Culture and Civilization",
       "courseDescription":"Survey of German cultural history from the Middle Ages to the present. Taught in English.",
       "creditHours":3,
@@ -2124,7 +2124,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"HIST101",
+      "id":"HIST101",
       "courseName":"European Civilization from Ancient Times to the Mid-17th Century",
       "courseDescription":"The rise and development of European civilization from its Mediterranean origins through the Renaissance and Reformation.",
       "creditHours":3,
@@ -2133,7 +2133,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"HIST102",
+      "id":"HIST102",
       "courseName":"European Civilization from the Mid-17th Century",
       "courseDescription":"European development and expansion from the mid-17th century to the present.",
       "creditHours":3,
@@ -2142,7 +2142,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"HIST103",
+      "id":"HIST103",
       "courseName":"Introduction to South Asian History",
       "courseDescription":"Political, cultural, and economic forces that have conditioned the development of institutions and ideas in South Asia.",
       "creditHours":3,
@@ -2151,7 +2151,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"HIST104",
+      "id":"HIST104",
       "courseName":"Introduction to the Civilization of the Islamic Middle East",
       "courseDescription":"An analysis which treats the major cultural elements of traditional Islamic civilization and then concentrates upon the reactions of the Arabs, Turks, and Iranians to the problems of adjusting to the modern world.",
       "creditHours":3,
@@ -2160,7 +2160,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"HIST105",
+      "id":"HIST105",
       "courseName":"Introduction to East Asian Civilization",
       "courseDescription":"The evolution of social, political, and cultural patterns in East Asia, with emphasis on the development of philosophical, religious, and political institutions and their relationship to literary and artistic forms in China and Japan.",
       "creditHours":3,
@@ -2169,7 +2169,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"HIST106",
+      "id":"HIST106",
       "courseName":"Introduction to African History",
       "courseDescription":"An examination of several traditional sub-Saharan African societies and of their political and economic transformation in the modern, colonial, and post-independence periods.",
       "creditHours":3,
@@ -2178,7 +2178,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"HIST108",
+      "id":"HIST108",
       "courseName":"Science and Technology in World History",
       "courseDescription":"The development of science and technology and their roles in world civilizations from antiquity to the present.transformation in the modern, colonial, and post-independence periods.",
       "creditHours":3,
@@ -2187,7 +2187,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"HIST109",
+      "id":"HIST109",
       "courseName":"Introduction to Latin American Civilization",
       "courseDescription":"A discussion of the political, cultural, and economic forces which have conditioned the development of institutions and ideas in Spanish and Portuguese America.",
       "creditHours":3,
@@ -2196,7 +2196,7 @@
       "preRequisites":[],
       "coRequisites":[]
     },{
-      "courseId":"HIST110",
+      "id":"HIST110",
       "courseName":"Introduction to Latin American Civilization",
       "courseDescription":"A discussion of the political, cultural, and economic forces which have conditioned the development of institutions and ideas in Spanish and Portuguese America.",
       "creditHours":3,
