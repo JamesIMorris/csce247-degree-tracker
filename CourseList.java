@@ -74,8 +74,4 @@ public class CourseList {
   public ArrayList<Course> getCourses() {
     return courses;
   }
-
-  public void loadCourses() {
-    courses = DataLoader.getInstance().loadCourses();
-}
 }
