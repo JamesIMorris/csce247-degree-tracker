@@ -7,12 +7,16 @@ public class DegreeTracker {
     private UserList userList;
     private MajorList majorList;
     private CourseList courseList;
+    private DataLoader dataLoader;
+    private DataWriter dataWriter;
 
     private DegreeTracker() {
         error = "";
         courseList = CourseList.getInstance();
         majorList = MajorList.getInstance();
         userList = UserList.getInstance();
+        dataLoader = DataLoader.getInstance();
+        dataWriter = DataWriter.getInstance();
         userList.setDegreeTracker(this);
     }
 
