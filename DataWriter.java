@@ -6,9 +6,14 @@ import org.json.simple.JSONObject;
 
 public class DataWriter extends DataConstants {
     private static DataWriter dataWriter;
+    private CourseList courseList;
+    private MajorList majorList;
+    private UserList userList;
 
     public DataWriter() {
-
+        courseList = CourseList.getInstance();
+        majorList = MajorList.getInstance();
+        userList = UserList.getInstance();
     }
 
     public static DataWriter getInstance() {
@@ -18,7 +23,7 @@ public class DataWriter extends DataConstants {
     }
 
     public boolean saveData() {
-        if (saveReferenceData() && saveUsers())
+        if (saveReferenceData() && saveUserData())
             return true;
         return false;
     }
@@ -46,69 +51,105 @@ public class DataWriter extends DataConstants {
     }
 
 
+
+    // USER DATA //
+
+    // SAVE USER DATA //
+
+    public boolean saveUserData(){
+        if (saveUsers() && saveStudents() && saveAdvisors() && saveAdmin())
+            return true;
+        return false;
+    }
+
+    private boolean saveUsers() {
+        ArrayList<User> users = userList.getUsers();
+        JSONArray usersJSON = new JSONArray();
+
+        for (int i = 0; i < users.size(); i++)
+            usersJSON.add(getUserJSON(users.get(i)));
+
+        try {
+            FileWriter file = new FileWriter(USERS_FILE_NAME);
+            file.write(usersJSON.toJSONString());
+            file.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean saveStudents() {
+        ArrayList<User> students = userList.searchUserByType(UserType.STUDENT);
+        JSONArray studentsJSON = new JSONArray();
+
+        for (User student : students)
+            studentsJSON.add(getStudentJSON((Student)student));
+
+        try {
+            FileWriter file = new FileWriter(STUDENTS_FILE_NAME);
+            file.write(studentsJSON.toJSONString());
+            file.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean saveAdvisors() {
+        ArrayList<User> advisors = userList.searchUserByType(UserType.ADVISOR);
+        JSONArray advisorsJSON = new JSONArray();
+        
+        for (User advisor : advisors)
+            advisorsJSON.add(getAdvisorJSON((Advisor)advisor));
+
+        try {
+            FileWriter file = new FileWriter(ADVISORS_FILE_NAME);
+            file.write(advisorsJSON.toJSONString());
+            file.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean saveAdmin() {
+        ArrayList<User> admins = userList.searchUserByType(UserType.ADMIN);
+        JSONArray adminsJSON = new JSONArray();
+
+        for (User admin : admins) 
+            adminsJSON.add(getAdminJSON((Admin)admin));
+
+        try {
+            FileWriter file = new FileWriter(ADMIN_FILE_NAME);
+            file.write(adminsJSON.toJSONString());
+            file.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    // GET USER JSONS //
+
+    private JSONObject getUserJSON(User user) {
+        JSONObject userJSON = new JSONObject();
+        userJSON.put(TYPE, user.getUserType().toString());
+        userJSON.put(USERNAME, user.getUsername());
+        userJSON.put(PASSWORD, user.getPassword());
+        userJSON.put(FIRST_NAME, user.getFirstName());
+        userJSON.put(LAST_NAME, user.getLastName());
+        userJSON.put(EMAIL, user.getEmail());
+        return userJSON;
+    }
+
     
-    // SAVE USERS //
 
-    public boolean saveUsers() {
-        UserList user = UserList.getInstance();
-        ArrayList<User> userList = user.getUsers();
-        JSONArray jsonUsers = new JSONArray();
-
-        for (int i = 0; i < userList.size(); i++) {
-            jsonUsers.add(getUserJSON(userList.get(i)));
-        }
-
-        try (FileWriter file = new FileWriter(USERS_FILE_NAME)) {
-
-            file.write(jsonUsers.toJSONString());
-            file.flush();
-            return true;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public static JSONObject getUserJSON(User user) {
-        JSONObject userDetails = new JSONObject();
-        userDetails.put(USERNAME, user.getUsername());
-        userDetails.put(FIRST_NAME, user.getFirstName());
-        userDetails.put(LAST_NAME, user.getLastName());
-        userDetails.put(EMAIL, user.getEmail());
-        userDetails.put(PASSWORD, user.getPassword());
-        userDetails.put(TYPE, user.getUserType());
-
-        return userDetails;
-    }
-
-    // Students
-    public boolean saveStudents() {
-        UserList User = UserList.getInstance();
-        ArrayList<User> students = User.searchUserByType(UserType.STUDENT);
-        JSONArray jsonStudents = new JSONArray();
-
-        for (User user : students) {
-            if (user instanceof Student) {
-                Student student = (Student) user;
-                JSONObject studentJSON = getStudentJSON(student);
-                jsonStudents.add(studentJSON);
-            }
-        }
-
-        try (FileWriter file = new FileWriter(STUDENTS_FILE_NAME)) {
-
-            file.write(jsonStudents.toJSONString());
-            file.flush();
-            return true;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public static JSONObject getStudentJSON(Student student) {
+    private JSONObject getStudentJSON(Student student) {
         JSONObject studentDetails = new JSONObject();
         studentDetails.put("username", student.getUsername());
         studentDetails.put("uscID", student.getUscID());
@@ -189,55 +230,17 @@ public class DataWriter extends DataConstants {
     // }
 
     // Admin
-    public boolean saveAdmin() {
-        UserList userList = UserList.getInstance();
-        // Admin adminList = Admin.getInstance();
-        JSONArray jsonAdmin = new JSONArray();
-        ArrayList<User> admins = userList.searchUserByType(UserType.ADMIN);
+    
 
-        for (User admin : admins) {
-            JSONObject adminDetails = new JSONObject();
-            adminDetails.put("username", admin.getUsername());
-            jsonAdmin.add(adminDetails);
-        }
-
-        try (FileWriter file = new FileWriter(ADMIN_FILE_NAME)) {
-            file.write(jsonAdmin.toJSONString());
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public static JSONObject getAdminJSON(Admin admin) {
+    private JSONObject getAdminJSON(Admin admin) {
         JSONObject adminDetails = new JSONObject();
         adminDetails.put("username", admin.getUsername());
         return adminDetails;
     }
 
-    // Advisors
-    public boolean saveAdvisors() {
-        UserList userList = UserList.getInstance();
-        JSONArray jsonAdvisors = new JSONArray();
-        ArrayList<User> advisors = userList.searchUserByType(UserType.ADVISOR);
 
-        for (User user : advisors) {
-            Advisor advisor = (Advisor) user;
-            JSONObject advisorDetails = getAdvisorJSON(advisor);
-            jsonAdvisors.add(advisorDetails);
-        }
 
-        try (FileWriter file = new FileWriter(ADVISORS_FILE_NAME)) {
-            file.write(jsonAdvisors.toJSONString());
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public static JSONObject getAdvisorJSON(Advisor advisor) {
+    private JSONObject getAdvisorJSON(Advisor advisor) {
         JSONObject advisorDetails = new JSONObject();
         advisorDetails.put("username", advisor.getUsername());
 
