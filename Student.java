@@ -33,6 +33,17 @@ public class Student extends User{
         this.applicationArea = "Undecided";
         this.changeInProgress = true;
     }
+    public Student(String username, String password, String firstName, String lastName, String email, String uscID, Major major, String applicationArea, ArrayList<Credit> credits, ArrayList<String> notes){
+        super(username, password, firstName, lastName, email);
+        this.uscID = uscID;
+        this.major = major;
+        this.applicationArea = applicationArea;
+        this.credits = credits;
+        this.requirements = new HashMap<Requirement, ArrayList<Credit>>();
+        this.notes = notes;
+        this.changeInProgress = false;
+        populateBackups();
+    }
     public Student(String username, String password, String firstName, String lastName, String email, String uscID, Major major, String applicationArea, ArrayList<Credit> credits, HashMap<Requirement, ArrayList<Credit>> requirements, ArrayList<String> notes){
         super(username, password, firstName, lastName, email);
         this.uscID = uscID;
