@@ -31,6 +31,10 @@ public class Semester{
     return seasonAbbreviation + yearAbbreviation;
   }
 
+  public boolean equals(Semester compareSemester){
+    return this.compare(compareSemester) == 0;
+  }
+
   public int compare(Semester compareSemester){
     if(this.year < compareSemester.getYear())
       return -1;
