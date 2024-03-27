@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class Student extends User{
     private String uscID;
@@ -31,6 +32,17 @@ public class Student extends User{
         this.notes = new ArrayList<String>();
         this.applicationArea = "Undecided";
         this.changeInProgress = true;
+    }
+    public Student(String username, String password, String firstName, String lastName, String email, String uscID, Major major, String applicationArea, ArrayList<Credit> credits, ArrayList<String> notes){
+        super(username, password, firstName, lastName, email);
+        this.uscID = uscID;
+        this.major = major;
+        this.applicationArea = applicationArea;
+        this.credits = credits;
+        this.requirements = new HashMap<Requirement, ArrayList<Credit>>();
+        this.notes = notes;
+        this.changeInProgress = false;
+        populateBackups();
     }
     public Student(String username, String password, String firstName, String lastName, String email, String uscID, Major major, String applicationArea, ArrayList<Credit> credits, HashMap<Requirement, ArrayList<Credit>> requirements, ArrayList<String> notes){
         super(username, password, firstName, lastName, email);
@@ -142,6 +154,13 @@ public class Student extends User{
         return null;
     }
 
+    public Credit getCreditFromID(UUID id){
+        for(Credit credit : credits)
+            if(credit.getID().equals(id))
+                return credit;
+        return null;
+    }
+
     public ArrayList<Credit> getCredits(Course course) {
         ArrayList<Credit> returnList = new ArrayList<Credit>();
         for (Credit credit : credits) {
@@ -149,6 +168,10 @@ public class Student extends User{
                 returnList.add(credit);
         }
         return returnList;
+    }
+
+    public void setRequirements(HashMap<Requirement, ArrayList<Credit>> requirements){
+        this.requirements = requirements;
     }
 
     public ArrayList<Credit> getCredits(Semester semester) {

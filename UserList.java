@@ -8,9 +8,7 @@ public class UserList {
     private DegreeTracker degreeTracker;
 
     private UserList() {
-        DataLoader.getInstance();
-        this.degreeTracker = DegreeTracker.getInstance();
-
+        users = new ArrayList<User>();
     }
 
     public static UserList getInstance() {
@@ -18,6 +16,10 @@ public class UserList {
             userList = new UserList();
         return userList;
     }
+
+    public void setDegreeTracker(DegreeTracker degreeTracker){
+        this.degreeTracker = degreeTracker;
+    }   
 
     public ArrayList<User> getUsers() {
         return users;
@@ -167,7 +169,7 @@ public class UserList {
 
     public boolean checkSignup(String username, String password){
         if(!usernameAvailable(username)){
-            DegreeTracker.getInstance().addError("The username \"" + username + "\" is not available");
+            degreeTracker.addError("The username \"" + username + "\" is not available");
             return false;
         }
         return checkPassword(password);
@@ -188,7 +190,7 @@ public class UserList {
             if(student.getUscID().equalsIgnoreCase(uscID))
                 return student.getUsername();
         }
-        DegreeTracker.getInstance().addError("USCID Not Found");
+        degreeTracker.addError("USCID Not Found");
         return null;
     }
 
@@ -204,6 +206,16 @@ public class UserList {
             }
         }
         return usersByType;
+    }
+
+    public boolean addUser(User user){
+        if(users.contains(user) || user == null)
+            return false;
+        return users.add(user);
+    }
+        
+    public void setUsers(ArrayList<User> users){
+        this.users = users;
     }
 
 }

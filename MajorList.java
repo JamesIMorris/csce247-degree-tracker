@@ -4,20 +4,42 @@ import java.util.UUID;
 public class MajorList {
     private static MajorList majorList;
     private ArrayList<Major> majors;
+    private ArrayList<Requirement> requirements;
 
     private MajorList() {
-        majors = new ArrayList<>();
-        //majors = new ArrayList<>();
+        majors = new ArrayList<Major>();
+        requirements = new ArrayList<Requirement>();
     }
 
     public ArrayList<Major> getMajors() {
         return majors;
+    }
+    public void setMajors(ArrayList<Major> majors){
+        this.majors = majors;
     }
 
     public static MajorList getInstance() {
         if (majorList == null)
             majorList = new MajorList();
         return majorList;
+    }
+
+    public void setRequirements(ArrayList<Requirement> requirements){
+        this.requirements = requirements;
+    }
+    public ArrayList<Requirement> getRequirements(){
+        return this.requirements;
+    }
+    public boolean addRequirement(Requirement requirement){
+        if(requirements.contains(requirement) || requirement == null)
+            return false;
+        return requirements.add(requirement);
+    }
+    public Requirement getRequirementFromID(UUID id){
+        for(Requirement requirement : requirements)
+            if(requirement.getID().equals(id))
+                return requirement;
+        return null;
     }
 
     public boolean addMajor(UUID id, String name, String school, String department,
@@ -59,9 +81,4 @@ public class MajorList {
         DegreeTracker.getInstance().addError("Major not found with name: " + id);
         return null;
     }
-
-    public void loadMajors() {
-        majors = DataLoader.loadMajors();
-    }
-
 }

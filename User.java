@@ -14,7 +14,6 @@ public abstract class User{
     }
     public User(String username){
         this.username = username;
-        DataLoader.loadUserData(this);
     }
 
     public String getUsername() {
@@ -60,6 +59,6 @@ public abstract class User{
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     public abstract UserType getUserType();
 }

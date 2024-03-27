@@ -6,441 +6,337 @@ import java.util.UUID;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 
-public class DataLoader extends DataConstants{
-    private static DataLoader dataLoader;
+public class DataLoader extends DataConstants {
 
-    private DataLoader(){
-        //loadData();
+    // VARIABLES //
+
+    private static DataLoader dataLoader;
+    private CourseList courseList;
+    private MajorList majorList;
+    private UserList userList;
+    private JSONArray userData;
+
+    // INITIALIZATION //
+
+    private DataLoader() {
+        courseList = CourseList.getInstance();
+        majorList = MajorList.getInstance();
+        userList = UserList.getInstance();
+        loadData();
     }
 
-    public static DataLoader getInstance(){
-        if(dataLoader == null)
+    public static DataLoader getInstance() {
+        if (dataLoader == null)
             dataLoader = new DataLoader();
         return dataLoader;
     }
 
-    public void loadData(){
-        CourseList.getInstance().loadCourses();
-        MajorList.getInstance().loadMajors();
-        //ArrayList<Course> courses = loadCourses();
-        //CourseList.getInstance().setCourses(courses);
-
-        //ArrayList<Major> majors = loadMajors();
-        //MajorList.getInstance().addMajors(majors);
-        //loadCourses();
-        //loadMajors();
+    public void loadData() {
+        loadCourses();
+        loadMajors();
+        loadUsers();
     }
 
-     static ArrayList<Course> loadCourses(){
-        ArrayList<Course> courses = new ArrayList<Course>();
-        try{
-            FileReader reader = new FileReader(COURSE_FILE_NAME);
-            JSONParser parsec = new JSONParser();
-            JSONArray coursesJSON = (JSONArray)parsec.parse(reader);
-            System.out.println("Debug: Loading courses from JSON file");
 
-            //System.out.println("1");
-        
-            for(Object course : coursesJSON){
-                JSONObject courseJSON = (JSONObject)course;
-                String id = (String)courseJSON.get(COURSE_ID);
-                System.out.println("Debug: Course ID - " + id);
-                String courseName = (String)courseJSON.get(COURSE_NAME);
-                String courseDescription = (String)courseJSON.get(COURSE_DESCRIPTION);
-                int creditHours = ((Long)courseJSON.get(CREDIT_HOURS)).intValue();
+
+
+    // LOADING //
+
+
+
+    // LOAD COURSES //
+
+    private boolean loadCourses() {
+        try {
+            FileReader reader = new FileReader(COURSES_FILE_NAME);
+            JSONParser parsec = new JSONParser();
+            JSONArray coursesJSON = (JSONArray) parsec.parse(reader);
+
+            for (Object courseObject : coursesJSON) {
+
+                JSONObject courseJSON = (JSONObject) courseObject;
+                String id = (String) courseJSON.get(ID);
+                String courseName = (String) courseJSON.get(COURSE_NAME);
+                String courseDescription = (String) courseJSON.get(COURSE_DESCRIPTION);
+                int creditHours = ((Long) courseJSON.get(CREDIT_HOURS)).intValue();
+                ArrayList<Season> semesterAvailability = new ArrayList<Season>();
+                CourseType type = CourseType.fromString((String) courseJSON.get(TYPE));
 
                 JSONArray semesterAvailabilityJSON = (JSONArray)courseJSON.get(SEMESTER_AVAILABILITY);
-                //Change into a new string to avoid error of incompatible types  
-                String[] semesterAvailableStrings = new String[semesterAvailabilityJSON.size()];
-                //String[] semesterAvailableStrings = (String[])semesterAvailabilityJSON.toArray();
-                ArrayList<Season> semesterAvailability = new ArrayList<Season>();
-                for(int i = 0; i< semesterAvailabilityJSON.size(); i++) {
-                    semesterAvailableStrings[i] = (String) semesterAvailabilityJSON.get(i);
-                }
-                for(String string : semesterAvailableStrings){
-                    semesterAvailability.add(Season.fromString(string));
-                    //System.out.println(string);
-                }
-                CourseType type = CourseType.fromString((String)courseJSON.get(COURSE_TYPE));
-        
-                courses.add(new Course(id, courseName, courseDescription, creditHours, semesterAvailability, type));
-                //System.out.println("2");
-            }
-            for(int i=0; i<courses.size(); i++){
-                Course course = courses.get(i);
-                JSONObject courseJSON = (JSONObject)coursesJSON.get(i);
 
-                
-                
-                ArrayList<Course> preRequisites = toCourseArrayList((JSONArray)courseJSON.get("preRequisites"));
-                System.out.println("Debug: Pre-Requisites for " + course.getCourseID() + ": " + preRequisites);
-                //System.out.println("3");
-                ArrayList<Course> coRequisites = toCourseArrayList((JSONArray)courseJSON.get("coRequisites"));
-                System.out.println("Debug: Co-Requisites for " + course.getCourseID() + ": " + coRequisites);
+                for (int i = 0; i < semesterAvailabilityJSON.size(); i++) {
+                    semesterAvailability.add(Season.fromString((String) semesterAvailabilityJSON.get(i)));
+                }
 
-                
-                //ArrayList<Course> preRequisites = toCourseArrayList((JSONArray)courseJSON.get(COURSE_PRE_REQUISISTES));
-                //ArrayList<Course> coRequisites = toCourseArrayList((JSONArray)courseJSON.get(COURSE_CO_REQUISITES));
-                courses.get(i).setPreRequisites(preRequisites);
-                courses.get(i).setCoRequisites(coRequisites);
-                
+                courseList.addCourse(
+                        new Course(id, courseName, courseDescription, creditHours, semesterAvailability, type));
             }
-            
-            System.out.println("Debug: Courses loaded successfully");
-            return courses;
-        } catch(Exception e) {
+
+            for (Object courseObject : coursesJSON) {
+                JSONObject courseJSON = (JSONObject) courseObject;
+                String id = (String) courseJSON.get(ID);
+                Course course = courseList.getCourseFromID(id);
+
+                JSONArray preReqsJSON = (JSONArray) courseJSON.get(CO_REQUISITES);
+                JSONArray coReqsJSON = (JSONArray) courseJSON.get(PRE_REQUISISTES);
+
+                for (int i = 0; i < preReqsJSON.size(); i++) {
+                    Course preReq = courseList.getCourseFromID(id);
+                    course.addPreRequirisite(preReq);
+                }
+                for (int i = 0; i < coReqsJSON.size(); i++) {
+                    Course coReq = courseList.getCourseFromID(id);
+                    course.addCoRequirisite(coReq);
+                }
+            }
+        } catch (Exception e) {
             e.printStackTrace();
-            return courses;
+            return false;
         }
+        return true;
     }
 
-    
-    static ArrayList<Course> toCourseArrayList(JSONArray courseIDsJSON) {
-    ArrayList<Course> returnList = new ArrayList<Course>();
-    if (courseIDsJSON != null && !courseIDsJSON.isEmpty()) {
-        for (Object obj : courseIDsJSON) {
-            if (obj instanceof String) {
-                String courseId = (String) obj;
-                Course course = CourseList.getInstance().getCourseFromID(courseId);
-                if (course != null) {
-                    returnList.add(course);
-                } else {
-                    System.out.println("Course with ID " + courseId + " not found.");
-                }
-            }
-        }
-    }
-    return returnList;
-}
 
 
-    /* 
-    private static ArrayList<Course> toCourseArrayList(JSONArray courseIDsJSON){
-        ArrayList<Course> returnList = new ArrayList<Course>();
-        String[] courseIDs = (String[])courseIDsJSON.toArray();
-        for(String string : courseIDs){
-            returnList.add(CourseList.getInstance().getCourse(string));
-        }
-        return returnList;
-    }
-    */
-  
-        
-        static ArrayList<Major> loadMajors(){
-        ArrayList<Major> majors = new ArrayList<>();
+    // LOAD MAJORS //
+
+    private boolean loadMajors(){
+        loadRequirements();
         try{
-            FileReader reader = new FileReader(MAJOR_FILE_NAME);
+            FileReader reader = new FileReader(MAJORS_FILE_NAME);
             JSONParser parser = new JSONParser();
             JSONArray majorsJSON = (JSONArray) parser.parse(reader);
-            //JSONArray majorsJSON = (JSONArray)new JSONParser().parse(reader);
-
+        
             for(Object major : majorsJSON){
                 JSONObject majorJSON = (JSONObject)major;
-                UUID id = UUID.fromString((String)majorJSON.get(MAJOR_ID));
+                UUID id = UUID.fromString((String)majorJSON.get(ID));
                 String name = (String)majorJSON.get(MAJOR_NAME);
-                String school = (String)majorJSON.get(MAJOR_SCHOOL);
-                String department = (String)majorJSON.get(MAJOR_DEPARTMENT);
+                String school = (String)majorJSON.get(SCHOOL);
+                String department = (String)majorJSON.get(DEPARTMENT);
+                ArrayList<Requirement> requirements = new ArrayList<Requirement>();
 
-                JSONArray requirementsJSON = (JSONArray) majorJSON.get(MAJOR_REQUIREMENTS);
-                ArrayList<Requirement> requirements = new ArrayList<>();
-                for(Object req : requirementsJSON){
-                    String requirementName = (String) req;
-                    Requirement requirement = new Requirement(requirementName, null, null, 0);
+                JSONArray requirementsJSON = (JSONArray)majorJSON.get(MAJOR_REQUIREMENTS);
+                for (int i = 0; i < requirementsJSON.size(); i++) {
+                    UUID requirementID = UUID.fromString((String)requirementsJSON.get(i));
+                    Requirement requirement = majorList.getRequirementFromID(requirementID);
                     requirements.add(requirement);
                 }
-                //ArrayList<String> requirements = (ArrayList<String>)majorJSON.get(MAJOR_REQUIREMENTS);
-
-                Major newMajor = new Major(id, name, school, department, requirements);
-                majors.add(newMajor);
-
-                //major.add(new Major(majorID, name, school, department, requirements));
+                
+                majorList.addMajor(new Major(id, name, school, department, requirements));
             }
-           
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        return majors;
-    }
-    
-
-
-     static boolean loadUserData(User user){
-        try {
-            FileReader reader = new FileReader(USER_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONArray usersArray = (JSONArray)parser.parse(reader);
-
-            for(Object obj : usersArray) {
-                JSONObject userObj = (JSONObject)obj;
-                String username = (String)userObj.get(USER_NAME);
-                if(username == user.getUsername()){
-                    user.setPassword((String)userObj.get(PASSWORD));
-                    user.setFirstName((String)userObj.get(FIRST_NAME));
-                    user.setLastName((String)userObj.get(LAST_NAME));
-                    user.setEmail((String)userObj.get(EMAIL));
-                    return true;
-                }
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    static ArrayList<Student> loadStudents() {
-        ArrayList<Student> students = new ArrayList<>();
-        try {
-            FileReader reader = new FileReader(STUDENT_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONArray studentsArray = (JSONArray)parser.parse(reader);
-
-        for(Object obj : studentsArray) {
-            JSONObject studentObj = (JSONObject)obj;
-            String username = (String)studentObj.get(STUDENT_USERNAME);
-            String uscID = (String)studentObj.get("uscID");
-            String applicationArea = (String)studentObj.get("applicationArea");
-            
-            String majorName = (String)studentObj.get("major");
-            Major major = MajorList.getInstance().getMajorFromName(majorName);
-            String year = (String)studentObj.get("year");
-
-            JSONArray creditsArray = (JSONArray)studentObj.get(STUDENT_CREDITS);
-            ArrayList<Credit> credits = new ArrayList<>();
-            for(Object creditObj : creditsArray) {
-                JSONObject creditJSON = (JSONObject) creditObj;
-                UUID id = UUID.fromString((String)creditJSON.get("id"));
-                Course courseID = (Course)creditJSON.get(STUDENT_COURSE);
-
-                JSONObject semesterTakenJSON = (JSONObject)creditJSON.get("semesterTaken");
-                int yearTaken = ((Long)semesterTakenJSON.get("year")).intValue();
-                String seasonTaken = (String)semesterTakenJSON.get("season");
-                Season season = Season.fromString(seasonTaken);
-                Semester semesterTaken = new Semester(yearTaken, season);
-                int grade = ((Long)creditJSON.get("grade")).intValue();
-                CreditType type = (CreditType)creditJSON.get("type");
-                int requirementsAssignedTo = ((Long)creditJSON.get("requirementsAssignedTo")).intValue();
-                JSONArray possibleRequirementArray = (JSONArray)creditJSON.get("possibleRequirements");
-                ArrayList<PossibleRequirement> possibleRequirements = new ArrayList<PossibleRequirement>();
-                for(Object possibleReqObj : possibleRequirementArray) {
-                    JSONObject possibleReqJSON = (JSONObject)possibleReqObj;
-                    UUID requirementID = UUID.fromString((String)possibleReqJSON.get("requirement"));
-                    Requirement requirement = Requirement.fromID(requirementID);
-                    boolean available = (boolean)possibleReqJSON.get("available");
-                    PossibleRequirement possibleRequirement = new PossibleRequirement(requirement, available);
-                    possibleRequirements.add(possibleRequirement);
-                }
-
-                String note = (String)creditJSON.get("note");
-                Credit credit = new Credit (id, courseID, semesterTaken, grade, type, requirementsAssignedTo, note);
-                credits.add(credit);
-            }
-
-            JSONArray requirementsArray = (JSONArray)studentObj.get(STUDENT_REQUIREMENTS_LIST);
-            HashMap<Requirement, ArrayList<Credit>> requirements = new HashMap<>();
-            for(Object reqObj : requirementsArray) {
-                JSONObject reqJSON = (JSONObject) reqObj;
-                Requirement requirement = (Requirement) reqJSON.get("requirement");
-                JSONArray creditsArrayForReq = (JSONArray) reqJSON.get("credits");
-                ArrayList<Credit> creditsForReq = new ArrayList<>();
-                for(Object creditObj : creditsArrayForReq) {
-                    JSONObject creditJSON = (JSONObject) creditObj;
-                    Course course = CourseList.getInstance().getCourseFromID((String)creditJSON.get("course"));
-                    Semester semesterTaken = Semester.fromString((String)creditJSON.get("semesterTaken"));
-                    Credit credit = ((Student)UserList.getInstance().findUser(username)).getCredit(course, semesterTaken);
-                    creditsForReq.add(credit);
-                    //creditIDs.add((String)creditID);
-                }
-                requirements.put(requirement, creditsForReq);
-            }
-
-            JSONArray notesArray = (JSONArray)studentObj.get(STUDENT_NOTES);
-            ArrayList<String> notes = new ArrayList<>();
-            for(Object noteObj : notesArray) {
-                String note = (String) noteObj;
-                notes.add(note);
-            }
-
-            Student student = new Student(username, uscID, major, applicationArea, credits, requirements, notes);
-            students.add(student);
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-    return students;
-} 
-
-
-    /* 
-    static ArrayList<Student> loadStudent(){
-        ArrayList<Student> students = new ArrayList<>();
-        try {
-            FileReader reader = new FileReader(STUDENT_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONArray studentsJSON = (JSONArray)parser.parse(reader);
-
-            for(Object student : studentsJSON) {
-                JSONObject studentJSON = (JSONObject) student;
-                String username = (String)studentJSON.get(STUDENT_USER_NAME);
-                String password = (String)studentJSON.get(STUDENT_PASSWORD);
-                String firstName = (String)studentJSON.get(STUDENT_FIRSTNAME);
-                String lastName = (String)studentJSON.get(STUDENT_LASTNAME);
-                String email = (String)studentJSON.get(STUDENT_EMAIL);
-
-                Major major = parseMajor((JSONObject)studentJSON.get(STUDENT_MAJOR));
-                ArrayList<Credit> credits = parseCredits((JSONArray)studentJSON.get(STUDENT_CREDITS));
-                HashMap<Requirement, ArrayList<Credit>> requirements = parseRequirements((JSONArray)studentJSON.get(STUDENT_REQUIREMENT));
-                ArrayList<String> notes = parseNotes((JSONArray)studentJSON.get(STUDENT_NOTES));
-
-                Student newStudent = new Student(userName, password, firstName, lastName, email, major, credits, requirements, notes);
-                students.add(newStudent);
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        return students;
-    }
-    */
-        /* 
-        // Get vars from students.json
-        Major major;
-        ArrayList<Credit> credits;
-        HashMap<Requirement, ArrayList<Credit>> requirements;
-        ArrayList<String> notes;
-        users.add(new Student(userName, password, firstName, lastName, email, major, credits, requirements, notes));
-        return false;
-    }
-    */
-
-    /*
-    static ArrayList<Advisor> loadAdvisor(String userName, String password, String firstName, String lastName, String email){
-        // Get vars from admin.json
-        ArrayList<Student> advisees;
-        users.add(new Advisor(userName, password, firstName, lastName, email, advisees));
-        return false;
-    }
-    private boolean loadAdmin(){
         
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
-    */
-    
-    static ArrayList<Requirement> loadRequirements() {
-        ArrayList<Requirement> requirements = new ArrayList<>();
+
+    private boolean loadRequirements() {
         try {
             FileReader reader = new FileReader(REQUIREMENTS_FILE_NAME);
             JSONParser parser = new JSONParser();
-            JSONArray requirementsArray = (JSONArray)parser.parse(reader);
+            JSONArray requirementsArray = (JSONArray) parser.parse(reader);
 
-            for(Object req : requirementsArray) {
+            for (Object req : requirementsArray) {
                 JSONObject reqJSON = (JSONObject) req;
-                UUID id = UUID.fromString((String)reqJSON.get(REQUIREMENTS_UUID));
-                String name = (String)reqJSON.get(REQUIRMENT_NAME);
+                UUID id = UUID.fromString((String) reqJSON.get(ID));
+                String name = (String) reqJSON.get(REQUIRMENT_NAME);
                 String categoryName = (String)reqJSON.get(REQUIREMENT_CATEGORY);
                 Category category = Category.fromAbbreviation(categoryName.toUpperCase());
-                int creditHoursRequired = ((Long)reqJSON.get(REQUIREMENT_CREDITS_REQUIRED)).intValue();
+                int creditHoursRequired = ((Long)reqJSON.get(REQUIREMENT_CREDIT_HOURS_REQUIRED)).intValue();
+                ArrayList<String> courseIDs = new ArrayList<String>();
 
-                JSONArray courseIDsArray = (JSONArray)reqJSON.get(REQUIRMENT_COURSE_ID);
-                ArrayList<String> courseIDs = new ArrayList<>();
-                for(Object courseId : courseIDsArray) {
-                    courseIDs.add((String)courseId);
-                }
-                //ArrayList<Course> courses = loadCourses(courseIDs);
+                JSONArray courseIDsJSON = (JSONArray) reqJSON.get(REQUIRMENT_COURSES);
+                for (int i = 0; i<courseIDsJSON.size(); i++) 
+                    courseIDs.add((String)courseIDsJSON.get(i));
 
-                Requirement requirement = new Requirement(id, name, category, courseIDs, creditHoursRequired);
-                requirements.add(requirement);
+                majorList.addRequirement(new Requirement(id, name, category, courseIDs,
+                        creditHoursRequired));
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-        return requirements;
+        return true;
     }
 
-    public static ArrayList<Admin> loadAdmins() {
-        ArrayList<Admin> admins = new ArrayList<>();
-        try{
+
+
+    // LOAD USERS //
+    
+    private boolean loadUsers() {
+        if(loadUserData() && loadStudents() && loadAdvisors() && loadAdmin())
+            return true;
+        return false;
+        
+    }
+
+    private boolean loadUserData() {
+        try {
+            FileReader reader = new FileReader(USERS_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            userData = (JSONArray)parser.parse(reader);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean loadStudents() {
+        try {
+            FileReader reader = new FileReader(STUDENTS_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray studentsArray = (JSONArray) parser.parse(reader);
+
+            for (int i=0; i<studentsArray.size(); i++) { 
+                JSONObject studentJSON = (JSONObject)studentsArray.get(i);
+
+                String username = (String) studentJSON.get(USERNAME);
+                String password = null;
+                String firstName = null;
+                String lastName = null;
+                String email = null;
+                for(int j=0; j<userData.size(); j++){
+                    JSONObject userJSON = (JSONObject)userData.get(j);
+                    if(!userJSON.get(USERNAME).equals(username))
+                        continue;
+                    password = (String)userJSON.get(PASSWORD);
+                    firstName = (String)userJSON.get(FIRST_NAME);
+                    lastName = (String)userJSON.get(LAST_NAME);
+                    email = (String)userJSON.get(EMAIL);
+                }
+
+                String uscID = (String) studentJSON.get(USC_ID);
+                Major major = majorList.getMajorFromName((String)studentJSON.get(MAJOR));
+                String applicationArea = (String) studentJSON.get(APPLICATION_AREA);
+                ArrayList<Credit> credits = new ArrayList<Credit>();
+                HashMap<Requirement, ArrayList<Credit>> requirements = new HashMap<Requirement, ArrayList<Credit>>();
+                ArrayList<String> notes = new ArrayList<String>();
+
+                JSONArray creditsArray = (JSONArray) studentJSON.get(STUDENT_CREDITS);
+                for (int j=0; j<creditsArray.size(); j++) {
+                    JSONObject creditJSON = (JSONObject)creditsArray.get(j);
+                    UUID id = UUID.fromString((String) creditJSON.get(ID));
+                    Course course = courseList.getCourseFromID((String)creditJSON.get(COURSE));;
+                    Semester semesterTaken = Semester.fromString((String)creditJSON.get(SEMESTER_TAKEN));;
+                    int grade = ((Long) creditJSON.get(GRADE)).intValue();
+                    CreditType type = CreditType.fromString((String)creditJSON.get(TYPE));
+                    int requirementsAssignedTo = ((Long) creditJSON.get(REQUIREMENTS_ASSIGNED_TO)).intValue();
+                    String note = (String) creditJSON.get(CREDIT_NOTE);
+                    Credit credit = new Credit(id, course, semesterTaken, grade, type,
+                            requirementsAssignedTo, note);
+                    credits.add(credit);
+                }
+
+                JSONArray notesArray = (JSONArray) studentJSON.get(STUDENT_NOTES);
+                for (int j=0; j<notesArray.size(); j++) {
+                    String note = (String) notesArray.get(j);
+                    notes.add(note);
+                }
+
+                Student student = new Student(username, password, firstName, lastName, email, uscID, major, applicationArea,
+                        credits, notes);
+
+                JSONArray requirementsArray = (JSONArray) studentJSON.get(STUDENT_REQUIREMENTS_LIST);
+                for (int j=0; j<requirementsArray.size(); j++) {
+                    JSONObject requirementHashJSON = (JSONObject)requirementsArray.get(j);
+                    Requirement requirement = null;
+                    ArrayList<Credit> creditsForRequirement = new ArrayList<>();
+
+                    UUID requirementID = UUID.fromString((String)requirementHashJSON.get(STUDENT_REQUIREMENT));
+                    requirement = majorList.getRequirementFromID(requirementID);
+
+                    JSONArray creditsArrayForRequirement = (JSONArray)requirementHashJSON.get(STUDENT_CREDITS);
+                    for (int k=0; k<creditsArrayForRequirement.size(); k++) {
+                        UUID creditID = UUID.fromString((String)creditsArrayForRequirement.get(k));
+                        Credit credit = student.getCreditFromID(creditID);
+                        creditsForRequirement.add(credit);
+                    }
+                    requirements.put(requirement, creditsForRequirement);
+                }
+                student.setRequirements(requirements);
+
+                userList.addUser(student);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    } 
+
+    private boolean loadAdvisors() {
+        try {
+            FileReader reader = new FileReader(ADVISORS_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray advisorsArray = (JSONArray) parser.parse(reader);
+
+            for (int i=0; i<advisorsArray.size(); i++){
+                JSONObject advisorJSON = (JSONObject)advisorsArray.get(i);
+                
+                String username = (String) advisorJSON.get(USERNAME);
+                String password = null;
+                String firstName = null;
+                String lastName = null;
+                String email = null;
+                for(int j=0; j<userData.size(); j++){
+                    JSONObject userJSON = (JSONObject)userData.get(j);
+                    if(!userJSON.get(USERNAME).equals(username))
+                        continue;
+                    password = (String)userJSON.get(PASSWORD);
+                    firstName = (String)userJSON.get(FIRST_NAME);
+                    lastName = (String)userJSON.get(LAST_NAME);
+                    email = (String)userJSON.get(EMAIL);
+                }
+                ArrayList<Student> advisees = new ArrayList<Student>();
+
+                JSONArray adviseesJSON = (JSONArray) advisorJSON.get(ADVISOR_ADVISEES);
+                for (int j=0; j<adviseesJSON.size(); j++) {
+                    String adviseeUsername = (String)adviseesJSON.get(j);
+                    Student student = (Student)userList.findUser(adviseeUsername);
+                    advisees.add(student);
+                }
+                userList.addUser(new Advisor(username, password, firstName, lastName, email, advisees));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean loadAdmin(){
+        try {
             FileReader reader = new FileReader(ADMIN_FILE_NAME);
             JSONParser parser = new JSONParser();
-            JSONArray adminsArray = (JSONArray)parser.parse(reader);
+            JSONArray adminArray = (JSONArray) parser.parse(reader);
 
-            for(Object obj : adminsArray) {
-                JSONObject adminObj = (JSONObject)obj;
-                String username = (String)adminObj.get(ADMIN_USER_NAME);
-
-                Admin admin = new Admin(username, null, null, null, null);
-                admins.add(admin);
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        return admins;
-    }
-
-    static ArrayList<Advisor> loadAdvisors() {
-        ArrayList<Advisor> advisors = new ArrayList<>();
-        try {
-            FileReader reader = new FileReader(ADVISOR_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONArray advisorsArray = (JSONArray)parser.parse(reader);
-
-            for(Object obj : advisorsArray) {
-                JSONObject advisorObj = (JSONObject)obj;
-                String username = (String)advisorObj.get("username");
-                JSONArray adviseesArray = (JSONArray)advisorObj.get(ADVISOR_ADVISEES);
-
-                ArrayList<Student> advisees = new ArrayList<>();
-                for(Object adviseeObj : adviseesArray) {
-                    String adviseeUsername = (String)adviseeObj;
-
-                    User user = UserList.getInstance().findUser(adviseeUsername);
-                    if(user != null && user instanceof Student) {
-                        advisees.add((Student)user);
-                    } else {
-                        System.out.println("Student with username " + adviseeUsername + "not found");
-                    }
-                    
+            for (int i=0; i<adminArray.size(); i++){
+                JSONObject adminJSON = (JSONObject)adminArray.get(i);
+                
+                String username = (String) adminJSON.get(USERNAME);
+                String password = null;
+                String firstName = null;
+                String lastName = null;
+                String email = null;
+                for(int j=0; j<userData.size(); j++){
+                    JSONObject userJSON = (JSONObject)userData.get(j);
+                    if(!userJSON.get(USERNAME).equals(username))
+                        continue;
+                    password = (String)userJSON.get(PASSWORD);
+                    firstName = (String)userJSON.get(FIRST_NAME);
+                    lastName = (String)userJSON.get(LAST_NAME);
+                    email = (String)userJSON.get(EMAIL);
                 }
-                Advisor advisor = new Advisor(username, "password", "test", "test", "email@test.com");
-                advisor.setAdvisees(advisees);
-                advisors.add(advisor);
+
+                userList.addUser(new Admin(username, password, firstName, lastName, email));
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-        return advisors;
-    }
-
-
-
-    public static void main(String[] args) {
-
-        
-        //DataLoader dataLoader = DataLoader.getInstance();
-        ArrayList<Course> courses = DataLoader.loadCourses();
-        ArrayList<Major> majors = DataLoader.loadMajors();
-      
-        for (Course course : courses) {
-            System.out.println("\n" + course.getCourseID());
-            System.out.println(course);
-            System.out.println("Course Description: " + course.getCourseDescription());
-            System.out.println("Credit Hours: " + course.getCreditHours());
-            System.out.println("Semester Availability: " + course.getSemesterAvailability());
-            System.out.println("Pre-Requisites: " + course.getPreRequisites());
-            System.out.println("Co-Requisites: " + course.getCoRequisites());
-            System.out.println("Type: " + course.getType());
-        }
-         
-        
-        
-        for(Major major : majors) {
-            System.out.println("\n" + major.getName());
-            System.out.println("Major ID: " + major.getId());
-            System.out.println("Major School: " + major.getSchool());
-            System.out.println("Major Department: " + major.getDepartment());
-            System.out.println("Major " + major.getRequirements());
-        }
-        
-
-        // for(Student student : students){
-
-        // }
+        return true;
     }
 }

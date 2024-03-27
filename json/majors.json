@@ -1,9 +1,9 @@
 [
   {
-    "majorID":"2c2c792a-dc4c-4a5c-86fc-d85838838ca9",
-    "name":"Computer Information Systems",
+    "id":"2c2c792a-dc4c-4a5c-86fc-d85838838ca9",
+    "majorName":"Computer Information Systems",
     "school":"College of Engineering and Computing",
     "department":"Computer Science and Engineering",
-    "requirements":["ec709372-7258-4477-aa1e-15b2117e6aba","6c406213-805e-4f5c-9fe0-103c6385b3f0","6c406213-805e-4f5c-9fe0-103c6385b3f0"]
+    "requirements":["f239a9a0-8b58-482f-81a8-43c1bbcbfc4f","c0ead0ee-a5f2-4033-82f2-e6e60ccfec63","0686024d-06fc-4da5-b2a9-b1577c238baf"]
   }
 ]

@@ -2,9 +2,8 @@
   {
     "username":"JD123",
     "uscID":"P1234567",
+    "major":"Computer Information Systems",
     "applicationArea":"Undecided",
-    "major":"CIS",
-    "year": "Junior",
     "credits":
     [
       {
@@ -14,11 +13,6 @@
         "grade":70,
         "type":"DEFAULT",
         "requirementsAssignedTo":1,
-        "possibleRequirements":
-        [
-            {"requirement":"be61e0a4-1adf-480f-9b76-d34570e39bd2","avialable":true},
-            {"requirement":"f5cf3325-7ca9-466e-aba7-80713d915897","avialable":false}
-        ],
         "note":"N/A"
       },
       {
@@ -27,6 +21,7 @@
         "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
+        "requirementsAssignedTo":1,
         "note":""
       },
       {
@@ -35,6 +30,7 @@
         "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
+        "requirementsAssignedTo":1,
         "note":""
       },
       {
@@ -43,6 +39,7 @@
         "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
+        "requirementsAssignedTo":1,
         "note":""
       },
       {
@@ -51,6 +48,7 @@
         "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
+        "requirementsAssignedTo":1,
         "note":""
       },
       {
@@ -59,6 +57,7 @@
         "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
+        "requirementsAssignedTo":1,
         "note":""
       },
       {
@@ -67,6 +66,7 @@
         "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
+        "requirementsAssignedTo":1,
         "note":""
       },
       {
@@ -75,14 +75,16 @@
         "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
+        "requirementsAssignedTo":1,
         "note":""
       },
       {
-        "id":"",
+        "id":"998f9e9a-17d4-4dd4-9683-b55d710863bd",
         "course":"CSCE242",
         "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
+        "requirementsAssignedTo":1,
         "note":""
       },
       {
@@ -91,6 +93,7 @@
         "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
+        "requirementsAssignedTo":1,
         "note":""
       },
       {
@@ -99,6 +102,7 @@
         "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
+        "requirementsAssignedTo":1,
         "note":""
       },
       {
@@ -107,6 +111,7 @@
         "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
+        "requirementsAssignedTo":1,
         "note":""
       },
       {
@@ -115,6 +120,7 @@
         "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
+        "requirementsAssignedTo":1,
         "note":""
       },
       {
@@ -123,6 +129,7 @@
         "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
+        "requirementsAssignedTo":1,
         "note":""
       },
       {
@@ -131,57 +138,15 @@
         "semesterTaken":"FA22",
         "grade":70,
         "type":"DEFAULT",
+        "requirementsAssignedTo":1,
         "note":""
       }
     ],
     "requirements":
     [
-      {"requirement":"ENGL101", "credits":["c8c7e9a2-02be-4067-ae91-49b5aec21c4b"]},
-      {"requirement":"MATH122", "credits":["68539ae6-4cf3-4314-a0e6-6655672af95b"]},
-      {"requirement":"MATH141", "credits":["2e2f0a3d-8c31-4d04-b8fa-c5010ea8f892"]},
-      {"requirement":"CSCE145", "credits":["020b517e-1941-4772-baad-413626c6ffe3"]},
-      {"requirement":"CSCE190", "credits":"de9e079f-79f2-4519-9d24-f25d24c243e4"},
-      {"requirement":"CC-SCI", "credits":"921d98eb-adfb-490e-9283-f4fd01403d0a"},
-      {"requirement":"ENGL102", "credits":"318e2c34-635d-4340-ac72-69761b3edc09"},
-      {"requirement":"CC-SCI", "credits":"6bfd939b-ea58-442a-b2f0-0a4f23373a64"},
-      {"requirement":"CSCE146", "credits":"6ae1883c-c67e-48c2-b412-d8a481e98cec"},
-      {"requirement":"CSCE215", "credits":"78aa76ec-57fe-4e7e-923d-6d7a06bf04f1"},
-      {"requirement":"CC-AIU", "credits":"b3a40859-4217-4273-aad4-ee90cb60a6ba"},
-      {"requirement":"CSCE205", "credits":"9516d40d-4b2a-4fbf-83e5-720ebc244a1e"},
-      {"requirement":"CSCE242", "credits":"0a296dde-0273-4f9f-ac74-96ed2680d6ba"},
-      {"requirement":"CSCE210", "credits":"4a86b504-4ae1-4049-8e07-637c5549992e"},
-      {"requirement":"CSCE247", "credits":"cf55c4e6-d234-412b-84e0-98903b28a974"},
-      {"requirement":"ECON224", "credits":"147fc6d7-aec9-47f4-ae7a-83abe46e1632"},
-      {"requirement":"SPCH140", "credits":"a61ad555-ae47-4764-94e4-f29de37cb2e5"},
-      {"requirement":"SPCH145", "credits":"90472d1c-325d-4c86-b4aa-a16219407672"},
-      {"requirement":"SPCH230", "credits":"f98e31b7-dd64-4b9e-88ed-b6a82311f7e9"},
-      {"requirement":"CSCE201", "credits":"b34b3dec-f7ba-4782-8ec6-d502e47a6800"},
-      {"requirement":"CSCE240", "credits":"38aa9619-8a54-48b1-a196-1b8bfcba8cb6"},
-      {"requirement":"MATH174", "credits":"06cc3bc2-d728-4bae-9775-ec1e614bef11"},
-      {"requirement":"MATH374", "credits":"063a46e0-2b01-4724-b7b1-7cb495a8bb33"},
-      {"requirement":"MGSC290", "credits":"b2d3042f-fb76-4ad8-aedc-d2a98b967720"},
-      {"requirement":"CC-GSS", "credits":"ea380488-e36d-4af2-93e5-ea78b31596a9"},
-      {"requirement":"CSCE350", "credits":"99d963a3-4834-439b-8238-9c9370ec6ef1"},
-      {"requirement":"CSCE390", "credits":"89796d92-4903-461b-8d8c-865ca181b235"},
-      {"requirement":"STAT515", "credits":"4165adf7-35c0-4bae-bcc6-1faa9ee0369a"},
-      {"requirement":"ACCT222", "credits":"13991eb1-bc6f-455a-bbca-81301ca161a2"},
-      {"requirement":"MGMT371", "credits":"ddb51dfd-85c3-4908-85bd-b62488c1e9d6"},
-      {"requirement":"ENGL462", "credits":"8401a033-48b1-474c-85ff-c3aeb36dcad6"},
-      {"requirement":"ENGL463", "credits":"727a5e8b-bead-46fb-8da6-28fa85bde3fe"},
-      {"requirement":"CSCE520", "credits":"f3d09f58-4a61-41f6-bfa5-a1ec5dafea5f"},
-      {"requirement":"CSCE594", "credits":"a06cbf29-09c3-421f-8827-51ce0641399f"},
-      {"requirement":"STAT516", "credits":"54ff2748-be6e-47a9-97e9-66f15063ef91"},
-      {"requirement":"BIMME", "credits":"ca35af97-c075-4791-8691-300a8dad7eff"},
-      {"requirement":"CC-GHS", "credits":"6d9d571f-b295-49c5-9645-8f2fb10b642d"},
-      {"requirement":"CSCE490", "credits":"acc075a9-6f78-44aa-9567-51c601523caa"},
-      {"requirement":"CSCE416", "credits":"2ac67e4d-7f65-484b-9864-8720586c8837"},
-      {"requirement":"CSCE522", "credits":"b473024f-01c3-42ed-bca0-26379a3924da"},
-      {"requirement":"BIMME", "credits":"286464ec-e4c2-4abc-bdc8-f928a43a2d32"},
-      {"requirement":"LAE", "credits":"2846face-a7e9-4cb5-8584-e14d86a8ba80"},
-      {"requirement":"CSCE492", "credits":"1a68eebf-4ab1-4a1a-8b1f-dc207d5d3bcc"},
-      {"requirement":"CISME", "credits":"b6ce4d11-8c25-4ff5-98ed-a22a74e64d13"},
-      {"requirement":"LAE", "credits":"e2429a94-2763-48e7-8213-10e3a3a3ca10"},
-      {"requirement":"LAE", "credits":"08dcedc1-b2c2-4ea0-a605-63b7c1ac30ad"}
+      {"requirement":"1b00f129-9b6b-4077-bf32-7e0b3c83290f", "credits":["32c68043-6537-47bf-995a-a580469e4ffc"]},
+      {"requirement":"3e3d9765-ea10-4e4d-8f2a-b6c5c403ad9f", "credits":["c857b376-82b2-4091-acd1-377f7836c7a2"]},
+      {"requirement":"9d3e3613-f256-4534-acfb-b46dcb06b207", "credits":["cbf7eff3-bbbf-46b4-aff7-f6090dd53fe1"]}
     ],
     "notes":["Student needs to take CSCE247"]
   }

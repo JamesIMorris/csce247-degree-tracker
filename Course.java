@@ -70,8 +70,8 @@ public class Course {
     public boolean removePreRequisite(Course course){
         return preRequisites.remove(course);
     }
-    public void setPreRequisites(ArrayList<Course> courses){
-        this.preRequisites = courses;
+    public void setPreRequisites(ArrayList<Course> preRequisites){
+        this.preRequisites = preRequisites;
     }
     public ArrayList<Course> getCoRequisites(){
         return coRequisites;
@@ -82,8 +82,8 @@ public class Course {
     public boolean removeCoRequisite(Course course){
         return coRequisites.remove(course);
     }
-    public void setCoRequisites(ArrayList<Course> courses){
-        this.coRequisites = courses;
+    public void setCoRequisites(ArrayList<Course> coRequisites){
+        this.coRequisites = coRequisites;
     }
 
     public boolean isAvailable(Season season){

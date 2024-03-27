@@ -20,7 +20,7 @@ public class DataWriter extends DataConstants {
             jsonCourses.add(courseJSON);
         }
 
-        try (FileWriter file = new FileWriter(COURSE_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(COURSES_FILE_NAME)) {
 
             file.write(jsonCourses.toJSONString());
             file.flush();
@@ -34,7 +34,7 @@ public class DataWriter extends DataConstants {
 
     public static JSONObject getCourseJSON(Course course) {
         JSONObject courseDetails = new JSONObject();
-        courseDetails.put(COURSE_ID, course.getCourseID().toString());
+        courseDetails.put(ID, course.getCourseID().toString());
         courseDetails.put(COURSE_NAME, course.getCourseName());
         courseDetails.put(COURSE_DESCRIPTION, course.getCourseDescription());
         courseDetails.put(CREDIT_HOURS, course.getCreditHours());
@@ -84,7 +84,7 @@ public class DataWriter extends DataConstants {
             jsonUsers.add(getUserJSON(userList.get(i)));
         }
 
-        try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(USERS_FILE_NAME)) {
 
             file.write(jsonUsers.toJSONString());
             file.flush();
@@ -98,12 +98,12 @@ public class DataWriter extends DataConstants {
 
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
-        userDetails.put(USER_NAME, user.getUsername());
+        userDetails.put(USERNAME, user.getUsername());
         userDetails.put(FIRST_NAME, user.getFirstName());
         userDetails.put(LAST_NAME, user.getLastName());
         userDetails.put(EMAIL, user.getEmail());
         userDetails.put(PASSWORD, user.getPassword());
-        userDetails.put(USER_TYPE, user.getUserType());
+        userDetails.put(TYPE, user.getUserType());
 
         return userDetails;
     }
@@ -122,7 +122,7 @@ public class DataWriter extends DataConstants {
             }
         }
 
-        try (FileWriter file = new FileWriter(STUDENT_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(STUDENTS_FILE_NAME)) {
 
             file.write(jsonStudents.toJSONString());
             file.flush();
@@ -145,8 +145,8 @@ public class DataWriter extends DataConstants {
         JSONArray jsonCredits = new JSONArray();
         for (Credit credit : student.getCredits()){
             JSONObject jsonCredit = new JSONObject();
-            jsonCredit.put(STUDENT_COURSE, credit.getCourse());
-            jsonCredit.put(STUDENT_SEMESTER_TAKEN, credit.getSemesterTaken().getAbbreviation());
+            jsonCredit.put(COURSE, credit.getCourse());
+            jsonCredit.put(SEMESTER_TAKEN, credit.getSemesterTaken().getAbbreviation());
             jsonCredit.put("grade", credit.getGrade());
             jsonCredit.put("type", credit.getType());
             jsonCredit.put("requirementsAssignedTo", credit.getRequirementsAssignedTo());
@@ -224,7 +224,7 @@ public class DataWriter extends DataConstants {
             jsonMajors.add(getMajorJSON(major));
         }
 
-        try (FileWriter file = new FileWriter(MAJOR_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(MAJORS_FILE_NAME)) {
 
             file.write(jsonMajors.toJSONString());
             file.flush();
@@ -238,10 +238,10 @@ public class DataWriter extends DataConstants {
 
     public static JSONObject getMajorJSON(Major major) {
         JSONObject majorDetails = new JSONObject();
-        majorDetails.put(MAJOR_ID, major.getId().toString());
+        majorDetails.put(ID, major.getId().toString());
         majorDetails.put(MAJOR_NAME, major.getName());
-        majorDetails.put(MAJOR_SCHOOL, major.getSchool());
-        majorDetails.put(MAJOR_DEPARTMENT, major.getDepartment());
+        majorDetails.put(SCHOOL, major.getSchool());
+        majorDetails.put(DEPARTMENT, major.getDepartment());
         majorDetails.put(MAJOR_REQUIREMENTS, major.getRequirements());
 
         return majorDetails;
@@ -288,7 +288,7 @@ public class DataWriter extends DataConstants {
             jsonAdvisors.add(advisorDetails);
         }
 
-        try (FileWriter file = new FileWriter(ADVISOR_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(ADVISORS_FILE_NAME)) {
             file.write(jsonAdvisors.toJSONString());
             return true;
         } catch (IOException e) {
@@ -333,7 +333,7 @@ public class DataWriter extends DataConstants {
 
     public static JSONObject getRequirementJSON(Requirement requirement) {
         JSONObject requirementDetails = new JSONObject();
-        requirementDetails.put(REQUIREMENTS_UUID, requirement.getCourseIDs());
+        requirementDetails.put(ID, requirement.getCourseIDs());
         requirementDetails.put(REQUIRMENT_NAME, requirement.getName());
         requirementDetails.put(REQUIREMENT_CATEGORY, requirement.getCategory());
 
@@ -341,9 +341,9 @@ public class DataWriter extends DataConstants {
         for(String courseID : requirement.getCourseIDs()) {
             courseIDsArray.add(courseID);
         }
-        requirementDetails.put(REQUIRMENT_COURSE_ID, courseIDsArray);
+        requirementDetails.put(REQUIRMENT_COURSES, courseIDsArray);
 
-        requirementDetails.put(REQUIREMENT_CREDITS_REQUIRED, requirement.getCreditHoursRequired());
+        requirementDetails.put(REQUIREMENT_CREDIT_HOURS_REQUIRED, requirement.getCreditHoursRequired());
 
         return requirementDetails;
     }

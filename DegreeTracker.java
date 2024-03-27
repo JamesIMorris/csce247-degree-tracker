@@ -11,8 +11,9 @@ public class DegreeTracker {
     private DegreeTracker() {
         error = "";
         courseList = CourseList.getInstance();
-        userList = UserList.getInstance();
         majorList = MajorList.getInstance();
+        userList = UserList.getInstance();
+        userList.setDegreeTracker(this);
     }
 
     public static DegreeTracker getInstance() {

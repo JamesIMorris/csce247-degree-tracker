@@ -24,12 +24,14 @@ public class Credit {
 
     public Credit(Course course, Semester semesterTaken){
         this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID();
         this.course = course;
         this.semesterTaken = semesterTaken;
     }
 
     public Credit(UUID id, Course course, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
             String note) {
+        this.id = id;
         this.course = course;
         this.semesterTaken = semesterTaken;
         this.grade = grade;
@@ -37,7 +39,6 @@ public class Credit {
         this.requirementsAssignedTo = requirementsAssignedTo;
         this.note = note;
         this.possibleRequirements = new ArrayList<PossibleRequirement>();
-        populatePossibleRequirements();
     }
 
     // public Credit(String courseID, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,

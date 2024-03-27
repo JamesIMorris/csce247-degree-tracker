@@ -1,6 +1,6 @@
 [
   {
-    "userType":"STUDENT",
+    "type":"STUDENT",
     "username":"JD123",
     "password":"DoeJohn@5",
     "firstName":"John",
@@ -8,7 +8,7 @@
     "email":"JD308@email.sc.edu"
   },
   {
-    "userType":"ADVISOR",
+    "type":"ADVISOR",
     "username":"AA1",
     "password":"passWord@1",
     "firstName":"Addy",
@@ -16,7 +16,7 @@
     "email":"aa102@email.sc.edu"
   },
   {
-    "userType":"ADMIN",
+    "type":"ADMIN",
     "username":"portiaportia",
     "password":"Abc123!",
     "firstName":"Portia",
@@ -24,7 +24,7 @@
     "email":"pplante@cse.sc.edu"
   },
   {
-    "userType":"STUDENT",
+    "type":"STUDENT",
     "username":"BRWest",
     "password":"CSCE247!",
     "firstName":"Brax",
