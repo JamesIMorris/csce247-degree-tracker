@@ -61,7 +61,7 @@ public class DataLoader extends DataConstants {
                 ArrayList<Season> semesterAvailability = new ArrayList<Season>();
                 CourseType type = CourseType.fromString((String) courseJSON.get(COURSE_TYPE));
 
-                JSONArray semesterAvailabilityJSON = (JSONArray) courseJSON.get(SEMESTER_AVAILABILITY);
+                JSONArray semesterAvailabilityJSON = (JSONArray)courseJSON.get(SEMESTER_AVAILABILITY);
 
                 for (int i = 0; i < semesterAvailabilityJSON.size(); i++) {
                     semesterAvailability.add(Season.fromString((String) semesterAvailabilityJSON.get(i)));
@@ -197,7 +197,7 @@ public class DataLoader extends DataConstants {
                 String firstName = null;
                 String lastName = null;
                 String email = null;
-                for(int j=0; i<userData.size(); j++){
+                for(int j=0; j<userData.size(); j++){
                     JSONObject userJSON = (JSONObject)userData.get(j);
                     if(!userJSON.get(USER_NAME).equals(username))
                         continue;
@@ -338,8 +338,21 @@ public class DataLoader extends DataConstants {
         }
         return true;
     }
+    public UserList getUserList() {
+        return userList;
+    }
+    public MajorList getMajorList() {
+        return majorList;
+    }
+    public CourseList getCourseList() {
+        return courseList;
+    }
 
     public static void main(String[] args) {
         DataLoader dataLoader = DataLoader.getInstance();
+        CourseList courseList = dataLoader.getCourseList();
+        MajorList majorList = dataLoader.getMajorList();
+        UserList userList = dataLoader.getUserList();
+        
     }
 }

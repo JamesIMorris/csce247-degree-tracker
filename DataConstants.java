@@ -44,7 +44,7 @@ public class DataConstants {
     protected static final String REQUIRMENT_NAME = "name";
     protected static final String REQUIREMENT_CATEGORY = "category";
     protected static final String REQUIRMENT_COURSE_ID = "courseIDs";
-    protected static final String REQUIREMENT_CREDITS_REQUIRED = "creditsRequired";
+    protected static final String REQUIREMENT_CREDITS_REQUIRED = "creditHoursRequired";
 
     // Majors Data Constants
     protected static final String MAJOR_FILE_NAME = "json/majors.json";
