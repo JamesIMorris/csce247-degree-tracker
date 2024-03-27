@@ -348,12 +348,4 @@ public class DataLoader extends DataConstants {
     public CourseList getCourseList() {
         return courseList;
     }
-
-    public static void main(String[] args) {
-        DataLoader dataLoader = DataLoader.getInstance();
-        CourseList courseList = dataLoader.getCourseList();
-        MajorList majorList = dataLoader.getMajorList();
-        UserList userList = dataLoader.getUserList();
-        System.out.println("YAY!");
-    }
 }
