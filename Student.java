@@ -32,6 +32,7 @@ public class Student extends User{
         this.notes = new ArrayList<String>();
         this.applicationArea = "Undecided";
         this.changeInProgress = true;
+        populateHashMap();
     }
     public Student(String username, String password, String firstName, String lastName, String email, String uscID, Major major, String applicationArea, ArrayList<Credit> credits, ArrayList<String> notes){
         super(username, password, firstName, lastName, email);
@@ -42,6 +43,7 @@ public class Student extends User{
         this.requirements = new HashMap<Requirement, ArrayList<Credit>>();
         this.notes = notes;
         this.changeInProgress = false;
+        populateHashMap();
         populateBackups();
     }
     public Student(String username, String password, String firstName, String lastName, String email, String uscID, Major major, String applicationArea, ArrayList<Credit> credits, HashMap<Requirement, ArrayList<Credit>> requirements, ArrayList<String> notes){
@@ -53,6 +55,7 @@ public class Student extends User{
         this.requirements = requirements;
         this.notes = notes;
         this.changeInProgress = false;
+        populateHashMap();
         populateBackups();
     }
     public Student(String username, String uscID, Major major, String applicationArea, ArrayList<Credit> credits, HashMap<Requirement, ArrayList<Credit>> requirements, ArrayList<String> notes){
@@ -63,8 +66,15 @@ public class Student extends User{
         this.credits = credits;
         this.requirements = requirements;
         this.notes = notes;
+        populateHashMap();
         notifyForAllRequirements();
         populateBackups();
+    }
+
+    private void populateHashMap(){
+        for(Requirement requirement : major.getRequirements())
+            if(requirements.get(requirement) == null)
+                requirements.put(requirement, new ArrayList<Credit>());
     }
 
     private void populateBackups() {
