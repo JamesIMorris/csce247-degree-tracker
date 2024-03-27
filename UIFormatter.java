@@ -17,7 +17,7 @@ public class UIFormatter {
             if(credit.getSemesterTaken().compare(latestSemester) > 0)
                 latestSemester = credit.getSemesterTaken();
         }
-        for(Semester i = earliestSemester.trueSemester(); i.compare(latestSemester.trueSemester()) > 0; i.incrementSemester()){
+        for(Semester i = earliestSemester.trueSemester(); i.compare(latestSemester.trueSemester()) < 0; i.incrementSemester()){
             homePage += i.getAbbreviation();
             if(i == Semester.current().trueSemester())
                 homePage += " (Current/Upcoming)";
