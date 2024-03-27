@@ -9,13 +9,11 @@ public class SemesterTest {
 
     @BeforeEach
     public void setUp() {
-        // Initialize a new Semester object before each test
         semester = new Semester(2024, Season.FALL);
     }
 
     @AfterEach
     public void tearDown() {
-        // Clean up resources after each test
         semester = null;
     }
 
@@ -32,7 +30,6 @@ public class SemesterTest {
 
     @Test
     public void testCurrent() {
-        // Assuming the current date is in 2024
         Semester currentSemester = Semester.current();
         assertEquals(2024, currentSemester.getYear());
         // Add more assertions based on the current date

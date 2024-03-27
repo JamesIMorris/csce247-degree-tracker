@@ -20,10 +20,6 @@ public class CreditTest {
     credit.populatePossibleRequirements();
     }
 
-
-
-    // Write similar tests for other getter and setter methods
-
     @Test
     public void testUpdate() {
         // Test update method
@@ -57,8 +53,4 @@ public class CreditTest {
     }
     assertTrue(found, "PossibleRequirement should be added to the possibleRequirements list.");
   }
-
-  
-
-// Write additional tests for other methods as needed
 }

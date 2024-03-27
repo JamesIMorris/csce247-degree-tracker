@@ -9,7 +9,6 @@ public class AdminTest {
 
 @BeforeEach
   void setUp(){
-    //make a test administrator
     String username = "adminUser";
     String password = "adminPassword";
     String firstName = "John";

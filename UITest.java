@@ -24,19 +24,16 @@ public class UITest {
      
         when(scanner.nextLine()).thenReturn("testUser", "password", "2", "CS101", "Fall", "yes", "5");
 
-       
         when(degreeTracker.login("testUser", "password")).thenReturn(true);
         when(degreeTracker.studentHomePage("testUser")).thenReturn("Home page content");
         when(degreeTracker.studentAssignCourse("testUser", "CS101", "Fall", "GFL")).thenReturn(true);
 
-       
         ui.scenario1();
 
-  
         verify(degreeTracker).login("testUser", "password");
         verify(degreeTracker).studentHomePage("testUser");
         verify(degreeTracker).studentAssignCourse("testUser", "CS101", "Fall", "GFL");
     }
 
-    
+
 }

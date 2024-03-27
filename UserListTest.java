@@ -13,7 +13,6 @@ public class UserListTest {
 
   @BeforeEach
   public void setUp() {
-    //userList = UserList.getInstance(); 
     userList.getUsers().clear();
 		userList.studentSignup("asmith", "Amy", "Smith", "hello", "803-454-3344","uscid");
 		userList.advisorSignup("bwhite", "Bob", "White", "testing", "803-333-3544");
