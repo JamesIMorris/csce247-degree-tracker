@@ -13,13 +13,13 @@ public enum UserType{
 
     public static UserType fromString(String string){
         for(UserType type : UserType.values())
-            if(string.equals(type.toString()))
+            if(string.equalsIgnoreCase(type.toString()))
                 return type;
         return null;
     }
 
     public String toString(){
-        return string;
+        return string.toUpperCase();
     }
     public boolean isStaff(){
         return isStaff;
