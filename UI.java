@@ -13,8 +13,6 @@ public class UI {
     public void run() {
         welcome();
         landingPage();
-        scenario1();
-        scenario2();
         scanner.close();
         logout();
     }
@@ -48,17 +46,52 @@ public class UI {
     }
 
     private void logout(){
-
+        degreeTracker.logout();
     }
 
     private void signupStudent(){
-
+        String[] usernameAndPassword = getUsernameAndPassword();
     }
 
     private void signupAdvisor(){
-
+        String[] usernameAndPassword = getUsernameAndPassword();
+        String username = usernameAndPassword[0];
+        String password = usernameAndPassword[1];
+        String[] additionalInfo = getAdditionalAdvisorInfo();
+        String firstName = additionalInfo[0];
+        String lastName = additionalInfo[1];
+        String email = additionalInfo[2];
+        degreeTracker.advisorSignup(username, password, firstName, lastName, email);
+        degreeTracker.login(username, password);
+        adivsorHomePage(username);
     }
 
+    private String[] getUsernameAndPassword(){
+        String[] usernameAndPassword = new String[2];
+        System.out.print("Username: ");
+        usernameAndPassword[0] = scanner.nextLine();
+        System.out.print("Password: ");
+        usernameAndPassword[1] = scanner.nextLine();
+        if(degreeTracker.checkSignup(usernameAndPassword[0], usernameAndPassword[1]))
+            return usernameAndPassword;
+        System.out.println(degreeTracker.popError());
+        return getUsernameAndPassword();
+    }
+
+    private String[] getAdditionalAdvisorInfo(){
+        String[] additionalInfo = new String[3];
+        System.out.print("First Name: ");
+        additionalInfo[0] = scanner.nextLine();
+        System.out.print("Last Name: ");
+        additionalInfo[1] = scanner.nextLine();
+        System.out.print("Email: ");
+        additionalInfo[2] = scanner.nextLine();
+        if(degreeTracker.checkAdditionalAdvisorInfo()) //TODO
+            return additionalInfo;
+        System.out.println(degreeTracker.popError());
+        return getAdditionalAdvisorInfo();
+    }
+ 
     private void login(){
         System.out.print("Username: ");
         String username = scanner.nextLine();
@@ -83,17 +116,16 @@ public class UI {
 
     private void studentHomePage(String username){
         System.out.println(degreeTracker.studentHomePage(username));
-        System.err.println(degreeTracker.studentUnsatisfiedRequirements(username));
 
         System.out.println("Actions:\n"
-                            + "1. View Courses Applicable to a Given Requiremnt\n"
+                            + "1. View Unmet Requiremnts\n"
                             + "2. Set Application Area\n"
                             + "3. Export Eigh-Semester Plan"
                             + "4. Logout");
         int action = scanner.nextInt();
         switch (action) {
         case 1:
-            applicableCourses(username);
+            unemetRequirements(username);
             break;
         case 2:
             applicationArea(username);
@@ -110,303 +142,174 @@ public class UI {
         studentHomePage(username);
     }
 
-    private void applicableCourses(String username){
-
+    private void unemetRequirements(String username){
+        System.out.println(degreeTracker.studentUnsatisfiedRequirements(username));
+        System.out.println("Please select a requirement to fill using its abbreviation\n"
+                            + "(Ex: GFL) or enter nothing to return home");
+        String requirement = scanner.nextLine();
+        if(requirement == "")
+            return;
+        if(degreeTracker.studentHasRequirement()) //TODO
+            applicableRequirementCourses(username, requirement);
+        else{
+            System.out.println("That is not an available requirement");
+            unemetRequirements(username);
+        }
     }
 
     private void applicationArea(String username){
         // TODO
-        // System.out.println(degreeTracker.possibleApplicationAreas());
-        System.out.println("1. Pick application area"
-                            + "2. Return home");
+        System.out.println(degreeTracker.possibleApplicationAreas());
+        System.out.println("Please enter the application area you would wish to take\n"
+                            + "or enter nothing to return home");
+        String applicationArea = scanner.nextLine();
+        if(applicationArea == "")
+            return;
+        if(degreeTracker.setApplicationArea(username, applicationArea)) //TODO
+            applicableRequirementCourses(username, "Application Area"); //TODO is it "Application Area"?
+        else{
+            System.out.println("That is not an available application area");
+            applicationArea(username);
+        }
+    }
+
+    public void applicableRequirementCourses(String username, String requirement){
+        System.out.println(degreeTracker.studentPossibleRequirementCredits(username, requirement));
+        System.out.println("Please enter the course code for the course you would like to take\n"
+                            + "(Ex: MATH141) or enter nothing to return home");
+        String courseID = scanner.nextLine();
+        if(courseID == "")
+            return;
+        if(!degreeTracker.courseExists(courseID)){ //TODO
+            System.out.println("This is not a valid course code");
+            applicableRequirementCourses(username, requirement);
+        }
+        else{
+            selectSemesterForCourse(username, requirement, courseID);
+        }
+    }
+
+    public void selectSemesterForCourse(String username, String requirement, String courseID){
+        System.out.println("Please enter when you would wish to take this course using the semester abbreviation\n"
+                            + "(EX: FA22 or SP23)");
+        String semester = scanner.nextLine();
+        if(!degreeTracker.studentAssignCourse(username, courseID, semester, requirement)){
+            System.out.println("This is not a valid semester abbreviation");
+            selectSemesterForCourse(username, requirement, courseID);
+        }
+        else {
+            System.out.println(courseID + " added to " + semester + " for " + requirement);
+        }
+    }
+
+
+    private void export8SPlan(String username){
+        System.out.println("What would you like to name the text file for your" 
+                            + "Eight Semester Plan\n"
+                            + "(Ommit the .txt) or enter nothing to return home");
+        String fileName = scanner.nextLine();
+        if(fileName == "")
+            return;
+        if(!degreeTracker.eightSemesterPlanToTextFile(fileName, username)){
+            System.out.println("File didn't print\n" + degreeTracker.popError());
+            export8SPlan(username);
+        }
+        else{
+            System.out.println("Eight Semester Plan exported to " + fileName + ".txt");
+        }
+    }
+
+    private void adivsorHomePage(String username){
+        degreeTracker.adivsorHomePage(username);
+        System.out.println("\nOptions:"
+                            + "1. Add an advisee"
+                            + "2. View a student's progress"
+                            + "4. Logout");
         int choice = scanner.nextInt();
         scanner.nextLine();
         switch (choice) {
-        case 1:    
+        case 1:
+            addAdvisee(username);
             break;
+        case 2:
+            advisorFindStudentPage(username);
+            break;
+        case 3:
+            return;
         default:
+            System.out.println("That was not a valid input");
+            adivsorHomePage(username);
+            break;
+        }
+    }
+
+    private void addAdvisee(String advisorUsername){
+        System.out.println("Please input the USC ID of the student you wish"
+                            + " to add to your advisee list."
+                            + "(Ex: P04937659) or enter nothing to return home");
+        String uscID = scanner.nextLine();
+        if(uscID == "")
             return;
+        String studentUsername = degreeTracker.findStudentFromID(uscID);
+        if(studentUsername == null){
+            System.out.println(degreeTracker.popError());
+            addAdvisee(advisorUsername);
         }
-
-        // TODO
-
-        degreeTracker.setApplicationArea(username, "a");
-    }
-
-    private void export8SPlan(String username){
-
-    }
-
-    public void scenario1() {
-        boolean loggedIn = false;
-
-        while (!loggedIn) {
-            System.out.print("Enter Username for login: ");
-            String loginUsername = scanner.nextLine();
-            System.out.print("Enter password for login: ");
-            String loginPassword = scanner.nextLine();
-
-            if (degreeTracker.login(loginUsername, loginPassword)) {
-                System.out.println(loginUsername + " is now logged in");
-                loggedIn = true;
-
-            } else {
-                System.out.println("Sorry we couldn't log you in. Do you want to try again? (yes/no)");
-                String choice = scanner.nextLine();
-                if (!choice.equalsIgnoreCase("yes")) {
-                    System.out.println("Exiting login process.");
-                    break;
-                }
-            }
-
-            String homePage = degreeTracker.studentHomePage(loginUsername);
-            System.out.println(homePage);
-            boolean continueSession = true;
-
-            while (continueSession) {
-                System.out.println("\nOptions:");
-                System.out.println("1. View courses yet to take");
-                System.out.println("2. Assign Courses");
-                System.out.println("3. Set Application Area");
-                System.out.println("4. Generate Eight-Semester Plan");
-                System.out.println("5. Logout");
-
-                System.out.print("Enter your choice: ");
-                int option = scanner.nextInt();
-                scanner.nextLine();
-
-                switch (option) {
-                    case 1:
-                        System.out.println("Courses yet to take: ");
-                        String unsatisifedRequirements = degreeTracker.studentUnsatisfiedRequirements(loginUsername);
-                        System.out.println(unsatisifedRequirements);
-                        break;
-                    case 2:
-
-                        System.out.println("\nPossible credits for requirements:");
-                        String possibleCredits = degreeTracker.studentPossibleRequirementCredits(loginUsername, "GFL");
-                        System.out.println(possibleCredits);
-
-                        System.out.print("\nEnter the course ID for the course you would like to take: ");
-                        String courseID = scanner.nextLine();
-
-                        System.out.println("\nSelect semester for the course (Spring, Fall, Winter, Summer): ");
-                        String semesterTaken = scanner.nextLine();
-
-                        if (!(semesterTaken.equalsIgnoreCase("Spring") || semesterTaken.equalsIgnoreCase("Fall")
-                                || semesterTaken.equalsIgnoreCase("Winter")
-                                || semesterTaken.equalsIgnoreCase("Summer"))) {
-                            System.out.println("Invalid semester choice. Exiting scenario.");
-                            return;
-                        }
-
-                        boolean success = degreeTracker.studentAssignCourse(loginUsername, courseID, semesterTaken,
-                                "GFL");
-                        if (success) {
-                            System.out.println("Course " + courseID + " successfully assigned.");
-                        } else {
-                            System.out.println("Failed to assign course " + courseID + " .");
-                        }
-                        break;
-
-                    case 3:
-
-                        System.out.println("\nApplication Area Topics:");
-                        System.out.println("1. Science");
-                        System.out.println("2. Math");
-                        System.out.println("3. Digital Design");
-                        System.out.println("4. Robotics");
-                        System.out.println("5. Speech");
-
-                        System.out.print("Enter the number of your choice: ");
-                        int applicationOption = scanner.nextInt();
-                        scanner.nextLine();
-
-                        String applicationArea;
-                        switch (applicationOption) {
-                            case 1:
-                                applicationArea = "Science";
-                                break;
-                            case 2:
-                                applicationArea = "Math";
-                                break;
-                            case 3:
-                                applicationArea = "Digital Design";
-                                break;
-                            case 4:
-                                applicationArea = "Robotics";
-                                break;
-                            case 5:
-                                applicationArea = "Speech";
-                                break;
-                            default:
-                                System.out.println("Invalid option selected. Please select a valid application area.");
-                                return;
-                        }
-
-                        degreeTracker.setApplicationArea(loginUsername, applicationArea);
-                        System.out.println("Application area set to: " + applicationArea);
-
-                        System.out.println("\nSelect courses for Digital Design:");
-
-                        // courses here
-
-                        System.out.println(
-                                "\nSelect courses for Digital Design (Enter course ID, semester taken, and requirement, or type 'done' to finish):");
-                        ArrayList<String[]> selectedCourses = new ArrayList<>();
-                        String[] courseInfo;
-                        while (true) {
-                            System.out.print("Enter course ID: ");
-                            String selectedCourseID = scanner.nextLine();
-                            if (selectedCourseID.equalsIgnoreCase("done")) {
-                                break;
-                            }
-                            System.out.print("Enter semester taken (e.g., Fall, Spring, Summer, Winter): ");
-                            String selectedSemesterTaken = scanner.nextLine();
-                            System.out.print("Enter requirement: ");
-                            String selectedRequirement = scanner.nextLine();
-                            courseInfo = new String[] { selectedCourseID, selectedSemesterTaken, selectedRequirement };
-                            selectedCourses.add(courseInfo);
-                        }
-
-                        for (String[] info : selectedCourses) {
-                            boolean successCourse = degreeTracker.studentAssignCourse(loginUsername, info[0], info[1],
-                                    info[2]);
-                            if (successCourse) {
-                                System.out.println("Course " + info[0] + " successfully assigned for " + info[2]);
-                            } else {
-                                System.out.println("Failed to assign course " + info[0] + " for " + info[2]);
-                            }
-                        }
-                        break;
-                    case 4:
-                        System.out.println("\nGenerating 8 semester plan...");
-                        System.out.print("Enter the file name to save the plan: ");
-                        String fileName = scanner.nextLine();
-                        boolean generationSuccess = degreeTracker.eightSemesterPlanToTextFile(fileName, loginUsername);
-                        if (generationSuccess) {
-                            System.out.println("Eight semester plan generated and saved to file: " + fileName + ".txt");
-                        } else {
-                            System.out.println("Failed to generate the eight semester plan.");
-                        }
-                        break;
-                    case 5:
-                        degreeTracker.logout();
-                        continueSession = false;
-                        return;
-                    default:
-                        System.out.println("Invalid option.  Please select a valid option");
-                }
-
-            }
+        else{
+            degreeTracker.addAdvisee(advisorUsername, studentUsername); //TODO
+            System.out.println(studentUsername + " was added as an advisee");
         }
     }
 
-    public void scenario2() {
-        System.out.println("Creating a new advisor account...");
-
-        System.out.print("Enter Username: ");
-        String username = scanner.nextLine();
-        System.out.print("Enter password: ");
-        String password = scanner.nextLine();
-        System.out.print("Enter first name: ");
-        String firstName = scanner.nextLine();
-        System.out.print("Enter last name: ");
-        String lastName = scanner.nextLine();
-        System.out.print("Enter email: ");
-        String email = scanner.nextLine();
-
-        if (degreeTracker.advisorSignup(username, password, firstName, lastName, email)) {
-            System.out.println("Advisor account created successfully.");
-        } else {
-            System.out.println("Failed to create an advisor account.");
+    private void advisorFindStudentPage(String advisorUsername){
+        System.out.println("Please enter the username of of the student that "
+                            + "you wish to view the progress of\n"
+                            + "or enter nothing to return home");
+        String studentUsername = scanner.nextLine();
+        if(studentUsername == "")
             return;
+        if(degreeTracker.studentHomePage(studentUsername) == null){
+            System.out.println(degreeTracker.popError());
+            advisorFindStudentPage(advisorUsername);
         }
-
-        boolean loggedIn = false;
-
-        while (!loggedIn) {
-            System.out.print("Enter Username for login: ");
-            String loginUsername = scanner.nextLine();
-            System.out.print("Enter password for login: ");
-            String loginPassword = scanner.nextLine();
-
-            if (degreeTracker.login(loginUsername, loginPassword)) {
-                System.out.println(loginUsername + " is now logged in");
-                loggedIn = true;
-            } else {
-                System.out.println("Sorry we couldn't log you in. Do you want to try again? (yes/no)");
-                String choice = scanner.nextLine();
-                if (!choice.equalsIgnoreCase("yes")) {
-                    System.out.println("Exiting login process.");
-                    break;
-                }
-            }
+        else{
+            System.out.println("Loading " + studentUsername + "'s page");
+            advisorStudentPage(advisorUsername, studentUsername);
         }
+    }
 
-        if (degreeTracker.getCurrentUser().getUserType() == UserType.ADVISOR) {
-            Advisor advisor = (Advisor) degreeTracker.getCurrentUser();
-            boolean continueSession = true;
-
-            degreeTracker.adivsorHomePage(username);
-
-            while (continueSession) {
-                System.out.println("\nOptions:");
-                System.out.println("1. Add an advisee");
-                System.out.println("2. View another student's progress");
-                System.out.println("3. Add a note to the student's account");
-                System.out.println("4. Logout");
-
-                int option = scanner.nextInt();
-                scanner.nextLine();
-
-                switch (option) {
-                    case 1:
-                        System.out.print("Enter Student ID: ");
-                        String studentID = scanner.nextLine();
-                        String studentUsername = degreeTracker.findStudentFromID(studentID);
-                        if (studentUsername != null) {
-                            Student studentUser = (Student) degreeTracker.getUserList().findUser(studentUsername);
-                            advisor.addAdvisee(studentUser);
-                            System.out.println("Student added as an advisee.");
-                        } else {
-                            System.out.println("Student not found.");
-                        }
-                        break;
-                    case 2:
-                        System.out.print("Enter Student ID: ");
-                        String studentIDToView = scanner.nextLine();
-                        String studentUsernameToView = degreeTracker.findStudentFromID(studentIDToView);
-                        if (studentUsernameToView != null) {
-                            System.out.println("Viewing Student's current progress:");
-                            String studentHomePage = degreeTracker.studentHomePage(studentUsernameToView);
-                            System.out.println(studentHomePage);
-                        } else {
-                            System.out.println("Student not found.");
-                        }
-                        break;
-                    case 3:
-                        System.out.print("Enter Student ID: ");
-                        String studentIDForNote = scanner.nextLine();
-                        String studentUsernameForNote = degreeTracker.findStudentFromID(studentIDForNote);
-                        if (studentUsernameForNote != null) {
-                            System.out.println("Enter note: ");
-                            String note = scanner.nextLine();
-                            degreeTracker.addNote(studentUsernameForNote, note);
-                            System.out.println("Note added successfully.");
-                        } else {
-                            System.out.println("Student not found.");
-                        }
-                        break;
-                    case 4:
-                        degreeTracker.logout();
-                        continueSession = false;
-                        break;
-                    default:
-                        System.out.println("Invalid option.  Please select a valid option");
-                }
-            }
+    private void advisorStudentPage(String advisorUsername, String studentUsername){
+        System.out.println("***** STUDENT PAGE *****\n");
+        System.out.println(degreeTracker.studentHomePage(studentUsername));
+        System.out.println("\n************************\n");
+        System.out.println("1. Add Note"
+                            + "2. Return home");
+        int choice = scanner.nextInt();
+        switch (choice) {
+        case 1:
+            advisorAddNote(advisorUsername, studentUsername);
+            advisorStudentPage(advisorUsername, studentUsername);
+            break;
+        case 2:
+            return;
+        default:
+            System.out.println("That was not a valid input");
+            advisorStudentPage(advisorUsername, studentUsername);
+            break;
         }
+    }
+
+    private void advisorAddNote(String advisorUsername, String studentUsername){
+        System.out.println("Enter nothing to return to the students page\n"
+                            + "Or type a note to add it to the students profile: ");
+        String note = scanner.nextLine();
+        if(note == "")
+            return;
+        note += "\n-" + advisorUsername;
+        if(!degreeTracker.addNote(studentUsername, note))
+            System.out.println(degreeTracker.popError());
+        else
+            System.out.println("Note added to " + studentUsername + "'s profile");
     }
 
     public static void main(String[] args) {
