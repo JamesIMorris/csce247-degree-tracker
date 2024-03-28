@@ -110,7 +110,7 @@ public class StudentTest {
 
     @Test
     public void testSetApplicationArea() {
-        student.setApplicatioNArea("Computer Science");
+        student.setApplicationArea("Computer Science");
         assertEquals("Computer Science", student.getApplicationArea());
     }
 

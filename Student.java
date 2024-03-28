@@ -95,7 +95,7 @@ public class Student extends User{
     public String getApplicationArea(){
         return this.applicationArea;
     }
-    public void setApplicatioNArea(String applicationArea){
+    public void setApplicationArea(String applicationArea){
         if(applicationArea == null)
             return;
         this.applicationArea = applicationArea;

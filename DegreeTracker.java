@@ -69,7 +69,7 @@ public class DegreeTracker {
     }
 
     public boolean setApplicationArea(String username, String applicationArea) {
-        ((Student) userList.findUser(username)).setApplicatioNArea(applicationArea);
+        ((Student) userList.findUser(username)).setApplicationArea(applicationArea);
         return true;
     }
 
