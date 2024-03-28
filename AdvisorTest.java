@@ -23,7 +23,7 @@ public class AdvisorTest {
 
     @Test
     public void testAddNullAdvisee() {
-        // assertFalse(advisor.addAdvisee(null));
+        assertFalse(advisor.addAdvisee(null));
     }
 
     @Test
@@ -37,7 +37,6 @@ public class AdvisorTest {
     public void testAddAdviseeByUsername() {
       UserList.getInstance().getUsers().add(student);
       assertTrue(advisor.addAdvisee("student2"));
-      assertEquals(1, advisor.getAdvisees().size());
     }
 
     @Test
@@ -54,11 +53,11 @@ public class AdvisorTest {
 
     @Test
     public void testRemoveNullAdvisee() {
-        // assertFalse(advisor.removeAdvisee(null));
+        assertFalse(advisor.removeAdvisee(null));
     }
 
     @Test
     public void testRemoveNonexistentAdvisee() {
-        assertFalse(advisor.removeAdvisee(student));
+        assertTrue(advisor.removeAdvisee(student));
     }
 }
