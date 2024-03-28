@@ -36,7 +36,7 @@ public class AdvisorTest {
     @Test
     public void testAddAdviseeByUsername() {
       UserList.getInstance().getUsers().add(student);
-      assertTrue(advisor.addAdvisee("student1"));
+      assertTrue(advisor.addAdvisee("student2"));
       assertEquals(1, advisor.getAdvisees().size());
     }
 

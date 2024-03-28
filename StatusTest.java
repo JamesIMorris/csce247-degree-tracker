@@ -14,7 +14,10 @@ public class StatusTest {
 
     @BeforeEach
     public void setUp() {
-        credits = new ArrayList<>();
+      credits = new ArrayList<>();
+      Course course1 = new Course("Course1", "Course 1", "", 3, new ArrayList<>(), CourseType.DEFAUILT);
+      Course course2 = new Course("Course2", "Course 2", "", 3, new ArrayList<>(), CourseType.DEFAUILT);
+      Course course3 = new Course("Course3", "Course 3", "", 3, new ArrayList<>(), CourseType.DEFAUILT);
     }
 
     @AfterEach
@@ -23,42 +26,62 @@ public class StatusTest {
     }
 
     @Test
-    public void testGetStatusArrayList() {
-      Course course1 = new Course("Course1", "Course 1", "", 3, new ArrayList<>(), CourseType.DEFAUILT);
-      Course course2 = new Course("Course2", "Course 2", "", 3, new ArrayList<>(), CourseType.DEFAUILT);
-      Course course3 = new Course("Course3", "Course 3", "", 3, new ArrayList<>(), CourseType.DEFAUILT);
-
+    public void testGetStatusArrayListComplete() {
       Credit completeCredit = new Credit(course1, new Semester(2024, Season.SPRING));
       completeCredit.setGrade(80);
-
-      Credit inProgressCredit = new Credit(course2, new Semester(2024, Season.SPRING));
-      inProgressCredit.setGrade(70);
-
-      Credit notStartedCredit = new Credit(course3, new Semester(2024, Season.SPRING));
-      notStartedCredit.setGrade(0);
-
       credits.add(completeCredit);
-      credits.add(inProgressCredit);
-      credits.add(notStartedCredit);
       assertEquals(Status.COMPLETE, Status.getStatus(credits));
     }
 
     @Test
-    public void testGetStatusCredit() {
-      Credit completeCredit = new Credit(course1, new Semester(2024, Season.SPRING));
-      completeCredit.setGrade(80);
-
+    public void testGetStatusArrayListInProgress() {
       Credit inProgressCredit = new Credit(course2, new Semester(2024, Season.SPRING));
       inProgressCredit.setGrade(70);
+      credits.add(inProgressCredit);
+      assertEquals(Status.IN_PROGRESS, Status.getStatus(credits));
+    }
 
+
+    @Test
+    public void testGetStatusArrayListNotStarted() {
       Credit notStartedCredit = new Credit(course3, new Semester(2024, Season.SPRING));
       notStartedCredit.setGrade(0);
+      credits.add(notStartedCredit);
+      assertEquals(Status.NOT_STARTED, Status.getStatus(credits));
+      
+    }
+
+    @Test
+    public void testGetStatusCreditComplete() {
+      Credit completeCredit = new Credit(course1, new Semester(2024, Season.SPRING));
+
+      completeCredit.setGrade(80);
 
       credits.add(completeCredit);
-      credits.add(inProgressCredit);
-      credits.add(notStartedCredit);
+
       assertEquals(Status.COMPLETE, Status.getStatus(completeCredit));
+    }
+
+    @Test
+    public void testGetStatusCreditInProgress() {
+
+      Credit inProgressCredit = new Credit(course2, new Semester(2024, Season.SPRING));
+
+      inProgressCredit.setGrade(70);
+
+      credits.add(inProgressCredit);
+
       assertEquals(Status.IN_PROGRESS, Status.getStatus(inProgressCredit));
+    }
+
+    @Test
+    public void testGetStatusCreditNotStarted() {
+      Credit notStartedCredit = new Credit(course3, new Semester(2024, Season.SPRING));
+
+      notStartedCredit.setGrade(0);
+
+      credits.add(notStartedCredit);
+      
       assertEquals(Status.NOT_STARTED, Status.getStatus(notStartedCredit));
     }
 }

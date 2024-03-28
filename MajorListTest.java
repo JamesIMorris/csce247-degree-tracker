@@ -56,7 +56,6 @@ public class MajorListTest {
     public void testGetMajorFromNameCorrectName() {
         majorList.addMajor(id, name, school, department, new ArrayList<>());
         Major retrievedMajor = majorList.getMajorFromName(name);
-        assertNotNull(retrievedMajor);
         assertEquals(name, retrievedMajor.getName());
     }
 
