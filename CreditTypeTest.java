@@ -11,6 +11,17 @@ public class CreditTypeTest {
   }
 
   @Test
+  public void testGetInvalidAbbreviationDC() {
+      assertNotNull("IVALID", CreditType.DEFAULT.getAbbreviation());
+  }
+
+  @Test
+  public void testGetEmptyAbbreviationDC() {
+      assertNotNull("", CreditType.DEFAULT.getAbbreviation());
+  }
+
+
+  @Test
   void testGetAbbreviationTC(){
     assertEquals("TC", CreditType.TRANSFER.getAbbreviation());
   }

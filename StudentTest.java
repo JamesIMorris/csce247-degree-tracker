@@ -48,9 +48,20 @@ public class StudentTest {
     }
 
     @Test
+    public void testEmptyUsername() {
+        assertNull("", student.getUsername());
+    }
+
+    @Test
     public void testPassword() {
         assertEquals("password", student.getPassword());
     }
+
+    @Test
+    public void testEmptyPassword() {
+        assertNull("", student.getPassword());
+    }
+
 
     @Test
     public void testFirstName() {
@@ -60,6 +71,11 @@ public class StudentTest {
     @Test
     public void testLastName() {
         assertEquals("Doe", student.getLastName());
+    }
+
+    @Test
+    public void testInvalidLastName() {
+        assertNotEquals("DoeE", student.getLastName());
     }
 
     @Test
@@ -73,8 +89,18 @@ public class StudentTest {
     }
 
     @Test
+    public void testInvalidEmail() {
+        assertNotEquals("john.doeabexample.com", student.getEmail());
+    }
+
+    @Test
     public void testUscID() {
         assertEquals("123456789", student.getUscID());
+    }
+
+    @Test
+    public void testInvalidUscID() {
+        assertNotEquals("123A56789", student.getUscID());
     }
 
     @Test
@@ -107,6 +133,7 @@ public class StudentTest {
         student.setUscID("987654321");
         assertEquals("987654321", student.getUscID());
     }
+    
 
     @Test
     public void testSetApplicationArea() {
