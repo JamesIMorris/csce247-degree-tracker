@@ -16,7 +16,7 @@ public class UI {
         scenario1();
         scenario2();
         scanner.close();
-        // degreeTracker.writeData();
+        logout();
     }
 
     private void welcome(){
@@ -45,6 +45,10 @@ public class UI {
             landingPage();
             break;
         }
+    }
+
+    private void logout(){
+
     }
 
     private void signupStudent(){
@@ -78,7 +82,59 @@ public class UI {
     }
 
     private void studentHomePage(String username){
-        String homePage = degreeTracker.studentHomePage(username);
+        System.out.println(degreeTracker.studentHomePage(username));
+        System.err.println(degreeTracker.studentUnsatisfiedRequirements(username));
+
+        System.out.println("Actions:\n"
+                            + "1. View Courses Applicable to a Given Requiremnt\n"
+                            + "2. Set Application Area\n"
+                            + "3. Export Eigh-Semester Plan"
+                            + "4. Logout");
+        int action = scanner.nextInt();
+        switch (action) {
+        case 1:
+            applicableCourses(username);
+            break;
+        case 2:
+            applicationArea(username);
+            break;
+        case 3:
+            export8SPlan(username);
+            break;
+        case 4:
+            return;
+        default:
+                System.out.println("That wasn't an option");
+                break;
+        }
+        studentHomePage(username);
+    }
+
+    private void applicableCourses(String username){
+
+    }
+
+    private void applicationArea(String username){
+        // TODO
+        // System.out.println(degreeTracker.possibleApplicationAreas());
+        System.out.println("1. Pick application area"
+                            + "2. Return home");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+        switch (choice) {
+        case 1:    
+            break;
+        default:
+            return;
+        }
+
+        // TODO
+
+        degreeTracker.setApplicationArea(username, "a");
+    }
+
+    private void export8SPlan(String username){
+
     }
 
     public void scenario1() {
