@@ -1,5 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -10,28 +12,30 @@ public class DataLoaderTest {
     private UserList userList;
     private ArrayList<User> users;
 
-    @BeforeEach
-    public void setup(){
+    @Before
+    public void oneTimeSetup(){
         dataLoader = DataLoader.getInstance();
+        dataLoader.loadData();
         userList = UserList.getInstance();
         users = userList.getUsers();
-        userList.addUser(new Advisor("GMiller", "123abc!", "George", "Miller", "GMiller@email.sc.edu"));
+        ArrayList<Student> advisorUsers = new ArrayList<Student>();
+        userList.addUser(new Advisor("GMiller", "123abc!", "George", "Miller", "GMiller@email.sc.edu", advisorUsers));
         userList.addUser(new Admin("Admin", "Password1!", "Admin", "McAdmin", "admin@admin.sc.edu"));
         DataWriter.getInstance().saveData();
     }
 
-    @AfterEach
-    public void tearDown() {
+    @BeforeEach
+    public void setup(){
+        dataLoader = DataLoader.getInstance();
+        userList = UserList.getInstance();
+    }
+
+    @After
+    public void oneTimeTearDown() {
+        users = userList.getUsers();
         users.remove(userList.findUser("GMiller"));
         users.remove(userList.findUser("Admin"));
         DataWriter.getInstance().saveData();
-    }
-
-    @Test
-    public void testLoadData() {
-        dataLoader.loadData();
-        assertTrue(users.contains(userList.findUser("GMiller")));
-        assertTrue(users.contains(userList.findUser("Admin")));
     }
 
     @Test
@@ -72,5 +76,14 @@ public class DataLoaderTest {
     @Test
     public void testLoadAdmin() {
         assertTrue(dataLoader.loadAdmin(""));
+    }
+
+    @Test
+    public void testLoadData() {
+        dataLoader.loadData();
+        users = userList.getUsers();
+
+        assertTrue(users.contains(userList.findUser("GMiller")));
+        assertTrue(users.contains(userList.findUser("Admin")));
     }
 }
