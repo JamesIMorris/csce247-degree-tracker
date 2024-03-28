@@ -97,4 +97,13 @@ public class UIFormatter {
             notes += note + "\n";
         return notes;
     }
+
+    public static String possibleApplicationAreas(String username){
+        return "*** Application Areas ***\n"
+                + "Science\n"
+                + "Math\n"
+                + "Digital Design\n"
+                + "Robotics\n"
+                + "Speech\n";
+    }
 }
