@@ -1,5 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.Before;
+import org.junit.After;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import java.io.File;
@@ -8,77 +10,70 @@ import java.util.ArrayList;
 public class DataLoaderTest {
 
     private DataLoader dataLoader;
+    private UserList userList;
+    private ArrayList<User> users;
 
-    @BeforeEach
-    public void setUp() {
+    @Before
+    public void oneTimeSetup(){
         dataLoader = DataLoader.getInstance();
+        userList = UserList.getInstance();
+        users = userList.getUsers();
+        userList.addUser(new Advisor("GMiller", "123abc!", "George", "Miller", "GMiller@email.sc.edu"));
+        userList.addUser(new Admin("Admin", "Password1!", "Admin", "McAdmin", "admin@admin.sc.edu"));
+        DataWriter.getInstance().saveData();
     }
 
-    @AfterEach
-    public void tearDown() {
-        // Reset any changes made during the tests
-        
-        File coursesFile = new File(DataConstants.COURSES_FILE_NAME);
-        if (coursesFile.exists()) coursesFile.delete();
-
-        File majorsFile = new File(DataConstants.MAJORS_FILE_NAME);
-        if (majorsFile.exists()) majorsFile.delete();
-
-        File usersFile = new File(DataConstants.USERS_FILE_NAME);
-        if (usersFile.exists()) usersFile.delete();
-
-        File adminsFile = new File(DataConstants.ADMIN_FILE_NAME);
-        if (adminsFile.exists()) adminsFile.delete();
-
-        File advisorsFile = new File(DataConstants.ADVISORS_FILE_NAME);
-        if (advisorsFile.exists()) advisorsFile.delete();
-
-        File studentsFile = new File(DataConstants.STUDENTS_FILE_NAME);
-        if (studentsFile.exists()) studentsFile.delete();
+    @After
+    public void oneTimeTearDown() {
+        users.remove(userList.findUser("GMiller"));
+        users.remove(userList.findUser("Admin"));
+        DataWriter.getInstance().saveData();
     }
 
     @Test
     public void testLoadData() {
-        assertTrue(dataLoader.loadData());
+        dataLoader.loadData();
+        assertTrue(users.contains(userList.findUser("GMiller")));
+        assertTrue(users.contains(userList.findUser("Admin")));
     }
 
     @Test
     public void testLoadCourses() {
-        assertTrue(dataLoader.loadCourses());
+        assertTrue(dataLoader.loadCourses(""));
     }
 
     @Test
     public void testLoadMajors() {
-        assertTrue(dataLoader.loadMajors());
+        assertTrue(dataLoader.loadMajors(""));
     }
 
     @Test
     public void testLoadRequirements() {
-        assertTrue(dataLoader.loadRequirements());
+        assertTrue(dataLoader.loadRequirements(""));
     }
 
     @Test
     public void testLoadUsers() {
-        assertTrue(dataLoader.loadUsers());
+        assertTrue(dataLoader.loadUsers(""));
     }
 
     @Test
     public void testLoadUserData() {
-        assertTrue(dataLoader.loadUserData());
+        assertTrue(dataLoader.loadUserData(""));
     }
 
     @Test
     public void testLoadStudents() {
-        assertTrue(dataLoader.loadStudents());
+        assertTrue(dataLoader.loadStudents(""));
     }
 
     @Test
     public void testLoadAdvisors() {
-        assertTrue(dataLoader.loadAdvisors());
+        assertTrue(dataLoader.loadAdvisors(""));
     }
 
     @Test
     public void testLoadAdmin() {
-        assertTrue(dataLoader.loadAdmin());
+        assertTrue(dataLoader.loadAdmin(""));
     }
 }
