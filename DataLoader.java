@@ -339,4 +339,31 @@ public class DataLoader extends DataConstants {
         }
         return true;
     }
+
+    // TEST METHODS //
+
+    public boolean loadCourses(String test){
+        return loadCourses();
+    }
+    public boolean loadMajors(String test){
+        return loadMajors();
+    }
+    public boolean loadRequirements(String test){
+        return loadRequirements();
+    }
+    public boolean loadUsers(String test){
+        return loadUsers();
+    }
+    public boolean loadUserData(String test){
+        return loadUserData();
+    }
+    public boolean loadStudents(String test){
+        return loadStudents();
+    }
+    public boolean loadAdvisors(String test){
+        return loadAdvisors();
+    }
+    public boolean loadAdmin(String test){
+        return loadAdmin();
+    }
 }
