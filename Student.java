@@ -365,4 +365,17 @@ public class Student extends User{
         return UserType.STUDENT;
     }
 
+    public boolean addCredit(String courseID, String semesterTaken, String requirement){
+        Course course = CourseList.getInstance().getCourseFromID(courseID);
+        Semester semester = Semester.fromString(semesterTaken);
+        Requirement majorRequirement = major.getRequirementFromAbbreviation(requirement);
+        if(course == null || semester == null || majorRequirement == null)
+            return false;
+        addCredit(course, semester);
+        Credit credit = getCredit(course, semester);
+        if(credit == null)
+            return false;
+        return assignCredit(credit, majorRequirement);
+    }
+
 }
