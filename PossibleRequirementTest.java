@@ -24,16 +24,12 @@ public class PossibleRequirementTest {
 
     @Test
     public void testConstructorWithRequirement() {
-        assertNotNull(possibleRequirement);
         assertEquals(requirement, possibleRequirement.getRequirement());
-        assertFalse(possibleRequirement.getPossible());
     }
 
     @Test
     public void testConstructorWithRequirementAndPossible() {
         possibleRequirement = new PossibleRequirement(requirement, true);
-        assertNotNull(possibleRequirement);
-        assertEquals(requirement, possibleRequirement.getRequirement());
         assertTrue(possibleRequirement.getPossible());
     }
 

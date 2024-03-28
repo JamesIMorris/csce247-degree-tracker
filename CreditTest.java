@@ -1,6 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.AfterEach;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,10 +21,14 @@ public class CreditTest {
     credit.populatePossibleRequirements();
     }
 
+    @AfterEach
+    public void tearDown(){
+      credit = null;
+    }
     @Test
     public void testUpdate() {
         // Test update method
-      Requirement requirement = new Requirement("RequirementName", Category.MR, new ArrayList<>(Arrays.asList("CSE101", "CSE102")), 6);
+      Requirement requirement = new Requirement("RequirementName", Category.MR, new ArrayList<>(Arrays.asList("CSCE101", "CSCE102")), 6);
       boolean open = true; 
       boolean result = credit.update(requirement, open);
       assertTrue(result);
@@ -32,7 +37,7 @@ public class CreditTest {
     @Test
     public void testUpdateReturnsTrueForExistingRequirement() {
         // Test update method with an existing requirement
-        Requirement requirement = new Requirement("RequirementName", Category.MR, new ArrayList<>(Arrays.asList("CSE101", "CSE102")), 6);
+        Requirement requirement = new Requirement("RequirementName", Category.MR, new ArrayList<>(Arrays.asList("CSCE101", "CSCE102")), 6);
         boolean open = true; 
         boolean result = credit.update(requirement, open);
         assertTrue(result, "update should return true for an existing requirement.");
@@ -40,7 +45,7 @@ public class CreditTest {
 
     @Test
     public void testAddPossibleRequirementAddsToPossibleRequirementsList() {
-      Requirement requirement = new Requirement("RequirementName", Category.MR, new ArrayList<>(Arrays.asList("CSE101", "CSE102")), 6);
+      Requirement requirement = new Requirement("RequirementName", Category.MR, new ArrayList<>(Arrays.asList("CSCE101", "CSCE102")), 6);
       
       credit.addPossibleRequirement(requirement);
       ArrayList<PossibleRequirement> possibleRequirements = credit.getPossibleRequirements();
