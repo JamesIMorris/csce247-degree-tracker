@@ -154,11 +154,11 @@ public class DegreeTracker {
     }
 
     public boolean checkAdditionalInfo(String[] additionalInfo){
-        return userList.checkAdditionalInfo(String[] additionalInfo);
+        return userList.checkAdditionalInfo(additionalInfo);
     }    
 
-    public boolean studentHasRequirement(String requirement){
-        return userList.studentHasRequirement(requirement);
+    public boolean studentHasRequirement(String username, String requirement){
+        return userList.studentHasRequirement(username, requirement);
     }
 
     public String possibleApplicationAreas(String username){
