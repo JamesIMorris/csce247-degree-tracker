@@ -136,7 +136,7 @@ public class DataWriter extends DataConstants {
 
     // GET USER JSONS //
 
-    private JSONObject getUserJSON(User user) {
+    public JSONObject getUserJSON(User user) {
         JSONObject userJSON = new JSONObject();
         userJSON.put(TYPE, user.getUserType().toString());
         userJSON.put(USERNAME, user.getUsername());
@@ -149,7 +149,7 @@ public class DataWriter extends DataConstants {
 
     
 
-    private JSONObject getStudentJSON(Student student) {
+    public JSONObject getStudentJSON(Student student) {
         JSONObject studentDetails = new JSONObject();
         studentDetails.put("username", student.getUsername());
         studentDetails.put("uscID", student.getUscID());
@@ -232,7 +232,7 @@ public class DataWriter extends DataConstants {
     // Admin
     
 
-    private JSONObject getAdminJSON(Admin admin) {
+    public JSONObject getAdminJSON(Admin admin) {
         JSONObject adminDetails = new JSONObject();
         adminDetails.put("username", admin.getUsername());
         return adminDetails;
@@ -240,7 +240,7 @@ public class DataWriter extends DataConstants {
 
 
 
-    private JSONObject getAdvisorJSON(Advisor advisor) {
+    public JSONObject getAdvisorJSON(Advisor advisor) {
         JSONObject advisorDetails = new JSONObject();
         advisorDetails.put("username", advisor.getUsername());
 
@@ -251,59 +251,5 @@ public class DataWriter extends DataConstants {
         advisorDetails.put(ADVISOR_ADVISEES, adviseesArray);
 
         return advisorDetails;
-    }
-
-    public static void main(String[] args) {
-        DataWriter writer = new DataWriter();
-
-        boolean coursesSaved = writer.saveCourses();
-        if (coursesSaved) {
-            System.out.println("Courses saved successfully.");
-        } else {
-            System.out.println("Failed to save courses.");
-        }
-
-        boolean usersSaved = writer.saveUsers();
-        if (usersSaved) {
-            System.out.println("Users saved successfully.");
-        } else {
-            System.out.println("Failed to save users.");
-        }
-
-        boolean studentsSaved = writer.saveStudents();
-        if (studentsSaved) {
-            System.out.println("Students saved successfully.");
-        } else {
-            System.out.println("Failed to save students.");
-        }
-
-        boolean majorsSaved = writer.saveMajors();
-        if (majorsSaved) {
-            System.out.println("Majors saved successfully.");
-        } else {
-            System.out.println("Failed to save majors.");
-        }
-
-        boolean adminSaved = writer.saveAdmin();
-        if (adminSaved) {
-            System.out.println("Admin saved successfully.");
-        } else {
-            System.out.println("Failed to save admin.");
-        }
-
-        boolean advisorsSaved = writer.saveAdvisors();
-        if (advisorsSaved) {
-            System.out.println("Advisors saved successfully.");
-        } else {
-            System.out.println("Failed to save advisors.");
-        }
-
-        boolean requirementsSaved = writer.saveRequiremnets();
-        if (requirementsSaved) {
-            System.out.println("Requirements saved successfully.");
-        } else {
-            System.out.println("Failed to save requirements.");
-        }
-
     }
 }
