@@ -65,7 +65,8 @@ public class DegreeTracker {
     }
 
     public boolean studentAssignCourse(String username, String courseID, String semesterTaken, String requirement) {
-        return ((Student) userList.findUser(username)).assignCredit(courseID, semesterTaken, requirement);
+        Student student = (Student)userList.findUser(username);
+        return student.addCredit(courseID, semesterTaken, requirement); //TODO
     }
 
     public boolean setApplicationArea(String username, String applicationArea) {
@@ -150,6 +151,26 @@ public class DegreeTracker {
 
     public boolean eightSemesterPlanToTextFile(String fileName){
         return eightSemesterPlanToTextFile(fileName, userList.getCurrentUser().getUsername());
+    }
+
+    public boolean checkAdditionalInfo(String[] additionalInfo){
+        return userList.checkAdditionalInfo(String[] additionalInfo);
+    }    
+
+    public boolean studentHasRequirement(String requirement){
+        return userList.studentHasRequirement(requirement);
+    }
+
+    public String possibleApplicationAreas(String username){
+        return UIFormatter.possibleApplicationAreas(username);
+    }
+
+    public boolean courseExists(String courseID){
+        return courseList.getCourseFromID(courseID) != null;
+    }
+
+    public boolean addAdvisee(String advisorUsername, String studentUsername){
+        return userList.addAdvisee(advisorUsername, studentUsername);
     }
 
     public MajorList getMajorList() {
