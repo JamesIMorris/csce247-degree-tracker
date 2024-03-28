@@ -28,8 +28,18 @@ public class AdminTest {
   }
 
   @Test
+  void testAdminUserNameNotExist(){
+    assertNotEquals("Fake", admin.getUsername());
+  }
+
+  @Test
   void testAdminPassword(){
     assertEquals("adminPassword", admin.getPassword());
+  }
+
+  @Test
+  void testAdminPasswordNotExist(){
+    assertNotEquals("adminpassword", admin.getPassword());
   }
 
   @Test

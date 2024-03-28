@@ -22,6 +22,11 @@ public class UserTypeTest {
     }
 
     @Test
+    void testStudentToStringCaseError() {
+        assertEquals("StUdEnt", student.toString());
+    }
+
+    @Test
     void testStudentStudentIsStaff() {
         assertFalse(student.isStaff());
     }
@@ -32,13 +37,24 @@ public class UserTypeTest {
     }
 
     @Test
+    void testAdvisorToStringCaseError() {
+      assertEquals("AdvIsor", advisor.toString());
+    }
+
+    @Test
     void testAdvisorIsStaff() {
         assertFalse(advisor.isStaff());
     }
 
+
     @Test
     void testAdminToString() {
         assertEquals("Administrator", admin.toString());
+    }
+
+    @Test
+    void testAdminToStringCaseError() {
+        assertEquals("AdmInIstRatOr", admin.toString());
     }
 
     @Test

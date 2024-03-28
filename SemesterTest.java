@@ -32,7 +32,6 @@ public class SemesterTest {
     public void testCurrent() {
         Semester currentSemester = Semester.current();
         assertEquals(2024, currentSemester.getYear());
-        // Add more assertions based on the current date
     }
 
     @Test
