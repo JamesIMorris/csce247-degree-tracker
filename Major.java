@@ -75,4 +75,11 @@ public class Major {
         return null;
     }
 
+    public Requirement getRequirementFromAbbreviation(String requirement){
+        for(Requirement majorRequirement : requirements)
+            if(majorRequirement.getCategory().getAbbreviation() == requirement)
+                return majorRequirement;
+        return null;
+    }
+
 }
