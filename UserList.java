@@ -218,4 +218,43 @@ public class UserList {
         this.users = users;
     }
 
+    public boolean addAdvisee(String advisorUsername, String studentUsername){
+        User user = findUser(advisorUsername);
+        if(user.getUserType() != UserType.ADVISOR){
+            degreeTracker.addError(advisorUsername + " is not an advisor");
+            return false;
+        }
+        Advisor advisor = (Advisor)user;
+        return advisor.addAdvisee(studentUsername);
+    }
+
+    public boolean checkAdditionalInfo(String[] additionalInfo){
+        boolean success = true;
+        String firstName = additionalInfo[0];
+        String lastName = additionalInfo[1];
+        String email = additionalInfo[2];
+        if(firstName == null || firstName == ""){
+            degreeTracker.addError("First Name was empty");
+            success = false;
+        }
+        if(lastName == null || lastName == ""){
+            degreeTracker.addError("Last Name was empty");
+            success = false;
+        }
+        if(email == null || email == ""){
+            degreeTracker.addError("Email was empty");
+            success = false;
+        }
+        return success;
+    }
+
+    public boolean studentHasRequirement(String username, String requirement){
+        Student student = (Student)findUser(username);
+        Major major = student.getMajor();
+        Requirement majorRequirement = major.getRequirementFromAbbreviation(requirement);
+        if(majorRequirement == null || !studentHasRequirement(username, requirement))
+            return false;
+        return true;
+    }
+
 }
