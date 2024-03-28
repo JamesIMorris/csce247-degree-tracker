@@ -86,7 +86,7 @@ public class UI {
         additionalInfo[1] = scanner.nextLine();
         System.out.print("Email: ");
         additionalInfo[2] = scanner.nextLine();
-        if(degreeTracker.checkAdditionalAdvisorInfo()) //TODO
+        if(degreeTracker.checkAdditionalInfo(additionalInfo))
             return additionalInfo;
         System.out.println(degreeTracker.popError());
         return getAdditionalAdvisorInfo();
@@ -149,7 +149,7 @@ public class UI {
         String requirement = scanner.nextLine();
         if(requirement == "")
             return;
-        if(degreeTracker.studentHasRequirement()) //TODO
+        if(degreeTracker.studentHasRequirement(username, requirement))
             applicableRequirementCourses(username, requirement);
         else{
             System.out.println("That is not an available requirement");
@@ -158,14 +158,13 @@ public class UI {
     }
 
     private void applicationArea(String username){
-        // TODO
-        System.out.println(degreeTracker.possibleApplicationAreas());
+        System.out.println(degreeTracker.possibleApplicationAreas(username));
         System.out.println("Please enter the application area you would wish to take\n"
                             + "or enter nothing to return home");
         String applicationArea = scanner.nextLine();
         if(applicationArea == "")
             return;
-        if(degreeTracker.setApplicationArea(username, applicationArea)) //TODO
+        if(degreeTracker.setApplicationArea(username, applicationArea))
             applicableRequirementCourses(username, "Application Area"); //TODO is it "Application Area"?
         else{
             System.out.println("That is not an available application area");
@@ -180,7 +179,7 @@ public class UI {
         String courseID = scanner.nextLine();
         if(courseID == "")
             return;
-        if(!degreeTracker.courseExists(courseID)){ //TODO
+        if(!degreeTracker.courseExists(courseID)){
             System.out.println("This is not a valid course code");
             applicableRequirementCourses(username, requirement);
         }
@@ -256,7 +255,7 @@ public class UI {
             addAdvisee(advisorUsername);
         }
         else{
-            degreeTracker.addAdvisee(advisorUsername, studentUsername); //TODO
+            degreeTracker.addAdvisee(advisorUsername, studentUsername);
             System.out.println(studentUsername + " was added as an advisee");
         }
     }
