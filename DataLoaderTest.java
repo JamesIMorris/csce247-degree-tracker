@@ -1,10 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.Before;
-import org.junit.After;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import java.io.File;
 import java.util.ArrayList;
 
 public class DataLoaderTest {
@@ -13,8 +10,8 @@ public class DataLoaderTest {
     private UserList userList;
     private ArrayList<User> users;
 
-    @Before
-    public void oneTimeSetup(){
+    @BeforeEach
+    public void setup(){
         dataLoader = DataLoader.getInstance();
         userList = UserList.getInstance();
         users = userList.getUsers();
@@ -23,8 +20,8 @@ public class DataLoaderTest {
         DataWriter.getInstance().saveData();
     }
 
-    @After
-    public void oneTimeTearDown() {
+    @AfterEach
+    public void tearDown() {
         users.remove(userList.findUser("GMiller"));
         users.remove(userList.findUser("Admin"));
         DataWriter.getInstance().saveData();
