@@ -37,11 +37,11 @@ public enum Status {
         
         int semesterComparison = credit.getSemesterTaken().compare(Semester.current());
         switch (semesterComparison) {
-        case -1:
+        case 1:
             return NOT_STARTED;
         case 0:
             return IN_PROGRESS;
-        case 1:
+        case -1:
             break;
         }
 

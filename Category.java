@@ -5,6 +5,7 @@ public enum Category {
     PR(REQUIREMENT, "PR", "Program Requirement"),
     MR(REQUIREMENT, "MR", "Major Requirement"),
     FND(REQUIREMENT, "FND", "Founding Documents"),
+    AA(REQUIREMENT, "AA", "Application Area"),
     CC_AIU(CC, "CC-AIU", "Asthetic and Interpretive Understanding"),
     CC_ARP(CC, "CC-ARP", "Analytical Reasoning and Problem Solving"),
     CC_CMS(CC, "CC-CMS", "Effective, Engaged, and Persuasive Communication: Spoken Component"),
@@ -23,7 +24,12 @@ public enum Category {
     PR_LowerDiv(PR, "PR-LD", "Lower Division"),
     PR_AppArea(PR, "PR-AA", "Application Area"),
     MR_MajorCourse(MR, "MR-MC", "Major Course"),
-    MR_Elective(MR, "MR-E", "College Elective");
+    MR_Elective(MR, "MR-E", "College Elective"),
+    AA_SCI(AA, "AA-SCI", "Science"),
+    AA_MATH(AA, "AA-MATH", "Math"),
+    AA_DD(AA, "AA-DD", "Digital Design"),
+    AA_ROBO(AA, "AA-ROBO", "Robotics"),
+    AA_SPCH(AA, "AA-SPCH", "Speech");
     
 
     Category parentCategory;

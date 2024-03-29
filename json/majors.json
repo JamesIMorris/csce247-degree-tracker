@@ -4,13 +4,13 @@
     "majorName":"Computer Information Systems",
     "school":"College of Engineering and Computing",
     "department":"Computer Science and Engineering",
-    "requirements":["be61e0a4-1adf-480f-9b76-d34570e39bd2","4bd7c2fe-29de-4ee0-8fd1-543fc4cb6b08","1b00f129-9b6b-4077-bf32-7e0b3c83290f","3e3d9765-ea10-4e4d-8f2a-b6c5c403ad9f","6b57be0e-dd1a-4273-8f1b-5ce70ead5c24","9d3e3613-f256-4534-acfb-b46dcb06b207","d902a562-87f7-41a6-94f4-2803f2ddcb56","0686024d-06fc-4da5-b2a9-b1577c238baf","c0ead0ee-a5f2-4033-82f2-e6e60ccfec63","f239a9a0-8b58-482f-81a8-43c1bbcbfc4f"]
+    "requirements":["be61e0a4-1adf-480f-9b76-d34570e39bd2","4bd7c2fe-29de-4ee0-8fd1-543fc4cb6b08","1b00f129-9b6b-4077-bf32-7e0b3c83290f","3e3d9765-ea10-4e4d-8f2a-b6c5c403ad9f","6b57be0e-dd1a-4273-8f1b-5ce70ead5c24","9d3e3613-f256-4534-acfb-b46dcb06b207","d902a562-87f7-41a6-94f4-2803f2ddcb56","0686024d-06fc-4da5-b2a9-b1577c238baf","c0ead0ee-a5f2-4033-82f2-e6e60ccfec63","f239a9a0-8b58-482f-81a8-43c1bbcbfc4f","efafe7db-7546-49dc-a4aa-1cd67205e906"]
   },
   {
     "id":"3eab73e6-2187-4761-b9c3-b2e90bb38d39",
     "majorName":"Computer Science",
     "school":"College of Engineering and Computing",
     "department":"Computer Science and Engineering",
-    "requirements":["be61e0a4-1adf-480f-9b76-d34570e39bd2","4bd7c2fe-29de-4ee0-8fd1-543fc4cb6b08","1b00f129-9b6b-4077-bf32-7e0b3c83290f","3e3d9765-ea10-4e4d-8f2a-b6c5c403ad9f","6b57be0e-dd1a-4273-8f1b-5ce70ead5c24","9d3e3613-f256-4534-acfb-b46dcb06b207","d902a562-87f7-41a6-94f4-2803f2ddcb56","0686024d-06fc-4da5-b2a9-b1577c238baf","c0ead0ee-a5f2-4033-82f2-e6e60ccfec63","f239a9a0-8b58-482f-81a8-43c1bbcbfc4f"]
+    "requirements":["be61e0a4-1adf-480f-9b76-d34570e39bd2","4bd7c2fe-29de-4ee0-8fd1-543fc4cb6b08","1b00f129-9b6b-4077-bf32-7e0b3c83290f","3e3d9765-ea10-4e4d-8f2a-b6c5c403ad9f","6b57be0e-dd1a-4273-8f1b-5ce70ead5c24","9d3e3613-f256-4534-acfb-b46dcb06b207","d902a562-87f7-41a6-94f4-2803f2ddcb56","0686024d-06fc-4da5-b2a9-b1577c238baf","c0ead0ee-a5f2-4033-82f2-e6e60ccfec63","f239a9a0-8b58-482f-81a8-43c1bbcbfc4f","efafe7db-7546-49dc-a4aa-1cd67205e906"]
   }
 ]

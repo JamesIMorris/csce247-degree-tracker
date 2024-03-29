@@ -46,6 +46,7 @@ public class UI {
     }
 
     private void logout(){
+        System.out.println("\nGoodbye\n");
         degreeTracker.logout();
     }
 
@@ -120,9 +121,10 @@ public class UI {
         System.out.println("Actions:\n"
                             + "1. View Unmet Requiremnts\n"
                             + "2. Set Application Area\n"
-                            + "3. Export Eigh-Semester Plan"
+                            + "3. Export Eigh-Semester Plan\n"
                             + "4. Logout");
         int action = scanner.nextInt();
+        scanner.nextLine();
         switch (action) {
         case 1:
             unemetRequirements(username);
@@ -145,7 +147,7 @@ public class UI {
     private void unemetRequirements(String username){
         System.out.println(degreeTracker.studentUnsatisfiedRequirements(username));
         System.out.println("Please select a requirement to fill using its abbreviation\n"
-                            + "(Ex: GFL) or enter nothing to return home");
+                            + "(Ex: CC-GFL) or enter nothing to return home");
         String requirement = scanner.nextLine();
         if(requirement == "")
             return;
@@ -164,8 +166,9 @@ public class UI {
         String applicationArea = scanner.nextLine();
         if(applicationArea == "")
             return;
-        if(degreeTracker.setApplicationArea(username, applicationArea))
-            applicableRequirementCourses(username, "Application Area"); //TODO is it "Application Area"?
+        String applicationAreaAbbreviation = degreeTracker.getAAAbreviation(applicationArea);
+        if(degreeTracker.setApplicationArea(username, applicationAreaAbbreviation))
+            applicableRequirementCourses(username, applicationAreaAbbreviation); //TODO is it "Application Area"?
         else{
             System.out.println("That is not an available application area");
             applicationArea(username);
@@ -203,9 +206,9 @@ public class UI {
 
 
     private void export8SPlan(String username){
-        System.out.println("What would you like to name the text file for your" 
+        System.out.println("What would you like to name the text file for your " 
                             + "Eight Semester Plan\n"
-                            + "(Ommit the .txt) or enter nothing to return home");
+                            + "(Omit the .txt) or enter nothing to return home");
         String fileName = scanner.nextLine();
         if(fileName == "")
             return;
@@ -219,11 +222,11 @@ public class UI {
     }
 
     private void adivsorHomePage(String username){
-        degreeTracker.adivsorHomePage(username);
-        System.out.println("\nOptions:"
-                            + "1. Add an advisee"
-                            + "2. View a student's progress"
-                            + "4. Logout");
+        System.out.println(degreeTracker.adivsorHomePage(username));
+        System.out.println("\nOptions:\n"
+                            + "1. Add an advisee\n"
+                            + "2. View a student's progress\n"
+                            + "3. Logout");
         int choice = scanner.nextInt();
         scanner.nextLine();
         switch (choice) {
@@ -237,9 +240,9 @@ public class UI {
             return;
         default:
             System.out.println("That was not a valid input");
-            adivsorHomePage(username);
             break;
         }
+        adivsorHomePage(username);
     }
 
     private void addAdvisee(String advisorUsername){
@@ -281,9 +284,10 @@ public class UI {
         System.out.println("***** STUDENT PAGE *****\n");
         System.out.println(degreeTracker.studentHomePage(studentUsername));
         System.out.println("\n************************\n");
-        System.out.println("1. Add Note"
+        System.out.println("1. Add Note\n"
                             + "2. Return home");
         int choice = scanner.nextInt();
+        scanner.nextLine();
         switch (choice) {
         case 1:
             advisorAddNote(advisorUsername, studentUsername);
@@ -304,7 +308,6 @@ public class UI {
         String note = scanner.nextLine();
         if(note == "")
             return;
-        note += "\n-" + advisorUsername;
         if(!degreeTracker.addNote(studentUsername, note))
             System.out.println(degreeTracker.popError());
         else
@@ -314,7 +317,6 @@ public class UI {
     public static void main(String[] args) {
         UI degreeInterface = new UI();
         degreeInterface.run();
-
     }
 
 }

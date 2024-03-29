@@ -252,7 +252,7 @@ public class UserList {
         Student student = (Student)findUser(username);
         Major major = student.getMajor();
         Requirement majorRequirement = major.getRequirementFromAbbreviation(requirement);
-        if(majorRequirement == null || !studentHasRequirement(username, requirement))
+        if(majorRequirement == null)
             return false;
         return true;
     }

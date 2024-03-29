@@ -201,7 +201,8 @@ public class Student extends User{
     public boolean assignCredit(Credit credit, Requirement requirement) {
         if (credit == null || requirement == null)
             return false;
-        boolean open = checkRequierment(requirement);
+        boolean open = true;
+        // boolean open = checkRequierment(requirement);
         if (open)
             requirements.get(requirement).add(credit);
         checkRequierment(requirement);
@@ -222,6 +223,8 @@ public class Student extends User{
         int requiredHours = requirement.getCreditHoursRequired();
         int totalHours = 0;
         for (Credit credit : requirements.get(requirement)) {
+            if(credit == null)
+                continue;
             totalHours += credit.getCreditHours();
         }
         boolean open = (totalHours < requiredHours);
@@ -369,6 +372,7 @@ public class Student extends User{
         Course course = CourseList.getInstance().getCourseFromID(courseID);
         Semester semester = Semester.fromString(semesterTaken);
         Requirement majorRequirement = major.getRequirementFromAbbreviation(requirement);
+
         if(course == null || semester == null || majorRequirement == null)
             return false;
         addCredit(course, semester);

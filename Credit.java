@@ -15,18 +15,20 @@ public class Credit {
     public Credit(Course course) {
         this.id = UUID.randomUUID();
         this.course = course;
+        possibleRequirements = new ArrayList<PossibleRequirement>();
     }
 
     public Credit(String courseID) {
         this.id = UUID.randomUUID();
         this.course = CourseList.getInstance().getCourseFromName(courseID);
+        possibleRequirements = new ArrayList<PossibleRequirement>();
     }
 
     public Credit(Course course, Semester semesterTaken){
         this.id = UUID.randomUUID();
-        this.id = UUID.randomUUID();
         this.course = course;
         this.semesterTaken = semesterTaken;
+        possibleRequirements = new ArrayList<PossibleRequirement>();
     }
 
     public Credit(UUID id, Course course, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,
@@ -38,7 +40,8 @@ public class Credit {
         this.type = type;
         this.requirementsAssignedTo = requirementsAssignedTo;
         this.note = note;
-        this.possibleRequirements = new ArrayList<PossibleRequirement>();
+        possibleRequirements = new ArrayList<PossibleRequirement>();
+        // this.possibleRequirements = new ArrayList<PossibleRequirement>();
     }
 
     // public Credit(String courseID, Semester semesterTaken, int grade, CreditType type, int requirementsAssignedTo,

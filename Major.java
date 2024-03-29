@@ -77,7 +77,7 @@ public class Major {
 
     public Requirement getRequirementFromAbbreviation(String requirement){
         for(Requirement majorRequirement : requirements)
-            if(majorRequirement.getCategory().getAbbreviation() == requirement)
+            if(majorRequirement.getCategory().getAbbreviation().equals(requirement))
                 return majorRequirement;
         return null;
     }

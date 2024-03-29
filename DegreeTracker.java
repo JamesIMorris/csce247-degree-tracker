@@ -79,7 +79,8 @@ public class DegreeTracker {
     }
 
     public boolean addNote(String username, String note) {
-        return ((Student) userList.findUser(username)).addNote(note + "\n-" + userList.getCurrentUser());
+        return ((Student) userList.findUser(username)).addNote(note += "\n-" 
+                    + userList.getCurrentUser().getFirstName() + " " + userList.getCurrentUser().getLastName());
     }
 
     public String studentHomePage(String username) {
@@ -183,5 +184,9 @@ public class DegreeTracker {
 
     public UserList getUserList() {
         return userList;
+    }
+
+    public String getAAAbreviation(String applicationArea){
+        return majorList.getAAAbreviation(applicationArea);
     }
 }

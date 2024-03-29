@@ -81,4 +81,22 @@ public class MajorList {
         DegreeTracker.getInstance().addError("Major not found with name: " + id);
         return null;
     }
+
+    public String getAAAbreviation(String applicationArea){
+        applicationArea = applicationArea.toLowerCase();
+        switch (applicationArea) {
+        case "science":
+            return "AA-SCI";
+        case "math":
+            return "AA-MATH";
+        case "digital design":
+            return "AA-DD";
+        case "robotics":
+            return "AA-ROBO";
+        case "speech":
+            return "AA-SPCH";
+        default:
+            return "";
+        }
+    }
 }

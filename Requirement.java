@@ -99,7 +99,7 @@ public class Requirement {
     }
 
     private void loadCourses(ArrayList<String> courseIDs){
-        ArrayList<Course> courses = new ArrayList<Course>();
+        courses = new ArrayList<Course>();
         for(String courseID : courseIDs){
             Course course = CourseList.getInstance().getCourseFromID(courseID);
             courses.add(course);

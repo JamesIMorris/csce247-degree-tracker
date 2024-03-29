@@ -19,11 +19,17 @@ public class UIFormatter {
         }
         for(Semester i = earliestSemester.trueSemester(); i.compare(latestSemester.trueSemester()) < 0; i.incrementSemester()){
             homePage += i.getAbbreviation();
-            if(i == Semester.current().trueSemester())
+            if(i.equals(Semester.current().trueSemester()))
                 homePage += " (Current/Upcoming)";
             homePage += "\n";
-            homePage += coursesForSemester(student, i);
+            homePage += coursesForSemester(student, i) + "\n";
         }
+        homePage += "*** Notes ***\n";
+        String notes = advisorNotes(username);
+        if(notes == "" || notes == null)
+            homePage += "*EMPTY*";
+        else
+            homePage += notes;
         return homePage;
     }
     private static String coursesForSemester(Student student, Semester semester){
@@ -71,7 +77,7 @@ public class UIFormatter {
     public static String studentPossibleRequirementCredits(String username, String requirement){
         String courses = "";
         Student student = (Student)UserList.getInstance().findUser(username);
-        Requirement majoRequirement = student.getMajor().getRequirement(requirement);
+        Requirement majoRequirement = student.getMajor().getRequirementFromAbbreviation(requirement);
         for(Course course : majoRequirement.getCourses())
             courses += course.getCourseID() + ": " + course.getCourseName() + "\n";
         return courses;
@@ -79,9 +85,12 @@ public class UIFormatter {
     public static String adivsorHomePage(String username){
         String homePage = "\n";
         Advisor advisor = (Advisor)UserList.getInstance().findUser(username);
-        homePage += advisor.getFirstName() + " " +  advisor.getLastName() + "\n";
+        homePage += advisor.getFirstName() + " " +  advisor.getLastName() + "\n\n";
+        homePage += "*** Advisees ***\n";
+        if(advisor.getAdvisees().size() == 0)
+            homePage += "*EMPTY*";
         for(Student student : advisor.getAdvisees())
-            homePage += student.getFirstName() + " " + student.getLastName() + "(" + student.getUscID() + ")\n";
+            homePage += student.getFirstName() + " " + student.getLastName() + " (" + student.getUscID() + ") - " + student.getUsername() + "\n";
         return homePage;
     }
     public static String advisorStudentPage(String studentUsername){
@@ -94,7 +103,7 @@ public class UIFormatter {
         String notes = "";
         Student student = (Student)UserList.getInstance().findUser(username);
         for(String note : student.getNotes())
-            notes += note + "\n";
+            notes += note + "\n\n";
         return notes;
     }
 
