@@ -1,5 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -19,7 +20,16 @@ public class MajorListTest {
         name = "Computer Science";
         school = "School of Engineering";
         department = "Computer Science Department";
-        majorList.getMajors().clear();
+        ArrayList<Requirement> requirements = new ArrayList<>();
+        majorList.addMajor(id, name, school, department, requirements);
+
+        
+    }
+
+    @AfterEach
+    public void teardown(){
+      majorList.getMajors().clear();
+
     }
 
     @Test
@@ -34,9 +44,6 @@ public class MajorListTest {
 
     @Test
     public void testAddedMajorIsInMajorList() {
-        ArrayList<Requirement> requirements = new ArrayList<>();
-        majorList.addMajor(id, name, school, department, requirements);
-
         Major addedMajor = majorList.getMajors().get(0);
 
         assertEquals(name, addedMajor.getName());
@@ -45,7 +52,7 @@ public class MajorListTest {
     @Test
     public void testAddMajorDoesNotAddDuplicateMajor() {
         ArrayList<Requirement> requirements = new ArrayList<>();
-        majorList.addMajor(id, name, school, department, requirements);
+        
 
         boolean addedDuplicate = majorList.addMajor(id, name, school, department, requirements);
 
@@ -54,28 +61,19 @@ public class MajorListTest {
 
     @Test
     public void testGetMajorFromNameCorrectName() {
-        majorList.addMajor(id, name, school, department, new ArrayList<>());
         Major retrievedMajor = majorList.getMajorFromName(name);
         assertEquals(name, retrievedMajor.getName());
     }
 
     @Test
     public void testGetMajorFromName() {
-        ArrayList<Requirement> requirements = new ArrayList<>();
-        majorList.addMajor(id, name, school, department, requirements);
-
         Major retrievedMajor = majorList.getMajorFromName(name);
-        assertNotNull(retrievedMajor);
         assertEquals(name, retrievedMajor.getName());
     }
 
     @Test
     public void testGetMajorFromID() {
-        ArrayList<Requirement> requirements = new ArrayList<>();
-        majorList.addMajor(id, name, school, department, requirements);
-
         Major retrievedMajor = majorList.getMajorFromID(id);
-        assertNotNull(retrievedMajor);
         assertEquals(id, retrievedMajor.getId());
     }
 

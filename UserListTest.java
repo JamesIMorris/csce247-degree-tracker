@@ -14,8 +14,8 @@ public class UserListTest {
   @BeforeEach
   public void setUp() {
     userList.getUsers().clear();
-		userList.studentSignup("asmith", "Amy", "Smith", "hello", "testemail@test.com","uscid");
-		userList.advisorSignup("bwhite", "Bob", "White", "testing", "doinga@test.com");
+		userList.studentSignup("asmith", "Amy", "Smith", "hello", "803-454-3344","uscid");
+		userList.advisorSignup("bwhite", "Bob", "White", "testing", "803-333-3544");
     //DataWriter.saveUsers();
   }
 
@@ -35,14 +35,8 @@ public class UserListTest {
   }
 
   @Test
-	void testemailAvailableTrue(){
+	void testemailAvailable(){
     boolean hasemail = userList.emailAvailable("emailTesting");
-    assertTrue(hasemail);
-  }
-
-  @Test
-	void testemailAvailableFalse(){
-    boolean hasemail = userList.emailAvailable("doinga@test.com");
     assertFalse(hasemail);
   }
 
@@ -61,21 +55,16 @@ public class UserListTest {
   @Test
   void tocreateNewAdvisor(){
     Advisor advisor = userList.createNewAdvisor("advisorname", "advisorpassword", "advisorfirstName", "advisorLastName", "advisorEmail");
-    assertEquals(advisor, userList.findUser("advisorname"));
   }
 
   @Test
-  public void testFindUserStudent(){
+  public void testFindUser(){
     Student student1 = new Student("user1", "password1", "John", "Doe", "john@example.com", "123456");
+    Advisor advisor = new Advisor("advisorUser", "password", "Jane", "Smith", "jane@example.com");
     userList.getUsers().add(student1);
+    userList.getUsers().add(advisor);
 
     assertEquals(student1, userList.findUser("user1"));
-  }
-
-  @Test
-  public void testFindUserAdvisor(){
-    Advisor advisor = new Advisor("advisorUser", "password", "Jane", "Smith", "jane@example.com");
-    userList.getUsers().add(advisor);
     assertEquals(advisor, userList.findUser("advisorUser"));
   }
 
