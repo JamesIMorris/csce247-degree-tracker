@@ -59,5 +59,11 @@
     "category":"CC-VSR",
     "courses":["AFAM200","AFAM218","ANTH212","ANTH216","ANTH244","ANTH280","BIOL202","BIOL208","CPLT150","CYBR101","ENGL200","ENGL280","ENVR322","HIST108","HIST110","JSTU218","LING240","PHIL103","PHIL211","PHIL213","PHIL320","PHIL321","PHIL322","PHIL324","PHIL325","PHIL335","POLI201","POLI240","POLI302","POLI303","POLI304","RELG205","SAEL200","SPCH213","WGST112","SPTE385","EDTE202","EDTE218","CSCE390","ITEC101","ISCI215"],
     "creditHoursRequired":3
+  },{
+    "id":"efafe7db-7546-49dc-a4aa-1cd67205e906",
+    "requirementName":"Application Area: Digital Design",
+    "category":"AA-DD",
+    "courses":["MART101","MART110","MART201","MART210"],
+    "creditHoursRequired":9
   }
 ]
