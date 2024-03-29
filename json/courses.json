@@ -2204,5 +2204,23 @@
       "type": "DEFAULT",
       "preRequisites":[],
       "coRequisites":[]
+    },{
+      "id":"MATH142",
+      "courseName":"Calculus II",
+      "courseDescription":"Methods of integration, sequences and series, approximations. Four classroom hours and one laboratory hour per week.",
+      "creditHours":4,
+      "semesterAvailability":["FALL","SPRING"],
+      "type": "DEFAULT",
+      "preRequisites":["MATH141"],
+      "coRequisites":[]
+    },{
+      "id":"CSCE317",
+      "courseName":"Computer Systems Engineering",
+      "courseDescription":"System-level modeling and evaluation of computer systems: requirements elicitation and specification, architectural design, reliability and performance evaluation, Markov modeling, life-cycle cost analysis, project management.",
+      "creditHours":3,
+      "semesterAvailability":["FALL","SPRING"],
+      "type": "DEFAULT",
+      "preRequisites":["CSCE212","MATH242","STAT509"],
+      "coRequisites":[]
     }
   ]   
